@@ -216,8 +216,8 @@ Ku15PhyCI <- function(w458, w644, w529){
 #'
 #' Applies the MI092BDA algorithm
 #'
-#' @param w700 numeric. Value at wavelength of 458 nm
-#' @param w600 numeric. Value at wavelength of 644 nm
+#' @param w700 numeric. Value at wavelength of 700 nm
+#' @param w600 numeric. Value at wavelength of 600 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -227,4 +227,196 @@ Ku15PhyCI <- function(w458, w644, w529){
 #' @export
 MI092BDA <- function(w700, w600){
   w700/w600
+}
+
+#' MM092BDA algorithm
+#'
+#' Applies the MM092BDA algorithm
+#'
+#' @param w724 numeric. Value at wavelength of 724 nm
+#' @param w600 numeric. Value at wavelength of 600 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Mishra et al. (2009)	
+#'
+#' @rdname algorithms
+#' @export
+MM092BDA <- function(w724, w600){
+  w724/w600
+}
+
+#' MM12NDCI algorithm
+#'
+#' Applies the MM12NDCI algorithm
+#'
+#' @param w714 numeric. Value at wavelength of 714 nm
+#' @param w686 numeric. Value at wavelength of 686 nm
+#' @param w683 numeric. Value at wavelength of 683 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Mishra and Mishra (2012)
+#'
+#' @rdname algorithms
+#' @export
+MM12NDCI <- function(w714, w686, w683){
+  (w714-w686)/(w714+w683)
+}
+
+#' MM143BDAopt algorithm
+#'
+#' Applies the MM143BDAopt algorithm
+#'
+#' @param w629 numeric. Value at wavelength of 629 nm
+#' @param w659 numeric. Value at wavelength of 659 nm
+#' @param w724 numeric. Value at wavelength of 724 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Mishra and Mishra (2014)
+#'
+#' @rdname algorithms
+#' @export
+MM143BDAopt <- function(w629, w659, w724){
+  ((1/w629)-(1/w659))*(w724)
+}
+
+#' SI052BDA algorithm
+#'
+#' Applies the SI052BDA algorithm
+#'
+#' @param w709 numeric. Value at wavelength of 709 nm
+#' @param w620 numeric. Value at wavelength of 620 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Simis et al. (2005)
+#'
+#' @rdname algorithms
+#' @export
+SI052BDA <- function(w709, w620){
+  (w709/w620)
+}
+
+#' SM122BDA algorithm
+#'
+#' Applies the SM122BDA algorithm
+#'
+#' @param w709 numeric. Value at wavelength of 709 nm
+#' @param w600 numeric. Value at wavelength of 600 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references S. Mishra (2012)
+#'
+#' @rdname algorithms
+#' @export
+SM122BDA <- function(w709, w600){
+  (w709/w600)
+}
+
+#' SM122BDA algorithm
+#'
+#' Applies the SM122BDA algorithm
+#'
+#' @param w650 numeric. Value at wavelength of 650 nm
+#' @param w625 numeric. Value at wavelength of 625 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Schalles and Yacobi (2000)
+#'
+#' @rdname algorithms
+#' @export
+SM122BDA <- function(w650, w625){
+  (w650/w625)
+}
+
+#' Be16NDTIblue algorithm
+#'
+#' Applies the Be16NDTIblue algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w458 numeric. Value at wavelength of 458 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck et al. (2017)
+#'
+#' @rdname algorithms
+#' @export
+Be16NDTIblue <- function(w658, w458){
+  (w658-w458)/(w658+w458)
+}
+
+#' Be16NDTIviolet algorithm
+#'
+#' Applies the Be16NDTIviolet algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w444 numeric. Value at wavelength of 444 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck et al. (2017)
+#'
+#' @rdname algorithms
+#' @export
+Be16NDTIviolet <- function(w658, w444){
+  (w658-w444)/(w658+w444)
+}
+
+#' Be16FLHBlueRedNIR algorithm
+#'
+#' Applies the Be16FLHBlueRedNIR algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 458 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck et al. (2017)
+#'
+#' @rdname algorithms
+#' @export
+Be16FLHBlueRedNIR <- function(w658, w857, w458){
+  (w658)-(w857+(w458-w857))
+}
+
+#' Be16FLHGreenRedNIR algorithm
+#'
+#' Applies the Be16FLHGreenRedNIR algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w558 numeric. Value at wavelength of 558 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck et al. (2017)
+#'
+#' @rdname algorithms
+#' @export
+Be16FLHGreenRedNIR <- function(w658, w857, w558){
+  (w658)-(w857+(w558-w857))
+}
+
+#' Be16FLHVioletRedNIR algorithm
+#'
+#' Applies the Be16FLHVioletRedNIR algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w444 numeric. Value at wavelength of 444 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck et al. (2017)
+#'
+#' @rdname algorithms
+#' @export
+Be16FLHVioletRedNIR <- function(w658, w857, w444){
+  (w658)-(w857+(w444-w857))
 }
