@@ -1,8 +1,8 @@
 Package: algae
 Title: The Cholorophyll-a, Blue-Green Algae, and Turbidity Detection Algorithms 
 Version: 0.0.0.9000
-Authors@R: person("Richard", "Johansen", email = "johansra@mail.uc.edu", role = c("aut", "cre"),
-    person("Jakub", "Nowosad", role = c("aut"), email="nowosad.jakub@gmail.com", comment = c(ORCID = "0000-0002-1057-3721")),)
+Authors@R: c(person("Richard", "Johansen", email = "johansra@mail.uc.edu", role = c("aut", "cre")),
+    person("Jakub", "Nowosad", role = c("aut"), email="nowosad.jakub@gmail.com", comment = c(ORCID = "0000-0002-1057-3721")))
 Description: What the package does (one paragraph).
 Depends: R (>= 3.4.1)
 License: MIT + file LICENSE
@@ -11,3 +11,4 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 Imports:
     raster
+RoxygenNote: 6.0.1
