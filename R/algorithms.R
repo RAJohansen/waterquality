@@ -30,7 +30,7 @@ Al10SABI <- function(w857, w644, w458, w529){
 #'
 #' @rdname algorithms
 #' @export
-Am092Bsub <- function(w681, w655){
+Am092Bsub <- function(w681, w665){
         w681 - w665
 }
 
