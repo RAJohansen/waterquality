@@ -3,11 +3,146 @@
 \name{Al10SABI}
 \alias{Al10SABI}
 \alias{Am092Bsub}
+\alias{Am09KBBI}
+\alias{Be16FLHblue}
+\alias{Be16FLHviolet}
+\alias{Be16NDPhyI}
+\alias{De933BDA}
+\alias{Gi033BDA}
+\alias{Go04MCI}
+\alias{HU103BDA}
+\alias{Kn07KIVU}
+\alias{Ku15PhyCI}
+\alias{MI092BDA}
+\alias{MM092BDA}
+\alias{MM12NDCI}
+\alias{MM143BDAopt}
+\alias{SI052BDA}
+\alias{SM122BDA}
+\alias{SM122BDA}
+\alias{Be16NDTIblue}
+\alias{Be16NDTIviolet}
+\alias{Be16FLHBlueRedNIR}
+\alias{Be16FLHGreenRedNIR}
+\alias{Be16FLHVioletRedNIR}
+\alias{Wy08CI}
+\alias{Da052BDA}
+\alias{Zh10FLH}
+\alias{Be162B643sub629}
+\alias{Be162B700sub601}
+\alias{Be162BsubPhy}
+\alias{Be16MPI}
+\alias{Be16NDPhyI644over615}
+\alias{Be16NDPhyI644over629}
+\alias{Be16Phy2BDA644over629}
+\alias{Ku15SLH}
+\alias{MM12NDCIalt}
+\alias{MM143BDAopt14}
+\alias{TurbBe16GreenPlusRedBothOverViolet}
+\alias{TurbBe16RedOverViolet}
+\alias{TurbBow06RedOverGreen}
+\alias{TurbBow06RedOverGreen}
+\alias{TurbChip09NIROverGreen}
+\alias{TurbDox02NIRoverRed}
+\alias{TurbFrohn09GreenPlusRedBothOverBlue}
+\alias{TurbHarr92NIR}
+\alias{TurbLath91RedOverBlue}
+\alias{TurbMoore80Red}
 \title{Al10SABI algorithm}
 \usage{
 Al10SABI(w857, w644, w458, w529)
 
-Am092Bsub(w678, w667)
+Am092Bsub(w681, w665)
+
+Am09KBBI(w686, w658)
+
+Be16FLHblue(w529, w644, w458)
+
+Be16FLHviolet(w529, w644, w429)
+
+Be16NDPhyI(w700, w622)
+
+De933BDA(w600, w648, w625)
+
+Gi033BDA(w672, w715, w757)
+
+Go04MCI(w709, w681, w753)
+
+HU103BDA(w615, w600, w725)
+
+Kn07KIVU(w458, w644, w529)
+
+Ku15PhyCI(w681, w665, w709)
+
+MI092BDA(w700, w600)
+
+MM092BDA(w724, w600)
+
+MM12NDCI(w714, w686, w683)
+
+MM143BDAopt(w629, w659, w724)
+
+SI052BDA(w709, w620)
+
+SM122BDA(w650, w625)
+
+SM122BDA(w650, w625)
+
+Be16NDTIblue(w658, w458)
+
+Be16NDTIviolet(w658, w444)
+
+Be16FLHBlueRedNIR(w658, w857, w458)
+
+Be16FLHGreenRedNIR(w658, w857, w558)
+
+Be16FLHVioletRedNIR(w658, w857, w444)
+
+Wy08CI(w686, w672, w715)
+
+Da052BDA(w714, w672)
+
+Zh10FLH(w686, w715, w672)
+
+Be162B643sub629(w644, w629)
+
+Be162B700sub601(w700, w601)
+
+Be162BsubPhy(w715, w615)
+
+Be16MPI(w615, w601, w644)
+
+Be16NDPhyI644over615(w644, w615)
+
+Be16NDPhyI644over629(w644, w629)
+
+Be16Phy2BDA644over629(w644, w629)
+
+Ku15SLH(w715, w658)
+
+MM12NDCIalt(w700, w658)
+
+MM143BDAopt14(w629, w658, w729)
+
+TurbBe16GreenPlusRedBothOverViolet(w558, w658, w444)
+
+TurbBe16RedOverViolet(w658, w444)
+
+TurbBow06RedOverGreen(w658, w558)
+
+TurbBow06RedOverGreen(w658, w558)
+
+TurbChip09NIROverGreen(w857, w558)
+
+TurbDox02NIRoverRed(w857, w658)
+
+TurbFrohn09GreenPlusRedBothOverBlue(w558, w658, w458)
+
+TurbHarr92NIR(w857)
+
+TurbLath91RedOverBlue(w658, w458)
+
+TurbMoore80Red(w658)
 }
 \arguments{
 \item{w857}{numeric. Value at wavelength of 678 nm}
@@ -18,11 +153,315 @@ Am092Bsub(w678, w667)
 
 \item{w529}{numeric. Value at wavelength of 667 nm}
 
-\item{w678}{numeric. Value at wavelength of 678 nm}
+\item{w681}{numeric. Value at wavelength of 681 nm}
 
-\item{w667}{numeric. Value at wavelength of 667 nm}
+\item{w665}{numeric. Value at wavelength of 665 nm}
+
+\item{w686}{numeric. Value at wavelength of 686 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w429}{numeric. Value at wavelength of 429 nm}
+
+\item{w700}{numeric. Value at wavelength of 700 nm}
+
+\item{w622}{numeric. Value at wavelength of 622 nm}
+
+\item{w600}{numeric. Value at wavelength of 600 nm}
+
+\item{w648}{numeric. Value at wavelength of 648 nm}
+
+\item{w625}{numeric. Value at wavelength of 625 nm}
+
+\item{w672}{numeric. Value at wavelength of 672 nm}
+
+\item{w715}{numeric. Value at wavelength of 715 nm}
+
+\item{w757}{numeric. Value at wavelength of 757 nm}
+
+\item{w709}{numeric. Value at wavelength of 709 nm}
+
+\item{w753}{numeric. Value at wavelength of 753 nm}
+
+\item{w615}{numeric. Value at wavelength of 615 nm}
+
+\item{w725}{numeric. Value at wavelength of 725 nm}
+
+\item{w724}{numeric. Value at wavelength of 724 nm}
+
+\item{w714}{numeric. Value at wavelength of 714 nm}
+
+\item{w683}{numeric. Value at wavelength of 683 nm}
+
+\item{w629}{numeric. Value at wavelength of 629 nm}
+
+\item{w659}{numeric. Value at wavelength of 659 nm}
+
+\item{w620}{numeric. Value at wavelength of 620 nm}
+
+\item{w650}{numeric. Value at wavelength of 650 nm}
+
+\item{w444}{numeric. Value at wavelength of 444 nm}
+
+\item{w558}{numeric. Value at wavelength of 558 nm}
+
+\item{w601}{numeric. Value at wavelength of 601 nm}
+
+\item{w729}{numeric. Value at wavelength of 729 nm}
+
+\item{w529}{numeric. Value at wavelength of 529 nm}
+
+\item{w644}{numeric. Value at wavelength of 644 nm}
+
+\item{w458}{numeric. Value at wavelength of 458 nm}
+
+\item{w529}{numeric. Value at wavelength of 529 nm}
+
+\item{w644}{numeric. Value at wavelength of 644 nm}
+
+\item{w681}{numeric. Value at wavelength of 681 nm}
+
+\item{w600}{numeric. Value at wavelength of 600 nm}
+
+\item{w458}{numeric. Value at wavelength of 458 nm}
+
+\item{w644}{numeric. Value at wavelength of 644 nm}
+
+\item{w529}{numeric. Value at wavelength of 529 nm}
+
+\item{w681}{numeric. Value at wavelength of 681 nm}
+
+\item{w665}{numeric. Value at wavelength of 665 nm}
+
+\item{w709}{numeric. Value at wavelength of 709 nm}
+
+\item{w700}{numeric. Value at wavelength of 700 nm}
+
+\item{w600}{numeric. Value at wavelength of 600 nm}
+
+\item{w600}{numeric. Value at wavelength of 600 nm}
+
+\item{w686}{numeric. Value at wavelength of 686 nm}
+
+\item{w724}{numeric. Value at wavelength of 724 nm}
+
+\item{w709}{numeric. Value at wavelength of 709 nm}
+
+\item{w709}{numeric. Value at wavelength of 709 nm}
+
+\item{w600}{numeric. Value at wavelength of 600 nm}
+
+\item{w625}{numeric. Value at wavelength of 625 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w458}{numeric. Value at wavelength of 458 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w857}{numeric. Value at wavelength of 857 nm}
+
+\item{w458}{numeric. Value at wavelength of 458 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w857}{numeric. Value at wavelength of 857 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w857}{numeric. Value at wavelength of 857 nm}
+
+\item{w444}{numeric. Value at wavelength of 444 nm}
+
+\item{w686}{numeric. Value at wavelength of 686 nm}
+
+\item{w672}{numeric. Value at wavelength of 672 nm}
+
+\item{w715}{numeric. Value at wavelength of 715 nm}
+
+\item{w714}{numeric. Value at wavelength of 714 nm}
+
+\item{w672}{numeric. Value at wavelength of 672 nm}
+
+\item{w686}{numeric. Value at wavelength of 686 nm}
+
+\item{w715}{numeric. Value at wavelength of 715 nm}
+
+\item{w672}{numeric. Value at wavelength of 672 nm}
+
+\item{w644}{numeric. Value at wavelength of 644 nm}
+
+\item{w629}{numeric. Value at wavelength of 729 nm}
+
+\item{w700}{numeric. Value at wavelength of 700 nm}
+
+\item{w715}{numeric. Value at wavelength of 715 nm}
+
+\item{w615}{numeric. Value at wavelength of 615 nm}
+
+\item{w615}{numeric. Value at wavelength of 615 nm}
+
+\item{w601}{numeric. Value at wavelength of 601 nm}
+
+\item{w644}{numeric. Value at wavelength of 644 nm}
+
+\item{w644}{numeric. Value at wavelength of 644 nm}
+
+\item{w615}{numeric. Value at wavelength of 615 nm}
+
+\item{w644}{numeric. Value at wavelength of 644 nm}
+
+\item{w629}{numeric. Value at wavelength of 629 nm}
+
+\item{w644}{numeric. Value at wavelength of 644 nm}
+
+\item{w629}{numeric. Value at wavelength of 629 nm}
+
+\item{w715}{numeric. Value at wavelength of 715 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w700}{numeric. Value at wavelength of 700 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w629}{numeric. Value at wavelength of 629 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w558}{numeric. Value at wavelength of 558 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w444}{numeric. Value at wavelength of 444 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w444}{numeric. Value at wavelength of 444 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w558}{numeric. Value at wavelength of 558 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w558}{numeric. Value at wavelength of 558 nm}
+
+\item{w857}{numeric. Value at wavelength of 857 nm}
+
+\item{w558}{numeric. Value at wavelength of 558 nm}
+
+\item{w857}{numeric. Value at wavelength of 857 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w558}{numeric. Value at wavelength of 558 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w458}{numeric. Value at wavelength of 458 nm}
+
+\item{w857}{numeric. Value at wavelength of 857 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
+
+\item{w458}{numeric. Value at wavelength of 458 nm}
+
+\item{w658}{numeric. Value at wavelength of 658 nm}
 }
 \value{
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
+RasterLayer or numeric
+
 RasterLayer or numeric
 
 RasterLayer or numeric
@@ -31,9 +470,189 @@ RasterLayer or numeric
 Applies the Al10SABI algorithm
 
 Applies the Am092Bsub algorithm
+
+Applies the Am09KBBI algorithm
+
+Applies the Be16FLHblue algorithm
+
+Applies the Be16FLHviolet algorithm
+
+Applies the Be16NDPhyI algorithm
+
+Applies the De933BDA algorithm
+
+Applies the Gi033BDA algorithm
+
+Applies the Go04MCI algorithm
+
+Applies the HU103BDA algorithm
+
+Applies the Kn07KIVU algorithm
+
+Applies the Ku15PhyCI algorithm
+
+Applies the MI092BDA algorithm
+
+Applies the MM092BDA algorithm
+
+Applies the MM12NDCI algorithm
+
+Applies the MM143BDAopt algorithm
+
+Applies the SI052BDA algorithm
+
+Applies the SM122BDA algorithm
+
+Applies the SM122BDA algorithm
+
+Applies the Be16NDTIblue algorithm
+
+Applies the Be16NDTIviolet algorithm
+
+Applies the Be16FLHBlueRedNIR algorithm
+
+Applies the Be16FLHGreenRedNIR algorithm
+
+Applies the Be16FLHVioletRedNIR algorithm
+
+Applies the Wy08CI  algorithm
+
+Applies the Da052BDA   algorithm
+
+Applies the Zh10FLH   algorithm
+
+Applies the Be162B643sub629    algorithm
+
+Applies the Be162B700sub601     algorithm
+
+Applies the Be162BsubPhy     algorithm
+
+Applies the Be16MPI     algorithm
+
+Applies the Be16NDPhyI644over615     algorithm
+
+Applies the Be16NDPhyI644over629     algorithm
+
+Applies the Be16Phy2BDA644over629     algorithm
+
+Applies the Ku15SLH     algorithm
+
+Applies the MM12NDCIalt     algorithm
+
+Applies the MM143BDAopt14     algorithm
+
+Applies the TurbBe16GreenPlusRedBothOverViolet     algorithm
+
+Applies the TurbBe16RedOverViolet     algorithm
+
+Applies the TurbBow06RedOverGreen     algorithm
+
+Applies the TurbBow06RedOverGreen     algorithm
+
+Applies the TurbChip09NIROverGreen     algorithm
+
+Applies the TurbDox02NIRoverRed     algorithm
+
+Applies the TurbFrohn09GreenPlusRedBothOverBlue     algorithm
+
+Applies the TurbHarr92NIR     algorithm
+
+Applies the TurbLath91RedOverBlue     algorithm
+
+Applies the TurbMoore80Red     algorithm
 }
 \references{
 Alawadi, F. Detection of surface algal blooms using the newly developed algorithm surface algal bloom index (SABI). Proc. SPIE 2010, 7825.
 
 Amin, R.; Zhou, J.; Gilerson, A.; Gross, B.; Moshary, F.; Ahmed, S. Novel optical techniques for detecting and classifying toxic dinoflagellate Karenia brevis blooms using satellite imagery. Opt. Express 2009, 17, 9126–9144.
+
+Amin et al. (2009)
+
+Beck et al. (2016)
+
+Beck et al. (2016)
+
+Beck et al. (2017)
+
+Dekker (1993)
+
+Gitelson et al. (2003)
+
+Gower et al. (2004)
+
+Hunter et al. (2008)
+
+Kneubuhler et al. (2007)
+
+Kudela et al. (2015)
+
+Mishra et al. (2009)
+
+Mishra et al. (2009)
+
+Mishra and Mishra (2012)
+
+Mishra and Mishra (2014)
+
+Simis et al. (2005)
+
+S. Mishra (2012)
+
+Schalles and Yacobi (2000)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Wynne et al. (2008)
+
+Wynne et al. (2008)
+
+Zhao et al. (2010)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Kudela et al. (2015)
+
+Mishra and Mishra (2014)
+
+Mishra and Mishra (2014)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Bowers and Binding (2006)
+
+Bowers and Binding (2006)
+
+Chipman et al. (2009)
+
+Doxaran et al. (2002)
+
+Frohn and Autrey (2009)
+
+Harris (1992)
+
+Lathrop et al. (1991)
+
+Moore (1980)
 }
