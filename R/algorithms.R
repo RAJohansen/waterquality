@@ -198,9 +198,9 @@ Kn07KIVU <- function(w458, w644, w529){
 #'
 #' Applies the Ku15PhyCI algorithm
 #'
-#' @param w681 numeric. Value at wavelength of 458 nm
-#' @param w665 numeric. Value at wavelength of 644 nm
-#' @param w709 numeric. Value at wavelength of 529 nm
+#' @param w681 numeric. Value at wavelength of 681 nm
+#' @param w665 numeric. Value at wavelength of 665 nm
+#' @param w709 numeric. Value at wavelength of 709 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -208,7 +208,7 @@ Kn07KIVU <- function(w458, w644, w529){
 #'
 #' @rdname algorithms
 #' @export
-Ku15PhyCI <- function(w458, w644, w529){
+Ku15PhyCI <- function(w681, w665, w709){
   -1*(w681-w665-(w709-w665))
 }
 
