@@ -43,7 +43,7 @@ Am092Bsub <- function(w681, w665){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Amin et al. (2009)
+#' @references Amin, R.; Zhou, J.; Gilerson, A.; Gross, B.; Moshary, F.; Ahmed, S.; Novel optical techniques for detecting and classifying toxic dinoflagellate Karenia brevis blooms using satellite imagery, Optics Express, 2009, 17, 11, 1-13.
 #'
 #' @rdname algorithms
 #' @export
@@ -61,7 +61,7 @@ Am09KBBI <- function(w686, w658){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Beck et al. (2016)
+#' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
 #'
 #' @rdname algorithms
 #' @export
@@ -79,7 +79,7 @@ Be16FLHblue <- function(w529, w644, w458){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Beck et al. (2016)
+#' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
 #'
 #' @rdname algorithms
 #' @export
@@ -114,7 +114,7 @@ Be16NDPhyI <- function(w700, w622){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Dekker (1993)
+#' @references Dekker, A.; Detection of the optical water quality parameters for eutrophic waters by high resolution remote sensing, Ph.D. thesis, 1993, Free University, Amsterdam.
 #'
 #' @rdname algorithms
 #' @export
@@ -132,7 +132,7 @@ De933BDA <- function(w600, w648, w625){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Gitelson et al. (2003)
+#' @references Gitelson, A.A.; U. Gritz, and M. N. Merzlyak.; Relationships between leaf chlorophyll content and spectral reflectance and algorithms for non-destructive chlorophyll assessment in higher plant leaves. J. Plant Phys. 2003, 160, 271-282.
 #'
 #' @rdname algorithms
 #' @export
@@ -150,7 +150,7 @@ Gi033BDA <- function(w672, w715, w757){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Gower et al. (2004)
+#' @references Gower, J.F.R.; Brown,L.; Borstad, G.A.; Observation of chlorophyll fluorescence in west coast waters of Canada using the MODIS satellite sensor. Can. J. Remote Sens., 2004, 30 (1), 17–25.
 #'
 #' @rdname algorithms
 #' @export
@@ -168,7 +168,7 @@ Go04MCI <- function(w709, w681, w753){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Hunter et al. (2008)
+#' @references Hunter, P.D.; Tyler, A.N.; Willby, N.J.; Gilvear, D.J.; The spatial dynamics of vertical migration by Microcystis aeruginosa in a eutrophic shallow lake: A case study using high spatial resolution time-series airborne remote sensing.  Limn. Oceanogr. 2008, 53, 2391-2406.
 #'
 #' @rdname algorithms
 #' @export
@@ -186,7 +186,7 @@ HU103BDA <- function(w615, w600, w725){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Kneubuhler et al. (2007)
+#' @references Kneubuhler, M.; Frank T.; Kellenberger, T.W; Pasche N.; Schmid M.; Mapping chlorophyll-a in Lake Kivu with remote sensing methods. 2007, Proceedings of the Envisat Symposium 2007, Montreux, Switzerland 23–27 April 2007 (ESA SP-636, July 2007).
 #'
 #' @rdname algorithms
 #' @export
@@ -204,7 +204,7 @@ Kn07KIVU <- function(w458, w644, w529){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Kudela et al. (2015)
+#' @references Kudela, R.M., Palacios, S.L., Austerberry, D.C., Accorsi, E.K., Guild, L.S.; Application of hyperspectral remote sensing to cyanobacterial blooms in inland waters, Torres-Perez, J., 2015, Remote Sens. Environ., 2015, 167, 1-10.
 #'
 #' @rdname algorithms
 #' @export
@@ -221,7 +221,7 @@ Ku15PhyCI <- function(w681, w665, w709){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Mishra et al. (2009)
+#' @references Mishra, S.; Mishra, D.R.; Schluchter, W. M., A novel algorithm for predicting PC concentrations in cyanobacteria: A proximal hyperspectral remote sensing approach. Remote Sens., 2009, 1, 758–775.
 #'
 #' @rdname algorithms
 #' @export
@@ -238,7 +238,7 @@ MI092BDA <- function(w700, w600){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Mishra et al. (2009)	
+#' @references Mishra, S.; Mishra, D.R.; Schluchter, W. M., A novel algorithm for predicting PC concentrations in cyanobacteria: A proximal hyperspectral remote sensing approach. Remote Sens., 2009, 1, 758–775.
 #'
 #' @rdname algorithms
 #' @export
@@ -256,7 +256,7 @@ MM092BDA <- function(w724, w600){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Mishra and Mishra (2012)
+#' @references Mishra, S.; and Mishra, D.R. Normalized difference chlorophyll index: A novel model for remote estimation of chlorophyll-a concentration in turbid productive waters, Remote Sens. Environ., 2012, 117, 394-406.
 #'
 #' @rdname algorithms
 #' @export
@@ -274,7 +274,7 @@ MM12NDCI <- function(w714, w686, w683){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Mishra and Mishra (2014)
+#' @references Mishra, S.; Mishra, D.R.; A novel remote sensing algorithm to quantify phycocyanin in cyanobacterial algal blooms, Env. Res. Lett., 2014, 9 (11), DOI:10.1088/1748-9326/9/11/114003
 #'
 #' @rdname algorithms
 #' @export
@@ -291,7 +291,7 @@ MM143BDAopt <- function(w629, w659, w724){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Simis et al. (2005)
+#' @references Simis, S. G. H.; Peters, S.W. M.; Gons, H. J.; Remote sensing of the cyanobacteria pigment phycocyanin in turbid inland water. Limn. Oceanogr., 2005, 50, 237–245.
 #'
 #' @rdname algorithms
 #' @export
@@ -308,7 +308,7 @@ SI052BDA <- function(w709, w620){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references S. Mishra (2012)
+#' @references Mishra, S. Remote sensing of cyanobacteria in turbid productive waters, PhD Dissertation. Mississippi State University, USA. 2012.
 #'
 #' @rdname algorithms
 #' @export
@@ -325,7 +325,7 @@ SM122BDA <- function(w709, w600){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Schalles and Yacobi (2000)
+#' @references Schalles, J.; Yacobi, Y. Remote detection and seasonal patterns of phycocyanin, carotenoid and chlorophyll-a pigments in eutrophic waters. Archiv fur Hydrobiologie, Special Issues Advances in Limnology, 2000, 55,153–168.
 #'
 #' @rdname algorithms
 #' @export
@@ -431,7 +431,7 @@ Be16FLHVioletRedNIR <- function(w658, w857, w444){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Wynne et al. (2008)
+#' @references Wynne, T. T., Stumpf, R. P., Tomlinson, M. C., Warner, R. A., Tester, P. A., Dyble, J.; Relating spectral shape to cyanobacterial blooms in the Laurentian Great Lakes. Int. J. Remote Sens., 2008, 29, 3665–3672. 
 #'
 #' @rdname algorithms
 #' @export
@@ -448,7 +448,7 @@ Wy08CI  <- function(w686, w672, w715){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Wynne et al. (2008)
+#' @references Wynne, T. T., Stumpf, R. P., Tomlinson, M. C., Warner, R. A., Tester, P. A., Dyble, J.; Relating spectral shape to cyanobacterial blooms in the Laurentian Great Lakes. Int. J. Remote Sens., 2008, 29, 3665–3672. 
 #'
 #' @rdname algorithms
 #' @export
@@ -466,7 +466,7 @@ Da052BDA   <- function(w714, w672){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Zhao et al. (2010)
+#' @references Zhao, D.Z.; Xing, X.G.; Liu, Y.G.; Yang, J.H.; Wang, L. The relation of chlorophyll-a concentration with the reflectance peak near 700 nm in algae-dominated waters and sensitivity of fluorescence algorithms for detecting algal bloom. Int. J. Remote Sens. 2010, 31, 39-48.
 #'
 #' @rdname algorithms
 #' @export
@@ -603,7 +603,7 @@ Be16Phy2BDA644over629   <- function(w644, w629){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Kudela et al. (2015)
+#' @references Kudela, R.M., Palacios, S.L., Austerberry, D.C., Accorsi, E.K., Guild, L.S.; Application of hyperspectral remote sensing to cyanobacterial blooms in inland waters, Torres-Perez, J., 2015, Remote Sens. Environ., 2015, 167, 1-10.
 #'
 #' @rdname algorithms
 #' @export
@@ -620,7 +620,7 @@ Ku15SLH   <- function(w715, w658){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Mishra and Mishra (2014)
+#' @references Mishra, S.; Mishra, D.R.; A novel remote sensing algorithm to quantify phycocyanin in cyanobacterial algal blooms, Env. Res. Lett., 2014, 9 (11), DOI:10.1088/1748-9326/9/11/114003
 #'
 #' @rdname algorithms
 #' @export
@@ -690,24 +690,7 @@ TurbBe16RedOverViolet   <- function(w658, w444){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Bowers and Binding (2006)
-#'
-#' @rdname algorithms
-#' @export
-TurbBow06RedOverGreen   <- function(w658, w558){
-  (w658/w558)
-}
-
-#' TurbBow06RedOverGreen     algorithm
-#'
-#' Applies the TurbBow06RedOverGreen     algorithm
-#'
-#' @param w658 numeric. Value at wavelength of 658 nm
-#' @param w558 numeric. Value at wavelength of 558 nm
-#'
-#' @return RasterLayer or numeric
-#'
-#' @references Bowers and Binding (2006)
+#' @references Bowers, D. G., and C. E. Binding. 2006. “The Optical Properties of Mineral Suspended Particles: A Review and Synthesis.” Estuarine Coastal and Shelf Science 67 (1–2): 219–230. doi:10.1016/j.ecss.2005.11.010.
 #'
 #' @rdname algorithms
 #' @export
@@ -724,7 +707,7 @@ TurbBow06RedOverGreen   <- function(w658, w558){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Chipman et al. (2009)
+#' @references Chipman, J. W.; Olmanson, L.G.; Gitelson, A.A.; Remote sensing methods for lake management: A guide for resource managers and decision-makers. 2009, Developed by the North American Lake Management Society in collaboration with Dartmouth College, University of Minnesota, and University of Nebraska for the United States Environmental Protection Agency.
 #'
 #' @rdname algorithms
 #' @export
@@ -741,7 +724,7 @@ TurbChip09NIROverGreen   <- function(w857, w558){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Doxaran et al. (2002)
+#' @references Doxaran, D., Froidefond, J.-M.; Castaing, P. ; A reflectance band ratio used to estimate suspended matter concentrations in sediment-dominated coastal waters, Remote Sens., 2002, 23, 5079-5085.
 #'
 #' @rdname algorithms
 #' @export
@@ -759,7 +742,7 @@ TurbDox02NIRoverRed   <- function(w857, w658){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Frohn and Autrey (2009)
+#' @references Frohn, R. C., & Autrey, B. C. (2009). Water quality assessment in the Ohio River using new indices for turbidity and chlorophyll-a with Landsat-7 Imagery. Draft Internal Report, U.S. Environmental Protection Agency.
 #'
 #' @rdname algorithms
 #' @export
@@ -775,7 +758,7 @@ TurbFrohn09GreenPlusRedBothOverBlue   <- function(w558, w658, w458){
 #' 
 #' @return RasterLayer or numeric
 #'
-#' @references Harris (1992)
+#' @references Schiebe F.R., Harrington J.A., Ritchie J.C. Remote-Sensing of Suspended Sediments—the Lake Chicot, Arkansas Project. Int. J. Remote Sens. 1992;13:1487–1509.
 #'
 #' @rdname algorithms
 #' @export
@@ -792,7 +775,7 @@ TurbHarr92NIR   <- function(w857){
 #' 
 #' @return RasterLayer or numeric
 #'
-#' @references Lathrop et al. (1991)
+#' @references Lathrop, R. G., Jr., T. M. Lillesand, and B. S. Yandell, 1991. Testing the utility of simple multi-date Thematic Mapper calibration algorithms for monitoring turbid inland waters. International Journal of Remote Sensing
 #'
 #' @rdname algorithms
 #' @export
@@ -808,7 +791,7 @@ TurbLath91RedOverBlue   <- function(w658, w458){
 #' 
 #' @return RasterLayer or numeric
 #'
-#' @references Moore (1980)
+#' @references Moore, G.K., Satellite remote sensing of water turbidity, Hydrological Sciences, 1980, 25, 4, 407-422.
 #'
 #' @rdname algorithms
 #' @export
