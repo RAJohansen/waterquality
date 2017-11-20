@@ -26,6 +26,17 @@ wq_algorithms = tribble(
   "TurbHarr92NIR", TurbHarr92NIR, c(7), c(9), c(5), c(2), c(13),  
   "TurbLath91RedOverBlue", TurbLath91RedOverBlue, c(4,2), c(4, 2), c(4,2), NA, c(7,2),
   "TurbMoore80Red", TurbMoore80Red, c(4), c(4), c(4), c(1), c(7)
+  #MM143BDAopt
+  #MM143BDAver3merisver
+  #SY002BDA
+  #Be16NDPhyIedge
+  #Be163BD
+  #SM122BDA
+  #Da032BDA
+  #Stu16Phy
+  #Stu16PhyFLH
+  #Zh10FLH
+  #Go04MCIalt
 )
 
 # save data

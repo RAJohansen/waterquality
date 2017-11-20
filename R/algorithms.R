@@ -2,10 +2,10 @@
 #'
 #' Applies the Al10SABI algorithm
 #'
-#' @param w857 numeric. Value at wavelength of 678 nm
-#' @param w644 numeric. Value at wavelength of 667 nm
-#' @param w458 numeric. Value at wavelength of 678 nm
-#' @param w529 numeric. Value at wavelength of 667 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w644 numeric. Value at wavelength of 644 nm
+#' @param w458 numeric. Value at wavelength of 458 nm
+#' @param w529 numeric. Value at wavelength of 529 nm
 #'
 #' @return RasterLayer or numeric
 #'
