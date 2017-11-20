@@ -2,7 +2,7 @@ library(raster)
 library(tidyverse)
 
 sentinel_2 = tribble(
-  ~band_number, ~band_name,                 ~wavelenght,
+  ~band_number, ~band_name,                 ~band_center,
   1,            "Coastal aerosol",          0.443,
   2,            "Blue",                     0.490,
   3,            "Green",                    0.560,
@@ -26,7 +26,7 @@ Am092Bsub <- function(x){
 
 
 wq_algorithms = tribble(
-  ~name, ~wavelenghts, ~funs, ~sentinel2,
+  ~name, ~band_center, ~funs, ~sentinel2,
   "Al10SABI", c(0.857, 0.644, 0.458, 0.529), Al10SABI, c(9, 4, 2, 3),
   "Am092Bsub", c(0.681, 0.665), Am092Bsub, c(5, 4)
 )
@@ -64,22 +64,22 @@ Am092Bsub <- function(w681, w655){
 
 wq_algorithms
 
-which.min(abs(sentinel_2$wavelenght - wq_algorithms$wavelenghts[[1]][1]))
+which.min(abs(sentinel_2$band_center - wq_algorithms$band_center[[1]][1]))
 
 
 find_the_closest_wl = function(satelite){
   find_the_closest = function(x, y){
     lapply(x, function(x, y) which.min(abs(y - x)), y) %>% unlist()
   }
-  # zz = wq_algorithms$wavelenghts
+  # zz = wq_algorithms$band_center
   # zz
-  lapply(wq_algorithms$wavelenghts, find_the_closest, sentinel_2$wavelenght)
-  # al10sabi_sel = wq_algorithms$wavelenghts[[1]] %>% map_int(~find_the_closest(., sentinel_2$wavelenght))
+  lapply(wq_algorithms$band_center, find_the_closest, sentinel_2$band_center)
+  # al10sabi_sel = wq_algorithms$band_center[[1]] %>% map_int(~find_the_closest(., sentinel_2$band_center))
   
 }
 wq_algorithms
 
-al10sabi_sel = wq_algorithms$wavelenghts[[1]] %>% map_int(~find_the_closest(., sentinel_2$wavelenght))
+al10sabi_sel = wq_algorithms$band_center[[1]] %>% map_int(~find_the_closest(., sentinel_2$band_center))
 
 
 Al10SABI <- function(w857, w644, w458, w529){
@@ -98,7 +98,7 @@ plot(Al10SABI_result)
 hist(Al10SABI_result)
 
 
-wq_algorithms$funs[[1]](s2[[wq_algorithms$wavelenghts[[1]] %>% map_int(~find_the_closest(., sentinel_2$wavelenght))]])
+wq_algorithms$funs[[1]](s2[[wq_algorithms$band_center[[1]] %>% map_int(~find_the_closest(., sentinel_2$band_center))]])
 
 water_quality = function(raster_stack, alg = "all", sat = "sentinel-2"){
   
