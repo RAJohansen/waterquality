@@ -261,7 +261,7 @@ MM092BDA <- function(w724, w600){
 #' @rdname algorithms
 #' @export
 MM12NDCI <- function(w714, w686, w683){
-  (w714-w686)/(w714+w683)
+  (w714 - w686) / (w714 + w683)
 }
 
 #' MM143BDAopt algorithm
