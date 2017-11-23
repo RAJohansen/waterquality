@@ -1,11 +1,11 @@
 library(tidyverse)
 
 wq_algorithms = tribble(
-  ~name, ~funs,~worldview2, ~sentinel2, ~landsat8, ~modis, ~meris
+  ~name, ~funs,~worldview2, ~sentinel2, ~landsat8, ~modis, ~meris,
   "Al10SABI", Al10SABI, c(7,5,1,3), c(9, 4, 2, 3), c(5,4,2,3), NA, c(13,7,2,4),
   "Am092Bsub", Am092Bsub, c(6,5), c(5, 4), NA, c(2,1), c(8,6), 
   "Be16FLHviolet", Be16FLHviolet, c(3,5,1), c(3, 4, 2), c(3,4,1), NA, c(5,7,2),
-  "Be162Bsub", Be162Bsub, c(6, 4), c(6,4), c(5,4), NA, c(9,6),
+  "Be162BsubPhy", Be162BsubPhy, c(6, 4), c(6,4), c(5,4), NA, c(9,6),
   "Be16NDPhyI", Be16NDPhyI, c(6,4), c(6, 4), NA, NA, c(9,6),
   "HU103BDA", HU103BDA, c(4,3,6), c(5, 4, 6), NA, NA, c(6,5,9),
   "Kn07KIVU", Kn07KIVU, c(1,5,3), c(2, 4, 3), c(2,4,3), NA, c(2,7,4),
