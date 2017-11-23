@@ -40,5 +40,10 @@ wq_algorithms = tribble(
   #Go04MCIalt
 )
 
+wq_algorithms = wq_algorithms %>% 
+  gather(satellite, bands, worldview2:meris) %>% 
+  filter(!is.na(bands))
+
 # save data
 devtools::use_data(wq_algorithms, overwrite = TRUE)
+
