@@ -7,5 +7,5 @@
 #' The OO functions ...
 #'
 #' @docType package
-#' @name foo
+#' @name algae
 NULL
