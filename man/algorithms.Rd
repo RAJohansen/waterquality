@@ -41,7 +41,6 @@
 \alias{TurbBe16GreenPlusRedBothOverViolet}
 \alias{TurbBe16RedOverViolet}
 \alias{TurbBow06RedOverGreen}
-\alias{TurbBow06RedOverGreen}
 \alias{TurbChip09NIROverGreen}
 \alias{TurbDox02NIRoverRed}
 \alias{TurbFrohn09GreenPlusRedBothOverBlue}
@@ -130,8 +129,6 @@ TurbBe16RedOverViolet(w658, w444)
 
 TurbBow06RedOverGreen(w658, w558)
 
-TurbBow06RedOverGreen(w658, w558)
-
 TurbChip09NIROverGreen(w857, w558)
 
 TurbDox02NIRoverRed(w857, w658)
@@ -145,13 +142,13 @@ TurbLath91RedOverBlue(w658, w458)
 TurbMoore80Red(w658)
 }
 \arguments{
-\item{w857}{numeric. Value at wavelength of 678 nm}
+\item{w857}{numeric. Value at wavelength of 857 nm}
 
-\item{w644}{numeric. Value at wavelength of 667 nm}
+\item{w644}{numeric. Value at wavelength of 644 nm}
 
-\item{w458}{numeric. Value at wavelength of 678 nm}
+\item{w458}{numeric. Value at wavelength of 458 nm}
 
-\item{w529}{numeric. Value at wavelength of 667 nm}
+\item{w529}{numeric. Value at wavelength of 529 nm}
 
 \item{w681}{numeric. Value at wavelength of 681 nm}
 
@@ -345,10 +342,6 @@ TurbMoore80Red(w658)
 
 \item{w558}{numeric. Value at wavelength of 558 nm}
 
-\item{w658}{numeric. Value at wavelength of 658 nm}
-
-\item{w558}{numeric. Value at wavelength of 558 nm}
-
 \item{w857}{numeric. Value at wavelength of 857 nm}
 
 \item{w558}{numeric. Value at wavelength of 558 nm}
@@ -372,8 +365,6 @@ TurbMoore80Red(w658)
 \item{w658}{numeric. Value at wavelength of 658 nm}
 }
 \value{
-RasterLayer or numeric
-
 RasterLayer or numeric
 
 RasterLayer or numeric
@@ -547,8 +538,6 @@ Applies the TurbBe16RedOverViolet     algorithm
 
 Applies the TurbBow06RedOverGreen     algorithm
 
-Applies the TurbBow06RedOverGreen     algorithm
-
 Applies the TurbChip09NIROverGreen     algorithm
 
 Applies the TurbDox02NIRoverRed     algorithm
@@ -566,93 +555,91 @@ Alawadi, F. Detection of surface algal blooms using the newly developed algorith
 
 Amin, R.; Zhou, J.; Gilerson, A.; Gross, B.; Moshary, F.; Ahmed, S. Novel optical techniques for detecting and classifying toxic dinoflagellate Karenia brevis blooms using satellite imagery. Opt. Express 2009, 17, 9126–9144.
 
-Amin et al. (2009)
+Amin, R.; Zhou, J.; Gilerson, A.; Gross, B.; Moshary, F.; Ahmed, S.; Novel optical techniques for detecting and classifying toxic dinoflagellate Karenia brevis blooms using satellite imagery, Optics Express, 2009, 17, 11, 1-13.
 
-Beck et al. (2016)
+Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
 
-Beck et al. (2016)
+Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
 
 Beck et al. (2017)
 
-Dekker (1993)
+Dekker, A.; Detection of the optical water quality parameters for eutrophic waters by high resolution remote sensing, Ph.D. thesis, 1993, Free University, Amsterdam.
 
-Gitelson et al. (2003)
+Gitelson, A.A.; U. Gritz, and M. N. Merzlyak.; Relationships between leaf chlorophyll content and spectral reflectance and algorithms for non-destructive chlorophyll assessment in higher plant leaves. J. Plant Phys. 2003, 160, 271-282.
 
-Gower et al. (2004)
+Gower, J.F.R.; Brown,L.; Borstad, G.A.; Observation of chlorophyll fluorescence in west coast waters of Canada using the MODIS satellite sensor. Can. J. Remote Sens., 2004, 30 (1), 17–25.
 
-Hunter et al. (2008)
+Hunter, P.D.; Tyler, A.N.; Willby, N.J.; Gilvear, D.J.; The spatial dynamics of vertical migration by Microcystis aeruginosa in a eutrophic shallow lake: A case study using high spatial resolution time-series airborne remote sensing.  Limn. Oceanogr. 2008, 53, 2391-2406.
 
-Kneubuhler et al. (2007)
+Kneubuhler, M.; Frank T.; Kellenberger, T.W; Pasche N.; Schmid M.; Mapping chlorophyll-a in Lake Kivu with remote sensing methods. 2007, Proceedings of the Envisat Symposium 2007, Montreux, Switzerland 23–27 April 2007 (ESA SP-636, July 2007).
 
-Kudela et al. (2015)
+Kudela, R.M., Palacios, S.L., Austerberry, D.C., Accorsi, E.K., Guild, L.S.; Application of hyperspectral remote sensing to cyanobacterial blooms in inland waters, Torres-Perez, J., 2015, Remote Sens. Environ., 2015, 167, 1-10.
 
-Mishra et al. (2009)
+Mishra, S.; Mishra, D.R.; Schluchter, W. M., A novel algorithm for predicting PC concentrations in cyanobacteria: A proximal hyperspectral remote sensing approach. Remote Sens., 2009, 1, 758–775.
 
-Mishra et al. (2009)
+Mishra, S.; Mishra, D.R.; Schluchter, W. M., A novel algorithm for predicting PC concentrations in cyanobacteria: A proximal hyperspectral remote sensing approach. Remote Sens., 2009, 1, 758–775.
 
-Mishra and Mishra (2012)
+Mishra, S.; and Mishra, D.R. Normalized difference chlorophyll index: A novel model for remote estimation of chlorophyll-a concentration in turbid productive waters, Remote Sens. Environ., 2012, 117, 394-406.
+
+Mishra, S.; Mishra, D.R.; A novel remote sensing algorithm to quantify phycocyanin in cyanobacterial algal blooms, Env. Res. Lett., 2014, 9 (11), DOI:10.1088/1748-9326/9/11/114003
+
+Simis, S. G. H.; Peters, S.W. M.; Gons, H. J.; Remote sensing of the cyanobacteria pigment phycocyanin in turbid inland water. Limn. Oceanogr., 2005, 50, 237–245.
+
+Mishra, S. Remote sensing of cyanobacteria in turbid productive waters, PhD Dissertation. Mississippi State University, USA. 2012.
+
+Schalles, J.; Yacobi, Y. Remote detection and seasonal patterns of phycocyanin, carotenoid and chlorophyll-a pigments in eutrophic waters. Archiv fur Hydrobiologie, Special Issues Advances in Limnology, 2000, 55,153–168.
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Wynne, T. T., Stumpf, R. P., Tomlinson, M. C., Warner, R. A., Tester, P. A., Dyble, J.; Relating spectral shape to cyanobacterial blooms in the Laurentian Great Lakes. Int. J. Remote Sens., 2008, 29, 3665–3672.
+
+Wynne, T. T., Stumpf, R. P., Tomlinson, M. C., Warner, R. A., Tester, P. A., Dyble, J.; Relating spectral shape to cyanobacterial blooms in the Laurentian Great Lakes. Int. J. Remote Sens., 2008, 29, 3665–3672.
+
+Zhao, D.Z.; Xing, X.G.; Liu, Y.G.; Yang, J.H.; Wang, L. The relation of chlorophyll-a concentration with the reflectance peak near 700 nm in algae-dominated waters and sensitivity of fluorescence algorithms for detecting algal bloom. Int. J. Remote Sens. 2010, 31, 39-48.
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Beck et al. (2017)
+
+Kudela, R.M., Palacios, S.L., Austerberry, D.C., Accorsi, E.K., Guild, L.S.; Application of hyperspectral remote sensing to cyanobacterial blooms in inland waters, Torres-Perez, J., 2015, Remote Sens. Environ., 2015, 167, 1-10.
+
+Mishra, S.; Mishra, D.R.; A novel remote sensing algorithm to quantify phycocyanin in cyanobacterial algal blooms, Env. Res. Lett., 2014, 9 (11), DOI:10.1088/1748-9326/9/11/114003
 
 Mishra and Mishra (2014)
 
-Simis et al. (2005)
-
-S. Mishra (2012)
-
-Schalles and Yacobi (2000)
-
 Beck et al. (2017)
 
 Beck et al. (2017)
 
-Beck et al. (2017)
+Bowers, D. G., and C. E. Binding. 2006. “The Optical Properties of Mineral Suspended Particles: A Review and Synthesis.” Estuarine Coastal and Shelf Science 67 (1–2): 219–230. doi:10.1016/j.ecss.2005.11.010.
 
-Beck et al. (2017)
+Chipman, J. W.; Olmanson, L.G.; Gitelson, A.A.; Remote sensing methods for lake management: A guide for resource managers and decision-makers. 2009, Developed by the North American Lake Management Society in collaboration with Dartmouth College, University of Minnesota, and University of Nebraska for the United States Environmental Protection Agency.
 
-Beck et al. (2017)
+Doxaran, D., Froidefond, J.-M.; Castaing, P. ; A reflectance band ratio used to estimate suspended matter concentrations in sediment-dominated coastal waters, Remote Sens., 2002, 23, 5079-5085.
 
-Wynne et al. (2008)
+Frohn, R. C., & Autrey, B. C. (2009). Water quality assessment in the Ohio River using new indices for turbidity and chlorophyll-a with Landsat-7 Imagery. Draft Internal Report, U.S. Environmental Protection Agency.
 
-Wynne et al. (2008)
+Schiebe F.R., Harrington J.A., Ritchie J.C. Remote-Sensing of Suspended Sediments—the Lake Chicot, Arkansas Project. Int. J. Remote Sens. 1992;13:1487–1509.
 
-Zhao et al. (2010)
+Lathrop, R. G., Jr., T. M. Lillesand, and B. S. Yandell, 1991. Testing the utility of simple multi-date Thematic Mapper calibration algorithms for monitoring turbid inland waters. International Journal of Remote Sensing
 
-Beck et al. (2017)
-
-Beck et al. (2017)
-
-Beck et al. (2017)
-
-Beck et al. (2017)
-
-Beck et al. (2017)
-
-Beck et al. (2017)
-
-Beck et al. (2017)
-
-Kudela et al. (2015)
-
-Mishra and Mishra (2014)
-
-Mishra and Mishra (2014)
-
-Beck et al. (2017)
-
-Beck et al. (2017)
-
-Bowers and Binding (2006)
-
-Bowers and Binding (2006)
-
-Chipman et al. (2009)
-
-Doxaran et al. (2002)
-
-Frohn and Autrey (2009)
-
-Harris (1992)
-
-Lathrop et al. (1991)
-
-Moore (1980)
+Moore, G.K., Satellite remote sensing of water turbidity, Hydrological Sciences, 1980, 25, 4, 407-422.
 }
