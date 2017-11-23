@@ -11,7 +11,7 @@ wq_algorithms = tribble(
   "HU103BDA", HU103BDA, c(4, 3, 6), c(5, 4, 6), NA, NA, c(6, 5, 9),
   "Kn07KIVU", Kn07KIVU, c(1, 5, 3), c(2, 4, 3), c(2, 4, 3), NA, c(2, 7, 4),
   "MI092BDA", MI092BDA, c(6, 5), c(6, 4), NA, NA, c(9, 8),
-  "MM12NDCI", MM12NDCI, c(6, 5), c(5, 4), c(5, 4), c(2, 1), c(9, 7),
+  # "MM12NDCI", MM12NDCI, c(6, 5), c(5, 4), c(5, 4), c(2, 1), c(9, 7),
   "SI052BDA", SI052BDA, c(6, 4), c(5, 4), NA, NA, c(9, 6),
   "Be16NDTIblue", Be16NDTIblue, c(4, 2), c(4, 2), c(4, 2), NA, c(7, 2),
   "Be16NDTIviolet", Be16NDTIviolet, c(4, 1), c(4, 1), c(4, 1), NA, c(7, 1),  
