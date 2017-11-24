@@ -28,17 +28,8 @@ s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "algae"))
 s2_wq = wq_calc(s2, alg = "all", sat = "sentinel2")
 s2_Al10SABI = wq_calc(s2, alg = "Al10SABI", sat = "sentinel2")
 s2_two_alg = wq_calc(s2, alg = c("Al10SABI", "Am092Bsub"), sat = "sentinel2")
+
 l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "algae"))
 l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")
-
-# warnings
-s2_three_alg = wq_calc(s2, alg = c("Al10SABI", "Am092Bsub", "my_alg"), sat = "sentinel2")
-s2_four_alg = wq_calc(s2, alg = c("my_alg1", "Al10SABI", "Am092Bsub", "my_alg"), sat = "sentinel2")
-
-# errors
-s2_wq1 = wq_calc(s2[[1]], alg = "all", sat = "sentinel2")
-s2_wq2 = wq_calc(s2, alg = "all", sat = "my_satellite")
-s2_wq3 = wq_calc(s2[[1:4]], alg = "all", sat = "sentinel2")
-s2_wq4 = wq_calc(s2, alg = "many", sat = "sentinel2")
 )}
 }
