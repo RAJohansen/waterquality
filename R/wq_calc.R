@@ -7,7 +7,8 @@
 #' @param sat Name of the satellite or instrument ("worldview2", "sentinel2", "landsat8", "modis", or "meris")
 #' @param ... Other arguments passed on to [stack()]
 #' 
-#' @importFrom raster overlay stack
+#' @importFrom raster overlay stack nlayers
+#' @importFrom methods is
 #'
 #' @return RasterLayer
 #' 
