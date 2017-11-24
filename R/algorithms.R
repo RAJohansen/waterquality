@@ -11,7 +11,7 @@
 #'
 #' @references Alawadi, F. Detection of surface algal blooms using the newly developed algorithm surface algal bloom index (SABI). Proc. SPIE 2010, 7825.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Al10SABI <- function(w857, w644, w458, w529){
         (w857 - w644) / (w458 + w529)
@@ -28,7 +28,7 @@ Al10SABI <- function(w857, w644, w458, w529){
 #'
 #' @references Amin, R.; Zhou, J.; Gilerson, A.; Gross, B.; Moshary, F.; Ahmed, S. Novel optical techniques for detecting and classifying toxic dinoflagellate Karenia brevis blooms using satellite imagery. Opt. Express 2009, 17, 9126–9144.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Am092Bsub <- function(w681, w665){
         w681 - w665
@@ -45,7 +45,7 @@ Am092Bsub <- function(w681, w665){
 #'
 #' @references Amin, R.; Zhou, J.; Gilerson, A.; Gross, B.; Moshary, F.; Ahmed, S.; Novel optical techniques for detecting and classifying toxic dinoflagellate Karenia brevis blooms using satellite imagery, Optics Express, 2009, 17, 11, 1-13.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Am09KBBI <- function(w686, w658){
   (w686 - w658)/(w686 + w658)
@@ -63,10 +63,10 @@ Am09KBBI <- function(w686, w658){
 #'
 #' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16FLHblue <- function(w529, w644, w458){
-  (w529)-(w644+(w458-w644))
+  (w529) - (w644 + (w458 - w644))
 }
 
 #' Be16FLHviolet algorithm
@@ -81,10 +81,10 @@ Be16FLHblue <- function(w529, w644, w458){
 #'
 #' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16FLHviolet <- function(w529, w644, w429){
-  (w529)-(w644+(w429-w644))
+  (w529) - (w644 + (w429 - w644))
 }
 
 #' Be16NDPhyI algorithm
@@ -98,10 +98,10 @@ Be16FLHviolet <- function(w529, w644, w429){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16NDPhyI <- function(w700, w622){
-  (w700-w622)/(w700+w622)
+  (w700 - w622) / (w700 + w622)
 }
 
 #' De933BDA algorithm
@@ -116,10 +116,10 @@ Be16NDPhyI <- function(w700, w622){
 #'
 #' @references Dekker, A.; Detection of the optical water quality parameters for eutrophic waters by high resolution remote sensing, Ph.D. thesis, 1993, Free University, Amsterdam.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 De933BDA <- function(w600, w648, w625){
-  (w600-w648-w625)
+  (w600 - w648 - w625)
 }
 
 #' Gi033BDA algorithm
@@ -134,10 +134,10 @@ De933BDA <- function(w600, w648, w625){
 #'
 #' @references Gitelson, A.A.; U. Gritz, and M. N. Merzlyak.; Relationships between leaf chlorophyll content and spectral reflectance and algorithms for non-destructive chlorophyll assessment in higher plant leaves. J. Plant Phys. 2003, 160, 271-282.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Gi033BDA <- function(w672, w715, w757){
-  ((1/w672)-(1/w715))*(w757)
+  ((1 / w672) - (1 / w715)) * (w757)
 }
 
 #' Go04MCI algorithm
@@ -152,7 +152,7 @@ Gi033BDA <- function(w672, w715, w757){
 #'
 #' @references Gower, J.F.R.; Brown,L.; Borstad, G.A.; Observation of chlorophyll fluorescence in west coast waters of Canada using the MODIS satellite sensor. Can. J. Remote Sens., 2004, 30 (1), 17–25.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Go04MCI <- function(w709, w681, w753){
   (w709-w681-(w753-w681))
@@ -170,7 +170,7 @@ Go04MCI <- function(w709, w681, w753){
 #'
 #' @references Hunter, P.D.; Tyler, A.N.; Willby, N.J.; Gilvear, D.J.; The spatial dynamics of vertical migration by Microcystis aeruginosa in a eutrophic shallow lake: A case study using high spatial resolution time-series airborne remote sensing.  Limn. Oceanogr. 2008, 53, 2391-2406.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 HU103BDA <- function(w615, w600, w725){
   (((1/w615)-(1/w600))-w725)
@@ -188,7 +188,7 @@ HU103BDA <- function(w615, w600, w725){
 #'
 #' @references Kneubuhler, M.; Frank T.; Kellenberger, T.W; Pasche N.; Schmid M.; Mapping chlorophyll-a in Lake Kivu with remote sensing methods. 2007, Proceedings of the Envisat Symposium 2007, Montreux, Switzerland 23–27 April 2007 (ESA SP-636, July 2007).
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Kn07KIVU <- function(w458, w644, w529){
   (w458-w644)/(w529)
@@ -206,7 +206,7 @@ Kn07KIVU <- function(w458, w644, w529){
 #'
 #' @references Kudela, R.M., Palacios, S.L., Austerberry, D.C., Accorsi, E.K., Guild, L.S.; Application of hyperspectral remote sensing to cyanobacterial blooms in inland waters, Torres-Perez, J., 2015, Remote Sens. Environ., 2015, 167, 1-10.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Ku15PhyCI <- function(w681, w665, w709){
   -1*(w681-w665-(w709-w665))
@@ -223,7 +223,7 @@ Ku15PhyCI <- function(w681, w665, w709){
 #'
 #' @references Mishra, S.; Mishra, D.R.; Schluchter, W. M., A novel algorithm for predicting PC concentrations in cyanobacteria: A proximal hyperspectral remote sensing approach. Remote Sens., 2009, 1, 758–775.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 MI092BDA <- function(w700, w600){
   w700/w600
@@ -240,7 +240,7 @@ MI092BDA <- function(w700, w600){
 #'
 #' @references Mishra, S.; Mishra, D.R.; Schluchter, W. M., A novel algorithm for predicting PC concentrations in cyanobacteria: A proximal hyperspectral remote sensing approach. Remote Sens., 2009, 1, 758–775.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 MM092BDA <- function(w724, w600){
   w724/w600
@@ -258,7 +258,7 @@ MM092BDA <- function(w724, w600){
 #'
 #' @references Mishra, S.; and Mishra, D.R. Normalized difference chlorophyll index: A novel model for remote estimation of chlorophyll-a concentration in turbid productive waters, Remote Sens. Environ., 2012, 117, 394-406.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 MM12NDCI <- function(w714, w686, w683){
   (w714 - w686) / (w714 + w683)
@@ -276,7 +276,7 @@ MM12NDCI <- function(w714, w686, w683){
 #'
 #' @references Mishra, S.; Mishra, D.R.; A novel remote sensing algorithm to quantify phycocyanin in cyanobacterial algal blooms, Env. Res. Lett., 2014, 9 (11), DOI:10.1088/1748-9326/9/11/114003
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 MM143BDAopt <- function(w629, w659, w724){
   ((1/w629)-(1/w659))*(w724)
@@ -293,7 +293,7 @@ MM143BDAopt <- function(w629, w659, w724){
 #'
 #' @references Simis, S. G. H.; Peters, S.W. M.; Gons, H. J.; Remote sensing of the cyanobacteria pigment phycocyanin in turbid inland water. Limn. Oceanogr., 2005, 50, 237–245.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 SI052BDA <- function(w709, w620){
   (w709/w620)
@@ -310,15 +310,15 @@ SI052BDA <- function(w709, w620){
 #'
 #' @references Mishra, S. Remote sensing of cyanobacteria in turbid productive waters, PhD Dissertation. Mississippi State University, USA. 2012.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 SM122BDA <- function(w709, w600){
   (w709/w600)
 }
 
-#' SM122BDA algorithm
+#' SY002BDA algorithm
 #'
-#' Applies the SM122BDA algorithm
+#' Applies the SY002BDA algorithm
 #'
 #' @param w650 numeric. Value at wavelength of 650 nm
 #' @param w625 numeric. Value at wavelength of 625 nm
@@ -327,9 +327,9 @@ SM122BDA <- function(w709, w600){
 #'
 #' @references Schalles, J.; Yacobi, Y. Remote detection and seasonal patterns of phycocyanin, carotenoid and chlorophyll-a pigments in eutrophic waters. Archiv fur Hydrobiologie, Special Issues Advances in Limnology, 2000, 55,153–168.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
-SM122BDA <- function(w650, w625){
+SY002BDA <- function(w650, w625){
   (w650/w625)
 }
 
@@ -344,7 +344,7 @@ SM122BDA <- function(w650, w625){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16NDTIblue <- function(w658, w458){
   (w658-w458)/(w658+w458)
@@ -361,7 +361,7 @@ Be16NDTIblue <- function(w658, w458){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16NDTIviolet <- function(w658, w444){
   (w658-w444)/(w658+w444)
@@ -379,7 +379,7 @@ Be16NDTIviolet <- function(w658, w444){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16FLHBlueRedNIR <- function(w658, w857, w458){
   (w658)-(w857+(w458-w857))
@@ -397,7 +397,7 @@ Be16FLHBlueRedNIR <- function(w658, w857, w458){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16FLHGreenRedNIR <- function(w658, w857, w558){
   (w658)-(w857+(w558-w857))
@@ -415,7 +415,7 @@ Be16FLHGreenRedNIR <- function(w658, w857, w558){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16FLHVioletRedNIR <- function(w658, w857, w444){
   (w658)-(w857+(w444-w857))
@@ -433,7 +433,7 @@ Be16FLHVioletRedNIR <- function(w658, w857, w444){
 #'
 #' @references Wynne, T. T., Stumpf, R. P., Tomlinson, M. C., Warner, R. A., Tester, P. A., Dyble, J.; Relating spectral shape to cyanobacterial blooms in the Laurentian Great Lakes. Int. J. Remote Sens., 2008, 29, 3665–3672. 
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Wy08CI  <- function(w686, w672, w715){
   -1((w686)-(w672)-(w715-w672))
@@ -450,7 +450,7 @@ Wy08CI  <- function(w686, w672, w715){
 #'
 #' @references Wynne, T. T., Stumpf, R. P., Tomlinson, M. C., Warner, R. A., Tester, P. A., Dyble, J.; Relating spectral shape to cyanobacterial blooms in the Laurentian Great Lakes. Int. J. Remote Sens., 2008, 29, 3665–3672. 
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Da052BDA   <- function(w714, w672){
   (w714/w672)
@@ -468,7 +468,7 @@ Da052BDA   <- function(w714, w672){
 #'
 #' @references Zhao, D.Z.; Xing, X.G.; Liu, Y.G.; Yang, J.H.; Wang, L. The relation of chlorophyll-a concentration with the reflectance peak near 700 nm in algae-dominated waters and sensitivity of fluorescence algorithms for detecting algal bloom. Int. J. Remote Sens. 2010, 31, 39-48.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Zh10FLH   <- function(w686, w715, w672){
   (w686)-(w715 + (w672-w715))
@@ -485,7 +485,7 @@ Zh10FLH   <- function(w686, w715, w672){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be162B643sub629    <- function(w644, w629){
   (w644-w629)
@@ -502,7 +502,7 @@ Be162B643sub629    <- function(w644, w629){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be162B700sub601     <- function(w700, w601){
   (w700-w601)
@@ -519,7 +519,7 @@ Be162B700sub601     <- function(w700, w601){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be162BsubPhy   <- function(w715, w615){
   (w715-w615)
@@ -537,7 +537,7 @@ Be162BsubPhy   <- function(w715, w615){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16MPI   <- function(w615, w601, w644){
   ((w615)-(w601)-(w644-w601))
@@ -554,7 +554,7 @@ Be16MPI   <- function(w615, w601, w644){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16NDPhyI644over615   <- function(w644, w615){
   (w644-w615)/(w644+w615)
@@ -571,7 +571,7 @@ Be16NDPhyI644over615   <- function(w644, w615){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16NDPhyI644over629   <- function(w644, w629){
   (w644-w629)/(w644+w629)
@@ -588,7 +588,7 @@ Be16NDPhyI644over629   <- function(w644, w629){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Be16Phy2BDA644over629   <- function(w644, w629){
   (w644/w629)
@@ -605,7 +605,7 @@ Be16Phy2BDA644over629   <- function(w644, w629){
 #'
 #' @references Kudela, R.M., Palacios, S.L., Austerberry, D.C., Accorsi, E.K., Guild, L.S.; Application of hyperspectral remote sensing to cyanobacterial blooms in inland waters, Torres-Perez, J., 2015, Remote Sens. Environ., 2015, 167, 1-10.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 Ku15SLH   <- function(w715, w658){
   ((w715)-(w658)+(w715-w658))
@@ -622,7 +622,7 @@ Ku15SLH   <- function(w715, w658){
 #'
 #' @references Mishra, S.; Mishra, D.R.; A novel remote sensing algorithm to quantify phycocyanin in cyanobacterial algal blooms, Env. Res. Lett., 2014, 9 (11), DOI:10.1088/1748-9326/9/11/114003
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 MM12NDCIalt   <- function(w700, w658){
   ((w700-w658)/(w700+w658))
@@ -640,7 +640,7 @@ MM12NDCIalt   <- function(w700, w658){
 #'
 #' @references Mishra and Mishra (2014)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 MM143BDAopt14   <- function(w629, w658, w729){
   (((1/w629)-(1/w658))*w729)
@@ -658,7 +658,7 @@ MM143BDAopt14   <- function(w629, w658, w729){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 TurbBe16GreenPlusRedBothOverViolet   <- function(w558, w658, w444){
   ((w558+w658)/w444)
@@ -675,7 +675,7 @@ TurbBe16GreenPlusRedBothOverViolet   <- function(w558, w658, w444){
 #'
 #' @references Beck et al. (2017)
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 TurbBe16RedOverViolet   <- function(w658, w444){
   (w658/w444)
@@ -692,7 +692,7 @@ TurbBe16RedOverViolet   <- function(w658, w444){
 #'
 #' @references Bowers, D. G., and C. E. Binding. 2006. “The Optical Properties of Mineral Suspended Particles: A Review and Synthesis.” Estuarine Coastal and Shelf Science 67 (1–2): 219–230. doi:10.1016/j.ecss.2005.11.010.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 TurbBow06RedOverGreen   <- function(w658, w558){
   (w658/w558)
@@ -709,7 +709,7 @@ TurbBow06RedOverGreen   <- function(w658, w558){
 #'
 #' @references Chipman, J. W.; Olmanson, L.G.; Gitelson, A.A.; Remote sensing methods for lake management: A guide for resource managers and decision-makers. 2009, Developed by the North American Lake Management Society in collaboration with Dartmouth College, University of Minnesota, and University of Nebraska for the United States Environmental Protection Agency.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 TurbChip09NIROverGreen   <- function(w857, w558){
   (w857/w558)
@@ -726,7 +726,7 @@ TurbChip09NIROverGreen   <- function(w857, w558){
 #'
 #' @references Doxaran, D., Froidefond, J.-M.; Castaing, P. ; A reflectance band ratio used to estimate suspended matter concentrations in sediment-dominated coastal waters, Remote Sens., 2002, 23, 5079-5085.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 TurbDox02NIRoverRed   <- function(w857, w658){
   (w857/w658)
@@ -744,7 +744,7 @@ TurbDox02NIRoverRed   <- function(w857, w658){
 #'
 #' @references Frohn, R. C., & Autrey, B. C. (2009). Water quality assessment in the Ohio River using new indices for turbidity and chlorophyll-a with Landsat-7 Imagery. Draft Internal Report, U.S. Environmental Protection Agency.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 TurbFrohn09GreenPlusRedBothOverBlue   <- function(w558, w658, w458){
   ((w558+w658)/w458)
@@ -760,7 +760,7 @@ TurbFrohn09GreenPlusRedBothOverBlue   <- function(w558, w658, w458){
 #'
 #' @references Schiebe F.R., Harrington J.A., Ritchie J.C. Remote-Sensing of Suspended Sediments—the Lake Chicot, Arkansas Project. Int. J. Remote Sens. 1992;13:1487–1509.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 TurbHarr92NIR   <- function(w857){
   (w857)
@@ -777,7 +777,7 @@ TurbHarr92NIR   <- function(w857){
 #'
 #' @references Lathrop, R. G., Jr., T. M. Lillesand, and B. S. Yandell, 1991. Testing the utility of simple multi-date Thematic Mapper calibration algorithms for monitoring turbid inland waters. International Journal of Remote Sensing
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 TurbLath91RedOverBlue   <- function(w658, w458){
   (w658/w458)
@@ -793,7 +793,7 @@ TurbLath91RedOverBlue   <- function(w658, w458){
 #'
 #' @references Moore, G.K., Satellite remote sensing of water turbidity, Hydrological Sciences, 1980, 25, 4, 407-422.
 #'
-#' @rdname algorithms
+#' @family algorithms
 #' @export
 TurbMoore80Red   <- function(w658){
   (w658)
