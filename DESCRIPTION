@@ -1,6 +1,6 @@
 Package: algae
 Title: The Cholorophyll-a, Blue-Green Algae, and Turbidity Detection Algorithms 
-Version: 0.0.3
+Version: 0.0.4
 Authors@R: c(person("Richard", "Johansen", email = "johansra@mail.uc.edu", role = c("aut", "cre")),
     person("Jakub", "Nowosad", role = c("aut"), email="nowosad.jakub@gmail.com", comment = c(ORCID = "0000-0002-1057-3721")))
 Description: What the package does (one paragraph).
@@ -11,6 +11,5 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 Imports:
     methods,
-    raster, 
-    tibble
+    raster
 RoxygenNote: 6.0.1
