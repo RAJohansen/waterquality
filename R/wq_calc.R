@@ -45,10 +45,11 @@ wq_calc = function(raster_stack, alg = "all", sat = "sentinel2", ...){
                                                  nr_of_bands, " layers")
   result = list()
   for (i in seq_len(nrow(algorithms_sel))){
-    print(algorithms_sel$name[[i]])
     raster_stack_sel = raster_stack[[algorithms_sel$bands[[i]]]]
     result[[i]] = overlay(raster_stack_sel, fun = algorithms_sel$funs[[i]])
     names(result[[i]]) = algorithms_sel$name[[i]]
+    cat(algorithms_sel$name[[i]], "calculated!\n")
   }
   stack(result, ...)
 }
+
