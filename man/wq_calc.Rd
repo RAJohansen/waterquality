@@ -4,7 +4,7 @@
 \alias{wq_calc}
 \title{Water quality calculation}
 \usage{
-wq_calc(raster_stack, alg = "all", sat = "sentinel2")
+wq_calc(raster_stack, alg = "all", sat = "sentinel2", ...)
 }
 \arguments{
 \item{raster_stack}{RasterStack containing a satellite data}
@@ -12,6 +12,8 @@ wq_calc(raster_stack, alg = "all", sat = "sentinel2")
 \item{alg}{Name of the algorithm or "all"}
 
 \item{sat}{Name of the satellite or instrument ("worldview2", "sentinel2", "landsat8", "modis", or "meris")}
+
+\item{...}{Other arguments passed on to \code{\link[=stack]{stack()}}}
 }
 \value{
 RasterLayer
@@ -24,13 +26,19 @@ Calculates a set of water quality indices
 library(raster)
 s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "algae"))
 s2_wq = wq_calc(s2, alg = "all", sat = "sentinel2")
+s2_Al10SABI = wq_calc(s2, alg = "Al10SABI", sat = "sentinel2")
+s2_two_alg = wq_calc(s2, alg = c("Al10SABI", "Am092Bsub"), sat = "sentinel2")
 l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "algae"))
 l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")
+
+# warnings
+s2_three_alg = wq_calc(s2, alg = c("Al10SABI", "Am092Bsub", "my_alg"), sat = "sentinel2")
+s2_four_alg = wq_calc(s2, alg = c("my_alg1", "Al10SABI", "Am092Bsub", "my_alg"), sat = "sentinel2")
 
 # errors
 s2_wq1 = wq_calc(s2[[1]], alg = "all", sat = "sentinel2")
 s2_wq2 = wq_calc(s2, alg = "all", sat = "my_satellite")
-s2b = s2[[1:4]]
-s2_wq3 = wq_calc(s2b, alg = "all", sat = "my_satellite")
+s2_wq3 = wq_calc(s2[[1:4]], alg = "all", sat = "sentinel2")
+s2_wq4 = wq_calc(s2, alg = "many", sat = "sentinel2")
 )}
 }
