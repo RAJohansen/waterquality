@@ -2,12 +2,9 @@
 #'
 #' A dataset containing the information about the water quality algorithms
 #'
-#' @format A tibble with 24 rows and 7 variables:
+#' @format A tibble with 91 rows and 4 variables:
 #' * name: algorithm name
 #' * funs: algorithm function
-#' * worldview2: list of the bands used from the WorldView-2 satellite
-#' * sentinel2: list of the bands used from the Sentinel 2 satellite
-#' * landsat8: list of the bands used from the Landsat 8 satellite
-#' * modis: list of the bands used from the MODIS instrument
-#' * meris: list of the bands used from the Sentinel 2 instruments
+#' * satellite: satellite/instrument name ("worldview2", "sentinel2", "landsat8", "modis", or "meris")
+#' * bands: list of the bands used from the given satellite/instrument
 "wq_algorithms"

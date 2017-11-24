@@ -4,15 +4,12 @@
 \name{wq_algorithms}
 \alias{wq_algorithms}
 \title{wq_algorithms database}
-\format{A tibble with 24 rows and 7 variables:
+\format{A tibble with 91 rows and 4 variables:
 \itemize{
 \item name: algorithm name
 \item funs: algorithm function
-\item worldview2: list of the bands used from the WorldView-2 satellite
-\item sentinel2: list of the bands used from the Sentinel 2 satellite
-\item landsat8: list of the bands used from the Landsat 8 satellite
-\item modis: list of the bands used from the MODIS instrument
-\item meris: list of the bands used from the Sentinel 2 instruments
+\item satellite: satellite/instrument name ("worldview2", "sentinel2", "landsat8", "modis", or "meris")
+\item bands: list of the bands used from the given satellite/instrument
 }}
 \usage{
 wq_algorithms
