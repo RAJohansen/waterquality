@@ -250,9 +250,8 @@ MM092BDA <- function(w724, w600){
 #'
 #' Applies the MM12NDCI algorithm
 #'
-#' @param w714 numeric. Value at wavelength of 714 nm
+#' @param w715 numeric. Value at wavelength of 714 nm
 #' @param w686 numeric. Value at wavelength of 686 nm
-#' @param w683 numeric. Value at wavelength of 683 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -260,8 +259,8 @@ MM092BDA <- function(w724, w600){
 #'
 #' @family algorithms
 #' @export
-MM12NDCI <- function(w714, w686, w683){
-  (w714 - w686) / (w714 + w683)
+MM12NDCI <- function(w715, w686){
+  (w715 - w686) / (w715 + w686)
 }
 
 #' MM143BDAopt algorithm
