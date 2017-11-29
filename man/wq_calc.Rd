@@ -24,12 +24,12 @@ Calculates a set of water quality indices
 \examples{
 \dontrun{(
 library(raster)
-s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "algae"))
+s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
 s2_wq = wq_calc(s2, alg = "all", sat = "sentinel2")
 s2_Al10SABI = wq_calc(s2, alg = "Al10SABI", sat = "sentinel2")
 s2_two_alg = wq_calc(s2, alg = c("Al10SABI", "Am092Bsub"), sat = "sentinel2")
 
-l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "algae"))
+l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "waterquality"))
 l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")
 )}
 }

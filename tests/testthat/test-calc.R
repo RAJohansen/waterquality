@@ -1,6 +1,6 @@
 context("wq_calc")
 test_that("wq_calc works correctly", {
-  s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "algae"))
+  s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
   
   # warnings
   expect_warning(wq_calc(s2, alg = c("Al10SABI", "Am092Bsub", "my_alg"), sat = "sentinel2"))

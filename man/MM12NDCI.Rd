@@ -4,14 +4,12 @@
 \alias{MM12NDCI}
 \title{MM12NDCI algorithm}
 \usage{
-MM12NDCI(w714, w686, w683)
+MM12NDCI(w715, w686)
 }
 \arguments{
-\item{w714}{numeric. Value at wavelength of 714 nm}
+\item{w715}{numeric. Value at wavelength of 714 nm}
 
 \item{w686}{numeric. Value at wavelength of 686 nm}
-
-\item{w683}{numeric. Value at wavelength of 683 nm}
 }
 \value{
 RasterLayer or numeric

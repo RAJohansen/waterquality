@@ -1,5 +1,5 @@
 library(testthat)
-library(algae)
+library(waterquality)
 library(raster)
 
-test_check("algae")
+test_check("waterquality")

@@ -15,21 +15,21 @@
 #' @examples 
 #' \dontrun{(
 #' library(raster)
-#' s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "algae"))
+#' s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
 #' s2_wq = wq_calc(s2, alg = "all", sat = "sentinel2")
 #' s2_Al10SABI = wq_calc(s2, alg = "Al10SABI", sat = "sentinel2")
 #' s2_two_alg = wq_calc(s2, alg = c("Al10SABI", "Am092Bsub"), sat = "sentinel2")
 #' 
-#' l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "algae"))
+#' l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "waterquality"))
 #' l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")
 #' )}
 #' @export
 wq_calc = function(raster_stack, alg = "all", sat = "sentinel2", ...){
   if (!is(raster_stack, 'RasterStack')) stop ("Input object needs to be of the RasterStack class")
   if ("all" %in% alg){
-    algorithms_sel = algae::wq_algorithms
+    algorithms_sel = waterquality::wq_algorithms
   } else{
-    algorithms_sel = algae::wq_algorithms[algae::wq_algorithms$name %in% alg, ]
+    algorithms_sel = waterquality::wq_algorithms[waterquality::wq_algorithms$name %in% alg, ]
     if (nrow(algorithms_sel) == 0) stop ("Unknown algorithm name/names: ",
                                          paste(alg, collapse = ", "))
     alg_valid = alg %in% algorithms_sel$name

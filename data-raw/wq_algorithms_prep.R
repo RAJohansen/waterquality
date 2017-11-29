@@ -1,5 +1,5 @@
 library(tidyverse)
-library(algae)
+library(waterquality)
 
 wq_algorithms = tribble(
   ~name, ~funs,~worldview2, ~sentinel2, ~landsat8, ~modis, ~meris,
