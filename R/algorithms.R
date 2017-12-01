@@ -627,24 +627,6 @@ MM12NDCIalt   <- function(w700, w658){
   ((w700-w658)/(w700+w658))
 }
 
-#' MM143BDAopt14     algorithm
-#'
-#' Applies the MM143BDAopt14     algorithm
-#'
-#' @param w629 numeric. Value at wavelength of 629 nm
-#' @param w658 numeric. Value at wavelength of 658 nm
-#' @param w729 numeric. Value at wavelength of 729 nm
-#'
-#' @return RasterLayer or numeric
-#'
-#' @references Mishra and Mishra (2014)
-#'
-#' @family algorithms
-#' @export
-MM143BDAopt14   <- function(w629, w658, w729){
-  (((1/w629)-(1/w658))*w729)
-}
-
 #' TurbBe16GreenPlusRedBothOverViolet     algorithm
 #'
 #' Applies the TurbBe16GreenPlusRedBothOverViolet     algorithm
