@@ -4,12 +4,14 @@
 \alias{wq_calc}
 \title{Water quality calculation}
 \usage{
-wq_calc(raster_stack, alg = "all", sat = "sentinel2", ...)
+wq_calc(raster_stack, alg = "all", type = "all", sat, ...)
 }
 \arguments{
 \item{raster_stack}{RasterStack containing a satellite data}
 
-\item{alg}{Name of the algorithm or "all"}
+\item{alg}{Name (e.g. \code{\link[=Am09KBBI]{Am09KBBI()}}) or type of the algorithm ("chlorophyll", "phychocyanin", "turbidity") or "all"}
+
+\item{type}{Type of the algorithm}
 
 \item{sat}{Name of the satellite or instrument ("worldview2", "sentinel2", "landsat8", "modis", or "meris")}
 
@@ -27,7 +29,7 @@ library(raster)
 s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
 s2_wq = wq_calc(s2, alg = "all", sat = "sentinel2")
 s2_Al10SABI = wq_calc(s2, alg = "Al10SABI", sat = "sentinel2")
-s2_two_alg = wq_calc(s2, alg = c("Al10SABI", "Am092Bsub"), sat = "sentinel2")
+s2_two_alg = wq_calc(s2, alg = c("Zh10FLH", "Am092Bsub"), sat = "sentinel2")
 
 l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "waterquality"))
 l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")
