@@ -87,7 +87,7 @@
     <p>Calculates a set of water quality indices</p>
     
 
-    <pre class="usage"><span class='fu'>wq_calc</span>(<span class='no'>raster_stack</span>, <span class='kw'>alg</span> <span class='kw'>=</span> <span class='st'>"all"</span>, <span class='kw'>sat</span> <span class='kw'>=</span> <span class='st'>"sentinel2"</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>wq_calc</span>(<span class='no'>raster_stack</span>, <span class='kw'>alg</span> <span class='kw'>=</span> <span class='st'>"all"</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"all"</span>, <span class='no'>sat</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -98,7 +98,11 @@
     </tr>
     <tr>
       <th>alg</th>
-      <td><p>Name of the algorithm or "all"</p></td>
+      <td><p>Name (e.g. <code><a href='Am09KBBI.html'>Am09KBBI()</a></code>) or type of the algorithm ("chlorophyll", "phychocyanin", "turbidity") or "all"</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>Type of the algorithm</p></td>
     </tr>
     <tr>
       <th>sat</th>
@@ -122,7 +126,7 @@ library(raster)
 s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
 s2_wq = wq_calc(s2, alg = "all", sat = "sentinel2")
 s2_Al10SABI = wq_calc(s2, alg = "Al10SABI", sat = "sentinel2")
-s2_two_alg = wq_calc(s2, alg = c("Al10SABI", "Am092Bsub"), sat = "sentinel2")
+s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Am092Bsub"), sat = "sentinel2")
 
 l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "waterquality"))
 l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")

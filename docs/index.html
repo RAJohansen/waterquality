@@ -15,7 +15,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-home">
+    <div class="container template-vignette">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -55,26 +55,50 @@
 
       
       </header><div class="row">
-  <div class="contents col-md-9">
-    <div id="waterquality" class="section level1">
+  <div class="col-md-9">
+    
+
+    
+    
+<div class="contents">
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<div id="waterquality" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#waterquality" class="anchor"></a>waterquality</h1></div>
 <p>The goal of <strong>waterquality</strong> is to convert satellite-reflectance imagery to a host of pre-defined water quality algorithms designed for the detection of cholorophyll-a, blue-green algae (Phycocyanin), and Turbidity. This package is able to process the following sensor configurations: WorldView-2, Sentinel-2, Landsat-8, MODIS, and MERIS sensors.</p>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>You can install waterquality from github with:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"RAJohansen/waterquality"</span>)</code></pre></div>
+</div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## basic example code</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(waterquality)
+<span class="kw">library</span>(raster)
+<span class="co">#&gt; Loading required package: sp</span>
+s2 =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/raster/topics/stack">stack</a></span>(<span class="kw">system.file</span>(<span class="st">"raster/S2_Taylorsville.tif"</span>, <span class="dt">package =</span> <span class="st">"waterquality"</span>))
+s2_two_alg =<span class="st"> </span><span class="kw"><a href="reference/wq_calc.html">wq_calc</a></span>(s2, <span class="dt">alg =</span> <span class="kw">c</span>(<span class="st">"TurbChip09NIROverGreen"</span>, <span class="st">"Am092Bsub"</span>), <span class="dt">sat =</span> <span class="st">"sentinel2"</span>)
+<span class="co">#&gt; Am092Bsub calculated!</span>
+<span class="co">#&gt; TurbChip09NIROverGreen calculated!</span>
+<span class="kw"><a href="http://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(s2_two_alg)</code></pre></div>
+<p><img src="reference/figures/README-example-1.png" width="672"></p>
 </div>
 <div id="contribution" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contribution" class="anchor"></a>Contribution</h2>
+<p>Feel free to submit issues and enhancement requests.</p>
+</div>
 </div>
 </div>
   </div>
 
-  <div class="col-md-3" id="sidebar">
-    <h2>Links</h2>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2 class="hasAnchor">
+<a href="#sidebar" class="anchor"></a>Links</h2>
 <ul class="list-unstyled">
 <li>Browse source code at <br><a href="https://github.com/RAJohansen/waterquality">https://​github.com/​RAJohansen/​waterquality</a>
 </li>
@@ -90,6 +114,7 @@
 </li>
 </ul>
 </div>
+
 </div>
 
 
