@@ -2,11 +2,11 @@ library(tidyverse)
 library(waterquality)
 
 wq_algorithms = tribble(
-  ~name, ~funs,~worldview2, ~sentinel2, ~landsat8, ~modis, ~meris ~type,
+  ~name, ~funs,~worldview2, ~sentinel2, ~landsat8, ~modis, ~meris, ~type,
   "Al10SABI", Al10SABI, c(7, 5, 2, 3), c(9, 4, 2, 3), c(5, 4, 2, 3), NA, c(13, 7, 2, 4), "Chlorophyll",
   "Am092Bsub", Am092Bsub, NA, c(5, 4), NA, NA, c(8, 7), "Chlorophyll",
   "Am09KBBI", Am09KBBI, NA, c(9,8), NA, NA, c(8,7), "Phycocyanin",
-  "Be16FLHBlue", Be16FLHBlue, c(3, 5, 2), c(2, 4, 2), c(3, 4, 2), NA, c(4, 7, 2),"Chlorophyll",  
+  "Be16FLHblue", Be16FLHblue, c(3, 5, 2), c(2, 4, 2), c(3, 4, 2), NA, c(4, 7, 2),"Chlorophyll",  
   "Be16FLHviolet", Be16FLHviolet, c(3, 5, 1), c(2, 4, 1), c(3, 4, 1), NA, c(4, 7, 1),"Chlorophyll",
   "Be16NDPhyI", Be16NDPhyI, c(6, 4), NA, NA, NA, c(9, 6), "Phycocyanin",
   "De933BDA", De933BDA, c(4,5,4), NA, NA, NA, c(6,7,6), "Chlorophyll",
@@ -48,7 +48,6 @@ wq_algorithms = tribble(
   "TurbHarr92NIR", TurbHarr92NIR, c(7), c(9), c(5), c(2), c(13), "Turbidity",
   "TurbLath91RedOverBlue", TurbLath91RedOverBlue, c(5, 2), c(4, 2), c(4, 2), NA, c(7, 2), "Turbidity",
   "TurbMoore80Red", TurbMoore80Red, c(5), c(4), c(4), c(1), c(7), "Turbidity"
-
 )
 
 wq_algorithms = wq_algorithms %>% 
@@ -57,4 +56,3 @@ wq_algorithms = wq_algorithms %>%
 
 # save data
 devtools::use_data(wq_algorithms, overwrite = TRUE)
-
