@@ -435,7 +435,7 @@ Be16FLHVioletRedNIR <- function(w658, w857, w444){
 #' @family algorithms
 #' @export
 Wy08CI  <- function(w686, w672, w715){
-  -1((w686)-(w672)-(w715-w672))
+  -1 * ((w686)-(w672)-(w715-w672))
 }
 
 #' Da052BDA   algorithm
