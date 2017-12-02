@@ -1,11 +1,13 @@
 Package: waterquality
-Title: Satellite Derived Water Quality Detection Algorithms For Cholorophyll-a, Blue-Green Algae, and Turbidity.   
-Version: 0.0.7
-Authors@R: c(person("Richard", "Johansen", email = "johansra@mail.uc.edu", role = c("aut", "cre"), c(ORCID = 0000-0003-4287-9677)),
+Title: Satellite Derived Water Quality Detection Algorithms
+Version: 0.0.8
+Authors@R: c(person("Richard", "Johansen", email = "johansra@mail.uc.edu", role = c("aut", "cre"), c(ORCID = "0000-0003-4287-9677")),
     person("Jakub", "Nowosad", role = c("aut"), email="nowosad.jakub@gmail.com", comment = c(ORCID = "0000-0002-1057-3721")))
-Description: The goal of waterquality to convert satellite-reflectance imagery to a host of pre-defined water quality algorithms 
-designed for the detection of cholorophyll-a, blue-green algae (Phycocyanin), and Turbidity. This package is able
-to process the following sensor configurations: WorldView-2, Sentinel-2, Landsat-8, MODIS, and MERIS sensors.
+Description: The goal of 'waterquality' is to convert satellite-reflectance imagery
+    to a host of pre-defined water quality algorithms designed for the detection of 
+    cholorophyll-a, blue-green algae (Phycocyanin), and turbidity. 
+    This package is able to process the following sensor configurations: 
+    WorldView-2, Sentinel-2, Landsat-8, MODIS, and MERIS.
 Depends: R (>= 3.4.1)
 License: MIT + file LICENSE
 Encoding: UTF-8
