@@ -18,7 +18,7 @@ devtools::install_github("RAJohansen/waterquality")
 Example
 -------
 
-This is a basic example which shows you how to solve a common problem:
+The main function in this package is `wq_calc()`:
 
 ``` r
 library(waterquality)
