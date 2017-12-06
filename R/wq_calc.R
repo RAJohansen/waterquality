@@ -4,7 +4,6 @@
 #'
 #' @param raster_stack RasterStack containing a satellite data
 #' @param alg Name (e.g. [Am09KBBI()]) or type of the algorithm ("chlorophyll", "phychocyanin", "turbidity") or "all"
-#' @param type Type of the algorithm 
 #' @param sat Name of the satellite or instrument ("worldview2", "sentinel2", "landsat8", "modis", or "meris")
 #' @param ... Other arguments passed on to [stack()]
 #' 
@@ -25,7 +24,7 @@
 #' l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")
 #' )}
 #' @export
-wq_calc = function(raster_stack, alg = "all", type = "all", sat, ...){
+wq_calc = function(raster_stack, alg = "all", sat, ...){
   if (!is(raster_stack, 'RasterStack')) stop ("Input object needs to be of the RasterStack class")
   if ("all" %in% alg){
     algorithms_sel = waterquality::wq_algorithms
