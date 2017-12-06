@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -87,7 +87,7 @@
     <p>Calculates a set of water quality indices</p>
     
 
-    <pre class="usage"><span class='fu'>wq_calc</span>(<span class='no'>raster_stack</span>, <span class='kw'>alg</span> <span class='kw'>=</span> <span class='st'>"all"</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"all"</span>, <span class='no'>sat</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>wq_calc</span>(<span class='no'>raster_stack</span>, <span class='kw'>alg</span> <span class='kw'>=</span> <span class='st'>"all"</span>, <span class='no'>sat</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -99,10 +99,6 @@
     <tr>
       <th>alg</th>
       <td><p>Name (e.g. <code><a href='Am09KBBI.html'>Am09KBBI()</a></code>) or type of the algorithm ("chlorophyll", "phychocyanin", "turbidity") or "all"</p></td>
-    </tr>
-    <tr>
-      <th>type</th>
-      <td><p>Type of the algorithm</p></td>
     </tr>
     <tr>
       <th>sat</th>
@@ -149,7 +145,7 @@ l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")
 
       <footer>
       <div class="copyright">
-  <p>Developed by Richard 0000-0003-4287-9677 Johansen, Jakub Nowosad.</p>
+  <p>Developed by Richard Johansen, Jakub Nowosad.</p>
 </div>
 
 <div class="pkgdown">
