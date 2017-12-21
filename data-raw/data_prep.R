@@ -9,7 +9,12 @@ crs(l8) = crs(modis)
 crs(s2) = crs(modis)
 
 tv = st_read("inst/raster/Taylorsville_Lake.shp") %>% 
-  st_transform(projection(modis)) %>% 
+  st_transform(projection(modis))
+
+st_write(tv, "inst/raster/Taylorsville.gpkg")
+file.remove(dir(path = "inst/raster/", pattern = "Taylorsville_Lake*", full.names = TRUE))
+
+tv = tv %>% 
   as("Spatial")
 plot(tv)
 
