@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 intro:
+
 - What is the role of this package?
 - Which are the quality metrics supported?
 - What is the type of input data are supported?
