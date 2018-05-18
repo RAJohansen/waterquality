@@ -19,6 +19,10 @@ Imports:
     methods,
     raster
 RoxygenNote: 6.0.1
-Suggests: testthat
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
 URL: https://github.com/RAJohansen/waterquality
 BugReports: https://github.com/RAJohansen/waterquality/issues
+VignetteBuilder: knitr

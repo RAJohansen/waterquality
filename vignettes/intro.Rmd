@@ -1,0 +1,42 @@
+---
+title: "Introduction to the waterquality package"
+author: "Richard Johansen, Jakub Nowosad"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to the waterquality package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+intro:
+- What is the role of this package?
+- Which are the quality metrics supported?
+- What is the type of input data are supported?
+
+## Data preparation
+
+- How to prepare the data to be used by `waterquality`?
+- Show the whole process, from data download (e.g. landsat), data crop (keeping only the lake), to creation of the final RasterStack
+
+## Single algorithm calculation
+
+- Show an example of using just one algorithm
+- Create a map
+- Explain the result + mention when it is important
+
+## Multiple algorithm calculation
+
+- Explain how the `wq_calc()` function works
+- Give one or two examples of its use
+
+## References
+
+- Put a references to your new paper, but also to the papers that introduced the algorithms used in this vignette
