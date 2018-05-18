@@ -96,7 +96,7 @@ Be16FLHviolet <- function(w529, w644, w429){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Beck et al. (2017)
+#' @references Beck et al. (2017) test
 #'
 #' @family algorithms
 #' @export
