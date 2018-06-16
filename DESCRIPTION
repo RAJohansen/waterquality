@@ -10,7 +10,7 @@ Description: The goal of 'waterquality' is to convert satellite-reflectance imag
     cholorophyll-a, blue-green algae (Phycocyanin), and turbidity. 
     This package is able to process the following sensor configurations: 
     WorldView-2, Sentinel-2, Landsat-8, MODIS, and MERIS.
-Depends: R (>= 3.4.1)
+Depends: R (>= 3.4.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
