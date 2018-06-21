@@ -15,5 +15,10 @@ test_that("wq_calc works correctly", {
   expect_error(wq_calc(s2, alg = "all", sat = "my_satellite"))
   expect_error(wq_calc(s2[[1:4]], alg = "all", sat = "sentinel2"))
   expect_error(wq_calc(s2, alg = "many", sat = "sentinel2"))
+  
+  # wrong alg error
+  l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "waterquality"))
+  expect_error(wq_calc(raster_stack = l8, alg = "MM12NDCI", sat = "landsat8"))
+  
 })
 

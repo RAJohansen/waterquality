@@ -26,6 +26,10 @@
 #' @export
 wq_calc = function(raster_stack, alg = "all", sat, ...){
   if (!is(raster_stack, 'RasterStack')) stop ("Input object needs to be of the RasterStack class")
+  sats = c("worldview2", "sentinel2", "landsat8", "modis", "meris")
+  if (!sat %in% sats) stop ("Unknown satellite or instrument.",
+                            "Please provide one of: 'worldview2', ",
+                            "'sentinel2', 'landsat8', 'modis', or 'meris'")
   if ("all" %in% alg){
     algorithms_sel = waterquality::wq_algorithms
   } else if (any(c("chlorophyll", "phycocyanin", "turbidity") %in% alg)){
@@ -39,11 +43,12 @@ wq_calc = function(raster_stack, alg = "all", sat, ...){
                                  paste(alg[!alg_valid], collapse = ", "))
   }
   algorithms_sel = algorithms_sel[algorithms_sel$satellite == sat, ]
-  if (nrow(algorithms_sel) == 0) stop ("Unknown satellite or instrument.",
-                                       "Please provide one of: 'worldview2', ",
-                                       "'sentinel2', 'landsat8', 'modis', or 'meris'")
+  if (nrow(algorithms_sel) == 0) stop ("Some of the algorithms are not ",
+                                       "available for the selected satellite.\n",
+                                       "Please provide appropriate algorithms' names")
   nr_of_bands = max(unlist(algorithms_sel$bands))
-  if (nr_of_bands > nlayers(raster_stack)) stop ("RasterStack for ", sat, " needs to have at least ",
+  if (nr_of_bands > nlayers(raster_stack)) stop ("RasterStack for ", sat,
+                                                 " needs to have at least ",
                                                  nr_of_bands, " layers")
   result = list()
   for (i in seq_len(nrow(algorithms_sel))){
