@@ -30,7 +30,7 @@ wq_algorithms = tribble(
   "Wy08CI", Wy08CI, c(5, 5, 6), c(4, 4, 5), NA, NA, c(8, 7, 9), "phycocyanin",
   "Da052BDA", Da052BDA, c(6, 5), c(5, 4), NA, NA, c(9, 7), "phycocyanin",
   "Zh10FLH", Zh10FLH, c(5, 6, 5), c(4, 5, 4), NA, NA, c(8, 9, 7), "chlorophyll",
-  "Be162B643sub629", Be162B643sub629, c(5, 4), NA, NA, NA, c(7,6), "Phychocyanin",
+  "Be162B643sub629", Be162B643sub629, c(5, 4), NA, NA, NA, c(7,6), "phycocyanin",
   "Be162B700sub601", Be162B700sub601, c(6, 4), NA, NA, NA, c(9, 6), "phycocyanin", 
   "Be162BsubPhy", Be162BsubPhy, c(6, 4), NA, NA, NA, c(9, 6), "phycocyanin",
   "Be16MPI", Be16MPI, c(4, 4, 5), NA, NA, NA, c(6, 6, 7), "phycocyanin",
