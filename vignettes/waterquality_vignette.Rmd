@@ -86,6 +86,12 @@ The main function of this package is called `wq_calc()` which calculates water q
     
 ## Examples
 
+```{r}
+library(waterquality)
+library(raster)
+Harsha <- raster(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
+```
+
 ### Single Algorithm
 
 ```{r}
