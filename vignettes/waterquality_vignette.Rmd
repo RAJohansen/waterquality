@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Introduction
+# Introduction
 
 There has been a noticeable rise in the occurrence and severity of cyanobacterial harmful algal blooms (CHABs) in US water bodies. 
 CHABs have the ability to cause adverse effects on human and animal health as well as disrupt local economies. 
@@ -51,7 +51,7 @@ What options do you have?
 Which have proven to be the best?
 Easiest to implement?
 
-## Introduction to the waterquality package
+# Introduction to the waterquality package
 
 Once the data has been pre-processed and atmospherically corrected, the water quality algorithms can be applied. 
 This package makes use of suite of well-established algorithms designed for the evaluation of water quality. 
@@ -67,7 +67,7 @@ Although, it is important to note that not all sensors are capable of using all 
 Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. `?Am092Bsub()`). 
 Each algorithm is also linked to the original papers metric (Chlorophyll-a, Phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type. 
 
-### wq_calc()
+## wq_calc()
 
 The main function of this package is called `wq_calc()` which calculates water quality indices by using an reflectance raster stack as an input, user-defined algorithm(s) selection, and satellite configuration selection corresponding to the following three variables: `raster_stack`, `alg`, and `sat`.
 
@@ -84,48 +84,46 @@ The main function of this package is called `wq_calc()` which calculates water q
     - MODIS
     - MERIS
     
-## Examples
+# Examples
 
-```{r}
+```{r, message=FALSE}
 library(waterquality)
 library(raster)
-Harsha <- raster(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
+Harsha <- stack(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
 ```
 
-### Single Algorithm
+## Single Algorithm
 
 ```{r}
 Harsha_Am092Bsub <- wq_calc(raster_stack = Harsha, 
                             alg = "Am092Bsub", 
-                            sat = "sentinel2" )
-plot(Harsha_Am092Bsub_S2)
+                            sat = "sentinel2")
+plot(Harsha_Am092Bsub)
 ```
 
-### Multiple Algorithms
+## Multiple Algorithms
 
 ```{r}
 Harsha_Multiple <- wq_calc(raster_stack = Harsha,
-                           alg = c("Am092Bsub", "Go04MCI", "Da052BDA" ), 
-                           sat = "sentinel2" )
+                           alg = c("Am092Bsub", "Go04MCI", "Da052BDA"), 
+                           sat = "sentinel2")
 plot(Harsha_Multiple) 
 ```
 
-### Type of Algorithm
+## Type of Algorithm
 
 ```{r}
 Harsha_PC <- wq_calc(Harsha,
                      alg = "phycocyanin", 
                      sat = "sentinel2")
+plot(Harsha_PC) 
 ```
  
-### All Algorithms
+## All Algorithms
 
 ```{r}
 Harsha_All <- wq_calc(Harsha, 
                       alg = "all",
                       sat = "sentinel2")
-plot(harsha_all) # Only displays first 12 of 28
+plot(Harsha_All) # Only displays first 12 of 28
 ```
-
-
- 
