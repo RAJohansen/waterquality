@@ -72,14 +72,15 @@ knitr::kable(worldview_2, align = c("l", "r", "r"), caption = "Worldview-2")
 ```{r sentinel2, echo=FALSE}
 sentinel_2 = tibble::tribble(
   ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
-  1,            "Blue",                     0.490,
-  2,            "Green",                    0.560,
-  3,            "Red",                      0.665,
-  4,            "Vegetation Red Edge",      0.705,
-  5,            "Vegetation Red Edge",      0.740,
-  6,            "Vegetation Red Edge",      0.783,
-  7,            "NIR",                      0.842,
-  8,            "Narrow NIR",               0.865
+  1,            "Coastal Blue",             0.443,
+  2,            "Blue",                     0.490,
+  3,            "Green",                    0.560,
+  4,            "Red",                      0.665,
+  5,            "Vegetation Red Edge",      0.705,
+  6,            "Vegetation Red Edge",      0.740,
+  7,            "Vegetation Red Edge",      0.783,
+  8,            "NIR",                      0.842,
+  9,            "Narrow NIR",               0.865
 )
 
 knitr::kable(sentinel_2, align = c("l", "r", "r"), caption = "Sentinel-2")
