@@ -22,6 +22,7 @@ RoxygenNote: 6.0.1
 Suggests: 
     testthat,
     knitr,
+    tibble,
     rmarkdown
 URL: https://github.com/RAJohansen/waterquality
 BugReports: https://github.com/RAJohansen/waterquality/issues
