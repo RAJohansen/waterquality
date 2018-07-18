@@ -11,19 +11,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-There has been a noticeable rise in the occurrence and severity of cyanobacterial harmful algal blooms (CHABs) in US water bodies. 
-CHABs have the ability to cause adverse effects on human and animal health as well as disrupt local economies. 
+There has been a noticeable rise in the occurrence and severity of cyanobacterial harmful algal blooms (CHABs) in US water bodies (Anderson et al. 2000, Graham 2006, USEPA 2012a). 
+CHABs have the ability to cause adverse effects on human and animal health as well as disrupt local economies (Anderson et al. 2000, Linkov et al. 2009, USEPA 2012a, 2012b). 
 However, in situ monitoring all of the water bodies in the United States would be costly and labor intensive, if even possible. 
 This has given rise to the application of remote sensing data to be used as the standard method for large-scope water quality studies.
 In general, satellite remote sensing offers cheap (or even free), consistent, near total coverage of the U.S. water bodies.
-There are multiple freely available data sets from sensors that offer the spatial, spectral, and geographic coverage needed for the study of CHABS, such as MERIS/OLCI, MODIS, Landsat-8, Sentinel-2A and 2B. 
+There are multiple freely available data sets from sensors that offer the spatial, spectral, and geographic coverage needed for the study of CHABS, such as MERIS/OLCI, MODIS, Landsat-8, Sentinel-2A and 2B (Beck et al. 2016, 2017, Johansen et al. 2018). 
 
 A major concern is revisit time worsened by high frequency cloud-cover. 
 The issue is further compounded by the variation in each satellite's spatial and spectral configuration.
 So it is proposed that water managers and researchers should utilize all possible sensors in order to increase cloud-free image acquisition as well as capture as much of the spectral-specific water characteristics as possible.
 This is vital given that each water body contains unique mixtures of bio-chemical variables and physical characteristics.
 We believe that this would allow for a more comprehensive study and allow for precision treatment of each water body.
-In order to achieve the goal of precision-based water quality monitoring, we have developed the **waterquality** package which contains a near-comprehensive list of satellite-derived algorithms for the detection and quantification of water the three main quality proxies (i.e. Chlorophyll-a, Turbidity, and Phycocyanin (PC)).
+In order to achieve the goal of precision-based water quality monitoring, we have developed the **waterquality** package which contains a near-comprehensive list of satellite-derived algorithms for the detection and quantification of the three main quality proxies: Chlorophyll-a, Turbidity, and Phycocyanin (Schalles and Yacobi 2000, Simis et al. 2005, Randolph et al. 2008, Stumpf et al. 2016, Wozniak et al. 2016).
 The package's main function is to convert reflectance imagery from operational satellite imagers (MODIS, MERIS, Landsat-8, Sentinel-2, and Worldview-2) into any or all of the well-established water quality indices.
 This final output product is a raster stack of the user-defined water quality indices for a desired area of interest.
 
@@ -32,9 +32,10 @@ This final output product is a raster stack of the user-defined water quality in
 The first step is to acquire the satellite image of your area of interest.
 Most satellite imagers have large global coverage, but may be limited depending on your specific location. 
 However, for our example we will use a William H. Harsha Lake (East Fork Lake) located in Southwest Ohio, United States. 
-The imager provided will be a Sentinel-2 product because multiple studies have demonstrated that Sentinel-2 has the best spatial and spectral configurations for detecting CHABs in this location (Cite Beck et al., Johansen et al., Min et al., etc et al.). 
+The imager provided will be a Sentinel-2 product because multiple studies have demonstrated that Sentinel-2 has the optimal spatial and spectral configurations for detecting CHABs in this location (Cite Beck et al. 2017, Johansen et al. 2018, Min et al. 2018 (in review)).
+
 Sentinel-2 is freely downloadable but does require you to create an account on the European Space Agency's (ESA) Copernicus Hub (https://scihub.copernicus.eu) or using the United States Geologic Survey's (USGS) Earth Explorer (https://earthexplorer.usgs.gov).
-Then you will be able to log into the Open Access Hub and search for available imagery. Raw Sentinel-2 imagery is quite difficult to deal with, so we developed a script called Data_Preprocessing.R, which convert the full scene imagery which very large and contains bands with differing spatial resolutions to final cropped and stacked image of your Area of Interest (AOI).
+Then you will be able to log into the Open Access Hub and search for available imagery. Raw Sentinel-2 imagery is can be difficult to deal with, so we developed a script called Data_Preprocessing.R, which convert the full scene imagery which very large and contains bands with differing spatial resolutions to final cropped and stacked image of your Area of Interest (AOI). Typically this products are uncorrected top of atmosphere (ToA) reflectance, also known as level 1C products. It is highly recommended to atmospherically correct your imagery to bottom of atmosphere (BoA) reflectance. Although there are many atmospheric correction techniques available including FlAASH, QUAC, Sen2Cor    
 
 ### Data Tuning
 
@@ -127,3 +128,22 @@ Harsha_All <- wq_calc(Harsha,
                       sat = "sentinel2")
 plot(Harsha_All) # Only displays first 12 of 28
 ```
+
+#Acknowledgements
+The waterquality package was developed with funding from the U.S. Army Corps of Engineers. The authors would also like to thank the University of Cincinnati's Visualization Laboratory and the University of Cincinnati's Space Informatics Lab for technical support. 
+
+#References
+Anderson et al. 2000
+Beck et al. 2016
+Beck et al. 2017
+Graham 2006
+Johansen et al. 2018
+Linkov et al. 2009
+Min et al. 2018 (in review)
+Randolph et al. 2008
+Schalles and Yacobi 2000
+Simis et al. 2005
+Stumpf et al. 2016
+USEPA 2012a
+USEPA 2012b
+Wozniak et al. 2016
