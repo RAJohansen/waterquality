@@ -11,31 +11,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-There has been a noticeable rise in the occurrence and severity of cyanobacterial harmful algal blooms (CHABs) in US water bodies (Anderson et al. 2000, Graham 2006, USEPA 2012a). 
-CHABs have the ability to cause adverse effects on human and animal health as well as disrupt local economies (Anderson et al. 2000, Linkov et al. 2009, USEPA 2012a, 2012b). 
-However, in situ monitoring all of the water bodies in the United States would be costly and labor intensive, if even possible. 
-This has given rise to the application of remote sensing data to be used as the standard method for large-scope water quality studies.
-In general, satellite remote sensing offers cheap (or even free), consistent, near total coverage of the U.S. water bodies.
-There are multiple freely available data sets from sensors that offer the spatial, spectral, and geographic coverage needed for the study of CHABS, such as MERIS/OLCI, MODIS, Landsat-8, Sentinel-2A and 2B (Beck et al. 2016, 2017, Johansen et al. 2018). 
+There has been a noticeable rise in the occurrence and severity of cyanobacterial harmful algal blooms (CHABs) in US water bodies (Anderson et al. 2000, Graham 2006, USEPA 2012a). CHABs have the ability to cause adverse effects on human and animal health as well as disrupt local economies (Anderson et al. 2000, Linkov et al. 2009, USEPA 2012a, 2012b). However, in situ monitoring all of the water bodies in the United States would be costly and labor intensive, if even possible. This has given rise to the application of remote sensing data to be used as the standard method for large-scope water quality studies. In general, satellite remote sensing offers cheap (or even free), consistent, near total coverage of the U.S. water bodies. There are multiple freely available data sets from sensors that offer the spatial, spectral, and geographic coverage needed for the study of CHABS, such as MERIS/OLCI, MODIS, Landsat-8, Sentinel-2A and 2B (Beck et al. 2016, 2017, Johansen et al. 2018). 
 
 A major concern is revisit time worsened by high frequency cloud-cover. 
 The issue is further compounded by the variation in each satellite's spatial and spectral configuration.
 So it is proposed that water managers and researchers should utilize all possible sensors in order to increase cloud-free image acquisition as well as capture as much of the spectral-specific water characteristics as possible.
 This is vital given that each water body contains unique mixtures of bio-chemical variables and physical characteristics.
 We believe that this would allow for a more comprehensive study and allow for precision treatment of each water body.
-In order to achieve the goal of precision-based water quality monitoring, we have developed the **waterquality** package which contains a near-comprehensive list of satellite-derived algorithms for the detection and quantification of the three main quality proxies: Chlorophyll-a, Turbidity, and Phycocyanin (Schalles and Yacobi 2000, Simis et al. 2005, Randolph et al. 2008, Stumpf et al. 2016, Wozniak et al. 2016).
-The package's main function is to convert reflectance imagery from operational satellite imagers (MODIS, MERIS, Landsat-8, Sentinel-2, and Worldview-2) into any or all of the well-established water quality indices.
-This final output product is a raster stack of the user-defined water quality indices for a desired area of interest.
+In order to achieve the goal of precision-based water quality monitoring, we have developed the **waterquality** package which contains a near-comprehensive list of satellite-derived algorithms for the detection and quantification of the three main quality proxies: Chlorophyll-a, Turbidity, and Phycocyanin (Schalles and Yacobi 2000, Simis et al. 2005, Randolph et al. 2008, Stumpf et al. 2016, Wozniak et al. 2016). The package's main function is to convert reflectance imagery from operational satellite imagers (MODIS, MERIS, Landsat-8, Sentinel-2, and Worldview-2) into any or all of the well-established water quality indices. This final output product is a raster stack of the user-defined water quality indices for a desired area of interest.
 
 ## Data Acquisition and Pre-Processing
 
-The first step is to acquire the satellite image of your area of interest.
-Most satellite imagers have large global coverage, but may be limited depending on your specific location. 
-However, for our example we will use a William H. Harsha Lake (East Fork Lake) located in Southwest Ohio, United States. 
-The imager provided will be a Sentinel-2 product because multiple studies have demonstrated that Sentinel-2 has the optimal spatial and spectral configurations for detecting CHABs in this location (Cite Beck et al. 2017, Johansen et al. 2018, Xu et al. 2018 (in review)).
+The first step is to acquire the satellite image of your area of interest. Most satellite imagers have large global coverage, but may be limited depending on your specific location. However, for our example we will use a William H. Harsha Lake (East Fork Lake) located in Southwest Ohio, United States. The imager provided will be a Sentinel-2 product because multiple studies have demonstrated that Sentinel-2 has the optimal spatial and spectral configurations for detecting CHABs in this location (Cite Beck et al. 2017, Johansen et al. 2018, Xu et al. 2018 (in review)).
 
-Sentinel-2 is freely downloadable but does require you to create an account on the European Space Agency's (ESA) Copernicus Hub (https://scihub.copernicus.eu) or using the United States Geologic Survey's (USGS) Earth Explorer (https://earthexplorer.usgs.gov).
-Then you will be able to log into the Open Access Hub and search for available imagery. Raw Sentinel-2 imagery is can be difficult to deal with, so we developed a script called Data_Preprocessing.R, which convert the full scene imagery which very large and contains bands with differing spatial resolutions to final cropped and stacked image of your Area of Interest (AOI). Typically this products are uncorrected top of atmosphere (ToA) reflectance, also known as level 1C products. 
+Sentinel-2 is freely downloadable but does require you to create an account on the European Space Agency's (ESA) Copernicus Hub (https://scihub.copernicus.eu) or using the United States Geologic Survey's (USGS) Earth Explorer (https://earthexplorer.usgs.gov). Then you will be able to log into the Open Access Hub and search for available imagery. Raw Sentinel-2 imagery is can be difficult to deal with, so we developed a script called Data_Preprocessing.R, which convert the full scene imagery which very large and contains bands with differing spatial resolutions to final cropped and stacked image of your Area of Interest (AOI). Typically this products are uncorrected top of atmosphere (ToA) reflectance, also known as level 1C products. 
 
 ### Atmospheric Correction
 
@@ -44,10 +33,7 @@ It is highly recommended to atmospherically correct your imagery to bottom of at
 ## Data Tuning
 
 The first step is to define your image directory folder and input the AOI (in a vector file format).
-Then we create a list of all the rasters contained in that image directory, and decide on a band to be the template for the final product.
-For Sentinel-2, we recommend using a band with 20-meter resolution (ex. Band 5), because we do not want to assume higher resolution for the bands utilized in the algorithms. 
-The script then goes through the list of rasters and resamples (`raster::resample()`) the imagery using the selected template (i.e. 20-meters), crops (`raster::crop()`) the imagery using the rectangular boundary of the AOI (shapefile of Harsha Lake), and then stacks (`raster::stack()`) all of the new rasters together. 
-This process takes approximately 4-5 minutes to run but converts the large raw sentinel-2 data into tidy TIFF file only a fraction of the size of the full scene stack (3GB+ vs. 15.1MB).
+Then we create a list of all the rasters contained in that image directory, and decide on a band to be the template for the final product. For Sentinel-2, we recommend using a band with 20-meter resolution (ex. Band 5), because we do not want to assume higher resolution for the bands utilized in the algorithms. The script then goes through the list of rasters and resamples (`raster::resample()`) the imagery using the selected template (i.e. 20-meters), crops (`raster::crop()`) the imagery using the rectangular boundary of the AOI (shapefile of Harsha Lake), and then stacks (`raster::stack()`) all of the new rasters together. This process takes approximately 4-5 minutes to run but converts the large raw sentinel-2 data into tidy TIFF file only a fraction of the size of the full scene stack (3GB+ vs. 15.1MB).
 
 ## Band Selection and Designation
 
@@ -136,19 +122,11 @@ knitr::kable(modis, align = c("l", "r", "r"), caption = "MODIS")
 
 # Introduction to the waterquality package
 
-Once the data has been pre-processed and atmospherically corrected, the water quality algorithms can be applied. 
-This package makes use of suite of well-established algorithms designed for the evaluation of water quality. 
-More specifically these indices were developed for the detection and estimation pigments in the upper portion of the water column, including the ubiquitous vegetation pigment chlorophyll-a, the cyanobacterial specific pigment phycocyanin, and the general metric of turbidity (Mishra et al. 2014, Randolph et al. 2008, Simis et al. 2005, Stumpf et al. 2016, Wynne et al. 2008).
-These proxies strongly co-vary, but are also influenced by water bio-chemistry, geographic location, and atmospheric conditions (Dokulil and Teubner 2000, Stumpf et al. 2016, Wynne et al. 2012, 2015).
-These local variations are the justification for including the near-comprehensive list of algorithms water quality algorithms. 
-This package is only designed to give water managers or researchers a user-friendly method and series of options for monitoring a given water body for algal blooms. 
+Once the data has been pre-processed and atmospherically corrected, the water quality algorithms can be applied. This package makes use of suite of well-established algorithms designed for the evaluation of water quality. More specifically these indices were developed for the detection and estimation pigments in the upper portion of the water column, including the ubiquitous vegetation pigment chlorophyll-a, the cyanobacterial specific pigment phycocyanin, and the general metric of turbidity (Mishra et al. 2014, Randolph et al. 2008, Simis et al. 2005, Stumpf et al. 2016, Wynne et al. 2008). These proxies strongly co-vary, but are also influenced by water bio-chemistry, geographic location, and atmospheric conditions (Dokulil and Teubner 2000, Stumpf et al. 2016, Wynne et al. 2012, 2015). These local variations are the justification for including the near-comprehensive list of algorithms water quality algorithms. This package is only designed to give water managers or researchers a user-friendly method and series of options for monitoring a given water body for algal blooms. 
 
 ## Algorithms 
 
-Currently, we have a list of [45 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) that can be applied for the detection of these three metrics. 
-Although, it is important to note that not all sensors are capable of using all algorithms due to their spectral configurations. 
-Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. `?Am092Bsub()`). 
-Each algorithm is also linked to the original papers metric (Chlorophyll-a, Phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type. 
+Currently, we have a list of [45 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) that can be applied for the detection of these three metrics. Although, it is important to note that not all sensors are capable of using all algorithms due to their spectral configurations. Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. `?Am092Bsub()`). Each algorithm is also linked to the original papers metric (Chlorophyll-a, Phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type. 
 
 ## wq_calc()
 
@@ -217,11 +195,11 @@ The waterquality package was developed with funding from the U.S. Army Corps of 
 
 # References
 
-Anderson DM, Hoagland P, KaoruY,White AW. 2000. Estimated Annual Economic Impact from Harmful Aglal Blooms (HABs) in the United States. Woods Hole Oceanographic Institution. Woods Hole (MA).
+Anderson DM, Hoagland P, Kaoru Y,White AW. 2000. Estimated Annual Economic Impact from Harmful Algal Blooms (HABs) in the United States. Woods Hole Oceanographic Institution. Woods Hole (MA).
 
 Beck RA, Zhan S, Liu H, Tong S, Yang B, Xu M, Ye Z, Huang Y, et al. 2016. Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations. Remote Sens. Environ. 178, 15–30.
 
-Beck RA, Xu M, Zhan S, Liu H, Johansen RA, Tong S, Yang B, Shu S, et al. 2017. Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sensing. 9, 53
+Beck RA, Xu M, Zhan S, Liu H, Johansen RA, Tong S, Yang B, Shu S, et al. 2017. Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sensing. 9, 53.
 
 Dokulil MT, Teubner K, 2000. Cyanobacterial dominance in lakes. Hydrobiologia 438, 1–12
 
@@ -242,6 +220,8 @@ Schalles J, Yacobi Y. 2000. Remote detection and seasonal patterns of phycocyani
 Simis SGH, Peters SWM, Gons HJ.Remote sensing of the cyanobacteria pigment phycocyanin in turbid inland water. Limnol. Oceanogr. 2005, 50, 237–245.
 
 Stumpf RP, Davis TW, Wynne TT, Graham JL, Loftin KA, Johengen TH, Gossiaux D, Palladino D, Burtner A. Challenges for mapping cyanotoxin patterns from remote sensing of cyanobacteria. Harmful Algae 2016, 54, 160–173.
+
+[USEPA] United States Environmental Protection Agency. 2012a. Cyanobacteria and cyanotoxins: Information for drinking water systems. Washington (DC): EPA-810F11001.
 
 [USEPA] United States Environmental Protection Agency. 2012b. The National Lakes Assessment Fact Sheet. National Aquatic Resource Surveys. Washington (DC).
 
