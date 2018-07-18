@@ -1,6 +1,6 @@
 context("wq_calc")
 test_that("wq_calc works correctly", {
-  s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
+  s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
   
   # test number of output layers
   expect_equal(nlayers(wq_calc(s2, alg = c("Am092Bsub"), sat = "sentinel2")), 1)
