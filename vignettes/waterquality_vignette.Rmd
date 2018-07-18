@@ -1,7 +1,7 @@
 ---
 title: "waterquality vignette"
 author: "Richard Johansen and Jakub Nowosad"
-date: "July 3, 2018"
+date: "July 18, 2018"
 output: html_document
 ---
 
@@ -41,7 +41,7 @@ Then you will be able to log into the Open Access Hub and search for available i
 
 It is highly recommended to atmospherically correct your imagery to bottom of atmosphere (BoA) reflectance before continuing the process. Xu et al. 2018 (in review) provides an evaluation of atmospheric correction techniques (FlAASH, QUAC, Sen2Cor, ELM) effects on the detection of CHABs using Sentinel-2. Choosing the appropiate method is user specific, which can be based on image quality, available in situ measurments, cost, and preference. As of now this process is up to the user to decide and implement, but it is our hope to make this process even easier by embedding the R package Sen2R into this section. Sen2R is a package that allows a user to search, download, and atmospherically correct Sentinel-2 Imagery directly from R (Ranghetti and Busetto 2018).
 
-### Data Tuning
+## Data Tuning
 
 The first step is to define your image directory folder and input the AOI (in a vector file format).
 Then we create a list of all the rasters contained in that image directory, and decide on a band to be the template for the final product.
@@ -49,7 +49,7 @@ For Sentinel-2, we recommend using a band with 20-meter resolution (ex. Band 5),
 The script then goes through the list of rasters and resamples (`raster::resample()`) the imagery using the selected template (i.e. 20-meters), crops (`raster::crop()`) the imagery using the rectangular boundary of the AOI (shapefile of Harsha Lake), and then stacks (`raster::stack()`) all of the new rasters together. 
 This process takes approximately 4-5 minutes to run but converts the large raw sentinel-2 data into tidy TIFF file only a fraction of the size of the full scene stack (3GB+ vs. 15.1MB).
 
-### Band Selection and Designation
+## Band Selection and Designation
 
 Due to the fact that each institution and sensors have their own method of "tuning" their data, we provide a description of what the format of each sensor should look like as well as their appropiate band designations. After atmospheric correction and preprocessing each sensor should be in the following format:
 
@@ -219,39 +219,38 @@ The waterquality package was developed with funding from the U.S. Army Corps of 
 
 Anderson DM, Hoagland P, KaoruY,White AW. 2000. Estimated Annual Economic Impact from Harmful Aglal Blooms (HABs) in the United States. Woods Hole Oceanographic Institution. Woods Hole (MA).
 
-Beck RA, Zhan S, Liu H, Tong S, Yang B, Xu M, Ye Z, Huang Y, Wu Q, Wang S, et al. 2016. Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations. Remote Sens. Environ. 178, 15–30.
+Beck RA, Zhan S, Liu H, Tong S, Yang B, Xu M, Ye Z, Huang Y, et al. 2016. Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations. Remote Sens. Environ. 178, 15–30.
 
-Beck RA, Xu M, Zhan S, Liu H, Johansen RA, Tong S, Yang B, Shu S, Wu Q, Wang S, et al. 2017. Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sensing. 9, 53
+Beck RA, Xu M, Zhan S, Liu H, Johansen RA, Tong S, Yang B, Shu S, et al. 2017. Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sensing. 9, 53
 
-Dokulil, M.T., Teubner, K., 2000. Cyanobacterial dominance in lakes. Hydrobiologia 438, 1–12
+Dokulil MT, Teubner K, 2000. Cyanobacterial dominance in lakes. Hydrobiologia 438, 1–12
 
-Graham, J.L. Harmful Algal Blooms; USGS Fact Sheet, 2006-3147; USGS: Reston, VA, USA, 2006.
+Graham JL. Harmful Algal Blooms; USGS Fact Sheet, 2006-3147; USGS: Reston, VA, USA, 2006.
 
-Johansen, Richard; et al. (2018). Evaluating the portability of satellite derived chlorophyll-a algorithms for temperate inland lakes using airborne hyperspectral imagery and dense surface observations. Harmful Algae. 76. 10.1016/j.hal.2018.05.001. 
+Johansen RA, Beck R, Nowosad J, Nietch C, Xu M, Shu S, Yang B, Liu H, et al. (2018). Evaluating the portability of satellite derived chlorophyll-a algorithms for temperate inland lakes using airborne hyperspectral imagery and dense surface observations. Harmful Algae. 76. 10.1016/j.hal.2018.05.001. 
 
-Linkov,I.;Satterstrom,F.K.;Loney,D.;Steevans,J.A.The Impact of Harmful Algal Blooms on USACE Operations; ANSRP Technical Notes Collection; ERDC/TNANSRP-09-1;U.S.Army Engineer Research and Development Center: Vicksburg, MS, USA, 2009.
+Linkov I, Satterstrom FK, Loney D, Steevans JA. The Impact of Harmful Algal Blooms on USACE Operations; ANSRP Technical Notes Collection; ERDC/TNANSRP-09-1;U.S.Army Engineer Research and Development Center: Vicksburg, MS, USA, 2009.
 
-Mishra,S.;Mishra,D.R.;Lee,Z.P.Bio-optical inversion in highly turbid and cyanobacteria dominated waters. IEEE Trans. Geosci. Remote Sens. 2014, 52, 375–388.
+Mishra S, Mishra DR, Lee ZP.Bio-optical inversion in highly turbid and cyanobacteria dominated waters. IEEE Trans. Geosci. Remote Sens. 2014, 52, 375–388.
 
-Ranghetti, L. and Busetto, L. (2018). sen2r: an R toolbox to find, download and preprocess Sentinel-2 data. R package version 0.3.2. DOI: 10.5281/zenodo.1240384.
+Ranghetti L, Busetto L. (2018). sen2r: an R toolbox to find, download and preprocess Sentinel-2 data. R package version 0.3.2. DOI: 10.5281/zenodo.1240384.
 
-Randolph, K.; Wilson, J.; Tedesco, L.; Li, L.; Lani Pascual, D.; Soyeux, E. Hyperspectral remote sensing of cyanobacteria in turbid productive water using optically active pigments, chlorophyll a and phycocyanin. Remote Sens. Environ. 2008, 112, 4009–4019.
+Randolph K, Wilson J, Tedesco L, Li L, Lani PD, Soyeux E. Hyperspectral remote sensing of cyanobacteria in turbid productive water using optically active pigments, chlorophyll a and phycocyanin. Remote Sens. Environ. 2008, 112, 4009–4019.
 
 Schalles J, Yacobi Y. 2000. Remote detection and seasonal patterns of phycocyanin, carotenoid and chlorophyll-a pigments in eutrophic waters. Archiv fur Hydrobiologie, Special Issues Advances in Limnology. 55,153–168.
 
-Simis,S.G.H.;Peters,S.W.M.;Gons,H.J.Remote sensing of the cyanobacteria pigment phycocyanin in turbid inland water. Limnol. Oceanogr. 2005, 50, 237–245.
+Simis SGH, Peters SWM, Gons HJ.Remote sensing of the cyanobacteria pigment phycocyanin in turbid inland water. Limnol. Oceanogr. 2005, 50, 237–245.
 
-Stumpf, R.P.; Davis, T.W.; Wynne, T.T.; Graham, J.L.; Loftin, K.A.; Johengen, T.H.; Gossiaux, D.; Palladino, D.; 
-Burtner,A.Challenges for mapping cyanotoxin patterns from remote sensing of cyanobacteria. Harmful Algae 2016, 54, 160–173.
+Stumpf RP, Davis TW, Wynne TT, Graham JL, Loftin KA, Johengen TH, Gossiaux D, Palladino D, Burtner A. Challenges for mapping cyanotoxin patterns from remote sensing of cyanobacteria. Harmful Algae 2016, 54, 160–173.
 
 [USEPA] United States Environmental Protection Agency. 2012b. The National Lakes Assessment Fact Sheet. National Aquatic Resource Surveys. Washington (DC).
 
-Wynne, T.T.; Stumpf, R.P.; Tomlinson, M.C.; Warner, R.A.; Tester, P.A.; Dyble, J. Relating spectral shape to cyanobacterial blooms in the Laurentian Great Lakes. Int. J. Remote Sens. 2008, 29, 3665–3672.
+Wynne TT, Stumpf RP, Tomlinson MC, Warner RA, Tester PA, Dyble, J. Relating spectral shape to cyanobacterial blooms in the Laurentian Great Lakes. Int. J. Remote Sens. 2008, 29, 3665–3672.
 
-Wynne, T.T.; Stumpf, R.P.; Tomlinson, M.C.; Dyble, J. Characterizing a cyanobacterial bloom in western Lake Erie using satellite imagery and meteorological data. Limnol. Oceanogr. 2012, 55, 2025–2036.
+Wynne TT, Stumpf RP, Tomlinson MC, Dyble J. Characterizing a cyanobacterial bloom in western Lake Erie using satellite imagery and meteorological data. Limnol. Oceanogr. 2012, 55, 2025–2036.
 
-Wynne, T.T.; Stumpf, R.P. Spatial and Temporal Patterns in the Seasonal Distribution of Toxic Cyanobacteria in Western Lake Erie from 2002–2014. Toxins 2015, 7, 1649–1663.
+Wynne TT, Stumpf RP. Spatial and Temporal Patterns in the Seasonal Distribution of Toxic Cyanobacteria in Western Lake Erie from 2002–2014. Toxins 2015, 7, 1649–1663.
 
 Wozniak M, Bradtke KM, Darecki M, Krezel A. 2016. Empirical Model for Phycocyanin Concentration Estimation as an Indicator of Cyanobacterial Bloom in the Optically Complex CoastalWaters of the Baltic Sea. Remote Sens. 8, 1–23
 
-Xu M, Liu H, Beck R, Lekki J, Benko T, Anderson R, Yang B, Johansen R, Emery E, Reif M. 2018. Regionally and Locally Adaptive Models for Retrieving Chlorophyll-a Concentrations in Inland Waters from Remotely Sensse Multispectral and Hyperspectral Imagery. IEEE Transactions on Geoscience and Remote Sensing. (In Review)
+Xu M, Liu H, Beck R, Lekki J, Benko T, Anderson R, Yang B, Johansen R, et al. 2018. Regionally and Locally Adaptive Models for Retrieving Chlorophyll-a Concentrations in Inland Waters from Remotely Sensse Multispectral and Hyperspectral Imagery. IEEE Transactions on Geoscience and Remote Sensing. (In Review)
