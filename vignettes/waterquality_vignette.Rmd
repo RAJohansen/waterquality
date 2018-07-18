@@ -55,7 +55,7 @@ Due to the fact that each institution and sensors have their own method of "tuni
 
 ```{r worldview2, echo=FALSE}
 worldview_2 = tibble::tribble(
-  ~`Band Number`, ~band_name,                 ~band_center,                                  
+  ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,                                  
   1,            "Coastal",                  0.425,                                                 
   2,            "Blue",                     0.480,
   3,            "Green",                    0.545,
@@ -66,29 +66,28 @@ worldview_2 = tibble::tribble(
   8,            "NIR-2",                    0.880 
 )
 
-knitr::kable(worldview_2, align = c("l", "r", "r"), caption = "My caption")
+knitr::kable(worldview_2, align = c("l", "r", "r"), caption = "Worldview-2")
 ```
 
 ```{r sentinel2, echo=FALSE}
 sentinel_2 = tibble::tribble(
-  ~band_number, ~band_name,                 ~band_center,
-  1,            "Coastal aerosol",          0.443,
-  2,            "Blue",                     0.490,
-  3,            "Green",                    0.560,
-  4,            "Red",                      0.665,
-  5,            "Vegetation Red Edge",      0.705,
-  6,            "Vegetation Red Edge",      0.740,
-  7,            "Vegetation Red Edge",      0.783,
-  8,            "NIR",                      0.842,
-  9,            "Narrow NIR",               0.865
+  ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
+  1,            "Blue",                     0.490,
+  2,            "Green",                    0.560,
+  3,            "Red",                      0.665,
+  4,            "Vegetation Red Edge",      0.705,
+  5,            "Vegetation Red Edge",      0.740,
+  6,            "Vegetation Red Edge",      0.783,
+  7,            "NIR",                      0.842,
+  8,            "Narrow NIR",               0.865
 )
 
-knitr::kable(sentinel_2, align = c("l", "r", "r"), caption = "My caption")
+knitr::kable(sentinel_2, align = c("l", "r", "r"), caption = "Sentinel-2")
 ```
 
 ```{r landsat8, echo=FALSE}
 landsat_8 = tibble::tribble(
-  ~band_number, ~band_name,                 ~band_center,
+  ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
   1,            "Coastal",                  0.443,
   2,            "Blue",                     0.482,
   3,            "Green",                    0.562,
@@ -97,12 +96,12 @@ landsat_8 = tibble::tribble(
   6,            "SWIR-1",                   1.609,
   7,            "SWIR-2",                   2.201 
 )
-knitr::kable(landsat_8, align = c("l", "r", "r"), caption = "My caption")
+knitr::kable(landsat_8, align = c("l", "r", "r"), caption = "Landsat-8")
 ```
 
 ```{r meris, echo=FALSE}
 meris = tibble::tribble(
-  ~band_number, ~band_name,                 ~band_center,
+  ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
   1,            "Coastal",                  0.413,
   2,            "Blue",                     0.443,
   3,            "Blue-2",                   0.490,
@@ -119,18 +118,18 @@ meris = tibble::tribble(
   14,           "NIR-2",                    0.885,
   15,           "NIR-3",                    0.900
   )
-knitr::kable(meris, align = c("l", "r", "r"), caption = "My caption")
+knitr::kable(meris, align = c("l", "r", "r"), caption = "MERIS")
 
 ```
 
 
 ```{r modis, echo=FALSE}
 modis = tibble::tribble(
-  ~band_number, ~band_name,                 ~band_center,
+  ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
   1,            "Red",                      0.645,
   2,            "NIR",                      0.859
 )
-knitr::kable(modis, align = c("l", "r", "r"), caption = "My caption")
+knitr::kable(modis, align = c("l", "r", "r"), caption = "MODIS")
 ```
 
 
