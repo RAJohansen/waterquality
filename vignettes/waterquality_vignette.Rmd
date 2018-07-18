@@ -53,11 +53,24 @@ This process takes approximately 4-5 minutes to run but converts the large raw s
 
 Due to the fact that each institution and sensors have their own method of "tuning" their data, we provide a description of what the format of each sensor should look like as well as their appropiate band designations. After atmospheric correction and preprocessing each sensor should be in the following format:
 
-knitr::kable(sentinel_2)
+```{r worldview2, echo=FALSE}
+worldview_2 = tibble::tribble(
+  ~`Band Number`, ~band_name,                 ~band_center,                                  
+  1,            "Coastal",                  0.425,                                                 
+  2,            "Blue",                     0.480,
+  3,            "Green",                    0.545,
+  4,            "Yellow",                   0.605,
+  5,            "Red",                      0.660,
+  6,            "Red Edge",                 0.725,
+  7,            "NIR-1",                    0.833,
+  8,            "NIR-2",                    0.880 
+)
 
-Worldview-2
+knitr::kable(worldview_2, align = c("l", "r", "r"), caption = "My caption")
+```
 
-sentinel_2 = tribble(
+```{r sentinel2, echo=FALSE}
+sentinel_2 = tibble::tribble(
   ~band_number, ~band_name,                 ~band_center,
   1,            "Coastal aerosol",          0.443,
   2,            "Blue",                     0.490,
@@ -70,13 +83,55 @@ sentinel_2 = tribble(
   9,            "Narrow NIR",               0.865
 )
 
-Band 1 = Band 2
+knitr::kable(sentinel_2, align = c("l", "r", "r"), caption = "My caption")
+```
 
-Landsat-8
+```{r landsat8, echo=FALSE}
+landsat_8 = tibble::tribble(
+  ~band_number, ~band_name,                 ~band_center,
+  1,            "Coastal",                  0.443,
+  2,            "Blue",                     0.482,
+  3,            "Green",                    0.562,
+  4,            "Red",                      0.655,
+  5,            "NIR",                      0.865,
+  6,            "SWIR-1",                   1.609,
+  7,            "SWIR-2",                   2.201 
+)
+knitr::kable(landsat_8, align = c("l", "r", "r"), caption = "My caption")
+```
 
-MERIS/OLCI
+```{r meris, echo=FALSE}
+meris = tibble::tribble(
+  ~band_number, ~band_name,                 ~band_center,
+  1,            "Coastal",                  0.413,
+  2,            "Blue",                     0.443,
+  3,            "Blue-2",                   0.490,
+  4,            "Yellow",                   0.510,
+  5,            "Green",                    0.560,
+  6,            "Red",                      0.620,
+  7,            "Red-2",                    0.665,
+  8,            "Chlorophyll_Fl",           0.681,
+  9,            "Red-Edge",                 0.709,
+  10,           "Red-Edge-2",               0.754,
+  11,           "Red-Edge-3",               0.761,
+  12,           "Red-Edge-4",               0.779,
+  13,           "NIR-1",                    0.865,
+  14,           "NIR-2",                    0.885,
+  15,           "NIR-3",                    0.900
+  )
+knitr::kable(meris, align = c("l", "r", "r"), caption = "My caption")
 
-MODIS 
+```
+
+
+```{r modis, echo=FALSE}
+modis = tibble::tribble(
+  ~band_number, ~band_name,                 ~band_center,
+  1,            "Red",                      0.645,
+  2,            "NIR",                      0.859
+)
+knitr::kable(modis, align = c("l", "r", "r"), caption = "My caption")
+```
 
 
 # Introduction to the waterquality package
@@ -117,7 +172,7 @@ The main function of this package is called `wq_calc()` which calculates water q
 ```{r, message=FALSE}
 library(waterquality)
 library(raster)
-Harsha <- stack(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
+Harsha <- stack(system.file("raster/Harsha_Lake.tif", package = "waterquality"))
 ```
 
 ## Single Algorithm
@@ -149,7 +204,7 @@ plot(Harsha_PC)
  
 ## All Algorithms
 
-```{r}
+```{r, cache=TRUE}
 Harsha_All <- wq_calc(Harsha, 
                       alg = "all",
                       sat = "sentinel2")
