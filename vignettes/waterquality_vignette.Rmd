@@ -122,11 +122,11 @@ Harsha_All <- wq_calc(Harsha,
 plot(Harsha_All) # Only displays first 12 of 28
 ```
 
-#Acknowledgements
+# Acknowledgements
 
 The waterquality package was developed with funding from the U.S. Army Corps of Engineers. The authors would also like to thank the University of Cincinnati's Visualization Laboratory and the University of Cincinnati's Space Informatics Lab for technical support. 
 
-#References
+# References
 
 Anderson DM, Hoagland P, KaoruY,White AW. 2000. Estimated Annual Economic Impact from Harmful Aglal Blooms (HABs) in the United States. Woods Hole Oceanographic Institution. Woods Hole (MA).
 
