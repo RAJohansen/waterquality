@@ -30,8 +30,18 @@ raster_stack = Rasters %>%
   lapply(crop, AOI) %>%
   stack()
 
+### Mask cropped image 
+#Further reducing size of stacked image
+raster_mask <- mask(raster_stack,AOI)
+
+### Band Subset
+#Selects only Bands 2-8A
+S2_Harsha <- raster_mask[2:9]
+S2_Harsha <- x[[2:9]]
+x <- stack("C:/R_Packages/waterquality/inst/raster/S2_Harsha.tif")
+
 ### Save Final Stacked Image as Tiff -------------------------------------------
-writeRaster(x = raster_stack,
-            filename= "C:/temp/Harsha_Lake.tif", # save as a tif
+writeRaster(x = S2_Harsha,
+            filename= "C:/temp/S2_Harsha.tif", # save as a tif
             datatype ="FLT4S", # save as a float
             overwrite = FALSE) #Overwrites same named file
