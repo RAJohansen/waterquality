@@ -1,12 +1,22 @@
 ---
-title: "waterquality vignette"
-author: "Richard Johansen and Jakub Nowosad"
-date: "July 18, 2018"
-output: html_document
+title: "Introduction to the waterquality package"
+author: "Richard Johansen, Jakub Nowosad"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to the waterquality package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  echo = TRUE,
+  fig.height = 5,
+  fig.width = 7
+)
 ```
 
 # Introduction
@@ -211,7 +221,7 @@ plot(Harsha_PC)
  
 ## All Algorithms
 
-```{r, cache=TRUE}
+```{r}
 Harsha_All <- wq_calc(Harsha, 
                       alg = "all",
                       sat = "sentinel2")
