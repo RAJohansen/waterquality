@@ -195,7 +195,9 @@ The main function of this package is called `wq_calc()` which calculates water q
     - Landsat-8
     - MODIS
     - MERIS
-    
+
+# Conclusions Interpreting the Results?    
+
 # Examples
 
 ```{r, message=FALSE}
