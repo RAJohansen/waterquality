@@ -24,7 +24,8 @@ Suggests:
     testthat,
     knitr,
     tibble,
-    rmarkdown
+    rmarkdown,
+    covr
 URL: https://github.com/RAJohansen/waterquality
 BugReports: https://github.com/RAJohansen/waterquality/issues
 VignetteBuilder: knitr

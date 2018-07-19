@@ -36,13 +36,17 @@ library(waterquality)
 library(raster)
 #> Loading required package: sp
 s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
-s2_two_alg = wq_calc(s2, alg = c("Be16FLHGreenRedNIR", "Am092Bsub"), sat = "sentinel2")
-#> Am092Bsub calculated!
+s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Be16FLHGreenRedNIR"), sat = "sentinel2")
 #> Be16FLHGreenRedNIR calculated!
+#> TurbChip09NIROverGreen calculated!
 plot(s2_two_alg)
 ```
 
 ![](man/figures/README-example-1.png)<!-- -->
+
+To learn more read the [“Introduction to the waterquality
+package”](https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html)
+vignette.
 
 ## Contribution
 

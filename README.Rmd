@@ -44,6 +44,8 @@ s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Be16FLHGreenRedNIR")
 plot(s2_two_alg)
 ```
 
+To learn more read the ["Introduction to the waterquality package"](https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html) vignette.
+
 ## Contribution
 
 Feel free to submit issues and enhancement requests.
