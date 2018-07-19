@@ -37,33 +37,45 @@ In order to achieve the goal of precision-based water quality monitoring, we hav
 The package's main function is to convert reflectance imagery from operational satellite imagers (MODIS, MERIS, Landsat-8, Sentinel-2, and Worldview-2) into any or all of the well-established water quality indices.
 This final output product is a raster stack of the user-defined water quality indices for a desired area of interest.
 
-## Data Acquisition and Pre-Processing
+## Data Acquisition
 
 The first step is to acquire the satellite image of your area of interest. 
 Most satellite imagers have large global coverage, but may be limited depending on your specific location. However, for our example we will use a William H. Harsha Lake (East Fork Lake) located in Southwest Ohio, United States.
-The imager provided will be a Sentinel-2 product because multiple studies have demonstrated that Sentinel-2 has the optimal spatial and spectral configurations for detecting CHABs in this location (Cite Beck et al. 2017, Johansen et al. 2018, Xu et al. 2018 (in review)).
+The imager provided will be a Sentinel-2 product because multiple studies have demonstrated that Sentinel-2 has the optimal spatial and spectral configurations for detecting CHABs in this location (Beck et al. 2017, Johansen et al. 2018, Xu et al. 2018 (in review)).
 
 Sentinel-2 is freely downloadable but does require you to create an account on the European Space Agency's (ESA) Copernicus Hub (https://scihub.copernicus.eu) or using the United States Geologic Survey's (USGS) Earth Explorer (https://earthexplorer.usgs.gov). 
 Then you will be able to log into the Open Access Hub and search for available imagery.
-Raw Sentinel-2 imagery is can be difficult to deal with, so we developed a script called [data_preprocessing.R](https://github.com/RAJohansen/waterquality/blob/master/data-raw/data_preprocessing.R), which convert the full scene imagery which very large and contains bands with differing spatial resolutions to final cropped and stacked image of your Area of Interest (AOI).
-Typically this products are uncorrected top of atmosphere (ToA) reflectance, also known as level 1C products. 
+As of this writing, the ESA mainly distributes uncorrected top of atmosphere (ToA) reflectance products (level 1C), and it is highly recommended to atmospherically correct your imagery to bottom of atmosphere (BoA) reflectance before continuing the process.
+Raw Sentinel-2 imagery can be difficult to deal with because full scenes are very large and contain bands of differeing spatial resolutions.
+Due to this, we developed a supplemental script called [data_preprocessing.R](https://github.com/RAJohansen/waterquality/blob/master/data-raw/data_preprocessing.R), which converts the full scene imagery into a raster stack tif image of your Area of Interest (AOI).  
 
 ### Atmospheric Correction
 
-It is highly recommended to atmospherically correct your imagery to bottom of atmosphere (BoA) reflectance before continuing the process.
 Xu et al. 2018 (in review) provides an evaluation of atmospheric correction techniques (FlAASH, QUAC, Sen2Cor, ELM) effects on the detection of CHABs using Sentinel-2. 
-Choosing the appropiate method is user specific, which can be based on image quality, available in situ measurments, cost, and preference.
-As of now this process is up to the user to decide and implement<!--, but it is our hope to make this process even easier by embedding the R package Sen2R into this section.
+Choosing the appropiate method is user specific, which can be based on image quality, availability of in situ measurements, cost, and industry standards.
+Currently this process is not automated and may require proprietary software to run such as ENVI's FLAASH and QUAC. For these reasons we leave this step up to the user to decide and implement, but we have provided some additional infomation below:
+
+FLAASH: https://www.harrisgeospatial.com/docs/FLAASH.html 
+QUAC: https://www.harrisgeospatial.com/docs/QUAC.html 
+Sen2Cor: http://step.esa.int/main/third-party-plugins-2/sen2cor/
+ELM: *Requires in situ calibration targets
+<!--, but it is our hope to make this process even easier by embedding the R package Sen2R into this section.
 Sen2R is a package that allows a user to search, download, and atmospherically correct Sentinel-2 Imagery directly from R (Ranghetti and Busetto 2018)-->.
 
-## Data Tuning
+## Image Pre-Processing
 
-The [data_preprocessing.R](https://github.com/RAJohansen/waterquality/blob/master/data-raw/data_preprocessing.R) script describes a several steps. 
-The first step is to define your image directory folder and input the AOI (in a vector file format).
-Then we create a list of all the rasters contained in that image directory, and decide on a band to be the template for the final product.
-For Sentinel-2, we recommend using a band with 20-meter resolution (ex. Band 5), because we do not want to assume higher resolution for the bands utilized in the algorithms. 
-The script then goes through the list of rasters and resamples (`raster::resample()`) the imagery using the selected template (i.e. 20-meters), crops (`raster::crop()`) the imagery using the rectangular boundary of the AOI (shapefile of Harsha Lake), and then stacks (`raster::stack()`) all of the new rasters together. 
+This supplemental script is designed to help the user pre-process sentinel-2 imagery directly from acquistion or after atmospheric correction.
+The script was developed using Sentinel-2 as a the example, because this imagery has unqiue challenges but many functions can be utilized for other sensor's imagery as well. 
+The [data_preprocessing.R](https://github.com/RAJohansen/waterquality/blob/master/data-raw/data_preprocessing.R) script describes multiple functions in the following steps:
+1. Define your inputs- This includes the image directory, imagery file extention pattern (.jp2), area of interest (AOI), and preferred projection (in required).
+2.The second step is create a list of images from the defined directory, and create a template (same extent and spatial resolution) image based on a single band to be the configuation of the final stacked raster product.
+*For Sentinel-2, it is recommended to use a band with 20-meter resolution (ex. Band 5), because it is more appropiate to upscale the higher resolution 10-meter bands than to downscale the 20-meter bands. 
+3. The next step is to iterate throught the list of rasters to resample (`raster::resample()`) the imagery using the defined template, crop (`raster::crop()`) the imagery using the rectangular boundary of the AOI (ex. shapefile of Harsha Lake), and then stack (`raster::stack()`) the resulting rasters together.
 This process takes approximately 4-5 minutes to run but converts the large raw sentinel-2 data into tidy TIFF file only a fraction of the size of the full scene stack (3GB+ vs. 15.1MB).
+4. *Optional: To futher reduce the size of the tiff file, we have added the mask (`raster::mask()`)function which eliminates the values of all pixels outside of the physical boundary of the AOI.   
+5. *Optional: Another way to reduce the size of the imagery or to eliminate erronous information is to create a subset of the bands (i.e. Sentinel-2 algorithms only use the first nine bands (1:9)).
+This is also a way to make sure that your input aligns with the algorithms band designations below.
+6. Finally, we provide an option to save the final output.
 
 ## Band Selection and Designation
 
@@ -231,7 +243,7 @@ plot(Harsha_All) # Only displays first 12 of 28
 # Acknowledgements
 
 The waterquality package was developed with funding from the U.S. Army Corps of Engineers.
-The authors would also like to thank the University of Cincinnati's Visualization Laboratory and the University of Cincinnati's Space Informatics Lab for technical support. 
+The authors would also like to thank the University of Cincinnati's Visualization Laboratory and the University of Cincinnati's Space Informatics Lab for their expertise and technical services. 
 
 # References
 
