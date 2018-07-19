@@ -166,18 +166,20 @@ knitr::kable(modis, align = c("l", "r", "r"), caption = "MODIS")
 # Introduction to the waterquality package
 
 Once the data has been pre-processed and atmospherically corrected, the water quality algorithms can be applied. 
-This package makes use of suite of well-established algorithms designed for the evaluation of water quality.
-More specifically these indices were developed for the detection and estimation pigments in the upper portion of the water column, including the ubiquitous vegetation pigment chlorophyll-a, the cyanobacterial specific pigment phycocyanin, and the general metric of turbidity (Mishra et al. 2014, Randolph et al. 2008, Simis et al. 2005, Stumpf et al. 2016, Wynne et al. 2008). 
-These proxies strongly co-vary, but are also influenced by water bio-chemistry, geographic location, and atmospheric conditions (Dokulil and Teubner 2000, Stumpf et al. 2016, Wynne et al. 2012, 2015). 
-These local variations are the justification for including the near-comprehensive list of algorithms water quality algorithms.
-This package is only designed to give water managers or researchers a user-friendly method and series of options for monitoring a given water body for algal blooms. 
+This package makes use of a suite of well-established algorithms designed for the evaluation of water quality via remotely sensed imagery, which are designed to detect the spectral response of only the upper most portion of the water column (~1 meter).
+More specifically, these indices were developed for the detection and estimation of the spigments associated with cyanobacteria and harmful algal blooms (CHABs), which include the ubiquitous phytoplankton pigment chlorophyll-a, the cyanobacteria specific pigment phycocyanin, and turbidity used as a generic metric of water clarity (Mishra et al. 2014, Randolph et al. 2008, Simis et al. 2005, Stumpf et al. 2016, Wynne et al. 2008). 
+Studies have demostrated that these proxies can strongly co-vary, but the degree is influenced by water bio-chemistry, geography, and atmospheric conditions (Dokulil and Teubner 2000, Stumpf et al. 2016, Wynne et al. 2012, 2015). 
+These localized variations and the subsequent affect on the algorithms performances are the justification for including the near-comprehensive list of algorithms water quality algorithms.
+This package is only designed to give water managers or researchers a user-friendly method and set of options for monitoring a given water body for algal blooms. 
 
-## Algorithms 
+## Algorithms
 
 Currently, we have a list of [45 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) that can be applied for the detection of these three metrics. 
 Although, it is important to note that not all sensors are capable of using all algorithms due to their spectral configurations. 
 Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. `?Am092Bsub()`). 
-Each algorithm is also linked to the original papers metric (Chlorophyll-a, Phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type. 
+Each algorithm is also linked to the original papers metric (Chlorophyll-a, Phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type.
+The final raster images are in relative index values and are not the estimated chlorophyll-a, phycocyanin, or turbidity values, but can easily be converted in to estimated concentration values using a regression model and in situ measurements as described in Johansen et al. 2018. 
+
 
 ## wq_calc()
 
@@ -196,7 +198,6 @@ The main function of this package is called `wq_calc()` which calculates water q
     - MODIS
     - MERIS
 
-# Conclusions Interpreting the Results?    
 
 # Examples
 
