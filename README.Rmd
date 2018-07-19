@@ -4,6 +4,12 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+[![CRAN status](http://www.r-pkg.org/badges/version/waterquality)](https://cran.r-project.org/package=waterquality)
+[![Build Status](https://travis-ci.org/RAJohansen/waterquality.png?branch=master)](https://travis-ci.org/RAJohansen/waterquality)
+[![codecov](https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg)](https://codecov.io/gh/RAJohansen/waterquality)
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/waterquality)](https://cran.r-project.org/package=waterquality)
+
+
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -33,7 +39,7 @@ The main function in this package is `wq_calc()`:
 ```{r example, fig.asp=0.33}
 library(waterquality)
 library(raster)
-s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
+s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
 s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Am092Bsub"), sat = "sentinel2")
 plot(s2_two_alg)
 ```
