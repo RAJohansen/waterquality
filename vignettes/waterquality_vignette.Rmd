@@ -46,40 +46,40 @@ The imager provided will be a Sentinel-2 product because multiple studies have d
 Sentinel-2 is freely downloadable but does require you to create an account on the European Space Agency's (ESA) Copernicus Hub (https://scihub.copernicus.eu) or using the United States Geologic Survey's (USGS) Earth Explorer (https://earthexplorer.usgs.gov). 
 Then you will be able to log into the Open Access Hub and search for available imagery.
 As of this writing, the ESA mainly distributes uncorrected top of atmosphere (ToA) reflectance products (level 1C), and it is highly recommended to atmospherically correct your imagery to bottom of atmosphere (BoA) reflectance before continuing the process.
-Raw Sentinel-2 imagery can be difficult to deal with because full scenes are very large and contain bands of differeing spatial resolutions.
+Raw Sentinel-2 imagery can be difficult to deal with because full scenes are very large and contain bands of differing spatial resolutions.
 Due to this, we developed a supplemental script called [data_preprocessing.R](https://github.com/RAJohansen/waterquality/blob/master/data-raw/data_preprocessing.R), which converts the full scene imagery into a raster stack tif image of your Area of Interest (AOI).  
 
 ### Atmospheric Correction
 
 Xu et al. 2018 (in review) provides an evaluation of atmospheric correction techniques (FlAASH, QUAC, Sen2Cor, ELM) effects on the detection of CHABs using Sentinel-2. 
-Choosing the appropiate method is user specific, which can be based on image quality, availability of in situ measurements, cost, and industry standards.
-Currently this process is not automated and may require proprietary software to run such as ENVI's FLAASH and QUAC. For these reasons we leave this step up to the user to decide and implement, but we have provided some additional infomation below:
+Choosing the appropriate method is user specific, which can be based on image quality, availability of in situ measurements, cost, and industry standards.
+Currently this process is not automated and may require proprietary software to run such as ENVI's FLAASH and QUAC. For these reasons we leave this step up to the user to decide and implement, but we have provided some additional information below:
 
 FLAASH: https://www.harrisgeospatial.com/docs/FLAASH.html 
 QUAC: https://www.harrisgeospatial.com/docs/QUAC.html 
 Sen2Cor: http://step.esa.int/main/third-party-plugins-2/sen2cor/
-ELM: *Requires in situ calibration targets
+ELM: *Requires in situ calibration targets.
 <!--, but it is our hope to make this process even easier by embedding the R package Sen2R into this section.
-Sen2R is a package that allows a user to search, download, and atmospherically correct Sentinel-2 Imagery directly from R (Ranghetti and Busetto 2018)-->.
+Sen2R is a package that allows a user to search, download, and atmospherically correct Sentinel-2 Imagery directly from R (Ranghetti and Busetto 2018)-->
 
 ## Image Pre-Processing
 
-This supplemental script is designed to help the user pre-process sentinel-2 imagery directly from acquistion or after atmospheric correction.
-The script was developed using Sentinel-2 as a the example, because this imagery has unqiue challenges but many functions can be utilized for other sensor's imagery as well. 
+This supplemental script is designed to help the user pre-process sentinel-2 imagery directly from acquisition or after atmospheric correction.
+The script was developed using Sentinel-2 as a the example, because this imagery has unique challenges but many functions can be utilized for other sensor's imagery as well. 
 The [data_preprocessing.R](https://github.com/RAJohansen/waterquality/blob/master/data-raw/data_preprocessing.R) script describes multiple functions in the following steps:
-1. Define your inputs- This includes the image directory, imagery file extention pattern (.jp2), area of interest (AOI), and preferred projection (in required).
-2.The second step is create a list of images from the defined directory, and create a template (same extent and spatial resolution) image based on a single band to be the configuation of the final stacked raster product.
-*For Sentinel-2, it is recommended to use a band with 20-meter resolution (ex. Band 5), because it is more appropiate to upscale the higher resolution 10-meter bands than to downscale the 20-meter bands. 
-3. The next step is to iterate throught the list of rasters to resample (`raster::resample()`) the imagery using the defined template, crop (`raster::crop()`) the imagery using the rectangular boundary of the AOI (ex. shapefile of Harsha Lake), and then stack (`raster::stack()`) the resulting rasters together.
+1. Define your inputs- This includes the image directory, imagery file extension pattern (.jp2), area of interest (AOI), and preferred projection (in required).
+2.The second step is create a list of images from the defined directory, and create a template (same extent and spatial resolution) image based on a single band to be the configuration of the final stacked raster product.
+*For Sentinel-2, it is recommended to use a band with 20-meter resolution (ex. Band 5), because it is more appropriate to upscale the higher resolution 10-meter bands than to downscale the 20-meter bands. 
+3. The next step is to iterate through the list of rasters to resample (`raster::resample()`) the imagery using the defined template, crop (`raster::crop()`) the imagery using the rectangular boundary of the AOI (ex. shapefile of Harsha Lake), and then stack (`raster::stack()`) the resulting rasters together.
 This process takes approximately 4-5 minutes to run but converts the large raw sentinel-2 data into tidy TIFF file only a fraction of the size of the full scene stack (3GB+ vs. 15.1MB).
-4. *Optional: To futher reduce the size of the tiff file, we have added the mask (`raster::mask()`)function which eliminates the values of all pixels outside of the physical boundary of the AOI.   
-5. *Optional: Another way to reduce the size of the imagery or to eliminate erronous information is to create a subset of the bands (i.e. Sentinel-2 algorithms only use the first nine bands (1:9)).
+4. *Optional: To further reduce the size of the tiff file, we have added the mask (`raster::mask()`)function which eliminates the values of all pixels outside of the physical boundary of the AOI.   
+5. *Optional: Another way to reduce the size of the imagery or to eliminate erroneous information is to create a subset of the bands (i.e. Sentinel-2 algorithms only use the first nine bands (1:9)).
 This is also a way to make sure that your input aligns with the algorithms band designations below.
 6. Finally, we provide an option to save the final output.
 
 ## Band Selection and Designation
 
-Due to the fact that each institution and sensors have their own method of "tuning" their data, we provide a description of what the format of each sensor should look like as well as their appropiate band designations.
+Due to the fact that each institution and sensors have their own method of "tuning" their data, we provide a description of what the format of each sensor should look like as well as their appropriate band designations.
 After atmospheric correction and preprocessing each sensor should be in the following format:
 
 ```{r worldview2, echo=FALSE}
