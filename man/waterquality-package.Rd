@@ -21,11 +21,16 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Richard Johansen \email{johansra@mail.uc.edu} (0000-0003-4287-9677)
+\strong{Maintainer}: Richard Johansen \email{richard.johansen@uc.edu} (0000-0003-4287-9677)
 
 Authors:
 \itemize{
   \item Jakub Nowosad \email{nowosad.jakub@gmail.com} (0000-0002-1057-3721)
+}
+
+Other contributors:
+\itemize{
+  \item U.S. Army Corps of Engineers [funder]
 }
 
 }

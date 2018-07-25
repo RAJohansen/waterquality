@@ -8,8 +8,8 @@
 <title>Introduction to the waterquality package • waterquality</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to the waterquality package">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to the waterquality package">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">waterquality</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.12</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
       </span>
     </div>
 
@@ -79,7 +79,7 @@
       <h1>Introduction to the waterquality package</h1>
                         <h4 class="author">Richard Johansen, Jakub Nowosad</h4>
             
-            <h4 class="date">2018-07-19</h4>
+            <h4 class="date">2018-07-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/RAJohansen/waterquality/blob/master/vignettes/waterquality_vignette.Rmd"><code>vignettes/waterquality_vignette.Rmd</code></a></small>
       <div class="hidden name"><code>waterquality_vignette.Rmd</code></div>
@@ -376,11 +376,11 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 <div id="introduction-to-the-waterquality-package" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction-to-the-waterquality-package" class="anchor"></a>Introduction to the waterquality package</h1>
-<p>Once the data has been pre-processed and atmospherically corrected, the water quality algorithms can be applied. This package makes use of suite of well-established algorithms designed for the evaluation of water quality. More specifically these indices were developed for the detection and estimation pigments in the upper portion of the water column, including the ubiquitous vegetation pigment chlorophyll-a, the cyanobacterial specific pigment phycocyanin, and the general metric of turbidity (Mishra et al. 2014, Randolph et al. 2008, Simis et al. 2005, Stumpf et al. 2016, Wynne et al. 2008). These proxies strongly co-vary, but are also influenced by water bio-chemistry, geographic location, and atmospheric conditions (Dokulil and Teubner 2000, Stumpf et al. 2016, Wynne et al. 2012, 2015). These local variations are the justification for including the near-comprehensive list of algorithms water quality algorithms. This package is only designed to give water managers or researchers a user-friendly method and series of options for monitoring a given water body for algal blooms.</p>
+<p>Once the data has been pre-processed and atmospherically corrected, the water quality algorithms can be applied. This package makes use of a suite of well-established algorithms designed for the evaluation of water quality via remotely sensed imagery, which are designed to detect the spectral response of only the upper most portion of the water column (~1 meter). More specifically, these indices were developed for the detection and estimation of the spigments associated with cyanobacteria and harmful algal blooms (CHABs), which include the ubiquitous phytoplankton pigment chlorophyll-a, the cyanobacteria specific pigment phycocyanin, and turbidity used as a generic metric of water clarity (Mishra et al. 2014, Randolph et al. 2008, Simis et al. 2005, Stumpf et al. 2016, Wynne et al. 2008). Studies have demostrated that these proxies can strongly co-vary, but the degree is influenced by water bio-chemistry, geography, and atmospheric conditions (Dokulil and Teubner 2000, Stumpf et al. 2016, Wynne et al. 2012, 2015). These localized variations and the subsequent affect on the algorithms performances are the justification for including the near-comprehensive list of algorithms water quality algorithms. This package is only designed to give water managers or researchers a user-friendly method and set of options for monitoring a given water body for algal blooms.</p>
 <div id="algorithms" class="section level2">
 <h2 class="hasAnchor">
 <a href="#algorithms" class="anchor"></a>Algorithms</h2>
-<p>Currently, we have a list of <a href="https://rajohansen.github.io/waterquality/reference/index.html">45 algorithms</a> that can be applied for the detection of these three metrics. Although, it is important to note that not all sensors are capable of using all algorithms due to their spectral configurations. Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. <code>?Am092Bsub()</code>). Each algorithm is also linked to the original papers metric (Chlorophyll-a, Phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type.</p>
+<p>Currently, we have a list of <a href="https://rajohansen.github.io/waterquality/reference/index.html">45 algorithms</a> that can be applied for the detection of these three metrics. Although, it is important to note that not all sensors are capable of using all algorithms due to their spectral configurations. Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. <code>?Am092Bsub()</code>). Each algorithm is also linked to the original papers metric (Chlorophyll-a, Phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type. The final raster images are in relative index values and are not the estimated chlorophyll-a, phycocyanin, or turbidity values, but can easily be converted in to estimated concentration values using a regression model and in situ measurements as described in Johansen et al. 2018.</p>
 </div>
 <div id="wq_calc" class="section level2">
 <h2 class="hasAnchor">
@@ -410,10 +410,6 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 </li>
 </ul>
 </div>
-</div>
-<div id="conclusions-interpreting-the-results" class="section level1">
-<h1 class="hasAnchor">
-<a href="#conclusions-interpreting-the-results" class="anchor"></a>Conclusions Interpreting the Results?</h1>
 </div>
 <div id="examples" class="section level1">
 <h1 class="hasAnchor">
@@ -549,7 +545,6 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
       <li><a href="#wq_calc">wq_calc()</a></li>
       </ul>
 </li>
-      <li><a href="#conclusions-interpreting-the-results">Conclusions Interpreting the Results?</a></li>
       <li>
 <a href="#examples">Examples</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#single-algorithm">Single Algorithm</a></li>
@@ -568,7 +563,7 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 
 
       <footer><div class="copyright">
-  <p>Developed by Richard Johansen, Jakub Nowosad, the U.S. Army Corps of Engineers.</p>
+  <p>Developed by Richard Johansen, Jakub Nowosad, U.S. Army Corps of Engineers.</p>
 </div>
 
 <div class="pkgdown">
