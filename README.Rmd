@@ -46,6 +46,8 @@ plot(s2_two_alg)
 
 To learn more read the ["Introduction to the waterquality package"](https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html) vignette.
 
-## Contribution
+## Package Contributions
 
-Feel free to submit issues and enhancement requests.
+We encourage users to submit issues and enhancement requests so we may continue to improve our package. 
+
+Futhermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at richard.johansen@uc.edu.
