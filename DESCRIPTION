@@ -25,7 +25,8 @@ Suggests:
     knitr,
     tibble,
     rmarkdown,
-    covr
+    covr,
+    rgdal
 URL: https://github.com/RAJohansen/waterquality
 BugReports: https://github.com/RAJohansen/waterquality/issues
 VignetteBuilder: knitr
