@@ -18,15 +18,15 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 Imports:
     methods,
-    raster
+    raster,
+    rgdal
 RoxygenNote: 6.0.1
 Suggests: 
     testthat,
     knitr,
     tibble,
     rmarkdown,
-    covr,
-    rgdal
+    covr
 URL: https://github.com/RAJohansen/waterquality
 BugReports: https://github.com/RAJohansen/waterquality/issues
 VignetteBuilder: knitr
