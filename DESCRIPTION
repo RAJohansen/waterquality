@@ -18,7 +18,8 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 Imports:
     methods,
-    raster
+    raster,
+    rgdal
 RoxygenNote: 6.0.1
 Suggests: 
     testthat,
