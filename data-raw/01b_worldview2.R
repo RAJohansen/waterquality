@@ -10,5 +10,5 @@ worldview_2 = tribble(
   5,            "Red",                      0.660,
   6,            "Red Edge",                 0.725,
   7,            "NIR-1",                    0.833,
-  8,            "NIR-2",                    0.880 
+  8,            "NIR-2",                    0.950 
 )
