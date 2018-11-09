@@ -55,3 +55,4 @@ Other algorithms: \code{\link{Al10SABI}},
   \code{\link{TurbMoore80Red}}, \code{\link{Wy08CI}},
   \code{\link{Zh10FLH}}
 }
+\concept{algorithms}

@@ -56,3 +56,4 @@ Other algorithms: \code{\link{Al10SABI}},
   \code{\link{TurbLath91RedOverBlue}},
   \code{\link{TurbMoore80Red}}, \code{\link{Wy08CI}}
 }
+\concept{algorithms}

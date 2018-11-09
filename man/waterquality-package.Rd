@@ -7,10 +7,10 @@
 \title{waterquality: Satellite Derived Water Quality Detection Algorithms}
 \description{
 The goal of 'waterquality' is to convert satellite-reflectance imagery
-to a host of pre-defined water quality algorithms designed for the detection of
-cholorophyll-a, blue-green algae (Phycocyanin), and turbidity.
-This package is able to process the following sensor configurations:
-WorldView-2, Sentinel-2, Landsat-8, MODIS, and MERIS.
+    to a host of pre-defined water quality algorithms designed for the detection of 
+    cholorophyll-a, blue-green algae (Phycocyanin), and turbidity. 
+    This package is able to process the following sensor configurations: 
+    WorldView-2, Sentinel-2, Landsat-8, MODIS, and MERIS.
 }
 \seealso{
 Useful links:
