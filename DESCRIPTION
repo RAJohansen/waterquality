@@ -1,6 +1,6 @@
 Package: waterquality
 Title: Satellite Derived Water Quality Detection Algorithms
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: c(person("Richard", "Johansen", email = "richard.johansen@uc.edu", 
     role = c("aut", "cre"), comment = c(ORCID = "0000-0003-4287-9677")),
     person("Jakub", "Nowosad", email="nowosad.jakub@gmail.com",
@@ -20,7 +20,7 @@ Imports:
     methods,
     raster,
     rgdal
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Suggests: 
     testthat,
     knitr,
