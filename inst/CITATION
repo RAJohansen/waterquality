@@ -4,7 +4,7 @@ citEntry(entry = "manual",
   author = c(person("Richard", "Johansen"),
              person("Jakub", "Nowosad"),
              person("Molly", "Reif"),
-             person("Erich", "Emery"))
+             person("Erich", "Emery")),
   title = "waterquality: Satellite Derived Water Quality Detection Algorithms",
   year = "2018",
   note = "R package version 0.2.2",
