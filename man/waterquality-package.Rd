@@ -26,6 +26,8 @@ Useful links:
 Authors:
 \itemize{
   \item Jakub Nowosad \email{nowosad.jakub@gmail.com} (0000-0002-1057-3721)
+  \item Molly Reif \email{Molly.K.Reif@usace.army.mil} (0000-0003-4207-1459)
+  \item Erich Emery \email{Erich.B.Emery@usace.army.mil}
 }
 
 Other contributors:
