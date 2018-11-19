@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 pandoc: 1.19.2.1
 pkgdown: 1.1.0
 pkgdown_sha: ~
+=======
+pandoc: 2.3.1
+pkgdown: 1.1.0.9000
+pkgdown_sha: 72391933f693e1d9509edade4951486883d64382
+>>>>>>> 4e9995b311388fa5aca19bbd922d263d95fa0866
 articles:
   waterquality_vignette: waterquality_vignette.html
 
