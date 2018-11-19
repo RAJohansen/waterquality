@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">waterquality</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.2</span>
       </span>
     </div>
 
@@ -79,7 +79,7 @@
       <h1>Introduction to the waterquality package</h1>
                         <h4 class="author">Richard Johansen, Jakub Nowosad</h4>
             
-            <h4 class="date">2018-07-25</h4>
+            <h4 class="date">2018-11-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/RAJohansen/waterquality/blob/master/vignettes/waterquality_vignette.Rmd"><code>vignettes/waterquality_vignette.Rmd</code></a></small>
       <div class="hidden name"><code>waterquality_vignette.Rmd</code></div>
@@ -162,7 +162,7 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 <tr class="even">
 <td align="left">8</td>
 <td align="right">NIR-2</td>
-<td align="right">0.880</td>
+<td align="right">0.950</td>
 </tr>
 </tbody>
 </table>
@@ -447,15 +447,13 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 <a class="sourceLine" id="cb4-3" data-line-number="3">                     <span class="dt">sat =</span> <span class="st">"sentinel2"</span>)</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; Am09KBBI calculated!</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; Go04MCI calculated!</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; Ku15PhyCI calculated!</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; Be16FLHBlueRedNIR calculated!</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; Be16FLHGreenRedNIR calculated!</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; Be16FLHVioletRedNIR calculated!</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; Wy08CI calculated!</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; Da052BDA calculated!</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; Ku15SLH calculated!</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; MM12NDCIalt calculated!</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="kw"><a href="http://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(Harsha_PC) </a></code></pre></div>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; Be16FLHBlueRedNIR calculated!</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; Be16FLHGreenRedNIR calculated!</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; Be16FLHVioletRedNIR calculated!</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; Wy08CI calculated!</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; Da052BDA calculated!</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; Ku15SLH calculated!</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="kw"><a href="http://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(Harsha_PC) </a></code></pre></div>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
 </div>
 <div id="all-algorithms" class="section level2">
@@ -467,32 +465,28 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; Al10SABI calculated!</span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; Am092Bsub calculated!</span></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; Am09KBBI calculated!</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; Be16FLHblue calculated!</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; Be16FLHviolet calculated!</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; Gi033BDA calculated!</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; Go04MCI calculated!</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; Ku15PhyCI calculated!</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; MM12NDCI calculated!</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; Be16NDTIblue calculated!</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; Be16NDTIviolet calculated!</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; Be16FLHBlueRedNIR calculated!</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; Be16FLHGreenRedNIR calculated!</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; Be16FLHVioletRedNIR calculated!</span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; Wy08CI calculated!</span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; Da052BDA calculated!</span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; Zh10FLH calculated!</span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; Ku15SLH calculated!</span></a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; MM12NDCIalt calculated!</span></a>
-<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt; TurbBe16GreenPlusRedBothOverViolet calculated!</span></a>
-<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt; TurbBe16RedOverViolet calculated!</span></a>
-<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt; TurbBow06RedOverGreen calculated!</span></a>
-<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt; TurbChip09NIROverGreen calculated!</span></a>
-<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt; TurbDox02NIRoverRed calculated!</span></a>
-<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt; TurbFrohn09GreenPlusRedBothOverBlue calculated!</span></a>
-<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt; TurbHarr92NIR calculated!</span></a>
-<a class="sourceLine" id="cb5-30" data-line-number="30"><span class="co">#&gt; TurbLath91RedOverBlue calculated!</span></a>
-<a class="sourceLine" id="cb5-31" data-line-number="31"><span class="co">#&gt; TurbMoore80Red calculated!</span></a>
-<a class="sourceLine" id="cb5-32" data-line-number="32"><span class="kw"><a href="http://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(Harsha_All) <span class="co"># Only displays first 12 of 28</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; Be16FLHviolet calculated!</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; Gi033BDA calculated!</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; Go04MCI calculated!</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; MM12NDCI calculated!</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; Be16NDTIblue calculated!</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; Be16NDTIviolet calculated!</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; Be16FLHBlueRedNIR calculated!</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; Be16FLHGreenRedNIR calculated!</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; Be16FLHVioletRedNIR calculated!</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; Wy08CI calculated!</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; Da052BDA calculated!</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; Ku15SLH calculated!</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; TurbBe16GreenPlusRedBothOverViolet calculated!</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; TurbBe16RedOverViolet calculated!</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; TurbBow06RedOverGreen calculated!</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; TurbChip09NIROverGreen calculated!</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt; TurbDox02NIRoverRed calculated!</span></a>
+<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt; TurbFrohn09GreenPlusRedBothOverBlue calculated!</span></a>
+<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt; TurbHarr92NIR calculated!</span></a>
+<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt; TurbLath91RedOverBlue calculated!</span></a>
+<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt; TurbMoore80Red calculated!</span></a>
+<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="kw"><a href="http://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(Harsha_All) <span class="co"># Only displays first 12 of 28</span></a></code></pre></div>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
 </div>
 </div>

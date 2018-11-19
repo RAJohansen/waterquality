@@ -58,3 +58,4 @@ Other algorithms: \code{\link{Am092Bsub}},
   \code{\link{TurbMoore80Red}}, \code{\link{Wy08CI}},
   \code{\link{Zh10FLH}}
 }
+\concept{algorithms}
