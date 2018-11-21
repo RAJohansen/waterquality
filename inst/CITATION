@@ -8,7 +8,7 @@ citEntry(entry = "manual",
   title = "waterquality: Satellite Derived Water Quality Detection Algorithms",
   year = "2018",
   note = "R package version 0.2.2",
-  doi = "",
-  url = "https://rajohansen.github.io/waterquality/",
-  textVersion = "Johansen, R., Nowosad, J., Reif, M., Emery, E. (2018). waterquality: Satellite Derived Water Quality Detection Algorithms. R package version 0.2.2. https://rajohansen.github.io/waterquality/"
+  doi = "10.5281/zenodo.1493487",
+  url = "https://doi.org/10.5281/zenodo.1493487",
+  textVersion = "Johansen, R., Nowosad, J., Reif, M., Emery, E. (2018). waterquality: Satellite Derived Water Quality Detection Algorithms. R package version 0.2.2. https://doi.org/10.5281/zenodo.1493487"
 )
