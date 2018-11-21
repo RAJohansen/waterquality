@@ -291,22 +291,16 @@ Wozniak M, Bradtke KM, Darecki M, Krezel A. 2016. Empirical Model for Phycocyani
 Xu Min, Hongxing Liu, Richard Beck, John Lekki, Bo Yang, Song Shu, Emily L. Kang, Robert Anderson, Richard Johansen, Erich Emery, Molly Reif, Teresa Benko. A spectral space partition guided ensemble method for retrieving chlorophyll-a concentration in inland waters from Sentinel-2A satellite imagery. Journal of Great Lakes Research. 2018.
 
 # Credit
+
 To cite this library, please use the following entry:
 
 Johansen, R., Nowosad, J., Reif, M., Emery, E. (2018). waterquality: Satellite Derived Water Quality Detection Algorithms. R package version 0.2.2. https://rajohansen.github.io/waterquality/
 
-@Manual{sen2r,
+@Manual{waterquality,
   title  = {waterquality: Satellite Derived Water Quality Detection Algorithms},
-  author = {Richard Johansen,Jakub Nowosad, Molly Reif,Erich Emery},
+  author = {Richard Johansen, Jakub Nowosad, Molly Reif, Erich Emery},
   year   = {2018},
   note   = {R package version 0.2.2},
   doi    = {10.5281/zenodo.1492878},
   url    = {https://rajohansen.github.io/waterquality},
 }
-
-
-
-
-
-
-
