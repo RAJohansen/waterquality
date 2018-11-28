@@ -93,21 +93,22 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install waterquality from github with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"RAJohansen/waterquality"</span>)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"RAJohansen/waterquality"</span>)</code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>The main function in this package is <code><a href="reference/wq_calc.html">wq_calc()</a></code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(waterquality)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">library</span>(raster)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Loading required package: sp</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">s2 =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/raster/topics/stack">stack</a></span>(<span class="kw">system.file</span>(<span class="st">"raster/S2_Harsha.tif"</span>, <span class="dt">package =</span> <span class="st">"waterquality"</span>))</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">s2_two_alg =<span class="st"> </span><span class="kw"><a href="reference/wq_calc.html">wq_calc</a></span>(s2, <span class="dt">alg =</span> <span class="kw">c</span>(<span class="st">"TurbChip09NIROverGreen"</span>, <span class="st">"Be16FLHGreenRedNIR"</span>), <span class="dt">sat =</span> <span class="st">"sentinel2"</span>)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; Be16FLHGreenRedNIR calculated!</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; TurbChip09NIROverGreen calculated!</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="kw"><a href="http://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(s2_two_alg)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(waterquality)
+<span class="kw">library</span>(raster)
+<span class="co">#&gt; Warning: package 'raster' was built under R version 3.5.1</span>
+<span class="co">#&gt; Loading required package: sp</span>
+s2 =<span class="st"> </span><span class="kw">stack</span>(<span class="kw">system.file</span>(<span class="st">"raster/S2_Harsha.tif"</span>, <span class="dt">package =</span> <span class="st">"waterquality"</span>))
+s2_two_alg =<span class="st"> </span><span class="kw"><a href="reference/wq_calc.html">wq_calc</a></span>(s2, <span class="dt">alg =</span> <span class="kw">c</span>(<span class="st">"TurbChip09NIROverGreen"</span>, <span class="st">"Be16FLHGreenRedNIR"</span>), <span class="dt">sat =</span> <span class="st">"sentinel2"</span>)
+<span class="co">#&gt; Be16FLHGreenRedNIR calculated!</span>
+<span class="co">#&gt; TurbChip09NIROverGreen calculated!</span>
+<span class="kw">plot</span>(s2_two_alg)</code></pre></div>
 <p><img src="reference/figures/README-example-1.png" width="700"></p>
 <p>To learn more read the <a href="https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html">“Introduction to the waterquality package”</a> vignette.</p>
 </div>
@@ -115,7 +116,7 @@
 <h2 class="hasAnchor">
 <a href="#package-contributions" class="anchor"></a>Package Contributions</h2>
 <p>We encourage users to submit issues and enhancement requests so we may continue to improve our package.</p>
-<p>Futhermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at <a href="mailto:richard.johansen@uc.edu" class="email">richard.johansen@uc.edu</a>.</p>
+<p>Futhermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at <a href="mailto:richard.johansen@uc.edu">richard.johansen@uc.edu</a>.</p>
 </div>
 </div>
   </div>
