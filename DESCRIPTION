@@ -12,7 +12,7 @@ Authors@R: c(person("Richard", "Johansen", email = "richard.johansen@uc.edu",
     person("U.S. Army Corps of Engineers", role = c("fnd")))
 Description: The goal of 'waterquality' is to convert satellite-reflectance imagery
     to a host of pre-defined water quality algorithms designed for the detection of 
-    cholorophyll-a, blue-green algae (Phycocyanin), and turbidity. 
+    chlorophyll-a, blue-green algae (Phycocyanin), and turbidity. 
     This package is able to process the following sensor configurations: 
     WorldView-2, Sentinel-2, Landsat-8, MODIS, and MERIS.
 Depends: R (>= 3.4.0)
