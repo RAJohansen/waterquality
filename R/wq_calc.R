@@ -15,7 +15,7 @@
 #' @examples 
 #' \dontrun{(
 #' library(raster)
-#' s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
+#' s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
 #' s2_wq = wq_calc(s2, alg = "all", sat = "sentinel2")
 #' s2_Al10SABI = wq_calc(s2, alg = "Al10SABI", sat = "sentinel2")
 #' s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Am092Bsub"), sat = "sentinel2")
