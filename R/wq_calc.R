@@ -13,13 +13,17 @@
 #' @return RasterLayer
 #' 
 #' @examples 
-#' \dontrun{(
 #' library(raster)
+#' 
+#' # sentinel2 example
 #' s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
-#' s2_wq = wq_calc(s2, alg = "all", sat = "sentinel2")
 #' s2_Al10SABI = wq_calc(s2, alg = "Al10SABI", sat = "sentinel2")
 #' s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Am092Bsub"), sat = "sentinel2")
 #' 
+#' \dontrun{(
+#' s2_wq = wq_calc(s2, alg = "all", sat = "sentinel2")
+#' 
+#' # landsat8 example
 #' l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "waterquality"))
 #' l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")
 #' )}
