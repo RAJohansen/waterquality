@@ -8,7 +8,7 @@
 \description{
 The goal of 'waterquality' is to convert satellite-reflectance imagery
     to a host of pre-defined water quality algorithms designed for the detection of 
-    chlorophyll-a, blue-green algae (Phycocyanin), and turbidity. 
+    chlorophyll-a, blue-green algae (Phycocyanin), and turbidity (Beck et al. (2017) <doi:10.3390/rs9060538>). 
     This package is able to process the following sensor configurations: 
     WorldView-2, Sentinel-2, Landsat-8, MODIS, and MERIS.
 }

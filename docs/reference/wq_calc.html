@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">waterquality</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.2</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.3</span>
       </span>
     </div>
 
@@ -149,14 +149,16 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"># NOT RUN {
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>raster</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: sp</span></div><div class='input'>
+<span class='co'># sentinel2 example</span>
+<span class='no'>s2</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/raster/topics/stack'>stack</a></span>(<span class='fu'>system.file</span>(<span class='st'>"raster/S2_Harsha.tif"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"waterquality"</span>))
+<span class='no'>s2_Al10SABI</span> <span class='kw'>=</span> <span class='fu'>wq_calc</span>(<span class='no'>s2</span>, <span class='kw'>alg</span> <span class='kw'>=</span> <span class='st'>"Al10SABI"</span>, <span class='kw'>sat</span> <span class='kw'>=</span> <span class='st'>"sentinel2"</span>)</div><div class='output co'>#&gt; Al10SABI calculated!</div><div class='input'><span class='no'>s2_two_alg</span> <span class='kw'>=</span> <span class='fu'>wq_calc</span>(<span class='no'>s2</span>, <span class='kw'>alg</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"TurbChip09NIROverGreen"</span>, <span class='st'>"Am092Bsub"</span>), <span class='kw'>sat</span> <span class='kw'>=</span> <span class='st'>"sentinel2"</span>)</div><div class='output co'>#&gt; Am092Bsub calculated!
+#&gt; TurbChip09NIROverGreen calculated!</div><div class='input'>
+</div># NOT RUN {
 (
-library(raster)
-s2 = stack(system.file("raster/S2_Taylorsville.tif", package = "waterquality"))
 s2_wq = wq_calc(s2, alg = "all", sat = "sentinel2")
-s2_Al10SABI = wq_calc(s2, alg = "Al10SABI", sat = "sentinel2")
-s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Am092Bsub"), sat = "sentinel2")
 
+# landsat8 example
 l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "waterquality"))
 l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")
 )

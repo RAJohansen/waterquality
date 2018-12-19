@@ -25,6 +25,12 @@ This package is able to process the following sensor configurations: WorldView-2
 
 ## Installation
 
+You can install the released version from CRAN with:
+
+```{r install_CRAN, eval = FALSE}
+install.packages("waterquality")
+```
+
 You can install waterquality from github with:
 
 ```{r gh-installation, eval = FALSE}
