@@ -4,7 +4,7 @@
 #'
 #' @param raster_stack RasterStack containing a satellite data
 #' @param alg Name (e.g. [Am09KBBI()]) or type of the algorithm ("chlorophyll", "phycocyanin", "turbidity") or "all"
-#' @param sat Name of the satellite or instrument ("worldview2", "sentinel2", "landsat8", "modis", or "meris")
+#' @param sat Name of the satellite or instrument ("worldview2", "sentinel2", "landsat8", "modis", "meris", or "OLCI")
 #' @param ... Other arguments passed on to [stack()]
 #' 
 #' @importFrom raster overlay stack nlayers
@@ -30,7 +30,7 @@
 #' @export
 wq_calc = function(raster_stack, alg = "all", sat, ...){
   if (!is(raster_stack, 'RasterStack')) stop ("Input object needs to be of the RasterStack class")
-  sats = c("worldview2", "sentinel2", "landsat8", "modis", "meris")
+  sats = c("worldview2", "sentinel2", "landsat8", "modis", "meris", "OLCI")
   if (!sat %in% sats) stop ("Unknown satellite or instrument.",
                             "Please provide one of: 'worldview2', ",
                             "'sentinel2', 'landsat8', 'modis', or 'meris'")
