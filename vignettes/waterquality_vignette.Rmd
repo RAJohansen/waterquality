@@ -26,7 +26,7 @@ CHABs have the ability to cause adverse effects on human and animal health as we
 However, in situ monitoring all of the water bodies in the United States would be costly and labor intensive, if even possible. 
 This has given rise to the application of remote sensing data to be used as the standard method for large-scope water quality studies.
 In general, satellite remote sensing offers cheap (or even free), consistent, near total coverage of the U.S. water bodies.
-There are multiple freely available data sets from sensors that offer the spatial, spectral, and geographic coverage needed for the study of CHABS, such as MERIS, OLCI, MODIS, Landsat-8, Sentinel-2 (Beck et al. 2016, 2017, Johansen et al. 2018). 
+There are multiple freely available data sets from sensors that offer the spatial, spectral, and geographic coverage needed for the study of CHABS, such as Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI  (Beck et al. 2016, 2017, Johansen et al. 2018). 
 
 A major concern is revisit time worsened by high frequency cloud-cover. 
 The issue is further compounded by the variation in each satellite's spatial and spectral configuration.
