@@ -26,7 +26,7 @@ CHABs have the ability to cause adverse effects on human and animal health as we
 However, in situ monitoring all of the water bodies in the United States would be costly and labor intensive, if even possible. 
 This has given rise to the application of remote sensing data to be used as the standard method for large-scope water quality studies.
 In general, satellite remote sensing offers cheap (or even free), consistent, near total coverage of the U.S. water bodies.
-There are multiple freely available data sets from sensors that offer the spatial, spectral, and geographic coverage needed for the study of CHABS, such as MERIS, OLCI, MODIS, Landsat-8, Sentinel-2A and 2B (Beck et al. 2016, 2017, Johansen et al. 2018). 
+There are multiple freely available data sets from sensors that offer the spatial, spectral, and geographic coverage needed for the study of CHABS, such as MERIS, OLCI, MODIS, Landsat-8, Sentinel-2 (Beck et al. 2016, 2017, Johansen et al. 2018). 
 
 A major concern is revisit time worsened by high frequency cloud-cover. 
 The issue is further compounded by the variation in each satellite's spatial and spectral configuration.
@@ -34,7 +34,7 @@ So it is proposed that water managers and researchers should utilize all possibl
 This is vital given that each water body contains unique mixtures of bio-chemical variables and physical characteristics.
 We believe that this would allow for a more comprehensive study and allow for precision treatment of each water body.
 In order to achieve the goal of precision-based water quality monitoring, we have developed the **waterquality** package which contains a near-comprehensive list of satellite-derived algorithms for the detection and quantification of the three main quality proxies: Chlorophyll-a, Turbidity, and Phycocyanin (Schalles and Yacobi 2000, Simis et al. 2005, Randolph et al. 2008, Stumpf et al. 2016, Wozniak et al. 2016).
-The package's main function is to convert reflectance imagery from operational satellite imagers (Worldview-2, Sentinel-2, Landsat-8, MODIS, MERIS, OLCI) into any or all of the well-established water quality indices.
+The package's main function is to convert reflectance imagery from operational satellite imagers (Worldview-2, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI) into any or all of the well-established water quality indices.
 This final output product is a raster stack of the user-defined water quality indices for a desired area of interest.
 
 ## Data Acquisition
@@ -129,6 +129,15 @@ landsat_8 = tibble::tribble(
 knitr::kable(landsat_8, align = c("l", "r", "r"), caption = "Landsat-8")
 ```
 
+```{r modis, echo=FALSE}
+modis = tibble::tribble(
+  ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
+  1,            "Red",                      0.645,
+  2,            "NIR",                      0.859
+)
+knitr::kable(modis, align = c("l", "r", "r"), caption = "MODIS")
+```
+
 ```{r meris, echo=FALSE}
 meris = tibble::tribble(
   ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
@@ -180,16 +189,6 @@ OLCI = tibble::tribble(
 knitr::kable(OLCI, align = c("l", "r", "r"), caption = "OLCI")
 
 ```
-
-```{r modis, echo=FALSE}
-modis = tibble::tribble(
-  ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
-  1,            "Red",                      0.645,
-  2,            "NIR",                      0.859
-)
-knitr::kable(modis, align = c("l", "r", "r"), caption = "MODIS")
-```
-
 
 # Introduction to the waterquality package
 
