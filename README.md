@@ -6,8 +6,6 @@ status](http://www.r-pkg.org/badges/version/waterquality)](https://cran.r-projec
 [![Build
 Status](https://travis-ci.org/RAJohansen/waterquality.png?branch=master)](https://travis-ci.org/RAJohansen/waterquality)
 [![codecov](https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg)](https://codecov.io/gh/RAJohansen/waterquality)
-[![CRAN RStudio mirror
-downloads](http://cranlogs.r-pkg.org/badges/waterquality)](https://cran.r-project.org/package=waterquality)
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/waterquality)
 # waterquality
 
