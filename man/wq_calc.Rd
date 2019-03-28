@@ -11,7 +11,7 @@ wq_calc(raster_stack, alg = "all", sat, ...)
 
 \item{alg}{Name (e.g. \code{\link[=Am09KBBI]{Am09KBBI()}}) or type of the algorithm ("chlorophyll", "phycocyanin", "turbidity") or "all"}
 
-\item{sat}{Name of the satellite or instrument ("worldview2", "sentinel2", "landsat8", "modis", or "meris")}
+\item{sat}{Name of the satellite or instrument ("worldview2", "sentinel2", "landsat8", "modis", "meris", or "OLCI")}
 
 \item{...}{Other arguments passed on to \code{\link[=stack]{stack()}}}
 }
