@@ -177,7 +177,7 @@ OLCI = tibble::tribble(
   20,           "Water Vapor Absorption-2",          0.940,
   21,           "Atmospheric/Aerosol Correction-2",  1.020
 )
-knitr::kable(meris, align = c("l", "r", "r"), caption = "OLCI")
+knitr::kable(OLCI, align = c("l", "r", "r"), caption = "OLCI")
 
 ```
 
@@ -225,6 +225,7 @@ The main function of this package is called `wq_calc()` which calculates water q
     - Landsat-8
     - MODIS
     - MERIS
+    - OLCI
 
 
 # Examples
@@ -274,7 +275,7 @@ plot(Harsha_All) # Only displays first 12 of 28
 # Acknowledgements
 
 The waterquality package was developed with funding from the U.S. Army Corps of Engineers.
-The authors would also like to thank the University of Cincinnati's Visualization Laboratory and the University of Cincinnati's Space Informatics Lab for their expertise and technical services. 
+The authors would also like to thank the University of Cincinnati Library's Research & Data Services the University of Cincinnati's Space Informatics Lab for their expertise and technical services. 
 
 # References
 
