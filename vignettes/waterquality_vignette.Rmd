@@ -34,7 +34,7 @@ So it is proposed that water managers and researchers should utilize all possibl
 This is vital given that each water body contains unique mixtures of bio-chemical variables and physical characteristics.
 We believe that this would allow for a more comprehensive study and allow for precision treatment of each water body.
 In order to achieve the goal of precision-based water quality monitoring, we have developed the **waterquality** package which contains a near-comprehensive list of satellite-derived algorithms for the detection and quantification of the three main quality proxies: Chlorophyll-a, Turbidity, and Phycocyanin (Schalles and Yacobi 2000, Simis et al. 2005, Randolph et al. 2008, Stumpf et al. 2016, Wozniak et al. 2016).
-The package's main function is to convert reflectance imagery from operational satellite imagers (MODIS, MERIS, Landsat-8, Sentinel-2, and Worldview-2) into any or all of the well-established water quality indices.
+The package's main function is to convert reflectance imagery from operational satellite imagers (MODIS, MERIS, OLCI, Landsat-8, Sentinel-2, and Worldview-2) into any or all of the well-established water quality indices.
 This final output product is a raster stack of the user-defined water quality indices for a desired area of interest.
 
 ## Data Acquisition
