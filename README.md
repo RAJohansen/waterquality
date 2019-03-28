@@ -8,7 +8,7 @@ Status](https://travis-ci.org/RAJohansen/waterquality.png?branch=master)](https:
 [![codecov](https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg)](https://codecov.io/gh/RAJohansen/waterquality)
 [![CRAN RStudio mirror
 downloads](http://cranlogs.r-pkg.org/badges/waterquality)](https://cran.r-project.org/package=waterquality)
-
+![downloads](http://cranlogs.r-pkg.org/badges/grand-total/waterquality)
 # waterquality
 
 The goal of **waterquality** is to convert satellite-reflectance imagery
