@@ -1,7 +1,7 @@
 library(raster)
 library(tidyverse)
 
-olci = tribble(
+OLCI = tribble(
   ~band_number, ~band_name,                       ~band_center,
   1,            "Aerosol Correction",                0.400,
   2,            "Turbidity",                         0.413,
