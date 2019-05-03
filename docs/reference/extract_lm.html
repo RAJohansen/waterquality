@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HU103BDA algorithm — HU103BDA • waterquality</title>
+<title>Run linear model (lm) — extract_lm • waterquality</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="HU103BDA algorithm — HU103BDA" />
+<meta property="og:title" content="Run linear model (lm) — extract_lm" />
 
-<meta property="og:description" content="Applies the HU103BDA algorithm" />
+<meta property="og:description" content="The function runs a linear model on a single x and y variable
+and returns a data frame containing the following:
+r^2, p-value, slope, and intercept of the model" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,79 +113,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>HU103BDA algorithm</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RAJohansen/waterquality/blob/master/R/algorithms.R'><code>R/algorithms.R</code></a></small>
-    <div class="hidden name"><code>HU103BDA.Rd</code></div>
+    <h1>Run linear model (lm)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RAJohansen/waterquality/blob/master/R/extract_lm_functions.R'><code>R/extract_lm_functions.R</code></a></small>
+    <div class="hidden name"><code>extract_lm.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Applies the HU103BDA algorithm</p>
+    <p>The function runs a linear model on a single x and y variable
+and returns a data frame containing the following:
+r^2, p-value, slope, and intercept of the model</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>HU103BDA</span>(<span class='no'>w615</span>, <span class='no'>w600</span>, <span class='no'>w725</span>)</pre>
+    <pre class="usage"><span class='fu'>extract_lm</span>(<span class='no'>y</span>, <span class='no'>x</span>, <span class='no'>df</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>w615</th>
-      <td><p>numeric. Value at wavelength of 615 nm</p></td>
+      <th>y</th>
+      <td><p>independent variable</p></td>
     </tr>
     <tr>
-      <th>w600</th>
-      <td><p>numeric. Value at wavelength of 600 nm</p></td>
+      <th>x</th>
+      <td><p>dependent variable</p></td>
     </tr>
     <tr>
-      <th>w725</th>
-      <td><p>numeric. Value at wavelength of 725 nm</p></td>
+      <th>df</th>
+      <td><p>data frame object</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>RasterLayer or numeric</p>
+    <p>A dataframe of the model results</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Hunter, P.D.; Tyler, A.N.; Willby, N.J.; Gilvear, D.J.; The spatial dynamics of vertical migration by Microcystis aeruginosa in a eutrophic shallow lake: A case study using high spatial resolution time-series airborne remote sensing.  Limn. Oceanogr. 2008, 53, 2391-2406.</p>
+    <p>Johansen, Richard; et al. (2018). Evaluating the portability of satellite derived chlorophyll-a algorithms for temperate inland lakes using airborne hyperspectral imagery and dense surface observations. Harmful Algae. 76. 10.1016/j.hal.2018.05.001.</p>
+<p>R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other algorithms: <code><a href='Al10SABI.html'>Al10SABI</a></code>,
-  <code><a href='Am092Bsub.html'>Am092Bsub</a></code>, <code><a href='Am09KBBI.html'>Am09KBBI</a></code>,
-  <code><a href='Be162B643sub629.html'>Be162B643sub629</a></code>,
-  <code><a href='Be162B700sub601.html'>Be162B700sub601</a></code>,
-  <code><a href='Be162BsubPhy.html'>Be162BsubPhy</a></code>,
-  <code><a href='Be16FLHBlueRedNIR.html'>Be16FLHBlueRedNIR</a></code>,
-  <code><a href='Be16FLHGreenRedNIR.html'>Be16FLHGreenRedNIR</a></code>,
-  <code><a href='Be16FLHVioletRedNIR.html'>Be16FLHVioletRedNIR</a></code>,
-  <code><a href='Be16FLHblue.html'>Be16FLHblue</a></code>, <code><a href='Be16FLHviolet.html'>Be16FLHviolet</a></code>,
-  <code><a href='Be16MPI.html'>Be16MPI</a></code>,
-  <code><a href='Be16NDPhyI644over615.html'>Be16NDPhyI644over615</a></code>,
-  <code><a href='Be16NDPhyI644over629.html'>Be16NDPhyI644over629</a></code>,
-  <code><a href='Be16NDPhyI.html'>Be16NDPhyI</a></code>, <code><a href='Be16NDTIblue.html'>Be16NDTIblue</a></code>,
-  <code><a href='Be16NDTIviolet.html'>Be16NDTIviolet</a></code>,
-  <code><a href='Be16Phy2BDA644over629.html'>Be16Phy2BDA644over629</a></code>,
-  <code><a href='Da052BDA.html'>Da052BDA</a></code>, <code><a href='De933BDA.html'>De933BDA</a></code>,
-  <code><a href='Gi033BDA.html'>Gi033BDA</a></code>, <code><a href='Go04MCI.html'>Go04MCI</a></code>,
-  <code><a href='Kn07KIVU.html'>Kn07KIVU</a></code>, <code><a href='Ku15PhyCI.html'>Ku15PhyCI</a></code>,
-  <code><a href='Ku15SLH.html'>Ku15SLH</a></code>, <code><a href='MI092BDA.html'>MI092BDA</a></code>,
-  <code><a href='MM092BDA.html'>MM092BDA</a></code>, <code><a href='MM12NDCIalt.html'>MM12NDCIalt</a></code>,
-  <code><a href='MM12NDCI.html'>MM12NDCI</a></code>, <code><a href='MM143BDAopt.html'>MM143BDAopt</a></code>,
-  <code><a href='SI052BDA.html'>SI052BDA</a></code>, <code><a href='SM122BDA.html'>SM122BDA</a></code>,
-  <code><a href='SY002BDA.html'>SY002BDA</a></code>,
-  <code><a href='TurbBe16GreenPlusRedBothOverViolet.html'>TurbBe16GreenPlusRedBothOverViolet</a></code>,
-  <code><a href='TurbBe16RedOverViolet.html'>TurbBe16RedOverViolet</a></code>,
-  <code><a href='TurbBow06RedOverGreen.html'>TurbBow06RedOverGreen</a></code>,
-  <code><a href='TurbChip09NIROverGreen.html'>TurbChip09NIROverGreen</a></code>,
-  <code><a href='TurbDox02NIRoverRed.html'>TurbDox02NIRoverRed</a></code>,
-  <code><a href='TurbFrohn09GreenPlusRedBothOverBlue.html'>TurbFrohn09GreenPlusRedBothOverBlue</a></code>,
-  <code><a href='TurbHarr92NIR.html'>TurbHarr92NIR</a></code>,
-  <code><a href='TurbLath91RedOverBlue.html'>TurbLath91RedOverBlue</a></code>,
-  <code><a href='TurbMoore80Red.html'>TurbMoore80Red</a></code>, <code><a href='Wy08CI.html'>Wy08CI</a></code>,
-  <code><a href='Zh10FLH.html'>Zh10FLH</a></code></p></div>
+    <div class='dont-index'><p>Other lm models: <code><a href='extract_lm_cv_all.html'>extract_lm_cv_all</a></code>,
+  <code><a href='extract_lm_cv_multi.html'>extract_lm_cv_multi</a></code>,
+  <code><a href='extract_lm_cv.html'>extract_lm_cv</a></code></p></div>
     
 
   </div>

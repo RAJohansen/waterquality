@@ -151,7 +151,7 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>raster</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required package: sp</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>raster</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: package 'raster' was built under R version 3.5.2</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: sp</span></div><div class='input'>
 <span class='co'># sentinel2 example</span>
 <span class='no'>s2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/raster/topics/stack'>stack</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"raster/S2_Harsha.tif"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"waterquality"</span>))
 <span class='no'>s2_Al10SABI</span> <span class='kw'>=</span> <span class='fu'>wq_calc</span>(<span class='no'>s2</span>, <span class='kw'>alg</span> <span class='kw'>=</span> <span class='st'>"Al10SABI"</span>, <span class='kw'>sat</span> <span class='kw'>=</span> <span class='st'>"sentinel2"</span>)</div><div class='output co'>#&gt; Al10SABI calculated!</div><div class='input'><span class='no'>s2_two_alg</span> <span class='kw'>=</span> <span class='fu'>wq_calc</span>(<span class='no'>s2</span>, <span class='kw'>alg</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"TurbChip09NIROverGreen"</span>, <span class='st'>"Am092Bsub"</span>), <span class='kw'>sat</span> <span class='kw'>=</span> <span class='st'>"sentinel2"</span>)</div><div class='output co'>#&gt; Am092Bsub calculated!
@@ -186,7 +186,7 @@ l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>
