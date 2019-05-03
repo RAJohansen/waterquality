@@ -24,7 +24,9 @@ Imports:
     methods,
     raster,
     rgdal,
-    caret
+    caret,
+    stats,
+    purrr
 RoxygenNote: 6.1.1
 Suggests: 
     testthat,
