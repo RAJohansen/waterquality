@@ -44,6 +44,9 @@ extract_lm <- function(y, x, df){
 #'
 #' @family lm models
 #' @export
+#' 
+#' @importFrom stats lm as.formula na.exclude 
+#' 
 extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
   my_formula = as.formula(paste(y, "~" ,x))
   caret_model = caret::train(form = my_formula,
@@ -91,7 +94,7 @@ extract_lm_cv_multi <- function(parameters, Algorithms, df,folds = 3, nrepeats =
   for (i in seq_along(parameters)) {
     names(Algorithms) <- Algorithms %>% purrr::map_chr(., ~ paste0(parameters[[i]], "_",.))
     list[[i]] = Algorithms %>%
-      map_dfr(~extract_lm_cv(y = parameters[[i]], x = ., df = df, folds = folds, nrepeats = nrepeats), .id="Algorithms")
+      purrr::map_dfr(~extract_lm_cv(y = parameters[[i]], x = ., df = df, folds = folds, nrepeats = nrepeats), .id="Algorithms")
   }
   results <- (do.call(rbind, list))
   assign(paste0(format(Sys.time(), "Results_%Y-%m-%d_%H%M")),results, envir = .GlobalEnv)
@@ -126,7 +129,7 @@ extract_lm_cv_all <- function(parameters, df, folds = 3, nrepeats = 5){
       names()
     names(Algorithms) <- Algorithms %>% purrr::map_chr(., ~ paste0(parameters[[i]], "_",.))
     list[[i]] = Algorithms %>%
-      map_dfr(~extract_lm_cv(y = parameters[[i]], x = ., df = df, folds = folds, nrepeats = nrepeats), .id="Algorithms")
+      purrr::map_dfr(~extract_lm_cv(y = parameters[[i]], x = ., df = df, folds = folds, nrepeats = nrepeats), .id="Algorithms")
   }
   results <- (do.call(rbind, list))
   assign(paste0(format(Sys.time(), "Results_%Y-%m-%d_%H%M")),results, envir = .GlobalEnv)
