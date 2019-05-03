@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="Run linear model with crossvalidation — extract_lm_cv" />
 
-<meta property="og:description" content="The function runs a linear model on a single x and y variable and conducts
+<meta property="og:description" content="The function runs a linear model on a single independent and dependent variable and conducts
 a k-folds cross validation, which returns a data frame containing the following:
 The r^2, p-value, slope, intercept of the global lm model &amp;amp;
 average r^2, average RMSE, average MAE from the crossvalidated model" />
@@ -121,7 +121,7 @@ average r^2, average RMSE, average MAE from the crossvalidated model" />
 
     <div class="ref-description">
     
-    <p>The function runs a linear model on a single x and y variable and conducts
+    <p>The function runs a linear model on a single independent and dependent variable and conducts
 a k-folds cross validation, which returns a data frame containing the following:
 The r^2, p-value, slope, intercept of the global lm model &amp;
 average r^2, average RMSE, average MAE from the crossvalidated model</p>
@@ -135,11 +135,11 @@ average r^2, average RMSE, average MAE from the crossvalidated model</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>y</th>
-      <td><p>independent variable</p></td>
+      <td><p>dependent variable</p></td>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>dependent variable</p></td>
+      <td><p>independent variable</p></td>
     </tr>
     <tr>
       <th>df</th>

@@ -7,9 +7,9 @@
 extract_lm_cv(y, x, df, folds = 3, nrepeats = 5)
 }
 \arguments{
-\item{y}{independent variable}
+\item{y}{dependent variable}
 
-\item{x}{dependent variable}
+\item{x}{independent variable}
 
 \item{df}{data frame object}
 
@@ -21,7 +21,7 @@ extract_lm_cv(y, x, df, folds = 3, nrepeats = 5)
 A dataframe of the model results
 }
 \description{
-The function runs a linear model on a single x and y variable and conducts
+The function runs a linear model on a single independent and dependent variable and conducts
 a k-folds cross validation, which returns a data frame containing the following:
 The r^2, p-value, slope, intercept of the global lm model &
 average r^2, average RMSE, average MAE from the crossvalidated model

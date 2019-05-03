@@ -2,12 +2,12 @@
 % Please edit documentation in R/extract_lm_functions.R
 \name{extract_lm_cv_all}
 \alias{extract_lm_cv_all}
-\title{Run linear model with crossvalidation over multiple y and all numeric dependent variables in a data frame}
+\title{Run linear model with crossvalidation over multiple dependent and all numeric independent variables in a data frame}
 \usage{
 extract_lm_cv_all(parameters, df, folds = 3, nrepeats = 5)
 }
 \arguments{
-\item{parameters}{the list of independent variables to be evaluated}
+\item{parameters}{the list of dependent variables to be evaluated}
 
 \item{df}{data frame object}
 

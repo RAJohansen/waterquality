@@ -2,15 +2,15 @@
 % Please edit documentation in R/extract_lm_functions.R
 \name{extract_lm_cv_multi}
 \alias{extract_lm_cv_multi}
-\title{Run linear model with crossvalidation over multiple x and y variables}
+\title{Run linear model with crossvalidation over multiple independent and dependent variables}
 \usage{
 extract_lm_cv_multi(parameters, Algorithms, df, folds = 3,
   nrepeats = 5)
 }
 \arguments{
-\item{parameters}{the list of independent variables to be evaluated}
+\item{parameters}{the list of dependent variables to be evaluated}
 
-\item{Algorithms}{the list of dependent variables to be evaluated}
+\item{Algorithms}{the list of independent variables to be evaluated}
 
 \item{df}{data frame object}
 

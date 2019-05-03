@@ -7,9 +7,9 @@
 extract_lm(y, x, df)
 }
 \arguments{
-\item{y}{independent variable}
+\item{y}{dependent variable}
 
-\item{x}{dependent variable}
+\item{x}{independent variable}
 
 \item{df}{data frame object}
 }
@@ -17,7 +17,7 @@ extract_lm(y, x, df)
 A dataframe of the model results
 }
 \description{
-The function runs a linear model on a single x and y variable
+The function runs a linear model on a single independent and dependent variable
 and returns a data frame containing the following:
 r^2, p-value, slope, and intercept of the model
 }
