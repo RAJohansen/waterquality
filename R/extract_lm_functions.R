@@ -1,11 +1,11 @@
 #' Run linear model (lm)
 #'
-#'The function runs a linear model on a single x and y variable
+#'The function runs a linear model on a single independent and dependent variable
 #' and returns a data frame containing the following:
 #' r^2, p-value, slope, and intercept of the model
 #'
-#' @param y independent variable
-#' @param x dependent variable
+#' @param y dependent variable
+#' @param x independent variable
 #' @param df data frame object
 #' @return A dataframe of the model results
 #'
@@ -25,13 +25,13 @@ extract_lm <- function(y, x, df){
 
 #' Run linear model with crossvalidation
 #'
-#'The function runs a linear model on a single x and y variable and conducts
+#'The function runs a linear model on a single independent and dependent variable and conducts
 #' a k-folds cross validation, which returns a data frame containing the following:
 #' The r^2, p-value, slope, intercept of the global lm model &
-#' average r^2, average RMSE, average MAE from the crossvalidated model
+#' average r^2, average RMSE, average MAE from the crossvalidated model 
 #'
-#' @param y independent variable
-#' @param x dependent variable
+#' @param y dependent variable
+#' @param x independent variable
 #' @param df data frame object
 #' @param folds the number of folds to be used in the cross validation model
 #' @param nrepeats the number of iterations to be used in the cross validation model
@@ -65,15 +65,15 @@ extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
              CV_R_Squared = CV_R_Squared, RMSE = RMSE, MAE = MAE)
 }
 
-#' Run linear model with crossvalidation over multiple x and y variables
+#' Run linear model with crossvalidation over multiple independent and dependent variables
 #'
 #'The function runs a linear model on a list of x and list of y variables and conducts
 #' a k-folds cross validation, which returns a data frame containing the following:
 #' The r^2, p-value, slope, intercept of the global lm model &
 #' average r^2, average RMSE, average MAE from the crossvalidated model
 #'
-#' @param parameters the list of independent variables to be evaluated
-#' @param Algorithms the list of dependent variables to be evaluated
+#' @param parameters the list of dependent variables to be evaluated
+#' @param Algorithms the list of independent variables to be evaluated
 #' @param df data frame object
 #' @param folds the number of folds to be used in the cross validation model
 #' @param nrepeats the number of iterations to be used in the cross validation model
@@ -98,14 +98,14 @@ extract_lm_cv_multi <- function(parameters, Algorithms, df,folds = 3, nrepeats =
 }
 
 
-#' Run linear model with crossvalidation over multiple y and all numeric dependent variables in a data frame
+#' Run linear model with crossvalidation over multiple dependent and all numeric independent variables in a data frame
 #'
 #'The function runs a linear model on a list of x and list of y variables and conducts
 #' a k-folds cross validation, which returns a data frame containing the following:
 #' The r^2, p-value, slope, intercept of the global lm model &
 #' average r^2, average RMSE, average MAE from the crossvalidated model
 #'
-#' @param parameters the list of independent variables to be evaluated
+#' @param parameters the list of dependent variables to be evaluated
 #' @param df data frame object
 #' @param folds the number of folds to be used in the cross validation model
 #' @param nrepeats the number of iterations to be used in the cross validation model
