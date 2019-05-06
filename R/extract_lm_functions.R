@@ -46,6 +46,7 @@ extract_lm <- function(y, x, df){
 #' @export
 #' 
 #' @importFrom stats lm as.formula na.exclude 
+#' @importFrom caret trainControl train getTrainPerf
 #' 
 extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
   my_formula = as.formula(paste(y, "~" ,x))
@@ -57,9 +58,9 @@ extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
                              trControl = caret::trainControl(method = "repeatedcv",
                                                              number = folds, repeats = nrepeats))
   my_lm = caret_model$finalModel
-  CV_R_Squared = getTrainPerf(caret_model)[, "TrainRsquared"]
-  RMSE = getTrainPerf(caret_model)[, "TrainRMSE"]
-  MAE = getTrainPerf(caret_model)[, "TrainMAE"]
+  CV_R_Squared = caret::getTrainPerf(caret_model)[, "TrainRsquared"]
+  RMSE = caret::getTrainPerf(caret_model)[, "TrainRMSE"]
+  MAE = caret::getTrainPerf(caret_model)[, "TrainMAE"]
   R_Squared = summary(my_lm)$r.squared
   P_Value = summary(my_lm)$coefficients[8]
   Slope = summary(my_lm)$coefficients[2]
@@ -89,6 +90,9 @@ extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
 #'
 #' @family lm models
 #' @export
+#' 
+#' @importFrom purrr map_chr map_dfr
+#' 
 extract_lm_cv_multi <- function(parameters, Algorithms, df,folds = 3, nrepeats = 5){
   list = list()
   for (i in seq_along(parameters)) {
@@ -121,6 +125,9 @@ extract_lm_cv_multi <- function(parameters, Algorithms, df,folds = 3, nrepeats =
 #'
 #' @family lm models
 #' @export
+#' 
+#' @importFrom purrr map_chr map_dfr
+#' 
 extract_lm_cv_all <- function(parameters, df, folds = 3, nrepeats = 5){
   list = list()
   for (i in seq_along(parameters)) {
