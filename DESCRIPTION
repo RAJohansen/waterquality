@@ -24,6 +24,7 @@ Imports:
     methods,
     raster,
     rgdal,
+    purrr,
     stats
 RoxygenNote: 6.1.1
 Suggests: 
