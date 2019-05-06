@@ -23,10 +23,7 @@ Roxygen: list(markdown = TRUE)
 Imports:
     methods,
     raster,
-    rgdal,
-    caret,
-    stats,
-    purrr
+    rgdal
 RoxygenNote: 6.1.1
 Suggests: 
     testthat,
