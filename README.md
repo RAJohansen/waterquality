@@ -19,13 +19,13 @@ configurations: WorldView-2, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI.
 
 ## Installation
 
-You can install the released version from CRAN with:
+You can install the stable released version from CRAN with:
 
 ``` r
 install.packages("waterquality")
 ```
 
-You can install waterquality from github with:
+For the latest version (in development) install waterquality from github with:
 
 ``` r
 # install.packages("devtools")
