@@ -4,8 +4,7 @@
 \alias{extract_lm_cv_multi}
 \title{Run linear model with crossvalidation over multiple independent and dependent variables}
 \usage{
-extract_lm_cv_multi(parameters, Algorithms, df, folds = 3,
-  nrepeats = 5)
+extract_lm_cv_multi(parameters, Algorithms, df, folds = 3, nrepeats = 5)
 }
 \arguments{
 \item{parameters}{the list of dependent variables to be evaluated}
@@ -35,7 +34,9 @@ R Core Team (2018). R: A language and environment for statistical computing. R F
 Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, Luca Scrucca, Yuan Tang, Can Candan and Tyler Hunt. (2018). caret: Classification and Regression Training. R package version 6.0-81. https://CRAN.R-project.org/package=caret
 }
 \seealso{
-Other lm models: \code{\link{extract_lm_cv_all}},
-  \code{\link{extract_lm_cv}}, \code{\link{extract_lm}}
+Other lm models: 
+\code{\link{extract_lm_cv_all}()},
+\code{\link{extract_lm_cv}()},
+\code{\link{extract_lm}()}
 }
 \concept{lm models}

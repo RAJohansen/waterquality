@@ -27,8 +27,8 @@ Imports:
     purrr,
     caret,
     tmap,
-    OpenStreetMap
-RoxygenNote: 6.1.1
+    tmaptools
+RoxygenNote: 7.1.1
 Suggests: 
     testthat,
     knitr,
