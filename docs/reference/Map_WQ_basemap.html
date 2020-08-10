@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Am092Bsub algorithm — Am092Bsub • waterquality</title>
+<title>Create waterquality Map with Bing basemap — Map_WQ_basemap • waterquality</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Am092Bsub algorithm — Am092Bsub" />
-<meta property="og:description" content="Applies the Am092Bsub algorithm" />
+<meta property="og:title" content="Create waterquality Map with Bing basemap — Map_WQ_basemap" />
+<meta property="og:description" content="The function runs a linear model on a single independent and dependent variable
+and returns a data frame containing the following:
+r^2, p-value, slope, and intercept of the model" />
 
 
 
@@ -120,83 +122,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Am092Bsub algorithm</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RAJohansen/waterquality/blob/master/R/algorithms.R'><code>R/algorithms.R</code></a></small>
-    <div class="hidden name"><code>Am092Bsub.Rd</code></div>
+    <h1>Create waterquality Map with Bing basemap</h1>
+    <small class="dont-index">Source: <a href='https://github.com/RAJohansen/waterquality/blob/master/R/map_wq.R'><code>R/map_wq.R</code></a></small>
+    <div class="hidden name"><code>Map_WQ_basemap.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Applies the Am092Bsub algorithm</p>
+    <p>The function runs a linear model on a single independent and dependent variable
+and returns a data frame containing the following:
+r^2, p-value, slope, and intercept of the model</p>
     </div>
 
-    <pre class="usage"><span class='fu'>Am092Bsub</span>(<span class='no'>w681</span>, <span class='no'>w665</span>)</pre>
+    <pre class="usage"><span class='fu'>Map_WQ_basemap</span>(
+  <span class='no'>WQ_extent</span>,
+  <span class='no'>sample_points</span>,
+  <span class='no'>map_title</span>,
+  <span class='kw'>points_style</span> <span class='kw'>=</span> <span class='st'>"quantile"</span>,
+  <span class='kw'>histogram</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>w681</th>
-      <td><p>numeric. Value at wavelength of 681 nm</p></td>
+      <th>WQ_extent</th>
+      <td><p>geospatial polygon to use as extent for Bing basemap</p></td>
     </tr>
     <tr>
-      <th>w665</th>
-      <td><p>numeric. Value at wavelength of 665 nm</p></td>
+      <th>sample_points</th>
+      <td><p>geospatial points object</p></td>
+    </tr>
+    <tr>
+      <th>map_title</th>
+      <td><p>text for the title of the map</p></td>
+    </tr>
+    <tr>
+      <th>points_style</th>
+      <td><p>data visualization style (default is quantile)</p></td>
+    </tr>
+    <tr>
+      <th>histogram</th>
+      <td><p>boolean toggle to add or remove histogram (default is TRUE)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>RasterLayer or numeric</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Amin, R.; Zhou, J.; Gilerson, A.; Gross, B.; Moshary, F.; Ahmed, S. Novel optical techniques for detecting and classifying toxic dinoflagellate Karenia brevis blooms using satellite imagery. Opt. Express 2009, 17, 9126–9144.</p>
+    <p>A data visualization of the results</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other algorithms: 
-<code><a href='Al10SABI.html'>Al10SABI</a>()</code>,
-<code><a href='Am09KBBI.html'>Am09KBBI</a>()</code>,
-<code><a href='Be162B643sub629.html'>Be162B643sub629</a>()</code>,
-<code><a href='Be162B700sub601.html'>Be162B700sub601</a>()</code>,
-<code><a href='Be162BsubPhy.html'>Be162BsubPhy</a>()</code>,
-<code><a href='Be16FLHBlueRedNIR.html'>Be16FLHBlueRedNIR</a>()</code>,
-<code><a href='Be16FLHGreenRedNIR.html'>Be16FLHGreenRedNIR</a>()</code>,
-<code><a href='Be16FLHVioletRedNIR.html'>Be16FLHVioletRedNIR</a>()</code>,
-<code><a href='Be16FLHblue.html'>Be16FLHblue</a>()</code>,
-<code><a href='Be16FLHviolet.html'>Be16FLHviolet</a>()</code>,
-<code><a href='Be16MPI.html'>Be16MPI</a>()</code>,
-<code><a href='Be16NDPhyI644over615.html'>Be16NDPhyI644over615</a>()</code>,
-<code><a href='Be16NDPhyI644over629.html'>Be16NDPhyI644over629</a>()</code>,
-<code><a href='Be16NDPhyI.html'>Be16NDPhyI</a>()</code>,
-<code><a href='Be16NDTIblue.html'>Be16NDTIblue</a>()</code>,
-<code><a href='Be16NDTIviolet.html'>Be16NDTIviolet</a>()</code>,
-<code><a href='Be16Phy2BDA644over629.html'>Be16Phy2BDA644over629</a>()</code>,
-<code><a href='Da052BDA.html'>Da052BDA</a>()</code>,
-<code><a href='De933BDA.html'>De933BDA</a>()</code>,
-<code><a href='Gi033BDA.html'>Gi033BDA</a>()</code>,
-<code><a href='Go04MCI.html'>Go04MCI</a>()</code>,
-<code><a href='HU103BDA.html'>HU103BDA</a>()</code>,
-<code><a href='Kn07KIVU.html'>Kn07KIVU</a>()</code>,
-<code><a href='Ku15PhyCI.html'>Ku15PhyCI</a>()</code>,
-<code><a href='Ku15SLH.html'>Ku15SLH</a>()</code>,
-<code><a href='MI092BDA.html'>MI092BDA</a>()</code>,
-<code><a href='MM092BDA.html'>MM092BDA</a>()</code>,
-<code><a href='MM12NDCIalt.html'>MM12NDCIalt</a>()</code>,
-<code><a href='MM12NDCI.html'>MM12NDCI</a>()</code>,
-<code><a href='MM143BDAopt.html'>MM143BDAopt</a>()</code>,
-<code><a href='SI052BDA.html'>SI052BDA</a>()</code>,
-<code><a href='SM122BDA.html'>SM122BDA</a>()</code>,
-<code><a href='SY002BDA.html'>SY002BDA</a>()</code>,
-<code><a href='TurbBe16GreenPlusRedBothOverViolet.html'>TurbBe16GreenPlusRedBothOverViolet</a>()</code>,
-<code><a href='TurbBe16RedOverViolet.html'>TurbBe16RedOverViolet</a>()</code>,
-<code><a href='TurbBow06RedOverGreen.html'>TurbBow06RedOverGreen</a>()</code>,
-<code><a href='TurbChip09NIROverGreen.html'>TurbChip09NIROverGreen</a>()</code>,
-<code><a href='TurbDox02NIRoverRed.html'>TurbDox02NIRoverRed</a>()</code>,
-<code><a href='TurbFrohn09GreenPlusRedBothOverBlue.html'>TurbFrohn09GreenPlusRedBothOverBlue</a>()</code>,
-<code><a href='TurbHarr92NIR.html'>TurbHarr92NIR</a>()</code>,
-<code><a href='TurbLath91RedOverBlue.html'>TurbLath91RedOverBlue</a>()</code>,
-<code><a href='TurbMoore80Red.html'>TurbMoore80Red</a>()</code>,
-<code><a href='Wy08CI.html'>Wy08CI</a>()</code>,
-<code><a href='Zh10FLH.html'>Zh10FLH</a>()</code></p></div>
+    <div class='dont-index'><p>Other Map_WQ models: 
+<code><a href='Map_WQ_raster.html'>Map_WQ_raster</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
