@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Run linear model with crossvalidation — extract_lm_cv • waterquality</title>
+<title>Page not found (404) • waterquality</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script>
+<link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,17 +33,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script>
+<link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="Run linear model with crossvalidation — extract_lm_cv" />
-<meta property="og:description" content="The function runs a linear model on a single independent and dependent variable and conducts
-a k-folds cross validation, which returns a data frame containing the following:
-The r^2, p-value, slope, intercept of the global lm model &amp;amp;
-average r^2, average RMSE, average MAE from the crossvalidated model" />
+<meta property="og:title" content="Page not found (404)" />
 
 
 
@@ -62,7 +58,7 @@ average r^2, average RMSE, average MAE from the crossvalidated model" />
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -74,7 +70,7 @@ average r^2, average RMSE, average MAE from the crossvalidated model" />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">waterquality</a>
+        <a class="navbar-link" href="index.html">waterquality</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
       </span>
     </div>
@@ -82,13 +78,13 @@ average r^2, average RMSE, average MAE from the crossvalidated model" />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -98,7 +94,7 @@ average r^2, average RMSE, average MAE from the crossvalidated model" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/waterquality_vignette.html">Introduction to the waterquality package</a>
+      <a href="articles/waterquality_vignette.html">Introduction to the waterquality package</a>
     </li>
   </ul>
 </li>
@@ -121,68 +117,23 @@ average r^2, average RMSE, average MAE from the crossvalidated model" />
       </header>
 
 <div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-9">
     <div class="page-header">
-    <h1>Run linear model with crossvalidation</h1>
-    <small class="dont-index">Source: <a href='https://github.com/RAJohansen/waterquality/blob/master/R/extract_lm_functions.R'><code>R/extract_lm_functions.R</code></a></small>
-    <div class="hidden name"><code>extract_lm_cv.Rd</code></div>
+      <h1>Page not found (404)</h1>
     </div>
 
-    <div class="ref-description">
-    <p>The function runs a linear model on a single independent and dependent variable and conducts
-a k-folds cross validation, which returns a data frame containing the following:
-The r^2, p-value, slope, intercept of the global lm model &amp;
-average r^2, average RMSE, average MAE from the crossvalidated model</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>extract_lm_cv</span>(<span class='no'>y</span>, <span class='no'>x</span>, <span class='no'>df</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>nrepeats</span> <span class='kw'>=</span> <span class='fl'>5</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>y</th>
-      <td><p>dependent variable</p></td>
-    </tr>
-    <tr>
-      <th>x</th>
-      <td><p>independent variable</p></td>
-    </tr>
-    <tr>
-      <th>df</th>
-      <td><p>data frame object</p></td>
-    </tr>
-    <tr>
-      <th>folds</th>
-      <td><p>the number of folds to be used in the cross validation model</p></td>
-    </tr>
-    <tr>
-      <th>nrepeats</th>
-      <td><p>the number of iterations to be used in the cross validation model</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A dataframe of the model results</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Johansen, Richard; et al. (2018). Evaluating the portability of satellite derived chlorophyll-a algorithms for temperate inland lakes using airborne hyperspectral imagery and dense surface observations. Harmful Algae. 76. 10.1016/j.hal.2018.05.001.</p>
-<p>R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.</p>
-<p>Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, Luca Scrucca, Yuan Tang, Can Candan and Tyler Hunt. (2018). caret: Classification and Regression Training. R package version 6.0-81. https://CRAN.R-project.org/package=caret</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other lm models: <code><a href='extract_lm_cv_all.html'>extract_lm_cv_all</a></code>,
-  <code><a href='extract_lm_cv_multi.html'>extract_lm_cv_multi</a></code>,
-  <code><a href='extract_lm.html'>extract_lm</a></code></p></div>
+Content not found. Please use links in the navbar.
 
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
+
 
 
       <footer>
