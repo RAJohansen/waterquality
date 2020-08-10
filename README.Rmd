@@ -55,4 +55,4 @@ To learn more read the ["Introduction to the waterquality package"](https://rajo
 
 We encourage users to submit issues and enhancement requests so we may continue to improve our package. 
 
-Futhermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at richard.johansen@uc.edu.
+Futhermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at richard.a.johansen@erdc.dren.mil

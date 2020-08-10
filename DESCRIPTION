@@ -25,7 +25,9 @@ Imports:
     raster,
     rgdal,
     purrr,
-    caret
+    caret,
+    tmap,
+    OpenStreetMap
 RoxygenNote: 6.1.1
 Suggests: 
     testthat,
