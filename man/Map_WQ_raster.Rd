@@ -27,9 +27,9 @@ Map_WQ_raster(
 A data visualization of the results
 }
 \description{
-The function runs a linear model on a single independent and dependent variable
-and returns a data frame containing the following:
-r^2, p-value, slope, and intercept of the model
+This function wraps the tmap package to help users generate fast and simple
+data visualization of their WQ_calc raster output along with optional
+geospatial objects and histogram
 }
 \seealso{
 Other Map_WQ models: 
