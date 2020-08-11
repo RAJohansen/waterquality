@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">waterquality</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
       </span>
     </div>
 
@@ -91,17 +91,19 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the stable released version from CRAN with:</p>
+<p>You can install the released version from CRAN with:</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"waterquality"</span>)</pre></div>
-<p>For the latest version (in development) install waterquality from github with:</p>
+<p>You can install waterquality from github with:</p>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools")</span>
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"RAJohansen/waterquality"</span>)</pre></div>
+<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"RAJohansen/waterquality"</span>)</pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>The main function in this package is <code><a href="reference/wq_calc.html">wq_calc()</a></code>:</p>
 <div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
+<span class="co">#&gt; Warning: replacing previous import 'vctrs::data_frame' by 'tibble::data_frame'</span>
+<span class="co">#&gt; when loading 'dplyr'</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">raster</span>)
 <span class="co">#&gt; Loading required package: sp</span>
 <span class="no">s2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/stack.html">stack</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/S2_Harsha.tif"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
@@ -116,7 +118,7 @@
 <h2 class="hasAnchor">
 <a href="#package-contributions" class="anchor"></a>Package Contributions</h2>
 <p>We encourage users to submit issues and enhancement requests so we may continue to improve our package.</p>
-<p>Futhermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at <a href="mailto:richard.johansen@uc.edu" class="email">richard.johansen@uc.edu</a>.</p>
+<p>Futhermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at <a href="mailto:richard.a.johansen@erdc.dren.mil" class="email">richard.a.johansen@erdc.dren.mil</a></p>
 </div>
 </div>
 
@@ -164,7 +166,6 @@
 <li><a href="https://cran.r-project.org/package=waterquality"><img src="http://www.r-pkg.org/badges/version/waterquality" alt="CRAN status"></a></li>
 <li><a href="https://travis-ci.org/RAJohansen/waterquality"><img src="https://travis-ci.org/RAJohansen/waterquality.png?branch=master" alt="Build Status"></a></li>
 <li><a href="https://codecov.io/gh/RAJohansen/waterquality"><img src="https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg" alt="codecov"></a></li>
-<li><a href="https://doi.org/10.5281/zenodo.1493487"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1493487.svg" alt="DOI"></a></li>
 </ul>
 </div>
 </div>
