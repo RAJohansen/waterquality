@@ -1,6 +1,6 @@
 Package: waterquality
 Title: Satellite Derived Water Quality Detection Algorithms
-Version: 0.2.3
+Version: 0.2.4
 Authors@R: c(person("Richard", "Johansen", email = "richard.a.johansen@erdc.dren.mil", 
     role = c("aut", "cre"), comment = c(ORCID = "0000-0003-4287-9677")),
     person("Jakub", "Nowosad", email="nowosad.jakub@gmail.com",
@@ -26,15 +26,18 @@ Imports:
     rgdal,
     purrr,
     caret,
-    tmap,
-    tmaptools
+    vctrs,
+    magrittr,
+    dplyr
 RoxygenNote: 7.1.1
 Suggests: 
     testthat,
     knitr,
     tibble,
     rmarkdown,
-    covr
+    covr,
+    tmap,
+    tmaptools
 URL: https://github.com/RAJohansen/waterquality
 BugReports: https://github.com/RAJohansen/waterquality/issues
 VignetteBuilder: knitr
