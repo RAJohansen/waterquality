@@ -1,8 +1,8 @@
 #' Create waterquality Map with sampling points and optional histogram
 #'
-#'The function runs a linear model on a single independent and dependent variable
-#' and returns a data frame containing the following:
-#' r^2, p-value, slope, and intercept of the model
+#'This function wraps the tmap package to help users generate fast and simple 
+#'data visualization of their WQ_calc raster output along with optional 
+#'geospatial objects and histogram
 #'
 #' @param WQ_raster raster tiff of waterquality output
 #' @param sample_points geospatial points object
@@ -37,9 +37,9 @@ Map_WQ_raster <- function(WQ_raster, sample_points, map_title, raster_style = "q
 
 #' Create waterquality Map with Bing basemap
 #'
-#'The function runs a linear model on a single independent and dependent variable
-#' and returns a data frame containing the following:
-#' r^2, p-value, slope, and intercept of the model
+#'This function wraps the tmap package to help users generate fast and simple 
+#'data visualization of using bing basemaps along with optional geospatial objects and histogram
+#'
 #'
 #' @param WQ_extent geospatial polygon to use as extent for Bing basemap 
 #' @param sample_points geospatial points object
