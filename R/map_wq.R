@@ -13,17 +13,20 @@
 #'
 #' @family Map_WQ models
 #' @export
-Map_WQ_raster <- function(WQ_raster,sample_points,map_title, raster_style = "quantile", histogram = TRUE) {
-  tm_shape(WQ_raster) +
-    tm_raster(title = map_title,
+Map_WQ_raster <- function(WQ_raster, sample_points, map_title, raster_style = "quantile", histogram = TRUE) {
+  if (!requireNamespace("tmap", quietly = TRUE))
+    stop("package tmap required, please install it first") 
+  tmap::tm_shape(WQ_raster) +
+    tmap::tm_raster(title = map_title,
               style = raster_style, n = 8, midpoint = NA,
-              palette = viridisLite::viridis(20),
+              palette = "viridis",
               legend.reverse = TRUE,
               legend.hist = histogram) +
-    tm_legend(outside = TRUE, hist.width = 2) +
-    tm_shape(sample_points) + tm_dots(size = 0.1, alpha = 0.75) +
-    tm_scale_bar(text.size = 0.75) + 
-    tm_grid(labels.inside.frame = FALSE,
+    tmap::tm_legend(outside = TRUE, hist.width = 2) +
+    tmap::tm_shape(sample_points) + 
+    tmap::tm_dots(size = 0.1, alpha = 0.75) +
+    tmap::tm_scale_bar(text.size = 0.75) + 
+    tmap::tm_grid(labels.inside.frame = FALSE,
             labels.size = 1,
             n.x = 5,
             n.y = 5,
@@ -47,27 +50,33 @@ Map_WQ_raster <- function(WQ_raster,sample_points,map_title, raster_style = "qua
 #'
 #' @family Map_WQ models
 #' @export
-Map_WQ_basemap <- function(WQ_extent,sample_points,map_title, points_style = "quantile", histogram = TRUE) {
-  Basemap <- tmaptools::read_osm(WQ_extent, type="bing", ext=1.1)
-  tm_shape(Basemap) +
-    tm_rgb() +
-    tm_shape(WQ_extent) + tm_borders(col = "lightgrey", lwd = 3) +
-    tm_shape(sample_points) +
-    tm_dots(alpha = 0.85,
+Map_WQ_basemap <- function(WQ_extent, sample_points, map_title, points_style = "quantile", histogram = TRUE) {
+  if (!requireNamespace("tmaptools", quietly = TRUE))
+    stop("package tmaptools required, please install it first") 
+  if (!requireNamespace("tmap", quietly = TRUE))
+    stop("package tmap required, please install it first") 
+  Basemap <- tmaptools::read_osm(WQ_extent, type = "bing", ext = 1.1)
+  tmap::tm_shape(Basemap) +
+    tmap::tm_rgb() +
+    tmap::tm_shape(WQ_extent) + 
+    tmap::tm_borders(col = "lightgrey", lwd = 3) +
+    tmap::tm_shape(sample_points) +
+    tmap::tm_dots(alpha = 0.85,
             size = 0.65,
             col = "BGA_PC_RFU",
-            palette = viridisLite::viridis(20),
+            palette = "viridis",
             style = points_style, n = 10,
             legend.hist = histogram) +
-    tm_scale_bar(text.size = 0.75, position = c("right", "bottom"),  text.color = "white") +
-    tm_grid(labels.inside.frame = FALSE,
+    tmap::tm_scale_bar(text.size = 0.75, position = c("right", "bottom"), 
+                       text.color = "white") +
+    tmap::tm_grid(labels.inside.frame = FALSE,
             labels.size = 1,
             labels.cardinal = TRUE,
             n.x = 5,
             n.y = 5,
             projection = "+proj=longlat",
             alpha = 0.35)+
-    tm_legend(legend.outside = TRUE,
+    tmap::tm_legend(legend.outside = TRUE,
               hist.width = 2,
               legend.title.size = 1.1,
               legend.text.size = 0.85)
