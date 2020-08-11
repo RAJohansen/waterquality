@@ -20,7 +20,8 @@ extract_lm <- function(y, x, df){
   P_Value = summary(my_lm)$coefficients[8]
   Slope = summary(my_lm)$coefficients[2]
   Intercept = summary(my_lm)$coefficients[1]
-  data_frame(R_Squared = R_Squared, Slope = Slope, Intercept = Intercept, P_Value = P_Value)
+  vctrs::data_frame(R_Squared = R_Squared, Slope = Slope, 
+                    Intercept = Intercept, P_Value = P_Value)
 }
 
 #' Run linear model with crossvalidation
@@ -65,8 +66,8 @@ extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
   P_Value = summary(my_lm)$coefficients[8]
   Slope = summary(my_lm)$coefficients[2]
   Intercept = summary(my_lm)$coefficients[1]
-  data_frame(R_Squared = R_Squared, Slope = Slope, Intercept = Intercept, P_Value = P_Value,
-             CV_R_Squared = CV_R_Squared, RMSE = RMSE, MAE = MAE)
+  vctrs::data_frame(R_Squared = R_Squared, Slope = Slope, Intercept = Intercept, 
+                    P_Value = P_Value, CV_R_Squared = CV_R_Squared, RMSE = RMSE, MAE = MAE)
 }
 
 #' Run linear model with crossvalidation over multiple independent and dependent variables
@@ -96,12 +97,14 @@ extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
 extract_lm_cv_multi <- function(parameters, Algorithms, df,folds = 3, nrepeats = 5){
   list = list()
   for (i in seq_along(parameters)) {
-    names(Algorithms) <- Algorithms %>% purrr::map_chr(., ~ paste0(parameters[[i]], "_",.))
+    names(Algorithms) <- Algorithms %>% 
+      purrr::map_chr(., ~ paste0(parameters[[i]], "_",.))
     list[[i]] = Algorithms %>%
-      purrr::map_dfr(~extract_lm_cv(y = parameters[[i]], x = ., df = df, folds = folds, nrepeats = nrepeats), .id="Algorithms")
+      purrr::map_dfr(~extract_lm_cv(y = parameters[[i]], x = ., df = df, 
+                                    folds = folds, nrepeats = nrepeats), .id = "Algorithms")
   }
   results <- (do.call(rbind, list))
-  assign(paste0(format(Sys.time(), "Results_%Y-%m-%d_%H%M")),results, envir = .GlobalEnv)
+  assign(paste0(format(Sys.time(), "Results_%Y-%m-%d_%H%M")), results, envir = .GlobalEnv)
 }
 
 
@@ -132,12 +135,14 @@ extract_lm_cv_all <- function(parameters, df, folds = 3, nrepeats = 5){
   list = list()
   for (i in seq_along(parameters)) {
     Algorithms = df %>%
-      select(which(sapply(.,class)=="numeric"),-parameters) %>%
+      dplyr::select(which(sapply(., class) == "numeric"), -parameters) %>%
       names()
-    names(Algorithms) <- Algorithms %>% purrr::map_chr(., ~ paste0(parameters[[i]], "_",.))
+    names(Algorithms) <- Algorithms %>%
+      purrr::map_chr(., ~ paste0(parameters[[i]], "_", .))
     list[[i]] = Algorithms %>%
-      purrr::map_dfr(~extract_lm_cv(y = parameters[[i]], x = ., df = df, folds = folds, nrepeats = nrepeats), .id="Algorithms")
+      purrr::map_dfr(~extract_lm_cv(y = parameters[[i]], x = ., df = df, 
+                                    folds = folds, nrepeats = nrepeats), .id = "Algorithms")
   }
   results <- (do.call(rbind, list))
-  assign(paste0(format(Sys.time(), "Results_%Y-%m-%d_%H%M")),results, envir = .GlobalEnv)
+  assign(paste0(format(Sys.time(), "Results_%Y-%m-%d_%H%M")), results, envir = .GlobalEnv)
 }
