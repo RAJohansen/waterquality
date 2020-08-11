@@ -32,14 +32,12 @@ You can install waterquality from github with:
 devtools::install_github("RAJohansen/waterquality")
 ```
 
-## Example
+## Examples
 
 The main function in this package is `wq_calc()`:
 
 ``` r
 library(waterquality)
-#> Warning: replacing previous import 'vctrs::data_frame' by 'tibble::data_frame'
-#> when loading 'dplyr'
 library(raster)
 #> Loading required package: sp
 s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
@@ -51,7 +49,40 @@ plot(s2_two_alg)
 
 ![](man/figures/README-example-1.png)<!-- -->
 
-To learn more read the [“Introduction to the waterquality
+Additional functionality include the MAP\_WQ functions:
+
+``` r
+library(waterquality)
+library(raster)
+library(tmap)
+library(sf)
+#> Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1
+s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
+MM12NDCI = wq_calc(s2, alg = "MM12NDCI", sat = "sentinel2")
+#> MM12NDCI calculated!
+samples = st_read(system.file("raster/Harsha_Points_CRS.gpkg", package = "waterquality"))
+#> Reading layer `Harsha_Points' from data source `C:\Users\RDEL1RAJ\Documents\R\win-library\4.0\waterquality\raster\Harsha_Points_CRS.gpkg' using driver `GPKG'
+#> Simple feature collection with 42 features and 20 fields
+#> geometry type:  POINT
+#> dimension:      XY
+#> bbox:           xmin: 746260.5 ymin: 4320844 xmax: 752392 ymax: 4324583
+#> projected CRS:  WGS 84 / UTM zone 16N
+lake_extent = st_read(system.file("raster/Harsha_Lake_CRS.gpkg", package = "waterquality"))
+#> Reading layer `Harsha_Lake' from data source `C:\Users\RDEL1RAJ\Documents\R\win-library\4.0\waterquality\raster\Harsha_Lake_CRS.gpkg' using driver `GPKG'
+#> Simple feature collection with 1 feature and 1 field
+#> geometry type:  POLYGON
+#> dimension:      XY
+#> bbox:           xmin: 745632.4 ymin: 4319424 xmax: 754513.8 ymax: 4326004
+#> projected CRS:  WGS 84 / UTM zone 16N
+Map_WQ_raster(WQ_raster = MM12NDCI,
+              sample_points = samples,
+              map_title= "Water Quality Map",
+              raster_style = "quantile",
+              histogram = TRUE)
+```
+
+![](man/figures/README-example%202-1.png)<!-- --> To learn more read the
+[“Introduction to the waterquality
 package”](https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html)
 vignette.
 
@@ -60,6 +91,6 @@ vignette.
 We encourage users to submit issues and enhancement requests so we may
 continue to improve our package.
 
-Futhermore, if you have a water quality algorithm that was not on our
+Furthermore, if you have a water quality algorithm that was not on our
 list, and you would like for it to be included in our package please
 email me at <richard.a.johansen@erdc.dren.mil>
