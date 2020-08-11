@@ -1,14 +1,16 @@
 citHeader("To cite waterquality in publications, please use:")
 
-citEntry(entry = "manual",
+citEntry(entry = "article",
   author = c(person("Richard", "Johansen"),
-             person("Jakub", "Nowosad"),
              person("Molly", "Reif"),
-             person("Erich", "Emery")),
-  title = "waterquality: Satellite Derived Water Quality Detection Algorithms",
-  year = "2018",
-  note = "R package version 0.2.2",
-  doi = "10.5281/zenodo.1493487",
-  url = "https://rajohansen.github.io/waterquality/",
-  textVersion = "Johansen, R., Nowosad, J., Reif, M., Emery, E. (2018). waterquality: Satellite Derived Water Quality Detection Algorithms. R package version 0.2.2. https://rajohansen.github.io/waterquality. https://doi.org/10.5281/zenodo.1493487"
+             person("Erich", "Emery"),
+             person("Jakub", "Nowosad"),
+             person("Richard", "Beck"),
+             person("Min", "Xu"),
+             person("Hongxing", "Liu")),
+  title = "waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality",
+  year = "2019",
+  doi = "10.21079/11681/35053",
+  journal = "USACE ERDC/EL TR-19-20", 
+  textVersion = "Johansen R., Reif M., Emery E., Nowosad J., Beck R., Xu M., Liu H., waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality. USACE ERDC/EL TR-19-20; DOI: 10.21079/11681/35053"
 )
