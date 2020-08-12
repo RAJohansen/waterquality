@@ -19,8 +19,7 @@ knitr::opts_chunk$set(
 
 # waterquality
 
-The goal of **waterquality** is to convert satellite-reflectance imagery to a host of pre-defined water quality algorithms designed for the detection of cholorophyll-a, blue-green algae (Phycocyanin), and Turbidity. 
-This package is able to process the following sensor configurations: WorldView-2, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI.
+The main purpose of **waterquality** is to quickly and easily convert satellite-based reflectance imagery into one or many well-known water quality algorithms designed for the detection of harmful algal blooms or the following pigment proxies: chlorophyll-a, blue-green algae (Phycocyanin), and Turbidity. Currently, this package is able to process [45 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) for the following satellite-based imagers: WorldView-2, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of the `wq_calc` output, we are developing a series of `Map_WQ` functions which may reduce technical barriers and simplify the complexities in selecting a map layout. Additional functionality of the package include a series of `extract_lm` functions wrap that ["Fitting Linear Models"](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm) and the ["caret"](http://topepo.github.io/caret/index.html) packages to quickly generate crossvalidated linear model and standardized outputs (r^2, p-value, slope, intercept of the global lm model & average r^2, average RMSE, average MAE of crossvalidated model) for any number of algorithm and water quality parameters combinations. It is important to note that the `extract_lm` functions require ground-truth data in order to develop the models. For a more detailed look into the full functionality of **waterquality** please view ["Introduction to the waterquality package"](https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html). For a broader look into how to apply this tool into a research workflow or for more information on topics such as data acquisition, image pre-processing, or results, see our publication entitled ["Waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality"](https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf).  
 
 ## Installation
 
@@ -37,7 +36,7 @@ You can install waterquality from github with:
 devtools::install_github("RAJohansen/waterquality")
 ```
 
-## Examples
+## Basic Example
 
 The main function in this package is `wq_calc()`:
 
@@ -50,10 +49,7 @@ s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Be16FLHGreenRedNIR")
 ```{r example 1 output, fig.asp=0.33}
 plot(s2_two_alg)
 ```
-  
-For additional information on the functionality of waterquality please view ["Introduction to the waterquality package"](https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html).
 
-For more details on our full research workflow see our technical report entitled ["Waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality"](https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf).
 
 ## Package Contributions
 

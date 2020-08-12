@@ -12,7 +12,7 @@
 #' @references Johansen, Richard; et al. (2018). Evaluating the portability of satellite derived chlorophyll-a algorithms for temperate inland lakes using airborne hyperspectral imagery and dense surface observations. Harmful Algae. 76. 10.1016/j.hal.2018.05.001.
 #' @references  R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 #'
-#' @family lm models
+#' @family extract_lm
 #' @export
 extract_lm <- function(y, x, df){
   my_lm = lm(y ~ x)
@@ -43,7 +43,7 @@ extract_lm <- function(y, x, df){
 #' @references  R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 #' @references   Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, Luca Scrucca, Yuan Tang, Can Candan and Tyler Hunt. (2018). caret: Classification and Regression Training. R package version 6.0-81. https://CRAN.R-project.org/package=caret
 #'
-#' @family lm models
+#' @family extract_lm
 #' @export
 #' 
 #' @importFrom stats lm as.formula na.exclude 
@@ -89,7 +89,7 @@ extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
 #' @references  R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 #' @references   Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, Luca Scrucca, Yuan Tang, Can Candan and Tyler Hunt. (2018). caret: Classification and Regression Training. R package version 6.0-81. https://CRAN.R-project.org/package=caret
 #'
-#' @family lm models
+#' @family extract_lm
 #' @export
 #' 
 #' @importFrom purrr map_chr map_dfr
@@ -126,7 +126,7 @@ extract_lm_cv_multi <- function(parameters, Algorithms, df,folds = 3, nrepeats =
 #' @references  R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 #' @references   Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, Luca Scrucca, Yuan Tang, Can Candan and Tyler Hunt. (2018). caret: Classification and Regression Training. R package version 6.0-81. https://CRAN.R-project.org/package=caret
 #'
-#' @family lm models
+#' @family extract_lm
 #' @export
 #' 
 #' @importFrom purrr map_chr map_dfr
