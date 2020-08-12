@@ -87,7 +87,7 @@
 <div id="waterquality" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#waterquality" class="anchor"></a>waterquality</h1></div>
-<p>The goal of <strong>waterquality</strong> is to convert satellite-reflectance imagery to a host of pre-defined water quality algorithms designed for the detection of cholorophyll-a, blue-green algae (Phycocyanin), and Turbidity. This package is able to process the following sensor configurations: WorldView-2, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI.</p>
+<p>The main purpose of <strong>waterquality</strong> is to quickly and easily convert satellite-based reflectance imagery into one or many well-known water quality algorithms designed for the detection of harmful algal blooms or the following pigment proxies: chlorophyll-a, blue-green algae (Phycocyanin), and Turbidity. Currently, this package is able to process <a href="https://rajohansen.github.io/waterquality/reference/index.html">45 algorithms</a> for the following satellite-based imagers: WorldView-2, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of the <code>wq_calc</code> output, we are developing a series of <code>Map_WQ</code> functions which may reduce technical barriers and simplify the complexities in selecting a map layout. Additional functionality of the package include a series of <code>extract_lm</code> functions wrap that <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm">“Fitting Linear Models”</a> and the <a href="http://topepo.github.io/caret/index.html">“caret”</a> packages to quickly generate crossvalidated linear model and standardized outputs (r^2, p-value, slope, intercept of the global lm model &amp; average r^2, average RMSE, average MAE of crossvalidated model) for any number of algorithm and water quality parameters combinations. It is important to note that the <code>extract_lm</code> functions require ground-truth data in order to develop the models. For a more detailed look into the full functionality of <strong>waterquality</strong> please view <a href="https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html">“Introduction to the waterquality package”</a>. For a broader look into how to apply this tool into a research workflow or for more information on topics such as data acquisition, image pre-processing, or results, see our publication entitled <a href="https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf">“Waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality”</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -97,9 +97,9 @@
 <div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools")</span>
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"RAJohansen/waterquality"</span>)</pre></div>
 </div>
-<div id="examples" class="section level2">
+<div id="basic-example" class="section level2">
 <h2 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h2>
+<a href="#basic-example" class="anchor"></a>Basic Example</h2>
 <p>The main function in this package is <code><a href="reference/wq_calc.html">wq_calc()</a></code>:</p>
 <div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">raster</span>)
@@ -107,28 +107,12 @@
 <span class="no">s2_two_alg</span> <span class="kw">=</span> <span class="fu"><a href="reference/wq_calc.html">wq_calc</a></span>(<span class="no">s2</span>, <span class="kw">alg</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"TurbChip09NIROverGreen"</span>, <span class="st">"Be16FLHGreenRedNIR"</span>), <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)</pre></div>
 <div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">s2_two_alg</span>)</pre></div>
 <p><img src="reference/figures/README-example%201%20output-1.png"><!-- --></p>
-<p>Additional functionality include the MAP_WQ functions:</p>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">raster</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tmap</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">sf</span>)
-<span class="no">s2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/stack.html">stack</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/S2_Harsha.tif"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
-<span class="no">MM12NDCI</span> <span class="kw">=</span> <span class="fu"><a href="reference/wq_calc.html">wq_calc</a></span>(<span class="no">s2</span>, <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"MM12NDCI"</span>, <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)
-<span class="no">samples</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sf/man/st_read.html">st_read</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/Harsha_Simple_Points_CRS.gpkg"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
-<span class="no">lake_extent</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sf/man/st_read.html">st_read</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/Harsha_Lake_CRS.gpkg"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))</pre></div>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="reference/Map_WQ_raster.html">Map_WQ_raster</a></span>(<span class="kw">WQ_raster</span> <span class="kw">=</span> <span class="no">MM12NDCI</span>,
-              <span class="kw">sample_points</span> <span class="kw">=</span> <span class="no">samples</span>,
-              <span class="kw">map_title</span><span class="kw">=</span> <span class="st">"Water Quality Map"</span>,
-              <span class="kw">raster_style</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
-              <span class="kw">histogram</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></div>
-<p><img src="reference/figures/README-example%202%20output-1.png"><!-- --></p>
-<p>To learn more read the <a href="https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html">“Introduction to the waterquality package”</a> vignette.</p>
 </div>
 <div id="package-contributions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#package-contributions" class="anchor"></a>Package Contributions</h2>
 <p>We encourage users to submit issues and enhancement requests so we may continue to improve our package.</p>
-<p>Furthermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at <a href="mailto:richard.a.johansen@erdc.dren.mil" class="email">richard.a.johansen@erdc.dren.mil</a></p>
+<p>Furthermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at <a href="mailto:Richard.A.Johansen@erdc.dren.mil" class="email">Richard.A.Johansen@erdc.dren.mil</a></p>
 </div>
 </div>
 

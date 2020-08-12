@@ -32,9 +32,9 @@ R Core Team (2018). R: A language and environment for statistical computing. R F
 Max Kuhn. Contributions from Jed Wing, Steve Weston, Andre Williams, Chris Keefer, Allan Engelhardt, Tony Cooper, Zachary Mayer, Brenton Kenkel, the R Core Team, Michael Benesty, Reynald Lescarbeau, Andrew Ziem, Luca Scrucca, Yuan Tang, Can Candan and Tyler Hunt. (2018). caret: Classification and Regression Training. R package version 6.0-81. https://CRAN.R-project.org/package=caret
 }
 \seealso{
-Other lm models: 
+Other extract_lm: 
 \code{\link{extract_lm_cv_multi}()},
 \code{\link{extract_lm_cv}()},
 \code{\link{extract_lm}()}
 }
-\concept{lm models}
+\concept{extract_lm}

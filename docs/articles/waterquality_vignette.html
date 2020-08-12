@@ -607,6 +607,21 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 <span class="co">#&gt; TurbMoore80Red calculated!</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_All</span>) <span class="co"># Only displays first 12 of 28</span></pre></body></html></div>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-5-1.png" width="576"></p>
+<p>Additional functionality include the MAP_WQ functions:</p>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">raster</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tmap</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">sf</span>)
+<span class="no">s2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/stack.html">stack</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/S2_Harsha.tif"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
+<span class="no">MM12NDCI</span> <span class="kw">=</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="no">s2</span>, <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"MM12NDCI"</span>, <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)
+<span class="no">samples</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sf/man/st_read.html">st_read</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/Harsha_Simple_Points_CRS.gpkg"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
+<span class="no">lake_extent</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sf/man/st_read.html">st_read</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/Harsha_Lake_CRS.gpkg"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="../reference/Map_WQ_raster.html">Map_WQ_raster</a></span>(<span class="kw">WQ_raster</span> <span class="kw">=</span> <span class="no">MM12NDCI</span>,
+              <span class="kw">sample_points</span> <span class="kw">=</span> <span class="no">samples</span>,
+              <span class="kw">map_title</span><span class="kw">=</span> <span class="st">"Water Quality Map"</span>,
+              <span class="kw">raster_style</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
+              <span class="kw">histogram</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<p><img src="waterquality_vignette_files/figure-html/example%202%20output-1.png" width="700"></p>
 </div>
 </div>
 <div id="acknowledgements" class="section level1">

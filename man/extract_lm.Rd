@@ -27,9 +27,9 @@ Johansen, Richard; et al. (2018). Evaluating the portability of satellite derive
 R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 }
 \seealso{
-Other lm models: 
+Other extract_lm: 
 \code{\link{extract_lm_cv_all}()},
 \code{\link{extract_lm_cv_multi}()},
 \code{\link{extract_lm_cv}()}
 }
-\concept{lm models}
+\concept{extract_lm}
