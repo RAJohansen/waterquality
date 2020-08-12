@@ -74,10 +74,12 @@ Map_WQ_raster(WQ_raster = MM12NDCI,
 ```
   
   
-To learn more read the ["Introduction to the waterquality package"](https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html) vignette.
+For additional information on the functionality of waterquality please view ["Introduction to the waterquality package"](https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html).
+
+For more details on our full research workflow see our technical report entitled ["Waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality"](https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf).
 
 ## Package Contributions
 
 We encourage users to submit issues and enhancement requests so we may continue to improve our package. 
 
-Furthermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at richard.a.johansen@erdc.dren.mil
+Furthermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at Richard.A.Johansen@erdc.dren.mil

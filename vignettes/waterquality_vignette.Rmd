@@ -13,10 +13,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  echo = TRUE,
-  fig.height = 5,
-  fig.width = 7
-)
+  echo = TRUE)
 ```
 
 # Introduction
@@ -82,7 +79,7 @@ This is also a way to make sure that your input aligns with the algorithms band 
 Due to the fact that each institution and sensors have their own method of "tuning" their data, we provide a description of what the format of each sensor should look like as well as their appropriate band designations.
 After atmospheric correction and preprocessing each sensor should be in the following format:
 
-```{r worldview2, echo=FALSE}
+```{r worldview2, echo=FALSE, fig.height = 4, fig.width = 4}
 worldview_2 = tibble::tribble(
   ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,                                  
   1,            "Coastal",                  0.425,                                                 
@@ -98,7 +95,7 @@ worldview_2 = tibble::tribble(
 knitr::kable(worldview_2, align = c("l", "r", "r"), caption = "Worldview-2")
 ```
 
-```{r sentinel2, echo=FALSE}
+```{r sentinel2, echo=FALSE, fig.height = 4, fig.width = 4}
 sentinel_2 = tibble::tribble(
   ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
   1,            "Coastal Blue",             0.443,
@@ -115,7 +112,7 @@ sentinel_2 = tibble::tribble(
 knitr::kable(sentinel_2, align = c("l", "r", "r"), caption = "Sentinel-2")
 ```
 
-```{r landsat8, echo=FALSE}
+```{r landsat8, echo=FALSE, fig.height = 4, fig.width = 4}
 landsat_8 = tibble::tribble(
   ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
   1,            "Coastal",                  0.443,
@@ -129,7 +126,7 @@ landsat_8 = tibble::tribble(
 knitr::kable(landsat_8, align = c("l", "r", "r"), caption = "Landsat-8")
 ```
 
-```{r modis, echo=FALSE}
+```{r modis, echo=FALSE, fig.height = 4, fig.width = 4}
 modis = tibble::tribble(
   ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
   1,            "Red",                      0.645,
@@ -138,7 +135,7 @@ modis = tibble::tribble(
 knitr::kable(modis, align = c("l", "r", "r"), caption = "MODIS")
 ```
 
-```{r meris, echo=FALSE}
+```{r meris, echo=FALSE, fig.height = 4, fig.width = 4}
 meris = tibble::tribble(
   ~`Band Number`, ~`Band Name`,           ~`Band Center (nm)`,
   1,            "Coastal",                  0.413,
@@ -161,7 +158,7 @@ knitr::kable(meris, align = c("l", "r", "r"), caption = "MERIS")
 
 ```
 
-```{r OLCI, echo=FALSE}
+```{r OLCI, echo=FALSE, fig.height = 4, fig.width = 4}
 OLCI = tibble::tribble(
   ~`Band Number`, ~`Band Name`,                     ~`Band Center (nm)`,
   1,            "Aerosol Correction",                0.400,
@@ -194,7 +191,7 @@ knitr::kable(OLCI, align = c("l", "r", "r"), caption = "OLCI")
 
 Once the data has been pre-processed and atmospherically corrected, the water quality algorithms can be applied. 
 This package makes use of a suite of well-established algorithms designed for the evaluation of water quality via remotely sensed imagery, which are designed to detect the spectral response of only the upper most portion of the water column (~1 meter).
-More specifically, these indices were developed for the detection and estimation of the spigments associated with cyanobacteria and harmful algal blooms (CHABs), which include the ubiquitous phytoplankton pigment chlorophyll-a, the cyanobacteria specific pigment phycocyanin, and turbidity used as a generic metric of water clarity (Mishra et al. 2014, Randolph et al. 2008, Simis et al. 2005, Stumpf et al. 2016, Wynne et al. 2008). 
+More specifically, these indices were developed for the detection and estimation of the pigments associated with cyanobacteria and harmful algal blooms (CHABs), which include the ubiquitous phytoplankton pigment chlorophyll-a, the cyanobacteria specific pigment phycocyanin, and turbidity used as a generic metric of water clarity (Mishra et al. 2014, Randolph et al. 2008, Simis et al. 2005, Stumpf et al. 2016, Wynne et al. 2008). 
 Studies have demostrated that these proxies can strongly co-vary, but the degree is influenced by water bio-chemistry, geography, and atmospheric conditions (Dokulil and Teubner 2000, Stumpf et al. 2016, Wynne et al. 2012, 2015). 
 These localized variations and the subsequent affect on the algorithms performances are the justification for including the near-comprehensive list of algorithms water quality algorithms.
 This package is only designed to give water managers or researchers a user-friendly method and set of options for monitoring a given water body for algal blooms. 
@@ -237,7 +234,7 @@ Harsha <- stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
 
 ## Single Algorithm
 
-```{r}
+```{r,   fig.height = 4, fig.width = 4}
 Harsha_Am092Bsub <- wq_calc(raster_stack = Harsha, 
                             alg = "Am092Bsub", 
                             sat = "sentinel2")
@@ -246,7 +243,7 @@ plot(Harsha_Am092Bsub)
 
 ## Multiple Algorithms
 
-```{r}
+```{r, fig.height = 5, fig.width = 6}
 Harsha_Multiple <- wq_calc(raster_stack = Harsha,
                            alg = c("Am092Bsub", "Go04MCI", "Da052BDA"), 
                            sat = "sentinel2")
@@ -255,7 +252,7 @@ plot(Harsha_Multiple)
 
 ## Type of Algorithm
 
-```{r}
+```{r, fig.height = 5, fig.width = 6}
 Harsha_PC <- wq_calc(Harsha,
                      alg = "phycocyanin", 
                      sat = "sentinel2")
@@ -264,7 +261,7 @@ plot(Harsha_PC)
  
 ## All Algorithms
 
-```{r}
+```{r, fig.height = 5, fig.width = 6}
 Harsha_All <- wq_calc(Harsha, 
                       alg = "all",
                       sat = "sentinel2")
