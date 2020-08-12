@@ -58,7 +58,7 @@ library(tmap)
 library(sf)
 s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
 MM12NDCI = wq_calc(s2, alg = "MM12NDCI", sat = "sentinel2")
-samples = st_read(system.file("raster/Harsha_Points_CRS.gpkg", package = "waterquality"))
+samples = st_read(system.file("raster/Harsha_Simple_Points_CRS.gpkg", package = "waterquality"))
 lake_extent = st_read(system.file("raster/Harsha_Lake_CRS.gpkg", package = "waterquality"))
 ```
 
