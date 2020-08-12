@@ -97,28 +97,38 @@
 <div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools")</span>
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"RAJohansen/waterquality"</span>)</pre></div>
 </div>
-<div id="example" class="section level2">
+<div id="examples" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
+<a href="#examples" class="anchor"></a>Examples</h2>
 <p>The main function in this package is <code><a href="reference/wq_calc.html">wq_calc()</a></code>:</p>
 <div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
-<span class="co">#&gt; Warning: replacing previous import 'vctrs::data_frame' by 'tibble::data_frame'</span>
-<span class="co">#&gt; when loading 'dplyr'</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">raster</span>)
-<span class="co">#&gt; Loading required package: sp</span>
 <span class="no">s2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/stack.html">stack</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/S2_Harsha.tif"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
-<span class="no">s2_two_alg</span> <span class="kw">=</span> <span class="fu"><a href="reference/wq_calc.html">wq_calc</a></span>(<span class="no">s2</span>, <span class="kw">alg</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"TurbChip09NIROverGreen"</span>, <span class="st">"Be16FLHGreenRedNIR"</span>), <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)
-<span class="co">#&gt; Be16FLHGreenRedNIR calculated!</span>
-<span class="co">#&gt; TurbChip09NIROverGreen calculated!</span>
-<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">s2_two_alg</span>)</pre></div>
-<p><img src="reference/figures/README-example-1.png"><!-- --></p>
+<span class="no">s2_two_alg</span> <span class="kw">=</span> <span class="fu"><a href="reference/wq_calc.html">wq_calc</a></span>(<span class="no">s2</span>, <span class="kw">alg</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"TurbChip09NIROverGreen"</span>, <span class="st">"Be16FLHGreenRedNIR"</span>), <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)</pre></div>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">s2_two_alg</span>)</pre></div>
+<p><img src="reference/figures/README-example%201%20output-1.png"><!-- --></p>
+<p>Additional functionality include the MAP_WQ functions:</p>
+<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">raster</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tmap</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">sf</span>)
+<span class="no">s2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/stack.html">stack</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/S2_Harsha.tif"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
+<span class="no">MM12NDCI</span> <span class="kw">=</span> <span class="fu"><a href="reference/wq_calc.html">wq_calc</a></span>(<span class="no">s2</span>, <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"MM12NDCI"</span>, <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)
+<span class="no">samples</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sf/man/st_read.html">st_read</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/Harsha_Simple_Points_CRS.gpkg"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
+<span class="no">lake_extent</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sf/man/st_read.html">st_read</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/Harsha_Lake_CRS.gpkg"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))</pre></div>
+<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="reference/Map_WQ_raster.html">Map_WQ_raster</a></span>(<span class="kw">WQ_raster</span> <span class="kw">=</span> <span class="no">MM12NDCI</span>,
+              <span class="kw">sample_points</span> <span class="kw">=</span> <span class="no">samples</span>,
+              <span class="kw">map_title</span><span class="kw">=</span> <span class="st">"Water Quality Map"</span>,
+              <span class="kw">raster_style</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
+              <span class="kw">histogram</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></div>
+<p><img src="reference/figures/README-example%202%20output-1.png"><!-- --></p>
 <p>To learn more read the <a href="https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html">“Introduction to the waterquality package”</a> vignette.</p>
 </div>
 <div id="package-contributions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#package-contributions" class="anchor"></a>Package Contributions</h2>
 <p>We encourage users to submit issues and enhancement requests so we may continue to improve our package.</p>
-<p>Futhermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at <a href="mailto:richard.a.johansen@erdc.dren.mil" class="email">richard.a.johansen@erdc.dren.mil</a></p>
+<p>Furthermore, if you have a water quality algorithm that was not on our list, and you would like for it to be included in our package please email me at <a href="mailto:richard.a.johansen@erdc.dren.mil" class="email">richard.a.johansen@erdc.dren.mil</a></p>
 </div>
 </div>
 

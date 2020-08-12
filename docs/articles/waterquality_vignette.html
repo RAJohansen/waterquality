@@ -82,7 +82,7 @@
       <h1 data-toc-skip>Introduction to the waterquality package</h1>
                         <h4 class="author">Richard Johansen, Jakub Nowosad, Molly Reif, and Erich Emery</h4>
             
-            <h4 class="date">2020-08-11</h4>
+            <h4 class="date">2020-08-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/RAJohansen/waterquality/blob/master/../vignettes/waterquality_vignette.Rmd"><code>../vignettes/waterquality_vignette.Rmd</code></a></small>
       <div class="hidden name"><code>waterquality_vignette.Rmd</code></div>
@@ -494,7 +494,7 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 <div id="introduction-to-the-waterquality-package" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction-to-the-waterquality-package" class="anchor"></a>Introduction to the waterquality package</h1>
-<p>Once the data has been pre-processed and atmospherically corrected, the water quality algorithms can be applied. This package makes use of a suite of well-established algorithms designed for the evaluation of water quality via remotely sensed imagery, which are designed to detect the spectral response of only the upper most portion of the water column (~1 meter). More specifically, these indices were developed for the detection and estimation of the spigments associated with cyanobacteria and harmful algal blooms (CHABs), which include the ubiquitous phytoplankton pigment chlorophyll-a, the cyanobacteria specific pigment phycocyanin, and turbidity used as a generic metric of water clarity (Mishra et al. 2014, Randolph et al. 2008, Simis et al. 2005, Stumpf et al. 2016, Wynne et al. 2008). Studies have demostrated that these proxies can strongly co-vary, but the degree is influenced by water bio-chemistry, geography, and atmospheric conditions (Dokulil and Teubner 2000, Stumpf et al. 2016, Wynne et al. 2012, 2015). These localized variations and the subsequent affect on the algorithms performances are the justification for including the near-comprehensive list of algorithms water quality algorithms. This package is only designed to give water managers or researchers a user-friendly method and set of options for monitoring a given water body for algal blooms.</p>
+<p>Once the data has been pre-processed and atmospherically corrected, the water quality algorithms can be applied. This package makes use of a suite of well-established algorithms designed for the evaluation of water quality via remotely sensed imagery, which are designed to detect the spectral response of only the upper most portion of the water column (~1 meter). More specifically, these indices were developed for the detection and estimation of the pigments associated with cyanobacteria and harmful algal blooms (CHABs), which include the ubiquitous phytoplankton pigment chlorophyll-a, the cyanobacteria specific pigment phycocyanin, and turbidity used as a generic metric of water clarity (Mishra et al. 2014, Randolph et al. 2008, Simis et al. 2005, Stumpf et al. 2016, Wynne et al. 2008). Studies have demostrated that these proxies can strongly co-vary, but the degree is influenced by water bio-chemistry, geography, and atmospheric conditions (Dokulil and Teubner 2000, Stumpf et al. 2016, Wynne et al. 2012, 2015). These localized variations and the subsequent affect on the algorithms performances are the justification for including the near-comprehensive list of algorithms water quality algorithms. This package is only designed to give water managers or researchers a user-friendly method and set of options for monitoring a given water body for algal blooms.</p>
 <div id="algorithms" class="section level2">
 <h2 class="hasAnchor">
 <a href="#algorithms" class="anchor"></a>Algorithms</h2>
@@ -544,7 +544,7 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
                             <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)
 <span class="co">#&gt; Am092Bsub calculated!</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_Am092Bsub</span>)</pre></body></html></div>
-<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
+<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-2-1.png" width="384"></p>
 </div>
 <div id="multiple-algorithms" class="section level2">
 <h2 class="hasAnchor">
@@ -556,7 +556,7 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 <span class="co">#&gt; Go04MCI calculated!</span>
 <span class="co">#&gt; Da052BDA calculated!</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_Multiple</span>)</pre></body></html></div>
-<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
+<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
 </div>
 <div id="type-of-algorithm" class="section level2">
 <h2 class="hasAnchor">
@@ -573,7 +573,7 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 <span class="co">#&gt; Da052BDA calculated!</span>
 <span class="co">#&gt; Ku15SLH calculated!</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_PC</span>)</pre></body></html></div>
-<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
+<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
 </div>
 <div id="all-algorithms" class="section level2">
 <h2 class="hasAnchor">
@@ -606,7 +606,7 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 <span class="co">#&gt; TurbLath91RedOverBlue calculated!</span>
 <span class="co">#&gt; TurbMoore80Red calculated!</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_All</span>) <span class="co"># Only displays first 12 of 28</span></pre></body></html></div>
-<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
+<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-5-1.png" width="576"></p>
 </div>
 </div>
 <div id="acknowledgements" class="section level1">
