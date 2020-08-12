@@ -49,32 +49,14 @@ plot(s2_two_alg)
 
 ![](man/figures/README-example%201%20output-1.png)<!-- -->
 
-Additional functionality include the MAP\_WQ functions:
+For additional information on the functionality of waterquality please
+view [“Introduction to the waterquality
+package”](https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html).
 
-``` r
-library(waterquality)
-library(raster)
-library(tmap)
-library(sf)
-s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
-MM12NDCI = wq_calc(s2, alg = "MM12NDCI", sat = "sentinel2")
-samples = st_read(system.file("raster/Harsha_Simple_Points_CRS.gpkg", package = "waterquality"))
-lake_extent = st_read(system.file("raster/Harsha_Lake_CRS.gpkg", package = "waterquality"))
-```
-
-``` r
-Map_WQ_raster(WQ_raster = MM12NDCI,
-              sample_points = samples,
-              map_title= "Water Quality Map",
-              raster_style = "quantile",
-              histogram = TRUE)
-```
-
-![](man/figures/README-example%202%20output-1.png)<!-- -->
-
-To learn more read the [“Introduction to the waterquality
-package”](https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html)
-vignette.
+For more details on our full research workflow see our technical report
+entitled [“Waterquality: An Open-Source R Package for the Detection and
+Quantification of Cyanobacterial Harmful Algal Blooms and Water
+Quality”](https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf).
 
 ## Package Contributions
 
@@ -83,4 +65,4 @@ continue to improve our package.
 
 Furthermore, if you have a water quality algorithm that was not on our
 list, and you would like for it to be included in our package please
-email me at <richard.a.johansen@erdc.dren.mil>
+email me at <Richard.A.Johansen@erdc.dren.mil>
