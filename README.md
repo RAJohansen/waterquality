@@ -71,7 +71,7 @@ s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Be16FLHGreenRedNIR")
 plot(s2_two_alg)
 ```
 
-![](man/figures/README-example%201%20output-1.png)<!-- -->
+![](man/figures/README-example_output-1.png)<!-- -->
 
 ## Package Contributions
 
