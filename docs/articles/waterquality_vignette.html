@@ -91,418 +91,19 @@
 
     
     
-<div id="introduction" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>There has been a noticeable rise in the occurrence and severity of cyanobacterial harmful algal blooms (CHABs) in US water bodies (Anderson et al. 2000, Graham 2006, USEPA 2012a). CHABs have the ability to cause adverse effects on human and animal health as well as disrupt local economies (Anderson et al. 2000, Linkov et al. 2009, USEPA 2012a, 2012b). However, in situ monitoring all of the water bodies in the United States would be costly and labor intensive, if even possible. This has given rise to the application of remote sensing data to be used as the standard method for large-scope water quality studies. In general, satellite remote sensing offers cheap (or even free), consistent, near total coverage of the U.S. water bodies. There are multiple freely available data sets from sensors that offer the spatial, spectral, and geographic coverage needed for the study of CHABS, such as Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI (Beck et al. 2016, 2017, Johansen et al. 2018).</p>
-<p>A major concern is revisit time worsened by high frequency cloud-cover. The issue is further compounded by the variation in each satellite’s spatial and spectral configuration. So it is proposed that water managers and researchers should utilize all possible sensors in order to increase cloud-free image acquisition as well as capture as much of the spectral-specific water characteristics as possible. This is vital given that each water body contains unique mixtures of bio-chemical variables and physical characteristics. We believe that this would allow for a more comprehensive study and allow for precision treatment of each water body. In order to achieve the goal of precision-based water quality monitoring, we have developed the <strong>waterquality</strong> package which contains a near-comprehensive list of satellite-derived algorithms for the detection and quantification of the three main quality proxies: Chlorophyll-a, Turbidity, and Phycocyanin (Schalles and Yacobi 2000, Simis et al. 2005, Randolph et al. 2008, Stumpf et al. 2016, Wozniak et al. 2016). The package’s main function is to convert reflectance imagery from operational satellite imagers (Worldview-2, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI) into any or all of the well-established water quality indices. This final output product is a raster stack of the user-defined water quality indices for a desired area of interest.</p>
-<div id="data-acquisition" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-acquisition" class="anchor"></a>Data Acquisition</h2>
-<p>The first step is to acquire the satellite image of your area of interest. Most satellite imagers have large global coverage, but may be limited depending on your specific location. However, for our example we will use a William H. Harsha Lake (East Fork Lake) located in Southwest Ohio, United States. The imager provided will be a Sentinel-2 product because multiple studies have demonstrated that Sentinel-2 has the optimal spatial and spectral configurations for detecting CHABs in this location (Beck et al. 2017, Johansen et al. 2018, Xu et al. 2018 (in review)).</p>
-<p>Sentinel-2 is freely downloadable but does require you to create an account on the European Space Agency’s (ESA) Copernicus Hub (<a href="https://scihub.copernicus.eu" class="uri">https://scihub.copernicus.eu</a>) or using the United States Geologic Survey’s (USGS) Earth Explorer (<a href="https://earthexplorer.usgs.gov" class="uri">https://earthexplorer.usgs.gov</a>). Then you will be able to log into the Open Access Hub and search for available imagery. As of this writing, the ESA mainly distributes uncorrected top of atmosphere (ToA) reflectance products (level 1C), and it is highly recommended to atmospherically correct your imagery to bottom of atmosphere (BoA) reflectance before continuing the process. Raw Sentinel-2 imagery can be difficult to deal with because full scenes are very large and contain bands of differing spatial resolutions. Due to this, we developed a supplemental script called <a href="https://github.com/RAJohansen/waterquality/blob/master/data-raw/data_preprocessing.R">data_preprocessing.R</a>, which converts the full scene imagery into a raster stack tif image of your Area of Interest (AOI).</p>
-<div id="atmospheric-correction" class="section level3">
-<h3 class="hasAnchor">
-<a href="#atmospheric-correction" class="anchor"></a>Atmospheric Correction</h3>
-<p>Xu et al. 2018 (in review) provides an evaluation of atmospheric correction techniques (FlAASH, QUAC, Sen2Cor, ELM) effects on the detection of CHABs using Sentinel-2. Choosing the appropriate method is user specific, which can be based on image quality, availability of in situ measurements, cost, and industry standards. Currently this process is not automated and may require proprietary software to run such as ENVI’s FLAASH and QUAC. For these reasons we leave this step up to the user to decide and implement, but we have provided some additional information below:</p>
-<p>FLAASH: <a href="https://www.harrisgeospatial.com/docs/FLAASH.html" class="uri">https://www.harrisgeospatial.com/docs/FLAASH.html</a> QUAC: <a href="https://www.harrisgeospatial.com/docs/QUAC.html" class="uri">https://www.harrisgeospatial.com/docs/QUAC.html</a> Sen2Cor: <a href="http://step.esa.int/main/third-party-plugins-2/sen2cor/" class="uri">http://step.esa.int/main/third-party-plugins-2/sen2cor/</a> ELM: *Requires in situ calibration targets. <!--, but it is our hope to make this process even easier by embedding the R package Sen2R into this section.
-Sen2R is a package that allows a user to search, download, and atmospherically correct Sentinel-2 Imagery directly from R (Ranghetti and Busetto 2018)--></p>
-</div>
-</div>
-<div id="image-pre-processing" class="section level2">
-<h2 class="hasAnchor">
-<a href="#image-pre-processing" class="anchor"></a>Image Pre-Processing</h2>
-<p>This supplemental script is designed to help the user pre-process sentinel-2 imagery directly from acquisition or after atmospheric correction. The script was developed using Sentinel-2 as a the example, because this imagery has unique challenges but many functions can be utilized for other sensor’s imagery as well. The <a href="https://github.com/RAJohansen/waterquality/blob/master/data-raw/data_preprocessing.R">data_preprocessing.R</a> script describes multiple functions in the following steps: 1. Define your inputs- This includes the image directory, imagery file extension pattern (.jp2), area of interest (AOI), and preferred projection (in required). 2.The second step is create a list of images from the defined directory, and create a template (same extent and spatial resolution) image based on a single band to be the configuration of the final stacked raster product. <em>For Sentinel-2, it is recommended to use a band with 20-meter resolution (ex. Band 5), because it is more appropriate to upscale the higher resolution 10-meter bands than to downscale the 20-meter bands. 3. The next step is to iterate through the list of rasters to resample (<code><a href="https://rdrr.io/pkg/raster/man/resample.html">raster::resample()</a></code>) the imagery using the defined template, crop (<code><a href="https://rdrr.io/pkg/raster/man/crop.html">raster::crop()</a></code>) the imagery using the rectangular boundary of the AOI (ex. shapefile of Harsha Lake), and then stack (<code><a href="https://rdrr.io/pkg/raster/man/stack.html">raster::stack()</a></code>) the resulting rasters together. This process takes approximately 4-5 minutes to run but converts the large raw sentinel-2 data into tidy TIFF file only a fraction of the size of the full scene stack (3GB+ vs. 15.1MB). 4. </em>Optional: To further reduce the size of the tiff file, we have added the mask (<code><a href="https://rdrr.io/pkg/raster/man/mask.html">raster::mask()</a></code>)function which eliminates the values of all pixels outside of the physical boundary of the AOI.<br>
-5. *Optional: Another way to reduce the size of the imagery or to eliminate erroneous information is to create a subset of the bands (i.e. Sentinel-2 algorithms only use the first nine bands (1:9)). This is also a way to make sure that your input aligns with the algorithms band designations below. 6. Finally, we provide an option to save the final output.</p>
-</div>
-<div id="band-selection-and-designation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#band-selection-and-designation" class="anchor"></a>Band Selection and Designation</h2>
-<p>Due to the fact that each institution and sensors have their own method of “tuning” their data, we provide a description of what the format of each sensor should look like as well as their appropriate band designations. After atmospheric correction and preprocessing each sensor should be in the following format:</p>
-<table class="table">
-<caption>Worldview-2</caption>
-<thead><tr class="header">
-<th align="left">Band Number</th>
-<th align="right">Band Name</th>
-<th align="right">Band Center (nm)</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="right">Coastal</td>
-<td align="right">0.425</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="right">Blue</td>
-<td align="right">0.480</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="right">Green</td>
-<td align="right">0.545</td>
-</tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="right">Yellow</td>
-<td align="right">0.605</td>
-</tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="right">Red</td>
-<td align="right">0.660</td>
-</tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="right">Red Edge</td>
-<td align="right">0.725</td>
-</tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="right">NIR-1</td>
-<td align="right">0.833</td>
-</tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="right">NIR-2</td>
-<td align="right">0.950</td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<caption>Sentinel-2</caption>
-<thead><tr class="header">
-<th align="left">Band Number</th>
-<th align="right">Band Name</th>
-<th align="right">Band Center (nm)</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="right">Coastal Blue</td>
-<td align="right">0.443</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="right">Blue</td>
-<td align="right">0.490</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="right">Green</td>
-<td align="right">0.560</td>
-</tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="right">Red</td>
-<td align="right">0.665</td>
-</tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="right">Vegetation Red Edge</td>
-<td align="right">0.705</td>
-</tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="right">Vegetation Red Edge</td>
-<td align="right">0.740</td>
-</tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="right">Vegetation Red Edge</td>
-<td align="right">0.783</td>
-</tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="right">NIR</td>
-<td align="right">0.842</td>
-</tr>
-<tr class="odd">
-<td align="left">9</td>
-<td align="right">Narrow NIR</td>
-<td align="right">0.865</td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<caption>Landsat-8</caption>
-<thead><tr class="header">
-<th align="left">Band Number</th>
-<th align="right">Band Name</th>
-<th align="right">Band Center (nm)</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="right">Coastal</td>
-<td align="right">0.443</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="right">Blue</td>
-<td align="right">0.482</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="right">Green</td>
-<td align="right">0.562</td>
-</tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="right">Red</td>
-<td align="right">0.655</td>
-</tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="right">NIR</td>
-<td align="right">0.865</td>
-</tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="right">SWIR-1</td>
-<td align="right">1.609</td>
-</tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="right">SWIR-2</td>
-<td align="right">2.201</td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<caption>MODIS</caption>
-<thead><tr class="header">
-<th align="left">Band Number</th>
-<th align="right">Band Name</th>
-<th align="right">Band Center (nm)</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="right">Red</td>
-<td align="right">0.645</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="right">NIR</td>
-<td align="right">0.859</td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<caption>MERIS</caption>
-<thead><tr class="header">
-<th align="left">Band Number</th>
-<th align="right">Band Name</th>
-<th align="right">Band Center (nm)</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="right">Coastal</td>
-<td align="right">0.413</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="right">Blue</td>
-<td align="right">0.443</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="right">Blue-2</td>
-<td align="right">0.490</td>
-</tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="right">Yellow</td>
-<td align="right">0.510</td>
-</tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="right">Green</td>
-<td align="right">0.560</td>
-</tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="right">Red</td>
-<td align="right">0.620</td>
-</tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="right">Red-2</td>
-<td align="right">0.665</td>
-</tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="right">Chlorophyll_Fl</td>
-<td align="right">0.681</td>
-</tr>
-<tr class="odd">
-<td align="left">9</td>
-<td align="right">Red-Edge</td>
-<td align="right">0.709</td>
-</tr>
-<tr class="even">
-<td align="left">10</td>
-<td align="right">Red-Edge-2</td>
-<td align="right">0.754</td>
-</tr>
-<tr class="odd">
-<td align="left">11</td>
-<td align="right">Red-Edge-3</td>
-<td align="right">0.761</td>
-</tr>
-<tr class="even">
-<td align="left">12</td>
-<td align="right">Red-Edge-4</td>
-<td align="right">0.779</td>
-</tr>
-<tr class="odd">
-<td align="left">13</td>
-<td align="right">NIR-1</td>
-<td align="right">0.865</td>
-</tr>
-<tr class="even">
-<td align="left">14</td>
-<td align="right">NIR-2</td>
-<td align="right">0.885</td>
-</tr>
-<tr class="odd">
-<td align="left">15</td>
-<td align="right">NIR-3</td>
-<td align="right">0.900</td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<caption>OLCI</caption>
-<thead><tr class="header">
-<th align="left">Band Number</th>
-<th align="right">Band Name</th>
-<th align="right">Band Center (nm)</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="right">Aerosol Correction</td>
-<td align="right">0.400</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="right">Turbidity</td>
-<td align="right">0.413</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="right">Chlorophyll Absorption Max</td>
-<td align="right">0.443</td>
-</tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="right">High-Chlorophyll</td>
-<td align="right">0.490</td>
-</tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="right">Chlorophyll &amp; sediment</td>
-<td align="right">0.510</td>
-</tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="right">Chlorophyll Reference</td>
-<td align="right">0.560</td>
-</tr>
-<tr class="odd">
-<td align="left">7</td>
-<td align="right">Sediment Loading/Phycocyanin</td>
-<td align="right">0.620</td>
-</tr>
-<tr class="even">
-<td align="left">8</td>
-<td align="right">Chlorophyll 2nd Absorption Max</td>
-<td align="right">0.665</td>
-</tr>
-<tr class="odd">
-<td align="left">9</td>
-<td align="right">Improved Fluorescence Retrieval</td>
-<td align="right">0.674</td>
-</tr>
-<tr class="even">
-<td align="left">10</td>
-<td align="right">Chlorophyll Fluorescence Peak</td>
-<td align="right">0.681</td>
-</tr>
-<tr class="odd">
-<td align="left">11</td>
-<td align="right">Chlorophyll Fluorescence Baseline</td>
-<td align="right">0.709</td>
-</tr>
-<tr class="even">
-<td align="left">12</td>
-<td align="right">O2 Absorption/Clouds</td>
-<td align="right">0.754</td>
-</tr>
-<tr class="odd">
-<td align="left">13</td>
-<td align="right">O2 Absorption/Aerosol Correction</td>
-<td align="right">0.761</td>
-</tr>
-<tr class="even">
-<td align="left">14</td>
-<td align="right">Atmospheric Correction</td>
-<td align="right">0.764</td>
-</tr>
-<tr class="odd">
-<td align="left">15</td>
-<td align="right">O2A Cloud Top Pressure</td>
-<td align="right">0.768</td>
-</tr>
-<tr class="even">
-<td align="left">16</td>
-<td align="right">Atmospheric/Aerosol Correction</td>
-<td align="right">0.779</td>
-</tr>
-<tr class="odd">
-<td align="left">17</td>
-<td align="right">Atmosp. Corr. and Co-registration</td>
-<td align="right">0.865</td>
-</tr>
-<tr class="even">
-<td align="left">18</td>
-<td align="right">Water Vapor Reference</td>
-<td align="right">0.885</td>
-</tr>
-<tr class="odd">
-<td align="left">19</td>
-<td align="right">Water Vapor Absorption</td>
-<td align="right">0.900</td>
-</tr>
-<tr class="even">
-<td align="left">20</td>
-<td align="right">Water Vapor Absorption-2</td>
-<td align="right">0.940</td>
-</tr>
-<tr class="odd">
-<td align="left">21</td>
-<td align="right">Atmospheric/Aerosol Correction-2</td>
-<td align="right">1.020</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="introduction-to-the-waterquality-package" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction-to-the-waterquality-package" class="anchor"></a>Introduction to the waterquality package</h1>
-<p>Once the data has been pre-processed and atmospherically corrected, the water quality algorithms can be applied. This package makes use of a suite of well-established algorithms designed for the evaluation of water quality via remotely sensed imagery, which are designed to detect the spectral response of only the upper most portion of the water column (~1 meter). More specifically, these indices were developed for the detection and estimation of the pigments associated with cyanobacteria and harmful algal blooms (CHABs), which include the ubiquitous phytoplankton pigment chlorophyll-a, the cyanobacteria specific pigment phycocyanin, and turbidity used as a generic metric of water clarity (Mishra et al. 2014, Randolph et al. 2008, Simis et al. 2005, Stumpf et al. 2016, Wynne et al. 2008). Studies have demostrated that these proxies can strongly co-vary, but the degree is influenced by water bio-chemistry, geography, and atmospheric conditions (Dokulil and Teubner 2000, Stumpf et al. 2016, Wynne et al. 2012, 2015). These localized variations and the subsequent affect on the algorithms performances are the justification for including the near-comprehensive list of algorithms water quality algorithms. This package is only designed to give water managers or researchers a user-friendly method and set of options for monitoring a given water body for algal blooms.</p>
+<p>The main purpose of <strong>waterquality</strong> is to quickly and easily convert satellite-based reflectance imagery into one or many well-known water quality algorithms designed for the detection of harmful algal blooms or the following pigment proxies: chlorophyll-a, blue-green algae (Phycocyanin), and Turbidity. Currently, this package is able to process <a href="https://rajohansen.github.io/waterquality/reference/index.html">45 algorithms</a> for the following satellite-based imagers: WorldView-2, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of the <code>wq_calc</code> output, we are developing a series of <code>Map_WQ</code> functions which may reduce technical barriers and simplify the complexities in selecting a map layout. Additional functionality of the package include a series of <code>extract_lm</code> functions wrap that <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm">“Fitting Linear Models”</a> and the <a href="http://topepo.github.io/caret/index.html">“caret”</a> packages to quickly generate crossvalidated linear model and standardized outputs (r^2, p-value, slope, intercept of the global lm model &amp; average r^2, average RMSE, average MAE of crossvalidated model) for any number of algorithm and water quality parameters combinations. It is important to note that the <code>extract_lm</code> functions require ground-truth data in order to develop the models.</p>
+<p>For an example of a full research workflow, including data acquisition, image pre-processing, methods, and results please see our publication entitled<a href="https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf">“Waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality”</a>.</p>
 <div id="algorithms" class="section level2">
 <h2 class="hasAnchor">
 <a href="#algorithms" class="anchor"></a>Algorithms</h2>
-<p>Currently, we have a list of <a href="https://rajohansen.github.io/waterquality/reference/index.html">45 algorithms</a> that can be applied for the detection of these three metrics. Although, it is important to note that not all sensors are capable of using all algorithms due to their spectral configurations. Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. <code>?Am092Bsub()</code>). Each algorithm is also linked to the original papers metric (Chlorophyll-a, Phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type. The final raster images are in relative index values and are not the estimated chlorophyll-a, phycocyanin, or turbidity values, but can easily be converted in to estimated concentration values using a regression model and in situ measurements as described in Johansen et al. 2018.</p>
+<p>Currently, we have a list of <a href="https://rajohansen.github.io/waterquality/reference/index.html">45 algorithms</a> that can be applied for the detection of these three metrics. Although, it is important to note that not all sensors are capable of using all algorithms due to their spectral configurations. Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. <code>?Am092Bsub()</code>). Each algorithm is also linked to the original papers metric (chlorophyll-a, phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type. The final raster images are in relative index values and are not the estimated chlorophyll-a, phycocyanin, or turbidity values. However, these relative values can be converted in to estimated concentration values using the <code>extract_lm</code> functions and ground truth measurements.</p>
 </div>
-<div id="wq_calc" class="section level2">
+<div id="functions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#wq_calc" class="anchor"></a>wq_calc()</h2>
+<a href="#functions" class="anchor"></a>Functions</h2>
+<div id="wq_calc" class="section level3">
+<h3 class="hasAnchor">
+<a href="#wq_calc" class="anchor"></a>wq_calc()</h3>
 <p>The main function of this package is called <code><a href="../reference/wq_calc.html">wq_calc()</a></code> which calculates water quality indices by using an reflectance raster stack as an input, user-defined algorithm(s) selection, and satellite configuration selection corresponding to the following three variables: <code>raster_stack</code>, <code>alg</code>, and <code>sat</code>.</p>
 <ul>
 <li>
@@ -529,86 +130,60 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 </li>
 </ul>
 </div>
-</div>
-<div id="examples" class="section level1">
-<h1 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h1>
+<div id="examples" class="section level3">
+<h3 class="hasAnchor">
+<a href="#examples" class="anchor"></a>Examples</h3>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">raster</span>)
 <span class="no">Harsha</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/stack.html">stack</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/S2_Harsha.tif"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))</pre></body></html></div>
-<div id="single-algorithm" class="section level2">
-<h2 class="hasAnchor">
-<a href="#single-algorithm" class="anchor"></a>Single Algorithm</h2>
+<div id="single-algorithm" class="section level4">
+<h4 class="hasAnchor">
+<a href="#single-algorithm" class="anchor"></a>Single Algorithm</h4>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">Harsha_Am092Bsub</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="kw">raster_stack</span> <span class="kw">=</span> <span class="no">Harsha</span>,
                             <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"Am092Bsub"</span>,
-                            <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)
-<span class="co">#&gt; Am092Bsub calculated!</span>
-<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_Am092Bsub</span>)</pre></body></html></div>
-<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-2-1.png" width="384"></p>
+                            <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_Am092Bsub</span>)</pre></body></html></div>
+<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-3-1.png" width="384"></p>
 </div>
-<div id="multiple-algorithms" class="section level2">
-<h2 class="hasAnchor">
-<a href="#multiple-algorithms" class="anchor"></a>Multiple Algorithms</h2>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">Harsha_Multiple</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="kw">raster_stack</span> <span class="kw">=</span> <span class="no">Harsha</span>,
+<div id="multiple-algorithms" class="section level4">
+<h4 class="hasAnchor">
+<a href="#multiple-algorithms" class="anchor"></a>Multiple Algorithms</h4>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">Harsha_Multiple</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="kw">raster_stack</span> <span class="kw">=</span> <span class="no">Harsha</span>,
                            <span class="kw">alg</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Am092Bsub"</span>, <span class="st">"Go04MCI"</span>, <span class="st">"Da052BDA"</span>),
-                           <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)
-<span class="co">#&gt; Am092Bsub calculated!</span>
-<span class="co">#&gt; Go04MCI calculated!</span>
-<span class="co">#&gt; Da052BDA calculated!</span>
-<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_Multiple</span>)</pre></body></html></div>
-<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
-</div>
-<div id="type-of-algorithm" class="section level2">
-<h2 class="hasAnchor">
-<a href="#type-of-algorithm" class="anchor"></a>Type of Algorithm</h2>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">Harsha_PC</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="no">Harsha</span>,
-                     <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"phycocyanin"</span>,
-                     <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)
-<span class="co">#&gt; Am09KBBI calculated!</span>
-<span class="co">#&gt; Go04MCI calculated!</span>
-<span class="co">#&gt; Be16FLHBlueRedNIR calculated!</span>
-<span class="co">#&gt; Be16FLHGreenRedNIR calculated!</span>
-<span class="co">#&gt; Be16FLHVioletRedNIR calculated!</span>
-<span class="co">#&gt; Wy08CI calculated!</span>
-<span class="co">#&gt; Da052BDA calculated!</span>
-<span class="co">#&gt; Ku15SLH calculated!</span>
-<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_PC</span>)</pre></body></html></div>
-<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
-</div>
-<div id="all-algorithms" class="section level2">
-<h2 class="hasAnchor">
-<a href="#all-algorithms" class="anchor"></a>All Algorithms</h2>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">Harsha_All</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="no">Harsha</span>,
-                      <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"all"</span>,
-                      <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)
-<span class="co">#&gt; Al10SABI calculated!</span>
-<span class="co">#&gt; Am092Bsub calculated!</span>
-<span class="co">#&gt; Am09KBBI calculated!</span>
-<span class="co">#&gt; Be16FLHviolet calculated!</span>
-<span class="co">#&gt; Gi033BDA calculated!</span>
-<span class="co">#&gt; Go04MCI calculated!</span>
-<span class="co">#&gt; MM12NDCI calculated!</span>
-<span class="co">#&gt; Be16NDTIblue calculated!</span>
-<span class="co">#&gt; Be16NDTIviolet calculated!</span>
-<span class="co">#&gt; Be16FLHBlueRedNIR calculated!</span>
-<span class="co">#&gt; Be16FLHGreenRedNIR calculated!</span>
-<span class="co">#&gt; Be16FLHVioletRedNIR calculated!</span>
-<span class="co">#&gt; Wy08CI calculated!</span>
-<span class="co">#&gt; Da052BDA calculated!</span>
-<span class="co">#&gt; Ku15SLH calculated!</span>
-<span class="co">#&gt; TurbBe16GreenPlusRedBothOverViolet calculated!</span>
-<span class="co">#&gt; TurbBe16RedOverViolet calculated!</span>
-<span class="co">#&gt; TurbBow06RedOverGreen calculated!</span>
-<span class="co">#&gt; TurbChip09NIROverGreen calculated!</span>
-<span class="co">#&gt; TurbDox02NIRoverRed calculated!</span>
-<span class="co">#&gt; TurbFrohn09GreenPlusRedBothOverBlue calculated!</span>
-<span class="co">#&gt; TurbHarr92NIR calculated!</span>
-<span class="co">#&gt; TurbLath91RedOverBlue calculated!</span>
-<span class="co">#&gt; TurbMoore80Red calculated!</span>
-<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_All</span>) <span class="co"># Only displays first 12 of 28</span></pre></body></html></div>
+                           <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_Multiple</span>)</pre></body></html></div>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-5-1.png" width="576"></p>
-<p>Additional functionality include the MAP_WQ functions:</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
+</div>
+<div id="type-of-algorithm" class="section level4">
+<h4 class="hasAnchor">
+<a href="#type-of-algorithm" class="anchor"></a>Type of Algorithm</h4>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">Harsha_PC</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="no">Harsha</span>,
+                     <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"phycocyanin"</span>,
+                     <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_PC</span>)</pre></body></html></div>
+<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
+</div>
+<div id="all-algorithms" class="section level4">
+<h4 class="hasAnchor">
+<a href="#all-algorithms" class="anchor"></a>All Algorithms</h4>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">Harsha_All</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="no">Harsha</span>,
+                      <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"all"</span>,
+                      <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_All</span>) <span class="co"># Only displays first 12 of 28</span></pre></body></html></div>
+<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
+</div>
+</div>
+<div id="map_wq-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#map_wq-functions" class="anchor"></a>Map_WQ Functions</h3>
+</div>
+<div id="examples-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#examples-1" class="anchor"></a>Examples</h3>
+<div id="map_wq_raster" class="section level4">
+<h4 class="hasAnchor">
+<a href="#map_wq_raster" class="anchor"></a>Map_WQ_Raster</h4>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">raster</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tmap</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">sf</span>)
@@ -616,49 +191,26 @@ Sen2R is a package that allows a user to search, download, and atmospherically c
 <span class="no">MM12NDCI</span> <span class="kw">=</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="no">s2</span>, <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"MM12NDCI"</span>, <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)
 <span class="no">samples</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sf/man/st_read.html">st_read</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/Harsha_Simple_Points_CRS.gpkg"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
 <span class="no">lake_extent</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sf/man/st_read.html">st_read</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/Harsha_Lake_CRS.gpkg"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))</pre></body></html></div>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="../reference/Map_WQ_raster.html">Map_WQ_raster</a></span>(<span class="kw">WQ_raster</span> <span class="kw">=</span> <span class="no">MM12NDCI</span>,
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/Map_WQ_raster.html">Map_WQ_raster</a></span>(<span class="kw">WQ_raster</span> <span class="kw">=</span> <span class="no">MM12NDCI</span>,
               <span class="kw">sample_points</span> <span class="kw">=</span> <span class="no">samples</span>,
               <span class="kw">map_title</span><span class="kw">=</span> <span class="st">"Water Quality Map"</span>,
               <span class="kw">raster_style</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
               <span class="kw">histogram</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
-<p><img src="waterquality_vignette_files/figure-html/example%202%20output-1.png" width="700"></p>
+<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
 </div>
 </div>
-<div id="acknowledgements" class="section level1">
-<h1 class="hasAnchor">
-<a href="#acknowledgements" class="anchor"></a>Acknowledgements</h1>
-<p>The waterquality package was developed with funding from the U.S. Army Corps of Engineers. The authors would also like to thank the University of Cincinnati Library’s Research &amp; Data Services the University of Cincinnati’s Space Informatics Lab for their expertise and technical services.</p>
 </div>
-<div id="references" class="section level1">
-<h1 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h1>
-<p>Anderson DM, Hoagland P, Kaoru Y,White AW. 2000. Estimated Annual Economic Impact from Harmful Algal Blooms (HABs) in the United States. Woods Hole Oceanographic Institution. Woods Hole (MA).</p>
-<p>Beck RA, Zhan S, Liu H, Tong S, Yang B, Xu M, Ye Z, Huang Y, et al. 2016. Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations. Remote Sens. Environ. 178, 15–30.</p>
-<p>Beck RA, Xu M, Zhan S, Liu H, Johansen RA, Tong S, Yang B, Shu S, et al. 2017. Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sensing. 9, 53.</p>
-<p>Dokulil MT, Teubner K, 2000. Cyanobacterial dominance in lakes. Hydrobiologia 438, 1–12</p>
-<p>Graham JL. Harmful Algal Blooms; USGS Fact Sheet, 2006-3147; USGS: Reston, VA, USA, 2006.</p>
-<p>Johansen RA, Beck R, Nowosad J, Nietch C, Xu M, Shu S, Yang B, Liu H, et al. (2018). Evaluating the portability of satellite derived chlorophyll-a algorithms for temperate inland lakes using airborne hyperspectral imagery and dense surface observations. Harmful Algae. 76. 10.1016/j.hal.2018.05.001.</p>
-<p>Linkov I, Satterstrom FK, Loney D, Steevans JA. The Impact of Harmful Algal Blooms on USACE Operations; ANSRP Technical Notes Collection; ERDC/TNANSRP-09-1;U.S.Army Engineer Research and Development Center: Vicksburg, MS, USA, 2009.</p>
-<p>Mishra S, Mishra DR, Lee ZP.Bio-optical inversion in highly turbid and cyanobacteria dominated waters. IEEE Trans. Geosci. Remote Sens. 2014, 52, 375–388.</p>
-<p>Ranghetti L, Busetto L. (2018). sen2r: an R toolbox to find, download and preprocess Sentinel-2 data. R package version 0.3.2. DOI: 10.5281/zenodo.1240384.</p>
-<p>Randolph K, Wilson J, Tedesco L, Li L, Lani PD, Soyeux E. Hyperspectral remote sensing of cyanobacteria in turbid productive water using optically active pigments, chlorophyll a and phycocyanin. Remote Sens. Environ. 2008, 112, 4009–4019.</p>
-<p>Schalles J, Yacobi Y. 2000. Remote detection and seasonal patterns of phycocyanin, carotenoid and chlorophyll-a pigments in eutrophic waters. Archiv fur Hydrobiologie, Special Issues Advances in Limnology. 55,153–168.</p>
-<p>Simis SGH, Peters SWM, Gons HJ.Remote sensing of the cyanobacteria pigment phycocyanin in turbid inland water. Limnol. Oceanogr. 2005, 50, 237–245.</p>
-<p>Stumpf RP, Davis TW, Wynne TT, Graham JL, Loftin KA, Johengen TH, Gossiaux D, Palladino D, Burtner A. Challenges for mapping cyanotoxin patterns from remote sensing of cyanobacteria. Harmful Algae 2016, 54, 160–173.</p>
-<p>[USEPA] United States Environmental Protection Agency. 2012a. Cyanobacteria and cyanotoxins: Information for drinking water systems. Washington (DC): EPA-810F11001.</p>
-<p>[USEPA] United States Environmental Protection Agency. 2012b. The National Lakes Assessment Fact Sheet. National Aquatic Resource Surveys. Washington (DC).</p>
-<p>Wynne TT, Stumpf RP, Tomlinson MC, Warner RA, Tester PA, Dyble, J. Relating spectral shape to cyanobacterial blooms in the Laurentian Great Lakes. Int. J. Remote Sens. 2008, 29, 3665–3672.</p>
-<p>Wynne TT, Stumpf RP, Tomlinson MC, Dyble J. Characterizing a cyanobacterial bloom in western Lake Erie using satellite imagery and meteorological data. Limnol. Oceanogr. 2012, 55, 2025–2036.</p>
-<p>Wynne TT, Stumpf RP. Spatial and Temporal Patterns in the Seasonal Distribution of Toxic Cyanobacteria in Western Lake Erie from 2002–2014. Toxins 2015, 7, 1649–1663.</p>
-<p>Wozniak M, Bradtke KM, Darecki M, Krezel A. 2016. Empirical Model for Phycocyanin Concentration Estimation as an Indicator of Cyanobacterial Bloom in the Optically Complex CoastalWaters of the Baltic Sea. Remote Sens. 8, 1–23</p>
-<p>Xu Min, Hongxing Liu, Richard Beck, John Lekki, Bo Yang, Song Shu, Emily L. Kang, Robert Anderson, Richard Johansen, Erich Emery, Molly Reif, Teresa Benko. A spectral space partition guided ensemble method for retrieving chlorophyll-a concentration in inland waters from Sentinel-2A satellite imagery. Journal of Great Lakes Research. 2018.</p>
+<div id="acknowledgements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
+<p>The waterquality package was developed with funding from the U.S. Army Corps of Engineers. The authors would also like to thank the University of Cincinnati Library’s Research &amp; Data Services and the University of Cincinnati’s Space Informatics Lab for their expertise and technical services.</p>
 </div>
-<div id="credit" class="section level1">
-<h1 class="hasAnchor">
-<a href="#credit" class="anchor"></a>Credit</h1>
+<div id="credit" class="section level2">
+<h2 class="hasAnchor">
+<a href="#credit" class="anchor"></a>Credit</h2>
 <p>To cite this library, please use the following entry:</p>
-<p>Johansen, R., Nowosad, J., Reif, M., Emery, E. (2018). waterquality: Satellite Derived Water Quality Detection Algorithms. R package version 0.2.2. <a href="https://doi.org/10.5281/zenodo.1493487" class="uri">https://doi.org/10.5281/zenodo.1493487</a></p>
-<p><span class="citation">@Manual</span>{waterquality, title = {waterquality: Satellite Derived Water Quality Detection Algorithms}, author = {Richard Johansen, Jakub Nowosad, Molly Reif, Erich Emery}, year = {2018}, note = {R package version 0.2.2}, doi = {<a href="https://doi.org/10.5281/zenodo.1493487" class="uri">https://doi.org/10.5281/zenodo.1493487</a>}, url = {<a href="https://rajohansen.github.io/waterquality" class="uri">https://rajohansen.github.io/waterquality</a>}, }</p>
+<p>Johansen R., Reif M., Emery E., Nowosad J., Beck R., Xu M., Liu H., waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality. USACE ERDC/EL TR-19-20; DOI: 10.21079/11681/35053</p>
+<p><span class="citation">@Article</span>{, author = {Richard Johansen and Molly Reif and Erich Emery and Jakub Nowosad and Richard Beck and Min Xu and Hongxing Liu}, title = {waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality}, year = {2019}, doi = {10.21079/11681/35053}, journal = {USACE ERDC/EL TR-19-20}, }</p>
 </div>
   </div>
 
