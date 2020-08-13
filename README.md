@@ -80,4 +80,4 @@ continue to improve our package.
 
 Furthermore, if you have a water quality algorithm that was not on our
 list, and you would like for it to be included in our package please
-email me at <Richard.A.Johansen@erdc.dren.mil>
+email <Richard.A.Johansen@erdc.dren.mil>
