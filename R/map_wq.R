@@ -4,11 +4,11 @@
 #'data visualization of their WQ_calc raster output along with optional 
 #'geospatial objects and histogram
 #'
-#' @param WQ_raster raster tiff of waterquality output
-#' @param sample_points geospatial points object
-#' @param map_title text for the title of the map
-#' @param raster_style data visualization style (default is quantile)
-#' @param histogram boolean toggle to add or remove histogram (default is TRUE)
+#' @param WQ_raster Raster file generated from `wq_calc` or other GeoTiff file
+#' @param sample_points geospatial file (.shp or .gpkg) containing sampling locations 
+#' @param map_title text used to generate title of map
+#' @param raster_style method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is "quantile").
+#' @param histogram Option to add or remove a histogram of the data values. (Default is TRUE)
 #' @return A data visualization of the results
 #'
 #' @family Map_WQ models
@@ -40,12 +40,11 @@ Map_WQ_raster <- function(WQ_raster, sample_points, map_title, raster_style = "q
 #'This function wraps the tmap package to help users generate fast and simple 
 #'data visualization of using bing basemaps along with optional geospatial objects and histogram
 #'
-#'
-#' @param WQ_extent geospatial polygon to use as extent for Bing basemap 
-#' @param sample_points geospatial points object
-#' @param map_title text for the title of the map
-#' @param points_style data visualization style (default is quantile)
-#' @param histogram boolean toggle to add or remove histogram (default is TRUE)
+#' @param WQ_extent geospatial file (vector or raster) used to extract aerial imagery from Bing basemaps
+#' @param sample_points geospatial file (.shp or .gpkg) containing sampling locations 
+#' @param map_title text used to generate title of map
+#' @param points_style method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is "quantile").
+#' @param histogram Option to add or remove a histogram of the data values. (Default is TRUE)
 #' @return A data visualization of the results
 #'
 #' @family Map_WQ models

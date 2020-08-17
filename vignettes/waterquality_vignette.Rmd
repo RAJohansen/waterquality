@@ -29,11 +29,11 @@ Each algorithm is also linked to the original papers metric (chlorophyll-a, phyc
 The final raster images are in relative index values and are not the estimated chlorophyll-a, phycocyanin, or turbidity values. However, these relative values can be converted in to estimated concentration values using the `extract_lm` functions and ground truth measurements. 
 
 
-## Functions 
+## Water Quality Functions 
 
 ### wq_calc()
 
-The main function of this package is called `wq_calc()` which calculates water quality indices by using an reflectance raster stack as an input, user-defined algorithm(s) selection, and satellite configuration selection corresponding to the following three variables: `raster_stack`, `alg`, and `sat`.
+The main function of this package is called `wq_calc()` which calculates water quality indices by using an reflectance raster stack as an input, user-defined algorithm(s) selection, and satellite configuration selection corresponding to the following three arguments: `raster_stack`, `alg`, and `sat`.
 
 - `raster_stack` - The input reflectance image to be used in band algorithm calculation. 
 - `alg` - Determines the indices to be utilized:
@@ -106,16 +106,34 @@ plot(Harsha_All) # Only displays first 12 of 28
 ```
 
 
-### Map_WQ Functions
+## Mapping Functions
+
+### Map_WQ_raster
+`Map_WQ_raster` which wraps functionality from the tmap package to help users generate fast and simple data visualization of their `wq_calc()` raster output along with optional geospatial objects and histogram. In order to simplify this process and reduce the technical expertise required, we have reduced the number of arguments to the following: 
+
+`WQ_raster` - Raster file generated from `wq_calc` or other GeoTiff file	
+`sample_points` - geospatial file (.shp or .gpkg) containing sampling locations 
+`map_title` - text used to generate title of map
+`raster_style` - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is "quantile").
+`histogram` - Option to add or remove a histogram of the data values. (Default is TRUE)
+
+
+### Map_WQ_basemap
+`Map_WQ_basemap` wraps the tmap package to help users generate fast and simple data visualization of using Bing basemaps along with optional geospatial objects and histogram.
+`WQ_extent` - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps	`sample_points` - geospatial file (.shp or .gpkg) containing sampling locations 
+`map_title` - text used to generate title of map
+`points_style` - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is "quantile").
+`histogram` - Option to add or remove a histogram of the data values. (Default is TRUE)
 
 ### Examples
 
-#### Map_WQ_Raster
+#### Map_WQ_raster
 ```{r, results='hide', message=FALSE, warning=FALSE}
 library(waterquality)
 library(raster)
 library(tmap)
 library(sf)
+library(OpenStreetMap)
 s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
 MM12NDCI = wq_calc(s2, alg = "MM12NDCI", sat = "sentinel2")
 samples = st_read(system.file("raster/Harsha_Simple_Points_CRS.gpkg", package = "waterquality"))
@@ -130,7 +148,17 @@ Map_WQ_raster(WQ_raster = MM12NDCI,
               histogram = TRUE)
 
 ```
-  
+
+#### Map_WQ_basemap  
+
+```{r,fig.height = 5, fig.width = 6}
+Map_WQ_basemap(WQ_extent = lake_extent,
+              sample_points = samples,
+              map_title= "Water Quality Map",
+              points_style = "quantile",
+              histogram = TRUE)
+
+```
 
 ## Acknowledgements
 

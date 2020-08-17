@@ -13,15 +13,15 @@ Map_WQ_raster(
 )
 }
 \arguments{
-\item{WQ_raster}{raster tiff of waterquality output}
+\item{WQ_raster}{Raster file generated from \code{wq_calc} or other GeoTiff file}
 
-\item{sample_points}{geospatial points object}
+\item{sample_points}{geospatial file (.shp or .gpkg) containing sampling locations}
 
-\item{map_title}{text for the title of the map}
+\item{map_title}{text used to generate title of map}
 
-\item{raster_style}{data visualization style (default is quantile)}
+\item{raster_style}{method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is "quantile").}
 
-\item{histogram}{boolean toggle to add or remove histogram (default is TRUE)}
+\item{histogram}{Option to add or remove a histogram of the data values. (Default is TRUE)}
 }
 \value{
 A data visualization of the results
