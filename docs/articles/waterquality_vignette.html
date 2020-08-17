@@ -82,7 +82,7 @@
       <h1 data-toc-skip>Introduction to the waterquality package</h1>
                         <h4 class="author">Richard Johansen, Jakub Nowosad, Molly Reif, and Erich Emery</h4>
             
-            <h4 class="date">2020-08-12</h4>
+            <h4 class="date">2020-08-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/RAJohansen/waterquality/blob/master/../vignettes/waterquality_vignette.Rmd"><code>../vignettes/waterquality_vignette.Rmd</code></a></small>
       <div class="hidden name"><code>waterquality_vignette.Rmd</code></div>
@@ -98,13 +98,13 @@
 <a href="#algorithms" class="anchor"></a>Algorithms</h2>
 <p>Currently, we have a list of <a href="https://rajohansen.github.io/waterquality/reference/index.html">45 algorithms</a> that can be applied for the detection of these three metrics. Although, it is important to note that not all sensors are capable of using all algorithms due to their spectral configurations. Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. <code>?Am092Bsub()</code>). Each algorithm is also linked to the original papers metric (chlorophyll-a, phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type. The final raster images are in relative index values and are not the estimated chlorophyll-a, phycocyanin, or turbidity values. However, these relative values can be converted in to estimated concentration values using the <code>extract_lm</code> functions and ground truth measurements.</p>
 </div>
-<div id="functions" class="section level2">
+<div id="water-quality-functions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#functions" class="anchor"></a>Functions</h2>
+<a href="#water-quality-functions" class="anchor"></a>Water Quality Functions</h2>
 <div id="wq_calc" class="section level3">
 <h3 class="hasAnchor">
 <a href="#wq_calc" class="anchor"></a>wq_calc()</h3>
-<p>The main function of this package is called <code><a href="../reference/wq_calc.html">wq_calc()</a></code> which calculates water quality indices by using an reflectance raster stack as an input, user-defined algorithm(s) selection, and satellite configuration selection corresponding to the following three variables: <code>raster_stack</code>, <code>alg</code>, and <code>sat</code>.</p>
+<p>The main function of this package is called <code><a href="../reference/wq_calc.html">wq_calc()</a></code> which calculates water quality indices by using an reflectance raster stack as an input, user-defined algorithm(s) selection, and satellite configuration selection corresponding to the following three arguments: <code>raster_stack</code>, <code>alg</code>, and <code>sat</code>.</p>
 <ul>
 <li>
 <code>raster_stack</code> - The input reflectance image to be used in band algorithm calculation.</li>
@@ -173,16 +173,18 @@
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
 </div>
 </div>
-<div id="map_wq-functions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#map_wq-functions" class="anchor"></a>Map_WQ Functions</h3>
 </div>
-<div id="examples-1" class="section level3">
+<div id="mapping-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#mapping-functions" class="anchor"></a>Mapping Functions</h2>
+<div id="map_wq_raster" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-1" class="anchor"></a>Examples</h3>
-<div id="map_wq_raster" class="section level4">
+<a href="#map_wq_raster" class="anchor"></a>Map_WQ_raster</h3>
+<p>This function wraps the <a href="https://cran.r-project.org/web/packages/tmap/tmap.pdf">“tmap”</a> package to help users generate an efficient map of their <code><a href="../reference/wq_calc.html">wq_calc()</a></code> raster output along with optional geospatial objects and histogram. In order to simplify this process and reduce the technical expertise required, we have reduced the number of arguments to the following:</p>
+<p><code>WQ_raster</code> - Raster file generated from <code>wq_calc</code> or other GeoTiff file<br><code>sample_points</code> - geospatial file (.shp or .gpkg) containing sampling locations <code>map_title</code> - text used to generate title of map <code>raster_style</code> - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is “quantile”). <code>histogram</code> - Option to add or remove a histogram of the data values. (Default is TRUE)</p>
+<div id="example" class="section level4">
 <h4 class="hasAnchor">
-<a href="#map_wq_raster" class="anchor"></a>Map_WQ_Raster</h4>
+<a href="#example" class="anchor"></a>Example</h4>
 <div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">raster</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tmap</span>)
@@ -197,6 +199,23 @@
               <span class="kw">raster_style</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
               <span class="kw">histogram</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
+</div>
+</div>
+<div id="map_wq_basemap" class="section level3">
+<h3 class="hasAnchor">
+<a href="#map_wq_basemap" class="anchor"></a>Map_WQ_basemap</h3>
+<p>This function wraps the <a href="https://cran.r-project.org/web/packages/tmap/tmap.pdf">“tmap”</a> &amp; <a href="https://cran.r-project.org/web/packages/tmaptools/tmaptools.pdf">“tmaptools”</a> packages in order to generate a map using user-defined vectors (points and a polygon) overlaid on a Bing basemap. In order to simplify this process and reduce the technical expertise required, we have reduced the number of arguments to the following:</p>
+<p><code>WQ_extent</code> - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps <code>WQ_parameter</code> - text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.) <code>sample_points</code> - geospatial file (.shp or .gpkg) containing sampling locations <code>map_title</code> - text used to generate title of map <code>points_style</code> - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is “quantile”). <code>histogram</code> - Option to add or remove a histogram of the data values. (Default is TRUE)</p>
+<div id="example-1" class="section level4">
+<h4 class="hasAnchor">
+<a href="#example-1" class="anchor"></a>Example</h4>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/Map_WQ_basemap.html">Map_WQ_basemap</a></span>(<span class="kw">WQ_extent</span> <span class="kw">=</span> <span class="no">lake_extent</span>,
+              <span class="kw">sample_points</span> <span class="kw">=</span> <span class="no">samples</span>,
+              <span class="kw">WQ_parameter</span> <span class="kw">=</span> <span class="st">"Chl_ugL"</span>,
+              <span class="kw">map_title</span><span class="kw">=</span> <span class="st">"Water Quality Map"</span>,
+              <span class="kw">points_style</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
+              <span class="kw">histogram</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-12-1.png" width="576"></p>
 </div>
 </div>
 </div>

@@ -135,6 +135,7 @@ data visualization of using bing basemaps along with optional geospatial objects
   <span class='no'>WQ_extent</span>,
   <span class='no'>sample_points</span>,
   <span class='no'>map_title</span>,
+  <span class='no'>WQ_parameter</span>,
   <span class='kw'>points_style</span> <span class='kw'>=</span> <span class='st'>"quantile"</span>,
   <span class='kw'>histogram</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )</pre>
@@ -144,23 +145,27 @@ data visualization of using bing basemaps along with optional geospatial objects
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>WQ_extent</th>
-      <td><p>geospatial polygon to use as extent for Bing basemap</p></td>
+      <td><p>geospatial file (vector or raster) used to extract aerial imagery from Bing basemaps</p></td>
     </tr>
     <tr>
       <th>sample_points</th>
-      <td><p>geospatial points object</p></td>
+      <td><p>geospatial file (.shp or .gpkg) containing sampling locations</p></td>
     </tr>
     <tr>
       <th>map_title</th>
-      <td><p>text for the title of the map</p></td>
+      <td><p>text used to generate title of map</p></td>
+    </tr>
+    <tr>
+      <th>WQ_parameter</th>
+      <td><p>text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.)</p></td>
     </tr>
     <tr>
       <th>points_style</th>
-      <td><p>data visualization style (default is quantile)</p></td>
+      <td><p>method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is "quantile").</p></td>
     </tr>
     <tr>
       <th>histogram</th>
-      <td><p>boolean toggle to add or remove histogram (default is TRUE)</p></td>
+      <td><p>Option to add or remove a histogram of the data values. (Default is TRUE)</p></td>
     </tr>
     </table>
 
