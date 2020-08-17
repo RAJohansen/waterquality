@@ -9,7 +9,7 @@ before_install:
   - sudo apt-get --yes --force-yes update -qq
   - sudo apt-get install --yes libgdal-dev
   - sudo apt-get install libudunits2-dev
-  - tlmgr install index
+  - sudo apt-get install texinfo
 
 after_success:
   - Rscript -e 'covr::codecov()'

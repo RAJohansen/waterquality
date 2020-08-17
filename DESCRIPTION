@@ -37,7 +37,8 @@ Suggests:
     rmarkdown,
     covr,
     tmap,
-    tmaptools
+    tmaptools,
+    OpenStreetMap
 URL: https://github.com/RAJohansen/waterquality
 BugReports: https://github.com/RAJohansen/waterquality/issues
 VignetteBuilder: knitr
