@@ -10,6 +10,7 @@ before_install:
   - sudo apt-get install --yes libgdal-dev
   - sudo apt-get install libudunits2-dev
   - sudo apt-get install texinfo
+  - sudo apt install texlive-fonts-extra
 
 after_success:
   - Rscript -e 'covr::codecov()'
