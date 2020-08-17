@@ -8,6 +8,7 @@ Map_WQ_basemap(
   WQ_extent,
   sample_points,
   map_title,
+  WQ_parameter,
   points_style = "quantile",
   histogram = TRUE
 )
@@ -18,6 +19,8 @@ Map_WQ_basemap(
 \item{sample_points}{geospatial file (.shp or .gpkg) containing sampling locations}
 
 \item{map_title}{text used to generate title of map}
+
+\item{WQ_parameter}{text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.)}
 
 \item{points_style}{method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is "quantile").}
 
