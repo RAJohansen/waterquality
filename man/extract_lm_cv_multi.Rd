@@ -4,14 +4,26 @@
 \alias{extract_lm_cv_multi}
 \title{Run linear model with crossvalidation over multiple independent and dependent variables}
 \usage{
-extract_lm_cv_multi(parameters, algorithms, df, folds = 3, nrepeats = 5)
+extract_lm_cv_multi(
+  parameters,
+  algorithms,
+  df,
+  train_method = "lm",
+  control_method = "repeatedcv",
+  folds = 3,
+  nrepeats = 5
+)
 }
 \arguments{
-\item{parameters}{the list of dependent variables to be evaluated}
+\item{parameters}{the list of a water quality parameters to be evaluated}
 
-\item{algorithms}{the list of independent variables to be evaluated}
+\item{algorithms}{the list of water quality algorithms to be evaluated}
 
-\item{df}{data frame containing the values for parameter and algorithm arguments}
+\item{df}{data frame containing the values for parameters and algorithms arguments}
+
+\item{train_method}{A string specifying which classification or regression model to use (Default = "lm"). See ?caret::train for more details}
+
+\item{control_method}{A string specifying the resampling method (Default = "repeatedcv"). See ?caret::trainControl for more details}
 
 \item{folds}{the number of folds to be used in the cross validation model}
 

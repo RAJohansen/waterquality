@@ -7,9 +7,9 @@
 extract_lm(parameter, algorithm, df)
 }
 \arguments{
-\item{parameter}{dependent variable}
+\item{parameter}{A string specifying water quality parameter}
 
-\item{algorithm}{independent variable}
+\item{algorithm}{A string specifying water quality algorithm}
 
 \item{df}{data frame containing the values for parameter and algorithm arguments}
 }
@@ -17,7 +17,7 @@ extract_lm(parameter, algorithm, df)
 A data frame of the model results
 }
 \description{
-The function runs a linear model on a single independent and dependent variable
+The function runs a linear model on a single water quality parameter and a water quality algorithm
 and returns a data frame containing the following:
 r^2, p-value, slope, and intercept of the model
 }

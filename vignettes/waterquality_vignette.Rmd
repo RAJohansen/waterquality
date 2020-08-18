@@ -208,8 +208,7 @@ library(caret)
 df <- read.csv(system.file("raster/waterquality_data.csv", package = "waterquality"))
 ```
 ```{r}
-extract_lm_results <- extract_lm(parameter = "Chl_ugL", algorithm = "MM12NDCI", df = df)
-dplyr::arrange(extract_lm_results,desc("R_Squared"))
+extract_lm(parameter = "Chl_ugL", algorithm = "MM12NDCI", df = df)
 ```
 
 
@@ -226,8 +225,9 @@ dplyr::arrange(extract_lm_results,desc("R_Squared"))
 #### Example
 
 ```{r}
-extract_lm_cv_results <- extract_lm_cv(parameter = "Chl_ugL", algorithm = "MM12NDCI", df = df, train_method = "lm", control_method = "repeatedcv", folds = 3, nrepeats = 5)
-head(extract_lm_cv_results)
+extract_lm_cv(parameter = "Chl_ugL", algorithm = "MM12NDCI",
+                                       df = df, train_method = "lm", control_method = "repeatedcv",
+                                       folds = 3, nrepeats = 5)
 ```
 
 
@@ -247,14 +247,16 @@ head(extract_lm_cv_results)
 # Create series of strings to be used for parameters and algorithms arguments
 algorithms <- c(names(df[6:10]))
 parameters <- c(names(df[3:5]))
-extract_lm_cv_multi_results <- extract_lm_cv_multi(parameter = parameters, algorithm = algorithms, df = df, train_method = "lm", control_method = "repeatedcv", folds = 3, nrepeats = 5)
-head(extract_lm_cv_multi_results)
+extract_lm_cv_multi_results <- extract_lm_cv_multi(parameters = parameters, algorithms = algorithms,
+                                                   df = df, train_method = "lm", control_method = "repeatedcv",
+                                                   folds = 3, nrepeats = 5)
+dplyr::arrange(extract_lm_cv_multi_results,desc("R_Squared"))
 ```
 
 
 ### extract_lm_cv_all 
 
-- `algorithms` list of water quality algorithms
+- `parameters` list of water quality parameters
 - `df` data frame containing the values for parameter and algorithm arguments
 - `train_method` A string specifying which classification or regression model to use (Default = "lm"). See ?caret::train for more details
 - `control_method` A string specifying the resampling method (Default = "repeatedcv"). See ?caret::trainControl for more details
@@ -264,8 +266,10 @@ head(extract_lm_cv_multi_results)
 #### Example
 
 ```{r}
-extract_lm_cv_all_results <- extract_lm_cv_multi(algorithm = algorithms, df = df, train_method = "lm", control_method = "repeatedcv", folds = 3, nrepeats = 5)
-head(extract_lm_cv_all_results)
+extract_lm_cv_all_results <- extract_lm_cv_multi(parameters = parameters, df = df,
+                                                 train_method = "lm", control_method = "repeatedcv",
+                                                 folds = 3, nrepeats = 5)
+dplyr::arrange(extract_lm_cv_all_results,desc("R_Squared"))
 ```
 
 

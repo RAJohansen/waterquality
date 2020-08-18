@@ -4,14 +4,26 @@
 \alias{extract_lm_cv}
 \title{Run linear model with crossvalidation}
 \usage{
-extract_lm_cv(parameter, algorithm, df, folds = 3, nrepeats = 5)
+extract_lm_cv(
+  parameter,
+  algorithm,
+  df,
+  train_method = "lm",
+  control_method = "repeatedcv",
+  folds = 3,
+  nrepeats = 5
+)
 }
 \arguments{
-\item{parameter}{dependent variable}
+\item{parameter}{water quality parameter}
 
-\item{algorithm}{independent variable}
+\item{algorithm}{water quality algorithm}
 
 \item{df}{data frame containing the values for parameter and algorithm arguments}
+
+\item{train_method}{A string specifying which classification or regression model to use (Default = "lm"). See ?caret::train for more details}
+
+\item{control_method}{A string specifying the resampling method (Default = "repeatedcv"). See ?caret::trainControl for more details}
 
 \item{folds}{the number of folds to be used in the cross validation model}
 
@@ -21,7 +33,7 @@ extract_lm_cv(parameter, algorithm, df, folds = 3, nrepeats = 5)
 A data frame of the model results
 }
 \description{
-The function runs a linear model on a single independent and dependent variable and conducts
+The function runs a linear model on a single water quality parameter and a water quality algorithm and conducts
 a k-folds cross validation, which returns a data frame containing the following:
 The r^2, p-value, slope, intercept of the global lm model &
 average r^2, average RMSE, average MAE from the crossvalidated model
