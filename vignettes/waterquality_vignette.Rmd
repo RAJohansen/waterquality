@@ -196,30 +196,38 @@ write.csv(waterquality_data, file = "C:/temp/waterquality_data.csv")
 
 ### extract_lm
 
-- `parameter` water quality parameter
-- `algorithm` water quality algorithm
+- `parameter` A string specifying water quality parameter
+- `algorithm` A string specifying water quality algorithm
 - `df` data frame containing the values for parameter and algorithm arguments
 
 #### Example
 
-```{r, eval = FALSE}
+```{r, results='hide', message=FALSE, warning=FALSE}
 library(waterquality)
+library(caret)
 df <- read.csv(system.file("raster/waterquality_data.csv", package = "waterquality"))
-extract_lm(parameter = "Chl_ugL", algorithm = "MM12NDCI", df = df)
 ```
+```{r}
+extract_lm_results <- extract_lm(parameter = "Chl_ugL", algorithm = "MM12NDCI", df = df)
+dplyr::arrange(extract_lm_results,desc("R_Squared"))
+```
+
 
 ### extract_lm_cv
 
-- `parameter` water quality parameter
-- `algorithm` water quality algorithm
+- `parameter` A string specifying water quality parameter
+- `algorithm` A string specifying water quality algorithm
 - `df` data frame containing the values for parameter and algorithm arguments
+- `train_method` A string specifying which classification or regression model to use (Default = "lm"). See ?caret::train for more details
+- `control_method` A string specifying the resampling method (Default = "repeatedcv"). See ?caret::trainControl for more details
 - `folds` the number of folds to be used in the cross validation model (Default = 3)
 - `nrepeats` the number of iterations to be used in the cross validation model (Default = 5)
 
 #### Example
 
 ```{r}
-
+extract_lm_cv_results <- extract_lm_cv(parameter = "Chl_ugL", algorithm = "MM12NDCI", df = df, train_method = "lm", control_method = "repeatedcv", folds = 3, nrepeats = 5)
+head(extract_lm_cv_results)
 ```
 
 
@@ -228,13 +236,19 @@ extract_lm(parameter = "Chl_ugL", algorithm = "MM12NDCI", df = df)
 - `parameters` list of water quality parameters
 - `algorithms` list of water quality algorithms
 - `df` data frame containing the values for parameter and algorithm arguments
+- `train_method` A string specifying which classification or regression model to use (Default = "lm"). See ?caret::train for more details
+- `control_method` A string specifying the resampling method (Default = "repeatedcv"). See ?caret::trainControl for more details
 - `folds` the number of folds to be used in the cross validation model (Default = 3)
 - `nrepeats` the number of iterations to be used in the cross validation model (Default = 5)
 
 #### Example
 
 ```{r}
-
+# Create series of strings to be used for parameters and algorithms arguments
+algorithms <- c(names(df[6:10]))
+parameters <- c(names(df[3:5]))
+extract_lm_cv_multi_results <- extract_lm_cv_multi(parameter = parameters, algorithm = algorithms, df = df, train_method = "lm", control_method = "repeatedcv", folds = 3, nrepeats = 5)
+head(extract_lm_cv_multi_results)
 ```
 
 
@@ -242,13 +256,16 @@ extract_lm(parameter = "Chl_ugL", algorithm = "MM12NDCI", df = df)
 
 - `algorithms` list of water quality algorithms
 - `df` data frame containing the values for parameter and algorithm arguments
+- `train_method` A string specifying which classification or regression model to use (Default = "lm"). See ?caret::train for more details
+- `control_method` A string specifying the resampling method (Default = "repeatedcv"). See ?caret::trainControl for more details
 - `folds` the number of folds to be used in the cross validation model (Default = 3)
 - `nrepeats` the number of iterations to be used in the cross validation model (Default = 5)
 
 #### Example
 
 ```{r}
-
+extract_lm_cv_all_results <- extract_lm_cv_multi(algorithm = algorithms, df = df, train_method = "lm", control_method = "repeatedcv", folds = 3, nrepeats = 5)
+head(extract_lm_cv_all_results)
 ```
 
 

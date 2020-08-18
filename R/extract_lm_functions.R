@@ -1,11 +1,11 @@
 #' Run linear model (lm)
 #'
-#'The function runs a linear model on a single independent and dependent variable
+#'The function runs a linear model on a single water quality parameter and a water quality algorithm
 #' and returns a data frame containing the following:
 #' r^2, p-value, slope, and intercept of the model
 #'
-#' @param parameter dependent variable
-#' @param algorithm independent variable
+#' @param parameter A string specifying water quality parameter
+#' @param algorithm A string specifying water quality algorithm
 #' @param df data frame containing the values for parameter and algorithm arguments
 #' @return A data frame of the model results
 #'
@@ -26,14 +26,16 @@ extract_lm <- function(parameter, algorithm, df){
 
 #' Run linear model with crossvalidation
 #'
-#'The function runs a linear model on a single independent and dependent variable and conducts
+#'The function runs a linear model on a single water quality parameter and a water quality algorithm and conducts
 #' a k-folds cross validation, which returns a data frame containing the following:
 #' The r^2, p-value, slope, intercept of the global lm model &
 #' average r^2, average RMSE, average MAE from the crossvalidated model 
 #'
-#' @param parameter dependent variable
-#' @param algorithm independent variable
+#' @param parameter water quality parameter
+#' @param algorithm water quality algorithm
 #' @param df data frame containing the values for parameter and algorithm arguments
+#' @param train_method A string specifying which classification or regression model to use (Default = "lm"). See ?caret::train for more details
+#' @param control_method A string specifying the resampling method (Default = "repeatedcv"). See ?caret::trainControl for more details
 #' @param folds the number of folds to be used in the cross validation model
 #' @param nrepeats the number of iterations to be used in the cross validation model
 #'
@@ -49,7 +51,7 @@ extract_lm <- function(parameter, algorithm, df){
 #' @importFrom stats lm as.formula na.exclude 
 #' @importFrom caret trainControl train getTrainPerf
 #' 
-extract_lm_cv <- function(parameter, algorithm, df, folds = 3, nrepeats =5){
+extract_lm_cv <- function(parameter, algorithm, df, train_method = "lm", control_method = "repeatedcv", folds = 3, nrepeats =5){
   if (!requireNamespace("caret", quietly = TRUE))
     stop("package caret required, please install it first") 
   my_formula = as.formula(paste(parameter, "~" ,algorithm))
@@ -79,9 +81,11 @@ extract_lm_cv <- function(parameter, algorithm, df, folds = 3, nrepeats =5){
 #' The r^2, p-value, slope, intercept of the global lm model &
 #' average r^2, average RMSE, average MAE from the crossvalidated model
 #'
-#' @param parameters the list of dependent variables to be evaluated
-#' @param algorithms the list of independent variables to be evaluated
-#' @param df data frame containing the values for parameter and algorithm arguments
+#' @param parameters the list of a water quality parameters to be evaluated
+#' @param algorithms the list of water quality algorithms to be evaluated
+#' @param df data frame containing the values for parameters and algorithms arguments
+#' @param train_method A string specifying which classification or regression model to use (Default = "lm"). See ?caret::train for more details
+#' @param control_method A string specifying the resampling method (Default = "repeatedcv"). See ?caret::trainControl for more details
 #' @param folds the number of folds to be used in the cross validation model
 #' @param nrepeats the number of iterations to be used in the cross validation model
 #'
@@ -96,7 +100,7 @@ extract_lm_cv <- function(parameter, algorithm, df, folds = 3, nrepeats =5){
 #' 
 #' @importFrom purrr map_chr map_dfr
 #' 
-extract_lm_cv_multi <- function(parameters, algorithms, df,folds = 3, nrepeats = 5){
+extract_lm_cv_multi <- function(parameters, algorithms, df, train_method = "lm", control_method = "repeatedcv", folds = 3, nrepeats = 5){
   if (!requireNamespace("caret", quietly = TRUE))
     stop("package caret required, please install it first") 
   list = list()
@@ -104,7 +108,8 @@ extract_lm_cv_multi <- function(parameters, algorithms, df,folds = 3, nrepeats =
     names(algorithms) <- algorithms %>% 
       purrr::map_chr(., ~ paste0(parameters[[i]], "_",.))
     list[[i]] = algorithms %>%
-      purrr::map_dfr(~extract_lm_cv(parameter = parameters[[i]], algorithm = algorithms, df = df, 
+      purrr::map_dfr(~extract_lm_cv(parameter = parameters[[i]], algorithm = algorithms, df = df,
+                                    train_method = train_method, control_method = control_method,
                                     folds = folds, nrepeats = nrepeats), .id = "Algorithms")
   }
   results <- (do.call(rbind, list))
@@ -140,13 +145,14 @@ extract_lm_cv_all <- function(parameters, df, folds = 3, nrepeats = 5){
     stop("package caret required, please install it first") 
   list = list()
   for (i in seq_along(parameters)) {
-    algorithm = df %>%
+    algorithms = df %>%
       dplyr::select(which(sapply(., class) == "numeric"), -parameters) %>%
       names()
     names(algorithms) <- algorithms %>%
       purrr::map_chr(., ~ paste0(parameters[[i]], "_", .))
     list[[i]] = algorithms %>%
       purrr::map_dfr(~extract_lm_cv(parameter = parameters[[i]], algorithm = ., df = df, 
+                                    train_method = train_method, control_method = control_method,
                                     folds = folds, nrepeats = nrepeats), .id = "Algorithms")
   }
   results <- (do.call(rbind, list))
