@@ -18,6 +18,10 @@ extract_lm_cv_all(
 
 \item{df}{data frame containing the values for parameter and algorithm arguments}
 
+\item{train_method}{A string specifying which classification or regression model to use (Default = "lm"). See ?caret::train for more details}
+
+\item{control_method}{A string specifying the resampling method (Default = "repeatedcv"). See ?caret::trainControl for more details}
+
 \item{folds}{the number of folds to be used in the cross validation model}
 
 \item{nrepeats}{the number of iterations to be used in the cross validation model}

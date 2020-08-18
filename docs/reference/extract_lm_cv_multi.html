@@ -135,22 +135,38 @@ The r^2, p-value, slope, intercept of the global lm model &amp;
 average r^2, average RMSE, average MAE from the crossvalidated model</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extract_lm_cv_multi</span>(<span class='no'>parameter</span>, <span class='no'>algorithm</span>, <span class='no'>df</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>nrepeats</span> <span class='kw'>=</span> <span class='fl'>5</span>)</pre>
+    <pre class="usage"><span class='fu'>extract_lm_cv_multi</span>(
+  <span class='no'>parameters</span>,
+  <span class='no'>algorithms</span>,
+  <span class='no'>df</span>,
+  <span class='kw'>train_method</span> <span class='kw'>=</span> <span class='st'>"lm"</span>,
+  <span class='kw'>control_method</span> <span class='kw'>=</span> <span class='st'>"repeatedcv"</span>,
+  <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>nrepeats</span> <span class='kw'>=</span> <span class='fl'>5</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>parameter</th>
-      <td><p>the list of dependent variables to be evaluated</p></td>
+      <th>parameters</th>
+      <td><p>the list of a water quality parameters to be evaluated</p></td>
     </tr>
     <tr>
-      <th>algorithm</th>
-      <td><p>the list of independent variables to be evaluated</p></td>
+      <th>algorithms</th>
+      <td><p>the list of water quality algorithms to be evaluated</p></td>
     </tr>
     <tr>
       <th>df</th>
-      <td><p>data frame containing the values for parameter and algorithm arguments</p></td>
+      <td><p>data frame containing the values for parameters and algorithms arguments</p></td>
+    </tr>
+    <tr>
+      <th>train_method</th>
+      <td><p>A string specifying which classification or regression model to use (Default = "lm"). See ?caret::train for more details</p></td>
+    </tr>
+    <tr>
+      <th>control_method</th>
+      <td><p>A string specifying the resampling method (Default = "repeatedcv"). See ?caret::trainControl for more details</p></td>
     </tr>
     <tr>
       <th>folds</th>
