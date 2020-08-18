@@ -15,13 +15,13 @@
 #' @family extract_lm
 #' @export
 extract_lm <- function(parameter, algorithm, df){
-  my_lm = lm(parameter ~ algorithm)
+  my_lm = lm(as.formula(paste(parameter, "~" ,algorithm)), data =df)
   R_Squared = summary(my_lm)$r.squared
   P_Value = summary(my_lm)$coefficients[8]
   Slope = summary(my_lm)$coefficients[2]
   Intercept = summary(my_lm)$coefficients[1]
   tibble::tibble(R_Squared = R_Squared, Slope = Slope, 
-                    Intercept = Intercept, P_Value = P_Value)
+                 Intercept = Intercept, P_Value = P_Value)
 }
 
 #' Run linear model with crossvalidation
