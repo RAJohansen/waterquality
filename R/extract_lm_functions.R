@@ -126,6 +126,8 @@ extract_lm_cv_multi <- function(parameters, algorithms, df, train_method = "lm",
 #'
 #' @param parameters the list of dependent variables to be evaluated
 #' @param df data frame containing the values for parameter and algorithm arguments
+#' @param train_method A string specifying which classification or regression model to use (Default = "lm"). See ?caret::train for more details
+#' @param control_method A string specifying the resampling method (Default = "repeatedcv"). See ?caret::trainControl for more details
 #' @param folds the number of folds to be used in the cross validation model
 #' @param nrepeats the number of iterations to be used in the cross validation model
 #'
