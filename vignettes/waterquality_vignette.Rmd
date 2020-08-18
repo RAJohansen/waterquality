@@ -164,6 +164,35 @@ Map_WQ_basemap(WQ_extent = lake_extent,
 
 
 ## Modeling Functions
+After a user has generated raster stack image of their desired water quality algorithms using `wq_calc`, they can create linear models assuming they have coincident in situ data. These functions have been designed to easily conduct linear models and produce standardized outputs. These functions are designed to most effectively work with comma deliminated (.csv) files as the data frame and column names ("text") as the inputs for the `parameter` and `algorithm` arguments. Although these functions were designed for our water quality research, they can be used as standalone functions to generate standardized outputs for the following: 
+
+**Global Model**
+  -r^2 
+  -p-value
+  -slope
+  -intercept
+**Crossvalidated Model**
+  -lm model
+  -average r^2 
+  -average RMSE
+  -average MAE
+
+Additionally we have provided code that might be useful to import raster and shapefile objects, extract the data from a raster stack image (i.e. output from `wq_calc`) and combine it with a geospatial object (i.e shapefiles of sampling locations), and export the results to a .csv file to be used in the modeling functions. 
+
+```{r, eval = FALSE}
+#Input raster image
+wq_raster <- stack("C:/temp/my_raster.tif")
+
+#Input shapefile
+wq_samples <- shapefile('C:/temp/my_samples.shp')
+
+#Extract values from raster and combine with shapefile
+waterquality_data <- data.frame(wq_samples, extract(wq_raster, wq_samples))
+
+#Export results as csv file
+write.csv(waterquality_data, file = "C:/temp/waterquality_data.csv")
+```
+
 
 ### extract_lm
 
@@ -172,6 +201,12 @@ Map_WQ_basemap(WQ_extent = lake_extent,
 - `df` data frame containing the values for parameter and algorithm arguments
 
 #### Example
+
+```{r, eval = FALSE}
+library(waterquality)
+df <- read.csv(system.file("raster/waterquality_data.csv", package = "waterquality"))
+extract_lm(parameter = "Chl_ugL", algorithm = "MM12NDCI", df = df)
+```
 
 ### extract_lm_cv
 
@@ -182,6 +217,10 @@ Map_WQ_basemap(WQ_extent = lake_extent,
 - `nrepeats` the number of iterations to be used in the cross validation model (Default = 5)
 
 #### Example
+
+```{r}
+
+```
 
 
 ### extract_lm_cv_multi
@@ -194,6 +233,10 @@ Map_WQ_basemap(WQ_extent = lake_extent,
 
 #### Example
 
+```{r}
+
+```
+
 
 ### extract_lm_cv_all 
 
@@ -203,6 +246,10 @@ Map_WQ_basemap(WQ_extent = lake_extent,
 - `nrepeats` the number of iterations to be used in the cross validation model (Default = 5)
 
 #### Example
+
+```{r}
+
+```
 
 
 ## Acknowledgements
