@@ -111,11 +111,11 @@ plot(Harsha_All) # Only displays first 12 of 28
 ### Map_WQ_raster
 This function wraps the ["tmap"](https://cran.r-project.org/web/packages/tmap/tmap.pdf) package to help users generate an efficient map of their `wq_calc()` raster output along with optional geospatial objects and histogram. In order to simplify this process and reduce the technical expertise required, we have reduced the number of arguments to the following: 
 
-`WQ_raster` - Raster file generated from `wq_calc` or other GeoTiff file	
-`sample_points` - geospatial file (.shp or .gpkg) containing sampling locations 
-`map_title` - text used to generate title of map
-`raster_style` - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is "quantile").
-`histogram` - Option to add or remove a histogram of the data values. (Default is TRUE)
+- `WQ_raster` - Raster file generated from `wq_calc` or other GeoTiff file	
+- `sample_points` - geospatial file (.shp or .gpkg) containing sampling locations 
+- `map_title` - text used to generate title of map
+- `raster_style` - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is "quantile").
+- `histogram` - Option to add or remove a histogram of the data values. (Default is TRUE)
 
 #### Example  
 
@@ -143,12 +143,12 @@ Map_WQ_raster(WQ_raster = MM12NDCI,
 ### Map_WQ_basemap
 This function wraps the ["tmap"](https://cran.r-project.org/web/packages/tmap/tmap.pdf) & ["tmaptools"](https://cran.r-project.org/web/packages/tmaptools/tmaptools.pdf) packages in order to generate a map using user-defined vectors (points and a polygon) overlaid on a Bing basemap. In order to simplify this process and reduce the technical expertise required, we have reduced the number of arguments to the following: 
 
-`WQ_extent` - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps	
-`WQ_parameter` - text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.)
-`sample_points` - geospatial file (.shp or .gpkg) containing sampling locations
-`map_title` - text used to generate title of map
-`points_style` - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is "quantile").
-`histogram` - Option to add or remove a histogram of the data values. (Default is TRUE)
+- `WQ_extent` - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps	
+- `WQ_parameter` - text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.)
+- `sample_points` - geospatial file (.shp or .gpkg) containing sampling locations
+- `map_title` - text used to generate title of map
+- `points_style` - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default = "quantile").
+- `histogram` - Option to add or remove a histogram of the data values. (Default = TRUE)
 
 #### Example  
 
@@ -161,6 +161,49 @@ Map_WQ_basemap(WQ_extent = lake_extent,
               histogram = TRUE)
 
 ```
+
+
+## Modeling Functions
+
+### extract_lm
+
+- `parameter` water quality parameter
+- `algorithm` water quality algorithm
+- `df` data frame containing the values for parameter and algorithm arguments
+
+#### Example
+
+### extract_lm_cv
+
+- `parameter` water quality parameter
+- `algorithm` water quality algorithm
+- `df` data frame containing the values for parameter and algorithm arguments
+- `folds` the number of folds to be used in the cross validation model (Default = 3)
+- `nrepeats` the number of iterations to be used in the cross validation model (Default = 5)
+
+#### Example
+
+
+### extract_lm_cv_multi
+
+- `parameters` list of water quality parameters
+- `algorithms` list of water quality algorithms
+- `df` data frame containing the values for parameter and algorithm arguments
+- `folds` the number of folds to be used in the cross validation model (Default = 3)
+- `nrepeats` the number of iterations to be used in the cross validation model (Default = 5)
+
+#### Example
+
+
+### extract_lm_cv_all 
+
+- `algorithms` list of water quality algorithms
+- `df` data frame containing the values for parameter and algorithm arguments
+- `folds` the number of folds to be used in the cross validation model (Default = 3)
+- `nrepeats` the number of iterations to be used in the cross validation model (Default = 5)
+
+#### Example
+
 
 ## Acknowledgements
 

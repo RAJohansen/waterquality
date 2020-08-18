@@ -4,10 +4,10 @@
 #' and returns a data frame containing the following:
 #' r^2, p-value, slope, and intercept of the model
 #'
-#' @param y dependent variable
-#' @param x independent variable
-#' @param df data frame object
-#' @return A dataframe of the model results
+#' @param parameter dependent variable
+#' @param algorithm independent variable
+#' @param df data frame containing the values for parameter and algorithm arguments
+#' @return A data frame of the model results
 #'
 #' @references Johansen, Richard; et al. (2018). Evaluating the portability of satellite derived chlorophyll-a algorithms for temperate inland lakes using airborne hyperspectral imagery and dense surface observations. Harmful Algae. 76. 10.1016/j.hal.2018.05.001.
 #' @references  R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
@@ -31,13 +31,13 @@ extract_lm <- function(y, x, df){
 #' The r^2, p-value, slope, intercept of the global lm model &
 #' average r^2, average RMSE, average MAE from the crossvalidated model 
 #'
-#' @param y dependent variable
-#' @param x independent variable
-#' @param df data frame object
+#' @param parameter dependent variable
+#' @param algorithm independent variable
+#' @param df data frame containing the values for parameter and algorithm arguments
 #' @param folds the number of folds to be used in the cross validation model
 #' @param nrepeats the number of iterations to be used in the cross validation model
 #'
-#' @return A dataframe of the model results
+#' @return A data frame of the model results
 #'
 #' @references Johansen, Richard; et al. (2018). Evaluating the portability of satellite derived chlorophyll-a algorithms for temperate inland lakes using airborne hyperspectral imagery and dense surface observations. Harmful Algae. 76. 10.1016/j.hal.2018.05.001.
 #' @references  R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
@@ -50,6 +50,8 @@ extract_lm <- function(y, x, df){
 #' @importFrom caret trainControl train getTrainPerf
 #' 
 extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
+  if (!requireNamespace("caret", quietly = TRUE))
+    stop("package caret required, please install it first") 
   my_formula = as.formula(paste(y, "~" ,x))
   caret_model = caret::train(form = my_formula,
                              data = df,
@@ -78,12 +80,12 @@ extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
 #' average r^2, average RMSE, average MAE from the crossvalidated model
 #'
 #' @param parameters the list of dependent variables to be evaluated
-#' @param Algorithms the list of independent variables to be evaluated
-#' @param df data frame object
+#' @param algorithms the list of independent variables to be evaluated
+#' @param df data frame containing the values for parameter and algorithm arguments
 #' @param folds the number of folds to be used in the cross validation model
 #' @param nrepeats the number of iterations to be used in the cross validation model
 #'
-#' @return A dataframe of the model results
+#' @return A data frame of the model results
 #'
 #' @references Johansen, Richard; et al. (2018). Evaluating the portability of satellite derived chlorophyll-a algorithms for temperate inland lakes using airborne hyperspectral imagery and dense surface observations. Harmful Algae. 76. 10.1016/j.hal.2018.05.001.
 #' @references  R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
@@ -94,12 +96,14 @@ extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
 #' 
 #' @importFrom purrr map_chr map_dfr
 #' 
-extract_lm_cv_multi <- function(parameters, Algorithms, df,folds = 3, nrepeats = 5){
+extract_lm_cv_multi <- function(parameters, algorithms, df,folds = 3, nrepeats = 5){
+  if (!requireNamespace("caret", quietly = TRUE))
+    stop("package caret required, please install it first") 
   list = list()
   for (i in seq_along(parameters)) {
-    names(Algorithms) <- Algorithms %>% 
+    names(algorithms) <- algorithms %>% 
       purrr::map_chr(., ~ paste0(parameters[[i]], "_",.))
-    list[[i]] = Algorithms %>%
+    list[[i]] = algorithms %>%
       purrr::map_dfr(~extract_lm_cv(y = parameters[[i]], x = ., df = df, 
                                     folds = folds, nrepeats = nrepeats), .id = "Algorithms")
   }
@@ -116,11 +120,11 @@ extract_lm_cv_multi <- function(parameters, Algorithms, df,folds = 3, nrepeats =
 #' average r^2, average RMSE, average MAE from the crossvalidated model
 #'
 #' @param parameters the list of dependent variables to be evaluated
-#' @param df data frame object
+#' @param df data frame containing the values for parameter and algorithm arguments
 #' @param folds the number of folds to be used in the cross validation model
 #' @param nrepeats the number of iterations to be used in the cross validation model
 #'
-#' @return A dataframe of the model results
+#' @return A data frame of the model results
 #'
 #' @references Johansen, Richard; et al. (2018). Evaluating the portability of satellite derived chlorophyll-a algorithms for temperate inland lakes using airborne hyperspectral imagery and dense surface observations. Harmful Algae. 76. 10.1016/j.hal.2018.05.001.
 #' @references  R Core Team (2018). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
@@ -132,6 +136,8 @@ extract_lm_cv_multi <- function(parameters, Algorithms, df,folds = 3, nrepeats =
 #' @importFrom purrr map_chr map_dfr
 #' 
 extract_lm_cv_all <- function(parameters, df, folds = 3, nrepeats = 5){
+  if (!requireNamespace("caret", quietly = TRUE))
+    stop("package caret required, please install it first") 
   list = list()
   for (i in seq_along(parameters)) {
     Algorithms = df %>%
