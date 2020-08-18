@@ -135,22 +135,22 @@ The r^2, p-value, slope, intercept of the global lm model &amp;
 average r^2, average RMSE, average MAE from the crossvalidated model</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extract_lm_cv</span>(<span class='no'>y</span>, <span class='no'>x</span>, <span class='no'>df</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>nrepeats</span> <span class='kw'>=</span> <span class='fl'>5</span>)</pre>
+    <pre class="usage"><span class='fu'>extract_lm_cv</span>(<span class='no'>parameter</span>, <span class='no'>algorithm</span>, <span class='no'>df</span>, <span class='kw'>folds</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>nrepeats</span> <span class='kw'>=</span> <span class='fl'>5</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>y</th>
+      <th>parameter</th>
       <td><p>dependent variable</p></td>
     </tr>
     <tr>
-      <th>x</th>
+      <th>algorithm</th>
       <td><p>independent variable</p></td>
     </tr>
     <tr>
       <th>df</th>
-      <td><p>data frame object</p></td>
+      <td><p>data frame containing the values for parameter and algorithm arguments</p></td>
     </tr>
     <tr>
       <th>folds</th>
@@ -164,7 +164,7 @@ average r^2, average RMSE, average MAE from the crossvalidated model</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe of the model results</p>
+    <p>A data frame of the model results</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Johansen, Richard; et al. (2018). Evaluating the portability of satellite derived chlorophyll-a algorithms for temperate inland lakes using airborne hyperspectral imagery and dense surface observations. Harmful Algae. 76. 10.1016/j.hal.2018.05.001.</p>

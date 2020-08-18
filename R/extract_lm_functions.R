@@ -14,8 +14,8 @@
 #'
 #' @family extract_lm
 #' @export
-extract_lm <- function(y, x, df){
-  my_lm = lm(y ~ x)
+extract_lm <- function(parameter, algorithm, df){
+  my_lm = lm(parameter ~ algorithm)
   R_Squared = summary(my_lm)$r.squared
   P_Value = summary(my_lm)$coefficients[8]
   Slope = summary(my_lm)$coefficients[2]
@@ -49,10 +49,10 @@ extract_lm <- function(y, x, df){
 #' @importFrom stats lm as.formula na.exclude 
 #' @importFrom caret trainControl train getTrainPerf
 #' 
-extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
+extract_lm_cv <- function(parameter, algorithm, df, folds = 3, nrepeats =5){
   if (!requireNamespace("caret", quietly = TRUE))
     stop("package caret required, please install it first") 
-  my_formula = as.formula(paste(y, "~" ,x))
+  my_formula = as.formula(paste(parameter, "~" ,algorithm))
   caret_model = caret::train(form = my_formula,
                              data = df,
                              method = "lm",
@@ -79,8 +79,8 @@ extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
 #' The r^2, p-value, slope, intercept of the global lm model &
 #' average r^2, average RMSE, average MAE from the crossvalidated model
 #'
-#' @param parameters the list of dependent variables to be evaluated
-#' @param algorithms the list of independent variables to be evaluated
+#' @param parameter the list of dependent variables to be evaluated
+#' @param algorithm the list of independent variables to be evaluated
 #' @param df data frame containing the values for parameter and algorithm arguments
 #' @param folds the number of folds to be used in the cross validation model
 #' @param nrepeats the number of iterations to be used in the cross validation model
@@ -96,15 +96,15 @@ extract_lm_cv <- function(y, x, df, folds = 3, nrepeats =5){
 #' 
 #' @importFrom purrr map_chr map_dfr
 #' 
-extract_lm_cv_multi <- function(parameters, algorithms, df,folds = 3, nrepeats = 5){
+extract_lm_cv_multi <- function(parameter, algorithm, df,folds = 3, nrepeats = 5){
   if (!requireNamespace("caret", quietly = TRUE))
     stop("package caret required, please install it first") 
   list = list()
-  for (i in seq_along(parameters)) {
-    names(algorithms) <- algorithms %>% 
-      purrr::map_chr(., ~ paste0(parameters[[i]], "_",.))
-    list[[i]] = algorithms %>%
-      purrr::map_dfr(~extract_lm_cv(y = parameters[[i]], x = ., df = df, 
+  for (i in seq_along(parameter)) {
+    names(algorithm) <- algorithm %>% 
+      purrr::map_chr(., ~ paste0(parameter[[i]], "_",.))
+    list[[i]] = algorithm %>%
+      purrr::map_dfr(~extract_lm_cv(y = parameter[[i]], algorithm = ., df = df, 
                                     folds = folds, nrepeats = nrepeats), .id = "Algorithms")
   }
   results <- (do.call(rbind, list))
@@ -119,7 +119,7 @@ extract_lm_cv_multi <- function(parameters, algorithms, df,folds = 3, nrepeats =
 #' The r^2, p-value, slope, intercept of the global lm model &
 #' average r^2, average RMSE, average MAE from the crossvalidated model
 #'
-#' @param parameters the list of dependent variables to be evaluated
+#' @param parameter the list of dependent variables to be evaluated
 #' @param df data frame containing the values for parameter and algorithm arguments
 #' @param folds the number of folds to be used in the cross validation model
 #' @param nrepeats the number of iterations to be used in the cross validation model
@@ -135,18 +135,18 @@ extract_lm_cv_multi <- function(parameters, algorithms, df,folds = 3, nrepeats =
 #' 
 #' @importFrom purrr map_chr map_dfr
 #' 
-extract_lm_cv_all <- function(parameters, df, folds = 3, nrepeats = 5){
+extract_lm_cv_all <- function(parameter, df, folds = 3, nrepeats = 5){
   if (!requireNamespace("caret", quietly = TRUE))
     stop("package caret required, please install it first") 
   list = list()
-  for (i in seq_along(parameters)) {
-    Algorithms = df %>%
-      dplyr::select(which(sapply(., class) == "numeric"), -parameters) %>%
+  for (i in seq_along(parameter)) {
+    algorithm = df %>%
+      dplyr::select(which(sapply(., class) == "numeric"), -parameter) %>%
       names()
-    names(Algorithms) <- Algorithms %>%
-      purrr::map_chr(., ~ paste0(parameters[[i]], "_", .))
-    list[[i]] = Algorithms %>%
-      purrr::map_dfr(~extract_lm_cv(y = parameters[[i]], x = ., df = df, 
+    names(algorithm) <- algorithm %>%
+      purrr::map_chr(., ~ paste0(parameter[[i]], "_", .))
+    list[[i]] = algorithm %>%
+      purrr::map_dfr(~extract_lm_cv(y = parameter[[i]], algorithms = ., df = df, 
                                     folds = folds, nrepeats = nrepeats), .id = "Algorithms")
   }
   results <- (do.call(rbind, list))

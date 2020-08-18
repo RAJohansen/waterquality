@@ -4,17 +4,17 @@
 \alias{extract_lm}
 \title{Run linear model (lm)}
 \usage{
-extract_lm(y, x, df)
+extract_lm(parameter, algorithm, df)
 }
 \arguments{
-\item{y}{dependent variable}
+\item{parameter}{dependent variable}
 
-\item{x}{independent variable}
+\item{algorithm}{independent variable}
 
-\item{df}{data frame object}
+\item{df}{data frame containing the values for parameter and algorithm arguments}
 }
 \value{
-A dataframe of the model results
+A data frame of the model results
 }
 \description{
 The function runs a linear model on a single independent and dependent variable

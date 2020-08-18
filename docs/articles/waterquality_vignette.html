@@ -82,7 +82,7 @@
       <h1 data-toc-skip>Introduction to the waterquality package</h1>
                         <h4 class="author">Richard Johansen, Jakub Nowosad, Molly Reif, and Erich Emery</h4>
             
-            <h4 class="date">2020-08-17</h4>
+            <h4 class="date">2020-08-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/RAJohansen/waterquality/blob/master/../vignettes/waterquality_vignette.Rmd"><code>../vignettes/waterquality_vignette.Rmd</code></a></small>
       <div class="hidden name"><code>waterquality_vignette.Rmd</code></div>
@@ -181,7 +181,19 @@
 <h3 class="hasAnchor">
 <a href="#map_wq_raster" class="anchor"></a>Map_WQ_raster</h3>
 <p>This function wraps the <a href="https://cran.r-project.org/web/packages/tmap/tmap.pdf">“tmap”</a> package to help users generate an efficient map of their <code><a href="../reference/wq_calc.html">wq_calc()</a></code> raster output along with optional geospatial objects and histogram. In order to simplify this process and reduce the technical expertise required, we have reduced the number of arguments to the following:</p>
-<p><code>WQ_raster</code> - Raster file generated from <code>wq_calc</code> or other GeoTiff file<br><code>sample_points</code> - geospatial file (.shp or .gpkg) containing sampling locations <code>map_title</code> - text used to generate title of map <code>raster_style</code> - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is “quantile”). <code>histogram</code> - Option to add or remove a histogram of the data values. (Default is TRUE)</p>
+<ul>
+<li>
+<code>WQ_raster</code> - Raster file generated from <code>wq_calc</code> or other GeoTiff file<br>
+</li>
+<li>
+<code>sample_points</code> - geospatial file (.shp or .gpkg) containing sampling locations</li>
+<li>
+<code>map_title</code> - text used to generate title of map</li>
+<li>
+<code>raster_style</code> - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is “quantile”).</li>
+<li>
+<code>histogram</code> - Option to add or remove a histogram of the data values. (Default is TRUE)</li>
+</ul>
 <div id="example" class="section level4">
 <h4 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h4>
@@ -205,7 +217,21 @@
 <h3 class="hasAnchor">
 <a href="#map_wq_basemap" class="anchor"></a>Map_WQ_basemap</h3>
 <p>This function wraps the <a href="https://cran.r-project.org/web/packages/tmap/tmap.pdf">“tmap”</a> &amp; <a href="https://cran.r-project.org/web/packages/tmaptools/tmaptools.pdf">“tmaptools”</a> packages in order to generate a map using user-defined vectors (points and a polygon) overlaid on a Bing basemap. In order to simplify this process and reduce the technical expertise required, we have reduced the number of arguments to the following:</p>
-<p><code>WQ_extent</code> - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps <code>WQ_parameter</code> - text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.) <code>sample_points</code> - geospatial file (.shp or .gpkg) containing sampling locations <code>map_title</code> - text used to generate title of map <code>points_style</code> - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is “quantile”). <code>histogram</code> - Option to add or remove a histogram of the data values. (Default is TRUE)</p>
+<ul>
+<li>
+<code>WQ_extent</code> - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps<br>
+</li>
+<li>
+<code>WQ_parameter</code> - text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.)</li>
+<li>
+<code>sample_points</code> - geospatial file (.shp or .gpkg) containing sampling locations</li>
+<li>
+<code>map_title</code> - text used to generate title of map</li>
+<li>
+<code>points_style</code> - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default = “quantile”).</li>
+<li>
+<code>histogram</code> - Option to add or remove a histogram of the data values. (Default = TRUE)</li>
+</ul>
 <div id="example-1" class="section level4">
 <h4 class="hasAnchor">
 <a href="#example-1" class="anchor"></a>Example</h4>
@@ -216,6 +242,101 @@
               <span class="kw">points_style</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
               <span class="kw">histogram</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-12-1.png" width="576"></p>
+</div>
+</div>
+</div>
+<div id="modeling-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#modeling-functions" class="anchor"></a>Modeling Functions</h2>
+<p>After a user has generated raster stack image of their desired water quality algorithms using <code>wq_calc</code>, they can create linear models assuming they have coincident in situ data. These functions have been designed to easily conduct linear models and produce standardized outputs. These functions are designed to most effectively work with comma deliminated (.csv) files as the data frame and column names (“text”) as the inputs for the <code>parameter</code> and <code>algorithm</code> arguments. Although these functions were designed for our water quality research, they can be used as standalone functions to generate standardized outputs for the following:</p>
+<p><strong>Global Model</strong> -r^2 -p-value -slope -intercept <strong>Crossvalidated Model</strong> -lm model -average r^2 -average RMSE -average MAE</p>
+<p>Additionally we have provided code that might be useful to import raster and shapefile objects, extract the data from a raster stack image (i.e. output from <code>wq_calc</code>) and combine it with a geospatial object (i.e shapefiles of sampling locations), and export the results to a .csv file to be used in the modeling functions.</p>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="co">#Input raster image</span>
+<span class="no">wq_raster</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/stack.html">stack</a></span>(<span class="st">"C:/temp/my_raster.tif"</span>)
+
+<span class="co">#Input shapefile</span>
+<span class="no">wq_samples</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/shapefile.html">shapefile</a></span>(<span class="st">'C:/temp/my_samples.shp'</span>)
+
+<span class="co">#Extract values from raster and combine with shapefile</span>
+<span class="no">waterquality_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="no">wq_samples</span>, <span class="fu"><a href="https://rdrr.io/pkg/raster/man/extract.html">extract</a></span>(<span class="no">wq_raster</span>, <span class="no">wq_samples</span>))
+
+<span class="co">#Export results as csv file</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span>(<span class="no">waterquality_data</span>, <span class="kw">file</span> <span class="kw">=</span> <span class="st">"C:/temp/waterquality_data.csv"</span>)</pre></body></html></div>
+<div id="extract_lm" class="section level3">
+<h3 class="hasAnchor">
+<a href="#extract_lm" class="anchor"></a>extract_lm</h3>
+<ul>
+<li>
+<code>parameter</code> water quality parameter</li>
+<li>
+<code>algorithm</code> water quality algorithm</li>
+<li>
+<code>df</code> data frame containing the values for parameter and algorithm arguments</li>
+</ul>
+<div id="example-2" class="section level4">
+<h4 class="hasAnchor">
+<a href="#example-2" class="anchor"></a>Example</h4>
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
+<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/waterquality_data.csv"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
+<span class="fu"><a href="../reference/extract_lm.html">extract_lm</a></span>(<span class="kw">parameter</span> <span class="kw">=</span> <span class="st">"Chl_ugL"</span>, <span class="kw">algorithm</span> <span class="kw">=</span> <span class="st">"MM12NDCI"</span>, <span class="kw">df</span> <span class="kw">=</span> <span class="no">df</span>)</pre></body></html></div>
+</div>
+</div>
+<div id="extract_lm_cv" class="section level3">
+<h3 class="hasAnchor">
+<a href="#extract_lm_cv" class="anchor"></a>extract_lm_cv</h3>
+<ul>
+<li>
+<code>parameter</code> water quality parameter</li>
+<li>
+<code>algorithm</code> water quality algorithm</li>
+<li>
+<code>df</code> data frame containing the values for parameter and algorithm arguments</li>
+<li>
+<code>folds</code> the number of folds to be used in the cross validation model (Default = 3)</li>
+<li>
+<code>nrepeats</code> the number of iterations to be used in the cross validation model (Default = 5)</li>
+</ul>
+<div id="example-3" class="section level4">
+<h4 class="hasAnchor">
+<a href="#example-3" class="anchor"></a>Example</h4>
+</div>
+</div>
+<div id="extract_lm_cv_multi" class="section level3">
+<h3 class="hasAnchor">
+<a href="#extract_lm_cv_multi" class="anchor"></a>extract_lm_cv_multi</h3>
+<ul>
+<li>
+<code>parameters</code> list of water quality parameters</li>
+<li>
+<code>algorithms</code> list of water quality algorithms</li>
+<li>
+<code>df</code> data frame containing the values for parameter and algorithm arguments</li>
+<li>
+<code>folds</code> the number of folds to be used in the cross validation model (Default = 3)</li>
+<li>
+<code>nrepeats</code> the number of iterations to be used in the cross validation model (Default = 5)</li>
+</ul>
+<div id="example-4" class="section level4">
+<h4 class="hasAnchor">
+<a href="#example-4" class="anchor"></a>Example</h4>
+</div>
+</div>
+<div id="extract_lm_cv_all" class="section level3">
+<h3 class="hasAnchor">
+<a href="#extract_lm_cv_all" class="anchor"></a>extract_lm_cv_all</h3>
+<ul>
+<li>
+<code>algorithms</code> list of water quality algorithms</li>
+<li>
+<code>df</code> data frame containing the values for parameter and algorithm arguments</li>
+<li>
+<code>folds</code> the number of folds to be used in the cross validation model (Default = 3)</li>
+<li>
+<code>nrepeats</code> the number of iterations to be used in the cross validation model (Default = 5)</li>
+</ul>
+<div id="example-5" class="section level4">
+<h4 class="hasAnchor">
+<a href="#example-5" class="anchor"></a>Example</h4>
 </div>
 </div>
 </div>

@@ -4,21 +4,21 @@
 \alias{extract_lm_cv_multi}
 \title{Run linear model with crossvalidation over multiple independent and dependent variables}
 \usage{
-extract_lm_cv_multi(parameters, Algorithms, df, folds = 3, nrepeats = 5)
+extract_lm_cv_multi(parameter, algorithm, df, folds = 3, nrepeats = 5)
 }
 \arguments{
-\item{parameters}{the list of dependent variables to be evaluated}
+\item{parameter}{the list of dependent variables to be evaluated}
 
-\item{Algorithms}{the list of independent variables to be evaluated}
+\item{algorithm}{the list of independent variables to be evaluated}
 
-\item{df}{data frame object}
+\item{df}{data frame containing the values for parameter and algorithm arguments}
 
 \item{folds}{the number of folds to be used in the cross validation model}
 
 \item{nrepeats}{the number of iterations to be used in the cross validation model}
 }
 \value{
-A dataframe of the model results
+A data frame of the model results
 }
 \description{
 The function runs a linear model on a list of x and list of y variables and conducts
