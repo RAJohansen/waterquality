@@ -4,7 +4,14 @@
 \alias{extract_lm_cv_all}
 \title{Run linear model with crossvalidation over multiple dependent and all numeric independent variables in a data frame}
 \usage{
-extract_lm_cv_all(parameters, df, folds = 3, nrepeats = 5)
+extract_lm_cv_all(
+  parameters,
+  df,
+  train_method = "lm",
+  control_method = "repeatedcv",
+  folds = 3,
+  nrepeats = 5
+)
 }
 \arguments{
 \item{parameters}{the list of dependent variables to be evaluated}

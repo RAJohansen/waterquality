@@ -207,7 +207,7 @@ library(waterquality)
 library(caret)
 df <- read.csv(system.file("raster/waterquality_data.csv", package = "waterquality"))
 ```
-```{r}
+```{r, message=FALSE, warning=FALSE}
 extract_lm(parameter = "Chl_ugL", algorithm = "MM12NDCI", df = df)
 ```
 
@@ -224,7 +224,7 @@ extract_lm(parameter = "Chl_ugL", algorithm = "MM12NDCI", df = df)
 
 #### Example
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 extract_lm_cv(parameter = "Chl_ugL", algorithm = "MM12NDCI",
                                        df = df, train_method = "lm", control_method = "repeatedcv",
                                        folds = 3, nrepeats = 5)
@@ -243,14 +243,14 @@ extract_lm_cv(parameter = "Chl_ugL", algorithm = "MM12NDCI",
 
 #### Example
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # Create series of strings to be used for parameters and algorithms arguments
 algorithms <- c(names(df[6:10]))
 parameters <- c(names(df[3:5]))
 extract_lm_cv_multi_results <- extract_lm_cv_multi(parameters = parameters, algorithms = algorithms,
                                                    df = df, train_method = "lm", control_method = "repeatedcv",
                                                    folds = 3, nrepeats = 5)
-dplyr::arrange(extract_lm_cv_multi_results,desc("R_Squared"))
+head(extract_lm_cv_multi_results)
 ```
 
 
@@ -265,11 +265,11 @@ dplyr::arrange(extract_lm_cv_multi_results,desc("R_Squared"))
 
 #### Example
 
-```{r}
-extract_lm_cv_all_results <- extract_lm_cv_multi(parameters = parameters, df = df,
+```{r, message=FALSE, warning=FALSE}
+extract_lm_cv_all_results <- extract_lm_cv_all(parameters = parameters, df = df,
                                                  train_method = "lm", control_method = "repeatedcv",
                                                  folds = 3, nrepeats = 5)
-dplyr::arrange(extract_lm_cv_all_results,desc("R_Squared"))
+head(extract_lm_cv_all_results)
 ```
 
 

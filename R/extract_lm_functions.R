@@ -140,7 +140,7 @@ extract_lm_cv_multi <- function(parameters, algorithms, df, train_method = "lm",
 #' 
 #' @importFrom purrr map_chr map_dfr
 #' 
-extract_lm_cv_all <- function(parameters, df, folds = 3, nrepeats = 5){
+extract_lm_cv_all <- function(parameters, df, train_method = "lm", control_method = "repeatedcv", folds = 3, nrepeats = 5){
   if (!requireNamespace("caret", quietly = TRUE))
     stop("package caret required, please install it first") 
   list = list()
