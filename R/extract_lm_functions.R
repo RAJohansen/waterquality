@@ -20,7 +20,7 @@ extract_lm <- function(parameter, algorithm, df){
   P_Value = summary(my_lm)$coefficients[8]
   Slope = summary(my_lm)$coefficients[2]
   Intercept = summary(my_lm)$coefficients[1]
-  vctrs::data_frame(R_Squared = R_Squared, Slope = Slope, 
+  tibble::tibble(R_Squared = R_Squared, Slope = Slope, 
                     Intercept = Intercept, P_Value = P_Value)
 }
 
@@ -68,7 +68,7 @@ extract_lm_cv <- function(parameter, algorithm, df, folds = 3, nrepeats =5){
   P_Value = summary(my_lm)$coefficients[8]
   Slope = summary(my_lm)$coefficients[2]
   Intercept = summary(my_lm)$coefficients[1]
-  vctrs::data_frame(R_Squared = R_Squared, Slope = Slope, Intercept = Intercept, 
+  tibble::tibble(R_Squared = R_Squared, Slope = Slope, Intercept = Intercept, 
                     P_Value = P_Value, CV_R_Squared = CV_R_Squared, RMSE = RMSE, MAE = MAE)
 }
 
