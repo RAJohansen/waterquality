@@ -16,17 +16,19 @@ knitr::opts_chunk$set(
   echo = TRUE)
 ```
 
-The main purpose of **waterquality** is to quickly and easily convert satellite-based reflectance imagery into one or many well-known water quality algorithms designed for the detection of harmful algal blooms or the following pigment proxies: chlorophyll-a, blue-green algae (Phycocyanin), and Turbidity. Currently, this package is able to process [45 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) for the following satellite-based imagers: WorldView-2, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of the `wq_calc` output, we are developing a series of `Map_WQ` functions which may reduce technical barriers and simplify the complexities in selecting a map layout. Additional functionality of the package include a series of `extract_lm` functions wrap that ["Fitting Linear Models"](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm) and the ["caret"](http://topepo.github.io/caret/index.html) packages to quickly generate crossvalidated linear model and standardized outputs (r^2, p-value, slope, intercept of the global lm model & average r^2, average RMSE, average MAE of crossvalidated model) for any number of algorithm and water quality parameters combinations. It is important to note that the `extract_lm` functions require ground-truth data in order to develop the models. 
+The main purpose of **waterquality** is to quickly and easily convert satellite-based reflectance imagery into one or many well-known water quality algorithms designed for the detection of harmful algal blooms (HABs) using the following pigment proxies: chlorophyll-a, blue-green algae (Phycocyanin), and Turbidity. Currently, this package is able to process [45 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) for the following satellite-based imagers: WorldView-2, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of the `wq_calc` output, we have developed a series of intuitive `Map_WQ` functions which hopefully will reduce technical barriers due to coding and the myriad of map options.  
 
-For an example of a full research workflow, including data acquisition, image pre-processing, methods, and results please see our publication entitled["Waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality"](https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf). 
+Additional functionality of the package include a series of `extract_lm` functions which wrap the ["Fitting Linear Models"](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm) and the ["caret"](http://topepo.github.io/caret/index.html) packages to quickly generate a suite of regression models with standardized outputs. These functions range from simple linear models for a single dependent and independent variable to robust linear regression using crossvalidation over multiple dependent and independent variables. These functions are extremely useful when conducting experimental testing on large number of satellite algorithms across multiple water quality parameters.**NOTE** these functions require ground-truth data in order to develop the models.  
+  
+For an example of our entire research workflow, which includes data acquisition, image pre-processing, analyses, and results please see our publication entitled["Waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality"](https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf). 
 
 ## Algorithms
 
-Currently, we have a list of [45 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) that can be applied for the detection of these three metrics. 
-Although, it is important to note that not all sensors are capable of using all algorithms due to their spectral configurations. 
+Currently, we have a list of [45 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) that can be applied for the detection of these three parameters. 
+**NOTE** not all sensors are capable of using all algorithms due to their spectral configurations. 
 Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. `?Am092Bsub()`). 
-Each algorithm is also linked to the original papers metric (chlorophyll-a, phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type.
-The final raster images are in relative index values and are not the estimated chlorophyll-a, phycocyanin, or turbidity values. However, these relative values can be converted in to estimated concentration values using the `extract_lm` functions and ground truth measurements. 
+Each algorithm is also linked to the original papers water quality parameters (chlorophyll-a, phycocyanin, Turbidity) by type, which allows users to select all algorithms for that type.
+The final outputs are raster stacked images which represent relative index values and are not direct estimated chlorophyll-a, phycocyanin, or turbidity values. However, these relative values can be converted in to estimated concentration values using the `extract_lm` functions and ground truth measurements. 
 
 
 ## Water Quality Functions 
@@ -49,29 +51,22 @@ The main function of this package is called `wq_calc()` which calculates water q
     - MERIS
     - OLCI
 
-
-### Examples
-
+#### Single Algorithm
 ```{r, results='hide', message=FALSE, warning=FALSE}
 library(waterquality)
 library(raster)
 Harsha <- stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
 ```
-
-#### Single Algorithm
-
 ```{r,results='hide', message=FALSE, warning=FALSE}
 Harsha_Am092Bsub <- wq_calc(raster_stack = Harsha, 
                             alg = "Am092Bsub", 
                             sat = "sentinel2")
 ```
-```{r, fig.height = 4, fig.width = 4}
+```{r, fig.height = 5, fig.width = 6}
 plot(Harsha_Am092Bsub)
 ```
-
-
+  
 #### Multiple Algorithms
-
 ```{r,results='hide', message=FALSE, warning=FALSE}
 Harsha_Multiple <- wq_calc(raster_stack = Harsha,
                            alg = c("Am092Bsub", "Go04MCI", "Da052BDA"), 
@@ -80,10 +75,8 @@ Harsha_Multiple <- wq_calc(raster_stack = Harsha,
 ```{r, fig.height = 5, fig.width = 6}
 plot(Harsha_Multiple) 
 ```
-
-
+  
 #### Type of Algorithm
-
 ```{r,results='hide', message=FALSE, warning=FALSE}
 Harsha_PC <- wq_calc(Harsha,
                      alg = "phycocyanin", 
@@ -92,33 +85,29 @@ Harsha_PC <- wq_calc(Harsha,
 ```{r, fig.height = 5, fig.width = 6}
 plot(Harsha_PC) 
 ```
- 
- 
+  
 #### All Algorithms
-
 ```{r, results='hide', message=FALSE, warning=FALSE}
 Harsha_All <- wq_calc(Harsha, 
                       alg = "all",
                       sat = "sentinel2")
 ```
 ```{r,fig.height = 5, fig.width = 6}
-plot(Harsha_All) # Only displays first 12 of 28
+plot(Harsha_All) # Only displays first 16 of 28
 ```
-
-
-## Mapping Functions
+  
+  
+## Mapping Functions  
 
 ### Map_WQ_raster
-This function wraps the ["tmap"](https://cran.r-project.org/web/packages/tmap/tmap.pdf) package to help users generate an efficient map of their `wq_calc()` raster output along with optional geospatial objects and histogram. In order to simplify this process and reduce the technical expertise required, we have reduced the number of arguments to the following: 
-
+This function wraps the ["tmap"](https://cran.r-project.org/web/packages/tmap/tmap.pdf) package to help users to efficiently generate a map of a raster image which can be overlaid with optional geospatial objects and data histogram. In order to simplify this process and reduce the technical expertise required, we have reduced the number of arguments to the following: 
 - `WQ_raster` - Raster file generated from `wq_calc` or other GeoTiff file	
 - `sample_points` - geospatial file (.shp or .gpkg) containing sampling locations 
 - `map_title` - text used to generate title of map
-- `raster_style` - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default is "quantile").
+- `raster_style` - method to process the color scale when col is a numeric variable. Please refer to the style argument in the                    `?tmap::tm_raster()` function for more details (Default is "quantile").
 - `histogram` - Option to add or remove a histogram of the data values. (Default is TRUE)
 
-#### Example  
-
+#### Raster with points
 ```{r, results='hide', message=FALSE, warning=FALSE}
 library(waterquality)
 library(raster)
@@ -138,20 +127,17 @@ Map_WQ_raster(WQ_raster = MM12NDCI,
               histogram = TRUE)
 
 ```
-
-
+  
 ### Map_WQ_basemap
 This function wraps the ["tmap"](https://cran.r-project.org/web/packages/tmap/tmap.pdf) & ["tmaptools"](https://cran.r-project.org/web/packages/tmaptools/tmaptools.pdf) packages in order to generate a map using user-defined vectors (points and a polygon) overlaid on a Bing basemap. In order to simplify this process and reduce the technical expertise required, we have reduced the number of arguments to the following: 
-
 - `WQ_extent` - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps	
 - `WQ_parameter` - text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.)
 - `sample_points` - geospatial file (.shp or .gpkg) containing sampling locations
 - `map_title` - text used to generate title of map
-- `points_style` - method to process the color scale when col is a numeric variable. Please refer to the style argument in the ?tmap::tm_raster() function for more details (Default = "quantile").
-- `histogram` - Option to add or remove a histogram of the data values. (Default = TRUE)
+- `raster_style` - method to process the color scale when col is a numeric variable. Please refer to the style argument in the                    `?tmap::tm_raster()` function for more details (Default is "quantile").
+- `histogram` - Option to add or remove a histogram of the data values. (Default = TRUE)  
 
-#### Example  
-
+#### Basemap with points  
 ```{r,fig.height = 5, fig.width = 6}
 Map_WQ_basemap(WQ_extent = lake_extent,
               sample_points = samples,
@@ -161,23 +147,21 @@ Map_WQ_basemap(WQ_extent = lake_extent,
               histogram = TRUE)
 
 ```
-
-
+  
 ## Modeling Functions
-After a user has generated raster stack image of their desired water quality algorithms using `wq_calc`, they can create linear models assuming they have coincident in situ data. These functions have been designed to easily conduct linear models and produce standardized outputs. These functions are designed to most effectively work with comma deliminated (.csv) files as the data frame and column names ("text") as the inputs for the `parameter` and `algorithm` arguments. Although these functions were designed for our water quality research, they can be used as standalone functions to generate standardized outputs for the following: 
+Developing models is an essential step in water quality monitoring, but this does require sufficient coincident ground truth data. These functions have been developed to combine user-provided truth data and the results from the `wq_calc` function to generate a single or series of regression models. These functions have been developed to easily conduct linear models with standardized outputs. These functions are meant intuitive yet robust. Most effectively the functions will utilize a single comma delimited (.csv) files as the data frame source. Although these functions were designed for our water quality research, they can be used as standalone functions for any data to generate the same standardized outputs containing the following:   
+**Global Model**  
+- r^2^  
+- p-value  
+- slope  
+- intercept    
+  
+**Crossvalidated Model**  
+- average r^2^  
+- average RMSE  
+- average MAE  
 
-**Global Model**
-  -r^2 
-  -p-value
-  -slope
-  -intercept
-**Crossvalidated Model**
-  -lm model
-  -average r^2 
-  -average RMSE
-  -average MAE
-
-Additionally we have provided code that might be useful to import raster and shapefile objects, extract the data from a raster stack image (i.e. output from `wq_calc`) and combine it with a geospatial object (i.e shapefiles of sampling locations), and export the results to a .csv file to be used in the modeling functions. 
+Additionally we have provided code that might be useful to help users import and extract the data from a raster stack image (i.e. output from `wq_calc`), combine it with a geospatial object (i.e shapefiles of sampling locations), and export the results to a .csv file to be used in the modeling functions. 
 
 ```{r, eval = FALSE}
 #Input raster image
