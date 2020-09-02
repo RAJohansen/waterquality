@@ -19,20 +19,20 @@ process [45
 algorithms](https://rajohansen.github.io/waterquality/reference/index.html)
 for the following satellite-based imagers: WorldView-2, Sentinel-2,
 Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of
-the `wq_calc` output, a series of `Map_WQ` functions were developed to
-help reduce technical barriers and simplify the complexities in
+the `wq_calc()` output, a series of `Map_WQ()` functions were developed
+to help reduce technical barriers and simplify the complexities in
 selecting a map layout. Additional functionality of the package includes
-a series of `extract_lm` functions that wrap the [“Fitting Linear
+a series of `extract_lm()` functions that wrap the [“Fitting Linear
 Models”](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm)
 and [“caret”](http://topepo.github.io/caret/index.html) packages to
 quickly generate crossvalidated linear models and standardized outputs
-(r^2, p-value, slope, intercept of the global lm model & average r^2,
-average RMSE, average MAE of crossvalidated model) for any number of
-algorithm and water quality parameter combinations. It is important to
-note that the `extract_lm` functions require ground-truth data in order
-to develop the models. For a more detailed look into the full
-functionality of **waterquality**, please view [“Introduction to the
-waterquality
+(r<sup>2</sup>, p-value, slope, intercept of the global lm model &
+average r<sup>2</sup>, average RMSE, average MAE of crossvalidated
+model) for any number of algorithm and water quality parameter
+combinations. It is important to note that the `extract_lm()` functions
+require ground-truth data in order to develop the models. For a more
+detailed look into the full functionality of **waterquality**, please
+view [“Introduction to the waterquality
 package”](https://rajohansen.github.io/waterquality/articles/waterquality_vignette.html).
 For a broader look into how to apply this tool into a research workflow
 or for more information on topics such as data acquisition, image
@@ -80,4 +80,4 @@ continue to improve our package.
 
 Furthermore, if you have a water quality algorithm that was not on our
 list, and you would like for it to be included in our package please
-email <Richard.A.Johansen@erdc.dren.mil>
+email <Richard.A.Johansen@erdc.dren.mil>.
