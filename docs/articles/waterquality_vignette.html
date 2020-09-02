@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">waterquality</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -292,7 +292,7 @@
 <span class="co">#&gt; # A tibble: 1 x 7</span>
 <span class="co">#&gt;   R_Squared Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.162  26.2      4.69   0.153        0.319  1.70  1.21</span></pre></body></html></div>
+<span class="co">#&gt; 1     0.162  26.2      4.69   0.153        0.352  1.68  1.25</span></pre></body></html></div>
 </div>
 </div>
 <div id="extract_lm_cv_multi" class="section level3">
@@ -327,12 +327,12 @@
 <span class="co">#&gt; # A tibble: 6 x 8</span>
 <span class="co">#&gt;   Algorithms          R_Squared Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span>
 <span class="co">#&gt;   &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Turbid_NTU_Al10SABI     0.441 -30.5     -4.37 0.00954        0.613  2.98  2.03</span>
-<span class="co">#&gt; 2 Turbid_NTU_Go04MCI      0.441 -30.5     -4.37 0.00954        0.508  2.78  1.83</span>
-<span class="co">#&gt; 3 Turbid_NTU_Ku15Phy~     0.441 -30.5     -4.37 0.00954        0.484  2.77  1.84</span>
-<span class="co">#&gt; 4 Turbid_NTU_MM12NDCI     0.441 -30.5     -4.37 0.00954        0.544  2.81  1.84</span>
-<span class="co">#&gt; 5 Turbid_NTU_Wy08CI       0.441 -30.5     -4.37 0.00954        0.518  2.90  1.83</span>
-<span class="co">#&gt; 6 Chl_ugL_Al10SABI        0.534 -21.0      1.30 0.00299        0.565  1.31  1.01</span></pre></body></html></div>
+<span class="co">#&gt; 1 Turbid_NTU_Al10SABI     0.441 -30.5     -4.37 0.00954        0.440  2.44  1.55</span>
+<span class="co">#&gt; 2 Turbid_NTU_Go04MCI      0.441 -30.5     -4.37 0.00954        0.568  3.05  2.07</span>
+<span class="co">#&gt; 3 Turbid_NTU_Ku15Phy~     0.441 -30.5     -4.37 0.00954        0.520  2.51  1.59</span>
+<span class="co">#&gt; 4 Turbid_NTU_MM12NDCI     0.441 -30.5     -4.37 0.00954        0.542  2.45  1.64</span>
+<span class="co">#&gt; 5 Turbid_NTU_Wy08CI       0.441 -30.5     -4.37 0.00954        0.436  2.56  1.67</span>
+<span class="co">#&gt; 6 Chl_ugL_Al10SABI        0.534 -21.0      1.30 0.00299        0.577  1.48  1.12</span></pre></body></html></div>
 </div>
 </div>
 <div id="extract_lm_cv_all" class="section level3">
@@ -362,12 +362,12 @@
 <span class="co">#&gt; # A tibble: 6 x 8</span>
 <span class="co">#&gt;   Algorithms        R_Squared  Slope Intercept  P_Value CV_R_Squared  RMSE   MAE</span>
 <span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Turbid_NTU_pH         0.976 -14.1    125.    4.86e-11        0.534  1.50 0.831</span>
-<span class="co">#&gt; 2 Turbid_NTU_Al10S~     0.441 -30.5     -4.37  9.54e- 3        0.563  2.93 1.94 </span>
-<span class="co">#&gt; 3 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.350  2.89 1.88 </span>
-<span class="co">#&gt; 4 Turbid_NTU_Da052~     0.168  19.2    -18.7   1.45e- 1        0.348  2.62 1.68 </span>
-<span class="co">#&gt; 5 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.214  2.36 1.49 </span>
-<span class="co">#&gt; 6 Turbid_NTU_TurbD~     0.136  -7.44     5.47  1.95e- 1        0.221  2.76 1.85</span></pre></body></html></div>
+<span class="co">#&gt; 1 Turbid_NTU_pH         0.976 -14.1    125.    4.86e-11        0.580  1.48 0.816</span>
+<span class="co">#&gt; 2 Turbid_NTU_Al10S~     0.441 -30.5     -4.37  9.54e- 3        0.431  2.71 1.78 </span>
+<span class="co">#&gt; 3 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.404  2.69 1.76 </span>
+<span class="co">#&gt; 4 Turbid_NTU_Da052~     0.168  19.2    -18.7   1.45e- 1        0.351  2.69 1.74 </span>
+<span class="co">#&gt; 5 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.376  2.30 1.44 </span>
+<span class="co">#&gt; 6 Turbid_NTU_TurbD~     0.136  -7.44     5.47  1.95e- 1        0.346  2.67 1.77</span></pre></body></html></div>
 </div>
 </div>
 </div>
