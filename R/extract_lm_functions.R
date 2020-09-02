@@ -112,9 +112,7 @@ extract_lm_cv_multi <- function(parameters, algorithms, df, train_method = "lm",
                                     train_method = train_method, control_method = control_method,
                                     folds = folds, nrepeats = nrepeats), .id = "Algorithms")
   }
-  results <- (do.call(rbind, list))
-  attr(results, "time") <- paste0(format(Sys.time(), "Results_%Y-%m-%d_%H%M"))
-  attr(results, "time")
+  extract_lm_cv_multi_results <- (do.call(rbind, list))
 }
 
 
@@ -158,7 +156,5 @@ extract_lm_cv_all <- function(parameters, df, train_method = "lm", control_metho
                                     train_method = train_method, control_method = control_method,
                                     folds = folds, nrepeats = nrepeats), .id = "Algorithms")
   }
-  results <- (do.call(rbind, list))
-  attr(results, "time") <- paste0(format(Sys.time(), "Results_%Y-%m-%d_%H%M"))
-  attr(results, "time")
+  extract_lm_cv_all_results <- (do.call(rbind, list))
 }
