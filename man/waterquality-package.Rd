@@ -9,8 +9,8 @@
 The main purpose of waterquality is to quickly and easily convert
     satellite-based reflectance imagery into one or many well-known water quality
     algorithms designed for the detection of harmful algal blooms or the following
-    pigment proxies: chlorophyll-a, blue-green algae (Phycocyanin), and Turbidity.
-    (Johansen et al. (2018) <doi:10.1016/j.hal.2018.05.001>).
+    pigment proxies: chlorophyll-a, blue-green algae (phycocyanin), and turbidity.
+    (Johansen et al. (2019) <http://dx.doi.org/10.21079/11681/35053>).
 }
 \seealso{
 Useful links:
