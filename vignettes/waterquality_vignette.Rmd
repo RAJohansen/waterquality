@@ -100,7 +100,7 @@ plot(Harsha_All) # Only displays first 16 of 28
 ## Mapping Functions  
 
 ### Map_WQ_raster
-This function wraps the ["tmap"](https://cran.r-project.org/web/packages/tmap/tmap.pdf) package to help users to efficiently generate a map of a raster image which can be overlaid with optional geospatial objects and data histogram. In order to simplify this process and reduce the technical expertise required, the number of arguments were reduced to the following: 
+This function wraps the ["tmap"](https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html) package to help users to efficiently generate a map of a raster image which can be overlaid with optional geospatial objects and data histogram. In order to simplify this process and reduce the technical expertise required, the number of arguments were reduced to the following: 
 - `WQ_raster` - Raster file generated from `wq_calc` or other GeoTiff file	
 - `sample_points` - geospatial file (.shp or .gpkg) containing sampling locations 
 - `map_title` - text used to generate title of map
@@ -129,7 +129,7 @@ Map_WQ_raster(WQ_raster = MM12NDCI,
 ```
   
 ### Map_WQ_basemap
-This function wraps the ["tmap"](https://cran.r-project.org/web/packages/tmap/tmap.pdf) & ["tmaptools"](https://cran.r-project.org/web/packages/tmaptools/tmaptools.pdf) packages in order to generate a map using user-defined vectors (points and a polygon) overlaid on a Bing basemap. In order to simplify this process and reduce the technical expertise required, the number of arguments were reduced to the following: 
+This function wraps the ["tmap"](https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html) & ["tmaptools"](https://cran.r-project.org/package=tmaptools) packages in order to generate a map using user-defined vectors (points and a polygon) overlaid on a Bing basemap. In order to simplify this process and reduce the technical expertise required, the number of arguments were reduced to the following: 
 - `WQ_extent` - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps	
 - `WQ_parameter` - text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.)
 - `sample_points` - geospatial file (.shp or .gpkg) containing sampling locations

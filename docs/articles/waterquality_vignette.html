@@ -82,7 +82,7 @@
       <h1 data-toc-skip>Introduction to the waterquality package</h1>
                         <h4 class="author">Richard Johansen, Jakub Nowosad, Molly Reif, and Erich Emery</h4>
             
-            <h4 class="date">2020-09-03</h4>
+            <h4 class="date">2020-09-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/RAJohansen/waterquality/blob/master/../vignettes/waterquality_vignette.Rmd"><code>../vignettes/waterquality_vignette.Rmd</code></a></small>
       <div class="hidden name"><code>waterquality_vignette.Rmd</code></div>
@@ -177,7 +177,7 @@
 <div id="map_wq_raster" class="section level3">
 <h3 class="hasAnchor">
 <a href="#map_wq_raster" class="anchor"></a>Map_WQ_raster</h3>
-<p>This function wraps the <a href="https://cran.r-project.org/web/packages/tmap/tmap.pdf">“tmap”</a> package to help users to efficiently generate a map of a raster image which can be overlaid with optional geospatial objects and data histogram. In order to simplify this process and reduce the technical expertise required, the number of arguments were reduced to the following: - <code>WQ_raster</code> - Raster file generated from <code>wq_calc</code> or other GeoTiff file<br>
+<p>This function wraps the <a href="https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html">“tmap”</a> package to help users to efficiently generate a map of a raster image which can be overlaid with optional geospatial objects and data histogram. In order to simplify this process and reduce the technical expertise required, the number of arguments were reduced to the following: - <code>WQ_raster</code> - Raster file generated from <code>wq_calc</code> or other GeoTiff file<br>
 - <code>sample_points</code> - geospatial file (.shp or .gpkg) containing sampling locations - <code>map_title</code> - text used to generate title of map - <code>raster_style</code> - method to process the color scale when col is a numeric variable. Please refer to the style argument in the <code>?tmap::tm_raster()</code> function for more details (Default is “quantile”). - <code>histogram</code> - Option to add or remove a histogram of the data values. (Default is TRUE)</p>
 <div id="raster-with-points" class="section level4">
 <h4 class="hasAnchor">
@@ -201,7 +201,7 @@
 <div id="map_wq_basemap" class="section level3">
 <h3 class="hasAnchor">
 <a href="#map_wq_basemap" class="anchor"></a>Map_WQ_basemap</h3>
-<p>This function wraps the <a href="https://cran.r-project.org/web/packages/tmap/tmap.pdf">“tmap”</a> &amp; <a href="https://cran.r-project.org/web/packages/tmaptools/tmaptools.pdf">“tmaptools”</a> packages in order to generate a map using user-defined vectors (points and a polygon) overlaid on a Bing basemap. In order to simplify this process and reduce the technical expertise required, the number of arguments were reduced to the following: - <code>WQ_extent</code> - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps<br>
+<p>This function wraps the <a href="https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html">“tmap”</a> &amp; <a href="https://cran.r-project.org/package=tmaptools">“tmaptools”</a> packages in order to generate a map using user-defined vectors (points and a polygon) overlaid on a Bing basemap. In order to simplify this process and reduce the technical expertise required, the number of arguments were reduced to the following: - <code>WQ_extent</code> - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps<br>
 - <code>WQ_parameter</code> - text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.) - <code>sample_points</code> - geospatial file (.shp or .gpkg) containing sampling locations - <code>map_title</code> - text used to generate title of map - <code>raster_style</code> - method to process the color scale when col is a numeric variable. Please refer to the style argument in the <code>?tmap::tm_raster()</code> function for more details (Default is “quantile”). - <code>histogram</code> - Option to add or remove a histogram of the data values. (Default = TRUE)</p>
 <div id="basemap-with-points" class="section level4">
 <h4 class="hasAnchor">
@@ -292,7 +292,7 @@
 <span class="co">#&gt; # A tibble: 1 x 7</span>
 <span class="co">#&gt;   R_Squared Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.162  26.2      4.69   0.153        0.436  1.67  1.25</span></pre></body></html></div>
+<span class="co">#&gt; 1     0.162  26.2      4.69   0.153        0.390  1.83  1.30</span></pre></body></html></div>
 </div>
 </div>
 <div id="extract_lm_cv_multi" class="section level3">
@@ -327,12 +327,12 @@
 <span class="co">#&gt; # A tibble: 6 x 8</span>
 <span class="co">#&gt;   Algorithms          R_Squared Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span>
 <span class="co">#&gt;   &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Turbid_NTU_Al10SABI     0.441 -30.5     -4.37 0.00954        0.398  2.31 1.50 </span>
-<span class="co">#&gt; 2 Turbid_NTU_Go04MCI      0.441 -30.5     -4.37 0.00954        0.539  2.78 1.87 </span>
-<span class="co">#&gt; 3 Turbid_NTU_Ku15Phy~     0.441 -30.5     -4.37 0.00954        0.509  2.74 1.78 </span>
-<span class="co">#&gt; 4 Turbid_NTU_MM12NDCI     0.441 -30.5     -4.37 0.00954        0.404  2.60 1.64 </span>
-<span class="co">#&gt; 5 Turbid_NTU_Wy08CI       0.441 -30.5     -4.37 0.00954        0.488  2.70 1.74 </span>
-<span class="co">#&gt; 6 Chl_ugL_Al10SABI        0.534 -21.0      1.30 0.00299        0.575  1.32 0.990</span></pre></body></html></div>
+<span class="co">#&gt; 1 Turbid_NTU_Al10SABI     0.441 -30.5     -4.37 0.00954        0.599  3.02  2.00</span>
+<span class="co">#&gt; 2 Turbid_NTU_Go04MCI      0.441 -30.5     -4.37 0.00954        0.577  2.78  1.85</span>
+<span class="co">#&gt; 3 Turbid_NTU_Ku15Phy~     0.441 -30.5     -4.37 0.00954        0.613  2.86  1.85</span>
+<span class="co">#&gt; 4 Turbid_NTU_MM12NDCI     0.441 -30.5     -4.37 0.00954        0.578  2.89  1.95</span>
+<span class="co">#&gt; 5 Turbid_NTU_Wy08CI       0.441 -30.5     -4.37 0.00954        0.503  3.08  2.01</span>
+<span class="co">#&gt; 6 Chl_ugL_Al10SABI        0.534 -21.0      1.30 0.00299        0.504  1.36  1.03</span></pre></body></html></div>
 </div>
 </div>
 <div id="extract_lm_cv_all" class="section level3">
@@ -362,12 +362,12 @@
 <span class="co">#&gt; # A tibble: 6 x 8</span>
 <span class="co">#&gt;   Algorithms        R_Squared  Slope Intercept  P_Value CV_R_Squared  RMSE   MAE</span>
 <span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Turbid_NTU_pH         0.976 -14.1    125.    4.86e-11        0.575  1.44 0.798</span>
-<span class="co">#&gt; 2 Turbid_NTU_Al10S~     0.441 -30.5     -4.37  9.54e- 3        0.511  2.82 1.82 </span>
-<span class="co">#&gt; 3 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.352  2.65 1.70 </span>
-<span class="co">#&gt; 4 Turbid_NTU_Da052~     0.168  19.2    -18.7   1.45e- 1        0.250  2.25 1.40 </span>
-<span class="co">#&gt; 5 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.318  2.15 1.33 </span>
-<span class="co">#&gt; 6 Turbid_NTU_TurbD~     0.136  -7.44     5.47  1.95e- 1        0.464  2.71 1.88</span></pre></body></html></div>
+<span class="co">#&gt; 1 Turbid_NTU_pH         0.976 -14.1    125.    4.86e-11        0.656  1.33 0.744</span>
+<span class="co">#&gt; 2 Turbid_NTU_Al10S~     0.441 -30.5     -4.37  9.54e- 3        0.549  2.85 1.89 </span>
+<span class="co">#&gt; 3 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.207  2.26 1.38 </span>
+<span class="co">#&gt; 4 Turbid_NTU_Da052~     0.168  19.2    -18.7   1.45e- 1        0.291  2.73 1.79 </span>
+<span class="co">#&gt; 5 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.274  2.68 1.75 </span>
+<span class="co">#&gt; 6 Turbid_NTU_TurbD~     0.136  -7.44     5.47  1.95e- 1        0.304  2.75 1.88</span></pre></body></html></div>
 </div>
 </div>
 </div>
