@@ -55,6 +55,8 @@ Map_WQ_basemap <- function(WQ_extent, sample_points, map_title, WQ_parameter, po
     stop("package tmaptools required, please install it first") 
   if (!requireNamespace("tmap", quietly = TRUE))
     stop("package tmap required, please install it first") 
+  try(if(pingr::is_online==FALSE)
+    stop("You must be connected to the internet to run this function"))
   Basemap <- tmaptools::read_osm(WQ_extent, type = "bing", ext = 1.1)
   tmap::tm_shape(Basemap) +
     tmap::tm_rgb() +
@@ -62,23 +64,22 @@ Map_WQ_basemap <- function(WQ_extent, sample_points, map_title, WQ_parameter, po
     tmap::tm_borders(col = "lightgrey", lwd = 3) +
     tmap::tm_shape(sample_points) +
     tmap::tm_dots(alpha = 0.85,
-            size = 0.65,
-            col = WQ_parameter,
-            palette = "viridis",
-            style = points_style, n = 10,
-            legend.hist = histogram) +
+                  size = 0.65,
+                  col = WQ_parameter,
+                  palette = "viridis",
+                  style = points_style, n = 10,
+                  legend.hist = histogram) +
     tmap::tm_scale_bar(text.size = 0.75, position = c("right", "bottom"), 
                        text.color = "white") +
     tmap::tm_grid(labels.inside.frame = FALSE,
-            labels.size = 1,
-            labels.cardinal = TRUE,
-            n.x = 5,
-            n.y = 5,
-            projection = "+proj=longlat",
-            alpha = 0.35)+
+                  labels.size = 1,
+                  labels.cardinal = TRUE,
+                  n.x = 5,
+                  n.y = 5,
+                  projection = "+proj=longlat",
+                  alpha = 0.35)+
     tmap::tm_legend(legend.outside = TRUE,
-              hist.width = 2,
-              legend.title.size = 1.1,
-              legend.text.size = 0.85)
-  
+                    hist.width = 2,
+                    legend.title.size = 1.1,
+                    legend.text.size = 0.85)
 }
