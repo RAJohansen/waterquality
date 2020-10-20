@@ -138,7 +138,7 @@ This function wraps the ["tmap"](https://cran.r-project.org/package=tmap) & ["tm
 - `histogram` - Option to add or remove a histogram of the data values. (Default = TRUE)  
 
 #### Basemap with points  
-```{r,fig.height = 5, fig.width = 6}
+```{r,fig.height = 5, fig.width = 6, eval=FALSE}
 Map_WQ_basemap(WQ_extent = lake_extent,
               sample_points = samples,
               WQ_parameter = "Chl_ugL",

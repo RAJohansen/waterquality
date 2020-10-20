@@ -28,7 +28,8 @@ Imports:
     caret,
     vctrs,
     magrittr,
-    dplyr
+    dplyr,
+    pingr
 RoxygenNote: 7.1.1
 Suggests: 
     testthat,
