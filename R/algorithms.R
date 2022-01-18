@@ -155,7 +155,7 @@ Gi033BDA <- function(w672, w715, w757){
 #' @family algorithms
 #' @export
 Go04MCI <- function(w709, w681, w753){
-  (w709-w681-(w753-w681))
+  (w709-w681-(w753-w681)*((709-681)/(753-681)))
 }
 
 #' HU103BDA algorithm
@@ -470,7 +470,7 @@ Da052BDA   <- function(w714, w672){
 #' @family algorithms
 #' @export
 Zh10FLH   <- function(w686, w715, w672){
-  (w686)-(w715 + (w672-w715))
+  (w686)-w672-(w715-w672)*((686-672)/(715-672)))
 }
 
 #' Be162B643sub629    algorithm
