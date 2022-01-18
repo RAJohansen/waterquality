@@ -424,9 +424,9 @@ Be16FLHVioletRedNIR <- function(w658, w857, w444){
 #'
 #' Applies the Wy08CI  algorithm
 #'
-#' @param w686 numeric. Value at wavelength of 686 nm
-#' @param w672 numeric. Value at wavelength of 672 nm
-#' @param w715 numeric. Value at wavelength of 715 nm
+#' @param w681 numeric. Value at wavelength of 681 nm
+#' @param w665 numeric. Value at wavelength of 665 nm
+#' @param w709 numeric. Value at wavelength of 709 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -434,8 +434,8 @@ Be16FLHVioletRedNIR <- function(w658, w857, w444){
 #'
 #' @family algorithms
 #' @export
-Wy08CI  <- function(w686, w672, w715){
-  -1 * ((w686)-(w672)-(w715-w672))
+Wy08CI  <- function(w681, w665, w709){
+  -1*(w681-w665-(w709-w665)*((681-665)/(709-665)))
 }
 
 #' Da052BDA   algorithm
@@ -470,7 +470,7 @@ Da052BDA   <- function(w714, w672){
 #' @family algorithms
 #' @export
 Zh10FLH   <- function(w686, w715, w672){
-  (w686)-w672-(w715-w672)*((686-672)/(715-672)))
+  (w686-w672-(w715-w672)*((686-672)/(715-672)))
 }
 
 #' Be162B643sub629    algorithm
