@@ -4,14 +4,14 @@
 \alias{Wy08CI}
 \title{Wy08CI  algorithm}
 \usage{
-Wy08CI(w686, w672, w715)
+Wy08CI(w681, w665, w709)
 }
 \arguments{
-\item{w686}{numeric. Value at wavelength of 686 nm}
+\item{w681}{numeric. Value at wavelength of 681 nm}
 
-\item{w672}{numeric. Value at wavelength of 672 nm}
+\item{w665}{numeric. Value at wavelength of 665 nm}
 
-\item{w715}{numeric. Value at wavelength of 715 nm}
+\item{w709}{numeric. Value at wavelength of 709 nm}
 }
 \value{
 RasterLayer or numeric
