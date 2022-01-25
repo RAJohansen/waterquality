@@ -51,9 +51,9 @@ Am09KBBI <- function(w686, w658){
   (w686 - w658)/(w686 + w658)
 }
 
-#' Be16FLHblue algorithm
+#' Be16FLHblue_WV2 algorithm
 #'
-#' Applies the Be16FLHblue algorithm
+#' Applies the Be16FLHblue_WV2 algorithm
 #'
 #' @param w529 numeric. Value at wavelength of 529 nm
 #' @param w644 numeric. Value at wavelength of 644 nm
@@ -65,13 +65,85 @@ Am09KBBI <- function(w686, w658){
 #'
 #' @family algorithms
 #' @export
-Be16FLHblue <- function(w529, w644, w458){
-  (w529) - (w644 + (w458 - w644))
+Be16FLHblue_WV2 <- function(w529, w644, w458){
+  (w529) - (w644 + (w458 - w644)*((546-478)/(659-478)))
 }
 
-#' Be16FLHviolet algorithm
+#' Be16FLHblue_S2 algorithm
 #'
-#' Applies the Be16FLHviolet algorithm
+#' Applies the Be16FLHblue_S2 algorithm
+#'
+#' @param w529 numeric. Value at wavelength of 529 nm
+#' @param w644 numeric. Value at wavelength of 644 nm
+#' @param w458 numeric. Value at wavelength of 458 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
+#'
+#' @family algorithms
+#' @export
+Be16FLHblue_S2 <- function(w529, w644, w458){
+  (w529) - (w644 + (w458 - w644)*((560-490)/(665-490)))
+}
+
+#' Be16FLHblue_LS8 algorithm
+#'
+#' Applies the Be16FLHblue_LS8 algorithm
+#'
+#' @param w529 numeric. Value at wavelength of 529 nm
+#' @param w644 numeric. Value at wavelength of 644 nm
+#' @param w458 numeric. Value at wavelength of 458 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
+#'
+#' @family algorithms
+#' @export
+Be16FLHblue_LS8 <- function(w529, w644, w458){
+  (w529) - (w644 + (w458 - w644)*((563-483)/(655-483)))
+}
+
+#' Be16FLHblue_MERIS algorithm
+#'
+#' Applies the Be16FLHblue_MERIS algorithm
+#'
+#' @param w529 numeric. Value at wavelength of 529 nm
+#' @param w644 numeric. Value at wavelength of 644 nm
+#' @param w458 numeric. Value at wavelength of 458 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
+#'
+#' @family algorithms
+#' @export
+Be16FLHblue_MERIS <- function(w529, w644, w458){
+  (w529) - (w644 + (w458 - w644)*((510-442)/(665-442)))
+}
+
+#' Be16FLHblue_OLCI algorithm
+#'
+#' Applies the Be16FLHblue_OLCI algorithm
+#'
+#' @param w529 numeric. Value at wavelength of 529 nm
+#' @param w644 numeric. Value at wavelength of 644 nm
+#' @param w458 numeric. Value at wavelength of 458 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
+#'
+#' @family algorithms
+#' @export
+Be16FLHblue_OLCI <- function(w529, w644, w458){
+  (w529) - (w644 + (w458 - w644)*((510-443)/(665-443)))
+}
+
+#' Be16FLHviolet_WV2 algorithm
+#'
+#' Applies the Be16FLHviolet_WV2 algorithm
 #'
 #' @param w529 numeric. Value at wavelength of 529 nm
 #' @param w644 numeric. Value at wavelength of 644 nm
@@ -83,8 +155,80 @@ Be16FLHblue <- function(w529, w644, w458){
 #'
 #' @family algorithms
 #' @export
-Be16FLHviolet <- function(w529, w644, w429){
-  (w529) - (w644 + (w429 - w644))
+Be16FLHviolet_WV2 <- function(w529, w644, w429){
+  (w529) - (w644 + (w458 - w644)*((546-427)/(659-427)))
+}
+
+#' Be16FLHviolet_S2 algorithm
+#'
+#' Applies the Be16FLHviolet_S2 algorithm
+#'
+#' @param w529 numeric. Value at wavelength of 529 nm
+#' @param w644 numeric. Value at wavelength of 644 nm
+#' @param w429 numeric. Value at wavelength of 429 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
+#'
+#' @family algorithms
+#' @export
+Be16FLHviolet_S2 <- function(w529, w644, w429){
+  (w529) - (w644 + (w458 - w644)*((560-443)/(665-443)))
+}
+
+#' Be16FLHviolet_LS8 algorithm
+#'
+#' Applies the Be16FLHviolet_LS8 algorithm
+#'
+#' @param w529 numeric. Value at wavelength of 529 nm
+#' @param w644 numeric. Value at wavelength of 644 nm
+#' @param w429 numeric. Value at wavelength of 429 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
+#'
+#' @family algorithms
+#' @export
+Be16FLHviolet_LS8 <- function(w529, w644, w429){
+  (w529) - (w644 + (w458 - w644)*((563-443)/(655-443)))
+}
+
+#' Be16FLHviolet_MERIS algorithm
+#'
+#' Applies the Be16FLHviolet_MERIS algorithm
+#'
+#' @param w529 numeric. Value at wavelength of 529 nm
+#' @param w644 numeric. Value at wavelength of 644 nm
+#' @param w429 numeric. Value at wavelength of 429 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
+#'
+#' @family algorithms
+#' @export
+Be16FLHviolet_MERIS <- function(w529, w644, w429){
+  (w529) - (w644 + (w458 - w644)*((510-412)/(665-412)))
+}
+
+#' Be16FLHviolet_OLCI algorithm
+#'
+#' Applies the Be16FLHviolet_OLCI algorithm
+#'
+#' @param w529 numeric. Value at wavelength of 529 nm
+#' @param w644 numeric. Value at wavelength of 644 nm
+#' @param w429 numeric. Value at wavelength of 429 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.A. and 22 others; Comparison of satellite reflectance algorithms for estimating chlorophyll-a in a temperate reservoir using coincident hyperspectral aircraft imagery and dense coincident surface observations, Remote Sens. Environ., 2016, 178, 15-30.
+#'
+#' @family algorithms
+#' @export
+Be16FLHviolet_OLCI <- function(w529, w644, w429){
+  (w529) - (w644 + (w458 - w644)*((510-413)/(665-413)))
 }
 
 #' Be16NDPhyI algorithm
@@ -192,24 +336,6 @@ HU103BDA <- function(w615, w600, w725){
 #' @export
 Kn07KIVU <- function(w458, w644, w529){
   (w458-w644)/(w529)
-}
-
-#' Ku15PhyCI algorithm
-#'
-#' Applies the Ku15PhyCI algorithm
-#'
-#' @param w681 numeric. Value at wavelength of 681 nm
-#' @param w665 numeric. Value at wavelength of 665 nm
-#' @param w709 numeric. Value at wavelength of 709 nm
-#'
-#' @return RasterLayer or numeric
-#'
-#' @references Kudela, R.M., Palacios, S.L., Austerberry, D.C., Accorsi, E.K., Guild, L.S.; Application of hyperspectral remote sensing to cyanobacterial blooms in inland waters, Torres-Perez, J., 2015, Remote Sens. Environ., 2015, 167, 1-10.
-#'
-#' @family algorithms
-#' @export
-Ku15PhyCI <- function(w681, w665, w709){
-  -1*(w681-w665-(w709-w665))
 }
 
 #' MI092BDA algorithm
@@ -366,9 +492,9 @@ Be16NDTIviolet <- function(w658, w444){
   (w658-w444)/(w658+w444)
 }
 
-#' Be16FLHBlueRedNIR algorithm
+#' Be16FLHBlueRedNIR_WV2 algorithm
 #'
-#' Applies the Be16FLHBlueRedNIR algorithm
+#' Applies the Be16FLHBlueRedNIR_WV2 algorithm
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
@@ -380,17 +506,17 @@ Be16NDTIviolet <- function(w658, w444){
 #'
 #' @family algorithms
 #' @export
-Be16FLHBlueRedNIR <- function(w658, w857, w458){
-  (w658)-(w857+(w458-w857))
+Be16FLHBlueRedNIR_WV2 <- function(w658, w857, w458){
+  (w658)-(w857+(w458-w857)*((659-478)/(833-478)))
 }
 
-#' Be16FLHGreenRedNIR algorithm
+#' Be16FLHBlueRedNIR_S2 algorithm
 #'
-#' Applies the Be16FLHGreenRedNIR algorithm
+#' Applies the Be16FLHBlueRedNIR_S2 algorithm
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w558 numeric. Value at wavelength of 558 nm
+#' @param w458 numeric. Value at wavelength of 458 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -398,17 +524,17 @@ Be16FLHBlueRedNIR <- function(w658, w857, w458){
 #'
 #' @family algorithms
 #' @export
-Be16FLHGreenRedNIR <- function(w658, w857, w558){
-  (w658)-(w857+(w558-w857))
+Be16FLHBlueRedNIR_S2 <- function(w658, w857, w458){
+  (w658)-(w857+(w458-w857)*((665-490)/(865-490)))
 }
 
-#' Be16FLHVioletRedNIR algorithm
+#' Be16FLHBlueRedNIR_LS8 algorithm
 #'
-#' Applies the Be16FLHVioletRedNIR algorithm
+#' Applies the Be16FLHBlueRedNIR_LS8 algorithm
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w444 numeric. Value at wavelength of 444 nm
+#' @param w458 numeric. Value at wavelength of 458 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -416,8 +542,224 @@ Be16FLHGreenRedNIR <- function(w658, w857, w558){
 #'
 #' @family algorithms
 #' @export
-Be16FLHVioletRedNIR <- function(w658, w857, w444){
-  (w658)-(w857+(w444-w857))
+Be16FLHBlueRedNIR_LS8 <- function(w658, w857, w458){
+  (w658)-(w857+(w458-w857)*((655-483)/(865-483)))
+}
+
+#' Be16FLHBlueRedNIR_MERIS algorithm
+#'
+#' Applies the Be16FLHBlueRedNIR_MERIS algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 458 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHBlueRedNIR_MERIS <- function(w658, w857, w458){
+  (w658)-(w857+(w458-w857)*((665-442)/(865-442)))
+}
+
+#' Be16FLHBlueRedNIR_OLCI algorithm
+#'
+#' Applies the Be16FLHBlueRedNIR_OLCI algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 458 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHBlueRedNIR_OLCI <- function(w658, w857, w458){
+  (w658)-(w857+(w458-w857)*((665-443)/(865-443)))
+}
+
+#' Be16FLHGreenRedNIR_WV2 algorithm
+#'
+#' Applies the Be16FLHGreenRedNIR_WV2 algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 558 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHGreenRedNIR_WV2 <- function(w658, w857, w558){
+  (w658)-(w857+(w558-w857)*((659-546)/(833-546)))
+}
+
+#' Be16FLHGreenRedNIR_S2 algorithm
+#'
+#' Applies the Be16FLHGreenRedNIR_S2 algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 558 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHGreenRedNIR_S2 <- function(w658, w857, w558){
+  (w658)-(w857+(w558-w857)*((665-560)/(865-560)))
+}
+
+#' Be16FLHGreenRedNIR_LS8 algorithm
+#'
+#' Applies the Be16FLHGreenRedNIR_LS8 algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 558 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHGreenRedNIR_LS8 <- function(w658, w857, w558){
+  (w658)-(w857+(w558-w857)*((665-563)/(865-563)))
+}
+
+#' Be16FLHGreenRedNIR_MERIS algorithm
+#'
+#' Applies the Be16FLHGreenRedNIR_MERIS algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 558 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHGreenRedNIR_MERIS <- function(w658, w857, w558){
+  (w658)-(w857+(w558-w857)*((665-560)/(865-560)))
+}
+
+#' Be16FLHGreenRedNIR_OLCI algorithm
+#'
+#' Applies the Be16FLHGreenRedNIR_OLCI algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 558 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHGreenRedNIR_OLCI <- function(w658, w857, w558){
+  (w658)-(w857+(w558-w857)*((665-560)/(865-560)))
+}
+
+#' Be16FLHVioletRedNIR_WV2 algorithm
+#'
+#' Applies the Be16FLHVioletRedNIR_WV2 algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 444 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHVioletRedNIR_WV2 <- function(w658, w857, w444){
+  (w658)-(w857+(w444-w857)*((659-427)/(833-427)))
+}
+
+#' Be16FLHVioletRedNIR_S2 algorithm
+#'
+#' Applies the Be16FLHVioletRedNIR_S2 algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 444 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHVioletRedNIR_S2 <- function(w658, w857, w444){
+  (w658)-(w857+(w444-w857)*((659-443)/(833-443)))
+}
+
+#' Be16FLHVioletRedNIR_LS8 algorithm
+#'
+#' Applies the Be16FLHVioletRedNIR_LS8 algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 444 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHVioletRedNIR_LS8 <- function(w658, w857, w444){
+  (w658)-(w857+(w444-w857)*((659-443)/(833-443)))
+}
+
+#' Be16FLHVioletRedNIR_MERIS algorithm
+#'
+#' Applies the Be16FLHVioletRedNIR_MERIS algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 444 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHVioletRedNIR_MERIS <- function(w658, w857, w444){
+  (w658)-(w857+(w444-w857)*((659-442)/(833-442)))
+}
+
+#' Be16FLHVioletRedNIR_OLCI algorithm
+#'
+#' Applies the Be16FLHVioletRedNIR_OLCI algorithm
+#'
+#' @param w658 numeric. Value at wavelength of 658 nm
+#' @param w857 numeric. Value at wavelength of 857 nm
+#' @param w458 numeric. Value at wavelength of 444 nm
+#'
+#' @return RasterLayer or numeric
+#'
+#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
+#'
+#' @family algorithms
+#' @export
+Be16FLHVioletRedNIR_OLCI <- function(w658, w857, w444){
+  (w658)-(w857+(w444-w857)*((659-443)/(833-443)))
 }
 
 #' Wy08CI  algorithm
@@ -435,7 +777,7 @@ Be16FLHVioletRedNIR <- function(w658, w857, w444){
 #' @family algorithms
 #' @export
 Wy08CI  <- function(w681, w665, w709){
-  -1*(w681-w665-(w709-w665)*((681-665)/(709-665)))
+  -1*(w681-w665-(w709-w665)*((681-665)/(708-665)))
 }
 
 #' Da052BDA   algorithm
@@ -451,26 +793,9 @@ Wy08CI  <- function(w681, w665, w709){
 #'
 #' @family algorithms
 #' @export
+#' 
 Da052BDA   <- function(w714, w672){
   (w714/w672)
-}
-
-#' Zh10FLH   algorithm
-#'
-#' Applies the Zh10FLH   algorithm
-#'
-#' @param w686 numeric. Value at wavelength of 686 nm
-#' @param w715 numeric. Value at wavelength of 715 nm
-#' @param w672 numeric. Value at wavelength of 672 nm
-#'
-#' @return RasterLayer or numeric
-#'
-#' @references Zhao, D.Z.; Xing, X.G.; Liu, Y.G.; Yang, J.H.; Wang, L. The relation of chlorophyll-a concentration with the reflectance peak near 700 nm in algae-dominated waters and sensitivity of fluorescence algorithms for detecting algal bloom. Int. J. Remote Sens. 2010, 31, 39-48.
-#'
-#' @family algorithms
-#' @export
-Zh10FLH   <- function(w686, w715, w672){
-  (w686-w672-(w715-w672)*((686-672)/(715-672)))
 }
 
 #' Be162B643sub629    algorithm
@@ -524,24 +849,6 @@ Be162BsubPhy   <- function(w715, w615){
   (w715-w615)
 }
 
-#' Be16MPI     algorithm
-#'
-#' Applies the Be16MPI     algorithm
-#'
-#' @param w615 numeric. Value at wavelength of 615 nm
-#' @param w601 numeric. Value at wavelength of 601 nm
-#' @param w644 numeric. Value at wavelength of 644 nm
-#'
-#' @return RasterLayer or numeric
-#'
-#' @references Beck, R.; Xu, M.; Zhan, S.; Liu, H.; Johansen, R.A.; Tong, S.; Yang, B.; Shu, S.; Wu, Q.; Wang, S.; Berling, K.; Murray, A.; Emery, E.; Reif, M.; Harwood, J.; Young, J.; Martin, M.; Stillings, G.; Stumpf, R.; Su, H.; Ye, Z.; Huang, Y.	Comparison of Satellite Reflectance Algorithms for Estimating Phycocyanin Values and Cyanobacterial Total Biovolume in a Temperate Reservoir Using Coincident Hyperspectral Aircraft Imagery and Dense Coincident Surface Observations. Remote Sens. 2017, 9, 538.
-#'
-#' @family algorithms
-#' @export
-Be16MPI   <- function(w615, w601, w644){
-  ((w615)-(w601)-(w644-w601))
-}
-
 #' Be16NDPhyI644over615     algorithm
 #'
 #' Applies the Be16NDPhyI644over615     algorithm
@@ -591,23 +898,6 @@ Be16NDPhyI644over629   <- function(w644, w629){
 #' @export
 Be16Phy2BDA644over629   <- function(w644, w629){
   (w644/w629)
-}
-
-#' Ku15SLH     algorithm
-#'
-#' Applies the Ku15SLH     algorithm
-#'
-#' @param w715 numeric. Value at wavelength of 715 nm
-#' @param w658 numeric. Value at wavelength of 658 nm
-#'
-#' @return RasterLayer or numeric
-#'
-#' @references Kudela, R.M., Palacios, S.L., Austerberry, D.C., Accorsi, E.K., Guild, L.S.; Application of hyperspectral remote sensing to cyanobacterial blooms in inland waters, Torres-Perez, J., 2015, Remote Sens. Environ., 2015, 167, 1-10.
-#'
-#' @family algorithms
-#' @export
-Ku15SLH   <- function(w715, w658){
-  ((w715)-(w658)+(w715-w658))
 }
 
 #' MM12NDCIalt     algorithm
@@ -671,7 +961,7 @@ TurbBe16RedOverViolet   <- function(w658, w444){
 #'
 #' @return RasterLayer or numeric
 #'
-#' @references Bowers, D. G., and C. E. Binding. 2006. “The Optical Properties of Mineral Suspended Particles: A Review and Synthesis.” Estuarine Coastal and Shelf Science 67 (1–2): 219–230. doi:10.1016/j.ecss.2005.11.010.
+#' @references Bowers, D. G., and C. E. Binding. 2006. The Optical Properties of Mineral Suspended Particles: A Review and Synthesis.” Estuarine Coastal and Shelf Science 67 (1–2): 219–230. doi:10.1016/j.ecss.2005.11.010.
 #'
 #' @family algorithms
 #' @export
