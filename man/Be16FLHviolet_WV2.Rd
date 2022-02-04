@@ -4,14 +4,14 @@
 \alias{Be16FLHviolet_WV2}
 \title{Be16FLHviolet_WV2 algorithm}
 \usage{
-Be16FLHviolet_WV2(w529, w644, w429)
+Be16FLHviolet_WV2(w529, w644, w458)
 }
 \arguments{
 \item{w529}{numeric. Value at wavelength of 529 nm}
 
 \item{w644}{numeric. Value at wavelength of 644 nm}
 
-\item{w429}{numeric. Value at wavelength of 429 nm}
+\item{w458}{numeric. Value at wavelength of 429 nm}
 }
 \value{
 RasterLayer or numeric

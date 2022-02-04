@@ -79,7 +79,7 @@ plot(Harsha_Multiple)
 #### Type of Algorithm
 ```{r,results='hide', message=FALSE, warning=FALSE}
 Harsha_PC <- wq_calc(Harsha,
-                     alg = "phycocyanin", 
+                     alg = "chlorophyll", 
                      sat = "sentinel2")
 ```
 ```{r, fig.height = 5, fig.width = 6}

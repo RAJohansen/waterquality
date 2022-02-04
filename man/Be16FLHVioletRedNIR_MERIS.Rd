@@ -11,7 +11,7 @@ Be16FLHVioletRedNIR_MERIS(w658, w857, w444)
 
 \item{w857}{numeric. Value at wavelength of 857 nm}
 
-\item{w458}{numeric. Value at wavelength of 444 nm}
+\item{w444}{numeric. Value at wavelength of 444 nm}
 }
 \value{
 RasterLayer or numeric

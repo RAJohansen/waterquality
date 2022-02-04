@@ -147,7 +147,7 @@ Be16FLHblue_OLCI <- function(w529, w644, w458){
 #'
 #' @param w529 numeric. Value at wavelength of 529 nm
 #' @param w644 numeric. Value at wavelength of 644 nm
-#' @param w429 numeric. Value at wavelength of 429 nm
+#' @param w458 numeric. Value at wavelength of 429 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -155,7 +155,7 @@ Be16FLHblue_OLCI <- function(w529, w644, w458){
 #'
 #' @family algorithms
 #' @export
-Be16FLHviolet_WV2 <- function(w529, w644, w429){
+Be16FLHviolet_WV2 <- function(w529, w644, w458){
   (w529) - (w644 + (w458 - w644)*((546-427)/(659-427)))
 }
 
@@ -165,7 +165,7 @@ Be16FLHviolet_WV2 <- function(w529, w644, w429){
 #'
 #' @param w529 numeric. Value at wavelength of 529 nm
 #' @param w644 numeric. Value at wavelength of 644 nm
-#' @param w429 numeric. Value at wavelength of 429 nm
+#' @param w458 numeric. Value at wavelength of 429 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -173,7 +173,7 @@ Be16FLHviolet_WV2 <- function(w529, w644, w429){
 #'
 #' @family algorithms
 #' @export
-Be16FLHviolet_S2 <- function(w529, w644, w429){
+Be16FLHviolet_S2 <- function(w529, w644, w458){
   (w529) - (w644 + (w458 - w644)*((560-443)/(665-443)))
 }
 
@@ -183,7 +183,7 @@ Be16FLHviolet_S2 <- function(w529, w644, w429){
 #'
 #' @param w529 numeric. Value at wavelength of 529 nm
 #' @param w644 numeric. Value at wavelength of 644 nm
-#' @param w429 numeric. Value at wavelength of 429 nm
+#' @param w458 numeric. Value at wavelength of 429 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -191,7 +191,7 @@ Be16FLHviolet_S2 <- function(w529, w644, w429){
 #'
 #' @family algorithms
 #' @export
-Be16FLHviolet_LS8 <- function(w529, w644, w429){
+Be16FLHviolet_LS8 <- function(w529, w644, w458){
   (w529) - (w644 + (w458 - w644)*((563-443)/(655-443)))
 }
 
@@ -201,7 +201,7 @@ Be16FLHviolet_LS8 <- function(w529, w644, w429){
 #'
 #' @param w529 numeric. Value at wavelength of 529 nm
 #' @param w644 numeric. Value at wavelength of 644 nm
-#' @param w429 numeric. Value at wavelength of 429 nm
+#' @param w458 numeric. Value at wavelength of 429 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -209,7 +209,7 @@ Be16FLHviolet_LS8 <- function(w529, w644, w429){
 #'
 #' @family algorithms
 #' @export
-Be16FLHviolet_MERIS <- function(w529, w644, w429){
+Be16FLHviolet_MERIS <- function(w529, w644, w458){
   (w529) - (w644 + (w458 - w644)*((510-412)/(665-412)))
 }
 
@@ -219,7 +219,7 @@ Be16FLHviolet_MERIS <- function(w529, w644, w429){
 #'
 #' @param w529 numeric. Value at wavelength of 529 nm
 #' @param w644 numeric. Value at wavelength of 644 nm
-#' @param w429 numeric. Value at wavelength of 429 nm
+#' @param w458 numeric. Value at wavelength of 429 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -227,7 +227,7 @@ Be16FLHviolet_MERIS <- function(w529, w644, w429){
 #'
 #' @family algorithms
 #' @export
-Be16FLHviolet_OLCI <- function(w529, w644, w429){
+Be16FLHviolet_OLCI <- function(w529, w644, w458){
   (w529) - (w644 + (w458 - w644)*((510-413)/(665-413)))
 }
 
@@ -588,7 +588,7 @@ Be16FLHBlueRedNIR_OLCI <- function(w658, w857, w458){
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w458 numeric. Value at wavelength of 558 nm
+#' @param w558 numeric. Value at wavelength of 558 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -606,7 +606,7 @@ Be16FLHGreenRedNIR_WV2 <- function(w658, w857, w558){
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w458 numeric. Value at wavelength of 558 nm
+#' @param w558 numeric. Value at wavelength of 558 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -624,7 +624,7 @@ Be16FLHGreenRedNIR_S2 <- function(w658, w857, w558){
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w458 numeric. Value at wavelength of 558 nm
+#' @param w558 numeric. Value at wavelength of 558 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -642,7 +642,7 @@ Be16FLHGreenRedNIR_LS8 <- function(w658, w857, w558){
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w458 numeric. Value at wavelength of 558 nm
+#' @param w558 numeric. Value at wavelength of 558 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -660,7 +660,7 @@ Be16FLHGreenRedNIR_MERIS <- function(w658, w857, w558){
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w458 numeric. Value at wavelength of 558 nm
+#' @param w558 numeric. Value at wavelength of 558 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -678,7 +678,7 @@ Be16FLHGreenRedNIR_OLCI <- function(w658, w857, w558){
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w458 numeric. Value at wavelength of 444 nm
+#' @param w444 numeric. Value at wavelength of 444 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -696,7 +696,7 @@ Be16FLHVioletRedNIR_WV2 <- function(w658, w857, w444){
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w458 numeric. Value at wavelength of 444 nm
+#' @param w444 numeric. Value at wavelength of 444 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -714,7 +714,7 @@ Be16FLHVioletRedNIR_S2 <- function(w658, w857, w444){
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w458 numeric. Value at wavelength of 444 nm
+#' @param w444 numeric. Value at wavelength of 444 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -732,7 +732,7 @@ Be16FLHVioletRedNIR_LS8 <- function(w658, w857, w444){
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w458 numeric. Value at wavelength of 444 nm
+#' @param w444 numeric. Value at wavelength of 444 nm
 #'
 #' @return RasterLayer or numeric
 #'
@@ -750,7 +750,7 @@ Be16FLHVioletRedNIR_MERIS <- function(w658, w857, w444){
 #'
 #' @param w658 numeric. Value at wavelength of 658 nm
 #' @param w857 numeric. Value at wavelength of 857 nm
-#' @param w458 numeric. Value at wavelength of 444 nm
+#' @param w444 numeric. Value at wavelength of 444 nm
 #'
 #' @return RasterLayer or numeric
 #'

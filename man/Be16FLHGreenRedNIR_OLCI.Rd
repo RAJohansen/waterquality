@@ -11,7 +11,7 @@ Be16FLHGreenRedNIR_OLCI(w658, w857, w558)
 
 \item{w857}{numeric. Value at wavelength of 857 nm}
 
-\item{w458}{numeric. Value at wavelength of 558 nm}
+\item{w558}{numeric. Value at wavelength of 558 nm}
 }
 \value{
 RasterLayer or numeric
