@@ -76,13 +76,13 @@
 
       
 
-      </header><script src="waterquality_vignette_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
+      </header><script src="waterquality_vignette_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to the waterquality package</h1>
                         <h4 class="author">Richard Johansen, Jakub Nowosad, Molly Reif, and Erich Emery</h4>
             
-            <h4 class="date">2022-01-25</h4>
+            <h4 class="date">2022-02-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/RAJohansen/waterquality/blob/master/../vignettes/waterquality_vignette.Rmd"><code>../vignettes/waterquality_vignette.Rmd</code></a></small>
       <div class="hidden name"><code>waterquality_vignette.Rmd</code></div>
@@ -91,13 +91,13 @@
 
     
     
-<p>The main purpose of <strong>waterquality</strong> is to quickly and easily convert satellite-based reflectance imagery into one or many well-known water quality indices designed for the detection of harmful algal blooms (HABs) using the following pigment proxies: chlorophyll-a, blue-green algae (phycocyanin), and turbidity. Currently, this package is able to process <a href="https://rajohansen.github.io/waterquality/reference/index.html">45 algorithms</a> for the following satellite-based imagers: WorldView-2 and -3, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of the <code>wq_calc</code> output, a series of intuitive <code>Map_WQ</code> functions were developed to help reduce technical barriers due to coding and the myriad of map options.</p>
+<p>The main purpose of <strong>waterquality</strong> is to quickly and easily convert satellite-based reflectance imagery into one or many well-known water quality indices designed for the detection of harmful algal blooms (HABs) using the following pigment proxies: chlorophyll-a, blue-green algae (phycocyanin), and turbidity. Currently, this package is able to process <a href="https://rajohansen.github.io/waterquality/reference/index.html">40 algorithms</a> for the following satellite-based imagers: WorldView-2 and -3, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of the <code>wq_calc</code> output, a series of intuitive <code>Map_WQ</code> functions were developed to help reduce technical barriers due to coding and the myriad of map options.</p>
 <p>Additional functionality of the package includes a series of <code>extract_lm</code> functions which wrap the <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm">“Fitting Linear Models”</a> and the <a href="http://topepo.github.io/caret/index.html">“caret”</a> packages to quickly generate a suite of regression models with standardized outputs. These functions range from simple linear models for a single dependent and independent variable to robust linear regression using crossvalidation over multiple dependent and independent variables. These functions are extremely useful when conducting experimental testing on a large number of satellite algorithms across multiple water quality parameters. <strong>NOTE</strong> these functions require ground-truth data in order to develop the models.</p>
 <p>For an example of our entire research workflow, which includes data acquisition, image pre-processing, analyses, and results please see our publication entitled <a href="https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf">“Waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality”</a>.</p>
 <div id="algorithms" class="section level2">
 <h2 class="hasAnchor">
 <a href="#algorithms" class="anchor"></a>Algorithms</h2>
-<p>Currently, the package includes a total of <a href="https://rajohansen.github.io/waterquality/reference/index.html">45 algorithms</a> that can be applied for the detection of the three parameters. <strong>NOTE</strong> not all sensors are capable of using all algorithms due to their spectral configurations. Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. <code>?Am092Bsub()</code>). Each algorithm is also linked to the original papers water quality parameters (chlorophyll-a, phycocyanin, turbidity) by type, which allows users to select all algorithms for that type. The final outputs are raster stacked images which represent relative index values and are not direct estimations of chlorophyll-a, phycocyanin, or turbidity values. However, relative index values can be converted to estimated concentration values using the <code>extract_lm</code> functions and ground truth measurements.</p>
+<p>Currently, the package includes a total of <a href="https://rajohansen.github.io/waterquality/reference/index.html">40 algorithms</a> that can be applied for the detection of the three parameters. <strong>NOTE</strong> not all sensors are capable of using all algorithms due to their spectral configurations. Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. <code>?Am092Bsub()</code>). Each algorithm is also linked to the original papers water quality parameters (chlorophyll-a, phycocyanin, turbidity) by type, which allows users to select all algorithms for that type. The final outputs are raster stacked images which represent relative index values and are not direct estimations of chlorophyll-a, phycocyanin, or turbidity values. However, relative index values can be converted to estimated concentration values using the <code>extract_lm</code> functions and ground truth measurements.</p>
 </div>
 <div id="water-quality-functions" class="section level2">
 <h2 class="hasAnchor">
@@ -291,7 +291,7 @@
 <span class="co">#&gt; # A tibble: 1 x 7</span>
 <span class="co">#&gt;   R_Squared Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.162  26.2      4.69   0.153        0.419  1.84  1.36</span></pre></body></html></div>
+<span class="co">#&gt; 1     0.162  26.2      4.69   0.153        0.430  1.72  1.26</span></pre></body></html></div>
 </div>
 </div>
 <div id="extract_lm_cv_multi" class="section level3">
@@ -326,12 +326,12 @@
 <span class="co">#&gt; # A tibble: 6 x 8</span>
 <span class="co">#&gt;   Algorithms          R_Squared Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span>
 <span class="co">#&gt;   &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Turbid_NTU_Al10SABI     0.441 -30.5     -4.37 0.00954        0.472  2.98  2.00</span>
-<span class="co">#&gt; 2 Turbid_NTU_Go04MCI      0.441 -30.5     -4.37 0.00954        0.585  3.25  2.16</span>
-<span class="co">#&gt; 3 Turbid_NTU_Ku15Phy~     0.441 -30.5     -4.37 0.00954        0.590  2.93  1.99</span>
-<span class="co">#&gt; 4 Turbid_NTU_MM12NDCI     0.441 -30.5     -4.37 0.00954        0.472  2.59  1.74</span>
-<span class="co">#&gt; 5 Turbid_NTU_Wy08CI       0.441 -30.5     -4.37 0.00954        0.462  2.66  1.74</span>
-<span class="co">#&gt; 6 Chl_ugL_Al10SABI        0.534 -21.0      1.30 0.00299        0.566  1.41  1.08</span></pre></body></html></div>
+<span class="co">#&gt; 1 Turbid_NTU_Al10SABI     0.441 -30.5     -4.37 0.00954        0.501  2.84  1.87</span>
+<span class="co">#&gt; 2 Turbid_NTU_Go04MCI      0.441 -30.5     -4.37 0.00954        0.450  2.78  1.84</span>
+<span class="co">#&gt; 3 Turbid_NTU_Ku15Phy~     0.441 -30.5     -4.37 0.00954        0.599  2.58  1.72</span>
+<span class="co">#&gt; 4 Turbid_NTU_MM12NDCI     0.441 -30.5     -4.37 0.00954        0.590  2.89  1.87</span>
+<span class="co">#&gt; 5 Turbid_NTU_Wy08CI       0.441 -30.5     -4.37 0.00954        0.604  2.97  1.95</span>
+<span class="co">#&gt; 6 Chl_ugL_Al10SABI        0.534 -21.0      1.30 0.00299        0.657  1.34  1.07</span></pre></body></html></div>
 </div>
 </div>
 <div id="extract_lm_cv_all" class="section level3">
@@ -361,12 +361,12 @@
 <span class="co">#&gt; # A tibble: 6 x 8</span>
 <span class="co">#&gt;   Algorithms        R_Squared  Slope Intercept  P_Value CV_R_Squared  RMSE   MAE</span>
 <span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Turbid_NTU_pH         0.976 -14.1    125.    4.86e-11        0.550  1.36 0.734</span>
-<span class="co">#&gt; 2 Turbid_NTU_Al10S~     0.441 -30.5     -4.37  9.54e- 3        0.549  2.82 1.83 </span>
-<span class="co">#&gt; 3 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.272  2.24 1.39 </span>
-<span class="co">#&gt; 4 Turbid_NTU_Da052~     0.168  19.2    -18.7   1.45e- 1        0.381  3.00 2.04 </span>
-<span class="co">#&gt; 5 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.300  2.68 1.76 </span>
-<span class="co">#&gt; 6 Turbid_NTU_TurbD~     0.136  -7.44     5.47  1.95e- 1        0.344  2.72 1.83</span></pre></body></html></div>
+<span class="co">#&gt; 1 Turbid_NTU_pH         0.976 -14.1    125.    4.86e-11        0.643  1.41 0.800</span>
+<span class="co">#&gt; 2 Turbid_NTU_Al10S~     0.441 -30.5     -4.37  9.54e- 3        0.482  2.64 1.78 </span>
+<span class="co">#&gt; 3 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.224  2.39 1.50 </span>
+<span class="co">#&gt; 4 Turbid_NTU_Da052~     0.168  19.2    -18.7   1.45e- 1        0.332  2.76 1.79 </span>
+<span class="co">#&gt; 5 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.304  2.88 1.89 </span>
+<span class="co">#&gt; 6 Turbid_NTU_TurbD~     0.136  -7.44     5.47  1.95e- 1        0.492  2.49 1.65</span></pre></body></html></div>
 </div>
 </div>
 </div>
