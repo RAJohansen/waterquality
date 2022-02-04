@@ -41,7 +41,10 @@ An Open-Source R Package for the Detection and Quantification of
 Cyanobacterial Harmful Algal Blooms and Water
 Quality”](https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf).
 
-Additionally, we have recently developed and published a complementary python-based version of **waterquality** compatible with ESRI ArcGIS and ArcPro. For more information please visit [“waterquality for ArcGIS Pro Toolbox”](https://hdl.handle.net/11681/42240)
+Additionally, we have recently developed and published a complementary
+python-based version of **waterquality** compatible with ESRI ArcGIS and
+ArcPro. For more information please visit [“waterquality for ArcGIS Pro
+Toolbox”](https://hdl.handle.net/11681/42240)
 
 ## Installation
 
