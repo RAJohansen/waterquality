@@ -15,7 +15,7 @@ satellite-based reflectance imagery into one or many well-known water
 quality indices designed for the detection of Harmful Algal Blooms
 (HABs) using the following pigment proxies: chlorophyll-a, blue-green
 algae (phycocyanin), and turbidity. Currently, this package is able to
-process [45
+process [40
 algorithms](https://rajohansen.github.io/waterquality/reference/index.html)
 for the following satellite-based imagers: WorldView-2, Sentinel-2,
 Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of
@@ -41,6 +41,8 @@ An Open-Source R Package for the Detection and Quantification of
 Cyanobacterial Harmful Algal Blooms and Water
 Quality”](https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf).
 
+Additionally, we have recently developed and published a complementary python-based version of **waterquality** compatible with ESRI ArcGIS and ArcPro. For more information please visit [“waterquality for ArcGIS Pro Toolbox”](https://hdl.handle.net/11681/42240)
+
 ## Installation
 
 You can install the released version from CRAN with:
@@ -64,7 +66,7 @@ The main function in this package is `wq_calc()`:
 library(waterquality)
 library(raster)
 s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
-s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Be16FLHGreenRedNIR"), sat = "sentinel2")
+s2_two_alg = wq_calc(s2, alg = c("MM12NDCI", "Al10SABI"), sat = "sentinel2")
 ```
 
 ``` r

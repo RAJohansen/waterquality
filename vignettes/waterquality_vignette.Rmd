@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
   echo = TRUE)
 ```
 
-The main purpose of **waterquality** is to quickly and easily convert satellite-based reflectance imagery into one or many well-known water quality indices designed for the detection of harmful algal blooms (HABs) using the following pigment proxies: chlorophyll-a, blue-green algae (phycocyanin), and turbidity. Currently, this package is able to process [45 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) for the following satellite-based imagers: WorldView-2 and -3, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of the `wq_calc` output, a series of intuitive `Map_WQ` functions were developed to help reduce technical barriers due to coding and the myriad of map options.  
+The main purpose of **waterquality** is to quickly and easily convert satellite-based reflectance imagery into one or many well-known water quality indices designed for the detection of harmful algal blooms (HABs) using the following pigment proxies: chlorophyll-a, blue-green algae (phycocyanin), and turbidity. Currently, this package is able to process [40 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) for the following satellite-based imagers: WorldView-2 and -3, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of the `wq_calc` output, a series of intuitive `Map_WQ` functions were developed to help reduce technical barriers due to coding and the myriad of map options.  
 
 Additional functionality of the package includes a series of `extract_lm` functions which wrap the ["Fitting Linear Models"](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm) and the ["caret"](http://topepo.github.io/caret/index.html) packages to quickly generate a suite of regression models with standardized outputs. These functions range from simple linear models for a single dependent and independent variable to robust linear regression using crossvalidation over multiple dependent and independent variables. These functions are extremely useful when conducting experimental testing on a large number of satellite algorithms across multiple water quality parameters. **NOTE** these functions require ground-truth data in order to develop the models.  
   
@@ -24,7 +24,7 @@ For an example of our entire research workflow, which includes data acquisition,
 
 ## Algorithms
 
-Currently, the package includes a total of [45 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) that can be applied for the detection of the three parameters. 
+Currently, the package includes a total of [40 algorithms](https://rajohansen.github.io/waterquality/reference/index.html) that can be applied for the detection of the three parameters. 
 **NOTE** not all sensors are capable of using all algorithms due to their spectral configurations. 
 Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. `?Am092Bsub()`). 
 Each algorithm is also linked to the original papers water quality parameters (chlorophyll-a, phycocyanin, turbidity) by type, which allows users to select all algorithms for that type.
