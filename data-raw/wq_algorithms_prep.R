@@ -71,4 +71,4 @@ wq_algorithms = wq_algorithms %>%
   filter(!is.na(bands))
 
 # save data
-devtools::use_data(wq_algorithms, overwrite = TRUE)
+usethis::use_data(wq_algorithms, overwrite = TRUE)
