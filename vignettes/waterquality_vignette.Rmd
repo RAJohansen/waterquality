@@ -69,7 +69,7 @@ plot(Harsha_Am092Bsub)
 #### Multiple Algorithms
 ```{r,results='hide', message=FALSE, warning=FALSE}
 Harsha_Multiple <- wq_calc(raster_stack = Harsha,
-                           alg = c("Am092Bsub", "Go04MCI", "Da052BDA"), 
+                           alg = c("Am092Bsub", "MM12NDCI", "Da052BDA"), 
                            sat = "sentinel2")
 ```
 ```{r, fig.height = 5, fig.width = 6}
