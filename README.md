@@ -5,7 +5,7 @@
 status](http://www.r-pkg.org/badges/version/waterquality)](https://cran.r-project.org/package=waterquality)
 [![Build
 Status](https://travis-ci.org/RAJohansen/waterquality.png?branch=master)](https://travis-ci.org/RAJohansen/waterquality)
-[![codecov](https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg)](https://codecov.io/gh/RAJohansen/waterquality)
+[![codecov](https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg)](https://app.codecov.io/gh/RAJohansen/waterquality)
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/waterquality)
 
 # waterquality
@@ -24,7 +24,7 @@ to help reduce technical barriers and simplify the complexities in
 selecting a map layout. Additional functionality of the package includes
 a series of `extract_lm()` functions that wrap the [“Fitting Linear
 Models”](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm)
-and [“caret”](http://topepo.github.io/caret/index.html) packages to
+and [“caret”](https://topepo.github.io/caret/index.html) packages to
 quickly generate crossvalidated linear models and standardized outputs
 (r<sup>2</sup>, p-value, slope, intercept of the global lm model &
 average r<sup>2</sup>, average RMSE, average MAE of crossvalidated
