@@ -6,7 +6,8 @@ status](http://www.r-pkg.org/badges/version/waterquality)](https://cran.r-projec
 [![Build
 Status](https://travis-ci.org/RAJohansen/waterquality.png?branch=master)](https://travis-ci.org/RAJohansen/waterquality)
 [![codecov](https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg)](https://app.codecov.io/gh/RAJohansen/waterquality)
-[![downloads](http://cranlogs.r-pkg.org/badges/waterquality?color=waterquality)]
+[![Downloads](http://cranlogs.r-pkg.org/badges/waterquality?color=brightgreen)](http://www.r-pkg.org/pkg/waterquality)
+![](http://cranlogs.r-pkg.org/badges/grand-total/waterquality)
 
 # waterquality
 
