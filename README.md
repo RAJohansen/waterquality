@@ -8,7 +8,7 @@ Status](https://travis-ci.org/RAJohansen/waterquality.png?branch=master)](https:
 [![codecov](https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg)](https://app.codecov.io/gh/RAJohansen/waterquality)
 [![Downloads](http://cranlogs.r-pkg.org/badges/waterquality?color=brightgreen)](http://www.r-pkg.org/pkg/waterquality)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/waterquality)
-![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=RAJohansen.waterquality)
+![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=RAJohansen.RAJohansen)
 
 # waterquality
 
