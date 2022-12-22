@@ -6,11 +6,7 @@
 \alias{waterquality-package}
 \title{waterquality: Satellite Derived Water Quality Detection Algorithms}
 \description{
-The main purpose of waterquality is to quickly and easily convert
-    satellite-based reflectance imagery into one or many well-known water quality
-    algorithms designed for the detection of harmful algal blooms or the following
-    pigment proxies: chlorophyll-a, blue-green algae (phycocyanin), and turbidity.
-    Johansen et al. (2019) <doi:10.21079/11681/35053>.
+The main purpose of waterquality is to quickly and easily convert satellite-based reflectance imagery into one or many well-known water quality algorithms designed for the detection of harmful algal blooms or the following pigment proxies: chlorophyll-a, blue-green algae (phycocyanin), and turbidity. Johansen et al. (2019) \doi{10.21079/11681/35053}.
 }
 \seealso{
 Useful links:
