@@ -108,7 +108,7 @@ extract_lm_cv_multi <- function(parameters, algorithms, df, train_method = "lm",
     names(algorithms) <- algorithms %>% 
       purrr::map_chr(., ~ paste0(parameters[[i]], "_",.))
     list[[i]] = algorithms %>%
-      purrr::map_dfr(~extract_lm_cv(parameter = parameters[[i]], algorithm = algorithms, df = df,
+      purrr::map_dfr(~extract_lm_cv(parameter = parameters[[i]], algorithm = ., df = df,
                                     train_method = train_method, control_method = control_method,
                                     folds = folds, nrepeats = nrepeats), .id = "Algorithms")
   }
