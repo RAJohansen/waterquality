@@ -61,7 +61,6 @@ Map_WQ_raster(WQ_raster = MM12NDCI,
               histogram = TRUE)
 ```
 
-
 ## Package Contributions
 
 We encourage users to submit issues and enhancement requests so we may continue to improve our package. 

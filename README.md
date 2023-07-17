@@ -70,12 +70,10 @@ library(waterquality)
 library(terra)
 s2 = terra::rast(system.file("raster/S2_Harsha.tif", package = "waterquality"))
 MM12NDCI = wq_calc(s2, alg = "MM12NDCI", sat = "sentinel2")
-samples = terra::vect(system.file("raster/Harsha_Simple_Points_CRS.gpkg", package = "waterquality"))
 ```
 
 ``` r
 Map_WQ_raster(WQ_raster = MM12NDCI,
-              sample_points = samples,
               map_title= "Water Quality Map",
               raster_style = "quantile",
               histogram = TRUE)

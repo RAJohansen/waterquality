@@ -31,8 +31,4 @@ This function wraps the tmap package to help users generate fast and simple
 data visualization of their WQ_calc raster output along with optional
 geospatial objects and histogram
 }
-\seealso{
-Other Map_WQ models: 
-\code{\link{Map_WQ_basemap}()}
-}
 \concept{Map_WQ models}

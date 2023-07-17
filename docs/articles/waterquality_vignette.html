@@ -262,37 +262,6 @@ add or remove a histogram of the data values. (Default is TRUE)</p>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
 </div>
 </div>
-<div class="section level3">
-<h3 id="map_wq_basemap">Map_WQ_basemap<a class="anchor" aria-label="anchor" href="#map_wq_basemap"></a>
-</h3>
-<p>This function wraps the <a href="https://cran.r-project.org/package=tmap" class="external-link">“tmap”</a> &amp; <a href="https://cran.r-project.org/package=tmaptools" class="external-link">“tmaptools”</a>
-packages in order to generate a map using user-defined vectors (points
-and a polygon) overlaid on a Bing basemap. In order to simplify this
-process and reduce the technical expertise required, the number of
-arguments were reduced to the following: - <code>WQ_extent</code> -
-geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing
-basemaps<br>
-- <code>WQ_parameter</code> - text referring to column heading of data
-being mapped (i.e. Chl-a, PC, etc.) - <code>sample_points</code> -
-geospatial file (.shp or .gpkg) containing sampling locations -
-<code>map_title</code> - text used to generate title of map -
-<code>raster_style</code> - method to process the color scale when col
-is a numeric variable. Please refer to the style argument in the
-<code>?tmap::tm_raster()</code> function for more details (Default is
-“quantile”). - <code>histogram</code> - Option to add or remove a
-histogram of the data values. (Default = TRUE)</p>
-<div class="section level4">
-<h4 id="basemap-with-points">Basemap with points<a class="anchor" aria-label="anchor" href="#basemap-with-points"></a>
-</h4>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/Map_WQ_basemap.html">Map_WQ_basemap</a></span><span class="op">(</span>WQ_extent <span class="op">=</span> <span class="va">lake_extent</span>,</span>
-<span>              sample_points <span class="op">=</span> <span class="va">samples</span>,</span>
-<span>              WQ_parameter <span class="op">=</span> <span class="st">"Chl_ugL"</span>,</span>
-<span>              map_title<span class="op">=</span> <span class="st">"Water Quality Map"</span>,</span>
-<span>              points_style <span class="op">=</span> <span class="st">"quantile"</span>,</span>
-<span>              histogram <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-</div>
-</div>
 </div>
 <div class="section level2">
 <h2 id="modeling-functions">Modeling Functions<a class="anchor" aria-label="anchor" href="#modeling-functions"></a>
@@ -321,7 +290,7 @@ users import and extract the data from a raster stack image (i.e. output
 from <code>wq_calc</code>), combine it with a geospatial object (i.e
 shapefiles of sample locations), and export the results to a .csv file
 to be used in the modeling functions.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Input raster image</span></span>
 <span><span class="va">wq_raster</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="st">"C:/temp/my_raster.tif"</span><span class="op">)</span></span>
 <span></span>
@@ -350,11 +319,11 @@ algorithm arguments</li>
 <div class="section level4">
 <h4 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h4>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/RAJohansen/waterquality" class="external-link">waterquality</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/" class="external-link">caret</a></span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"raster/waterquality_data.csv"</span>, package <span class="op">=</span> <span class="st">"waterquality"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/extract_lm.html">extract_lm</a></span><span class="op">(</span>parameter <span class="op">=</span> <span class="st">"Chl_ugL"</span>, algorithm <span class="op">=</span> <span class="st">"MM12NDCI"</span>, df <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
 <span><span class="co">#&gt;   R_Squared Slope Intercept P_Value</span></span>
@@ -393,14 +362,14 @@ cross validation model (Default = 5)</li>
 <div class="section level4">
 <h4 id="example-1">Example<a class="anchor" aria-label="anchor" href="#example-1"></a>
 </h4>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/extract_lm_cv.html">extract_lm_cv</a></span><span class="op">(</span>parameter <span class="op">=</span> <span class="st">"Chl_ugL"</span>, algorithm <span class="op">=</span> <span class="st">"MM12NDCI"</span>,</span>
 <span>                                       df <span class="op">=</span> <span class="va">df</span>, train_method <span class="op">=</span> <span class="st">"lm"</span>, control_method <span class="op">=</span> <span class="st">"repeatedcv"</span>,</span>
 <span>                                       folds <span class="op">=</span> <span class="fl">3</span>, nrepeats <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 7</span></span></span>
 <span><span class="co">#&gt;   R_Squared Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span></span>
 <span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     0.162  26.2      4.69   0.153        0.358  1.99  1.38</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     0.162  26.2      4.69   0.153        0.400  1.55  1.14</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -432,7 +401,7 @@ cross validation model (Default = 5)</li>
 <div class="section level4">
 <h4 id="example-2">Example<a class="anchor" aria-label="anchor" href="#example-2"></a>
 </h4>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create series of strings to be used for parameters and algorithms arguments</span></span>
 <span><span class="va">algorithms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">parameters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
@@ -443,12 +412,12 @@ cross validation model (Default = 5)</li>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
 <span><span class="co">#&gt;   Algorithms       R_Squared    Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Turbid_NTU_Al10…     0.441 -<span style="color: #BB0000;">30.5</span>      -<span style="color: #BB0000;">4.37</span>   9.54<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span>        0.511  2.78  1.79</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Turbid_NTU_Go04…     0.763   0.043<span style="text-decoration: underline;">0</span>    0.311  4.46<span style="color: #949494;">e</span><span style="color: #BB0000;">-5</span>        0.435  2.23  1.46</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Turbid_NTU_Ku15…     0.432   0.081<span style="text-decoration: underline;">8</span>   -<span style="color: #BB0000;">0.068</span><span style="color: #BB0000; text-decoration: underline;">7</span> 1.06<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>        0.371  2.86  1.91</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Turbid_NTU_MM12…     0.166  42.3       0.370  1.48<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>        0.428  2.64  1.71</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Turbid_NTU_Wy08…     0.432   0.081<span style="text-decoration: underline;">8</span>   -<span style="color: #BB0000;">0.068</span><span style="color: #BB0000; text-decoration: underline;">7</span> 1.06<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>        0.573  3.01  1.96</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Chl_ugL_Al10SABI     0.534 -<span style="color: #BB0000;">21.0</span>       1.30   2.99<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span>        0.685  1.41  1.13</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Turbid_NTU_Al10…     0.441 -<span style="color: #BB0000;">30.5</span>      -<span style="color: #BB0000;">4.37</span>   9.54<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span>        0.535  2.60  1.68</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Turbid_NTU_Go04…     0.763   0.043<span style="text-decoration: underline;">0</span>    0.311  4.46<span style="color: #949494;">e</span><span style="color: #BB0000;">-5</span>        0.471  2.36  1.56</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Turbid_NTU_Ku15…     0.432   0.081<span style="text-decoration: underline;">8</span>   -<span style="color: #BB0000;">0.068</span><span style="color: #BB0000; text-decoration: underline;">7</span> 1.06<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>        0.420  2.70  1.75</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Turbid_NTU_MM12…     0.166  42.3       0.370  1.48<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>        0.329  2.57  1.63</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Turbid_NTU_Wy08…     0.432   0.081<span style="text-decoration: underline;">8</span>   -<span style="color: #BB0000;">0.068</span><span style="color: #BB0000; text-decoration: underline;">7</span> 1.06<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>        0.322  2.38  1.46</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Chl_ugL_Al10SABI     0.534 -<span style="color: #BB0000;">21.0</span>       1.30   2.99<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span>        0.590  1.39  1.07</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -478,7 +447,7 @@ cross validation model (Default = 5)</li>
 <div class="section level4">
 <h4 id="example-3">Example<a class="anchor" aria-label="anchor" href="#example-3"></a>
 </h4>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">extract_lm_cv_all_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extract_lm_cv_all.html">extract_lm_cv_all</a></span><span class="op">(</span>parameters <span class="op">=</span> <span class="va">parameters</span>, df <span class="op">=</span> <span class="va">df</span>,</span>
 <span>                                                 train_method <span class="op">=</span> <span class="st">"lm"</span>, control_method <span class="op">=</span> <span class="st">"repeatedcv"</span>,</span>
 <span>                                                 folds <span class="op">=</span> <span class="fl">3</span>, nrepeats <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
@@ -486,12 +455,12 @@ cross validation model (Default = 5)</li>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
 <span><span class="co">#&gt;   Algorithms        R_Squared  Slope Intercept  P_Value CV_R_Squared  RMSE   MAE</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Turbid_NTU_pH         0.976 -<span style="color: #BB0000;">14.1</span>    125.    4.86<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span>        0.620  1.47 0.820</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Turbid_NTU_Al10S…     0.441 -<span style="color: #BB0000;">30.5</span>     -<span style="color: #BB0000;">4.37</span>  9.54<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span>        0.549  2.42 1.46 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Turbid_NTU_MM12N…     0.166  42.3      0.370 1.48<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.411  2.81 1.82 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Turbid_NTU_Da052…     0.168  19.2    -<span style="color: #BB0000;">18.7</span>   1.45<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.260  2.61 1.65 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Turbid_NTU_MM12N…     0.166  42.3      0.370 1.48<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.432  2.96 2.00 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Turbid_NTU_TurbD…     0.136  -<span style="color: #BB0000;">7.44</span>     5.47  1.95<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.380  2.82 1.93</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Turbid_NTU_pH         0.976 -<span style="color: #BB0000;">14.1</span>    125.    4.86<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span>        0.632  1.50 0.856</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Turbid_NTU_Al10S…     0.441 -<span style="color: #BB0000;">30.5</span>     -<span style="color: #BB0000;">4.37</span>  9.54<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span>        0.511  2.87 1.91 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Turbid_NTU_MM12N…     0.166  42.3      0.370 1.48<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.309  2.58 1.64 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Turbid_NTU_Da052…     0.168  19.2    -<span style="color: #BB0000;">18.7</span>   1.45<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.486  2.96 1.90 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Turbid_NTU_MM12N…     0.166  42.3      0.370 1.48<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.436  3.00 1.99 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Turbid_NTU_TurbD…     0.136  -<span style="color: #BB0000;">7.44</span>     5.47  1.95<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.393  2.77 1.77</span></span></code></pre></div>
 </div>
 </div>
 </div>
