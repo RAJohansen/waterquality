@@ -1,4 +1,4 @@
-library(raster)
+library(terra)
 library(tidyverse)
 
 landsat_8 = tribble(

@@ -1,4 +1,4 @@
-library(raster)
+library(terra)
 library(tidyverse)
 
 Al10SABI <- function(w857, w644, w458, w529){
@@ -17,17 +17,17 @@ wq_algorithms = tribble(
   "Am092Bsub", Am092Bsub, c(5, 4)
 )
 
-water_quality = function(raster_stack, alg = "all", sat = "sentinel2"){
+water_quality = function(TerraRaster, alg = "all", sat = "sentinel2"){
   result = list()
   for (i in seq_len(nrow(wq_algorithms))){
-    raster_stack_sel = raster_stack[[wq_algorithms$sentinel2[[i]]]]
-    result[[i]] = overlay(raster_stack_sel, fun = wq_algorithms$funs[[i]])
+    TerraRaster_sel = TerraRaster[[wq_algorithms$sentinel2[[i]]]]
+    result[[i]] = overlay(TerraRaster_sel, fun = wq_algorithms$funs[[i]])
     names(result[[i]]) = wq_algorithms$name[[i]]
   }
   stack(result)
 }
 
-s2 = stack("inst/data/S2_Taylorsville.tif")
+s2 = terra::rast("inst/data/S2_Taylorsville.tif")
 s2
 t1 = water_quality(s2)
 t1

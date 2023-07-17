@@ -1,22 +1,18 @@
-library(raster)
+library(terra)
 library(sf)
 
-modis = brick("inst/raster/MODIS_Taylorsville.tif")
-l8 = brick("inst/raster/L8_Taylorsville.tif")
-s2 = brick("inst/raster/S2_Taylorsville.tif")
+modis = terra::rast("inst/raster/MODIS_Taylorsville.tif")
+l8 = terra::rast("inst/raster/L8_Taylorsville.tif")
+s2 = terra::rast("inst/raster/S2_Taylorsville.tif")
 
 crs(l8) = crs(modis)
 crs(s2) = crs(modis)
 
-tv = st_read("inst/raster/Taylorsville_Lake.shp") %>% 
-  st_transform(projection(modis))
+tv = terra::vect("inst/raster/Taylorsville_Lake.shp") %>% 
+  terra::project(projection(modis))
 
-st_write(tv, "inst/raster/Taylorsville.gpkg")
+writeVector(tv, "inst/raster/Taylorsville.gpkg")
 file.remove(dir(path = "inst/raster/", pattern = "Taylorsville_Lake*", full.names = TRUE))
-
-tv = tv %>% 
-  as("Spatial")
-plot(tv)
 
 modis %>%
   crop(tv) %>% 

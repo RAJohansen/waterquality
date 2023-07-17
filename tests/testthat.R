@@ -1,5 +1,5 @@
 library(testthat)
 library(waterquality)
-library(raster)
+library(terra)
 
 test_check("waterquality")

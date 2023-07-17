@@ -1,4 +1,4 @@
-library(raster)
+library(terra)
 library(tidyverse)
 
 sentinel_2 = tribble(
@@ -33,22 +33,22 @@ wq_algorithms = tribble(
 
 wq_algorithms
 
-s2 = stack("inst/data/S2_Taylorsville.tif")
+s2 = terra::rast("inst/data/S2_Taylorsville.tif")
 s2
-raster_stack = s2
+TerraRaster = s2
 
 
 wq_action = function(f, i, s){
   (f)
 }
 
-water_quality = function(raster_stack, alg = "all", sat = "sentinel2"){
+water_quality = function(TerraRaster, alg = "all", sat = "sentinel2"){
   result = list()
   for (i in seq_len(nrow(wq_algorithms))){
-    result[[i]] = wq_algorithms$funs[[i]](raster_stack[[wq_algorithms$sentinel2[[i]]]])
+    result[[i]] = wq_algorithms$funs[[i]](TerraRaster[[wq_algorithms$sentinel2[[i]]]])
     names(result[[i]]) = wq_algorithms$name[[i]]
   }
-  stack(result)
+  terra::rast(result)
 }
 
 water_quality(s2)
@@ -100,7 +100,7 @@ hist(Al10SABI_result)
 
 wq_algorithms$funs[[1]](s2[[wq_algorithms$band_center[[1]] %>% map_int(~find_the_closest(., sentinel_2$band_center))]])
 
-water_quality = function(raster_stack, alg = "all", sat = "sentinel-2"){
+water_quality = function(TerraRaster, alg = "all", sat = "sentinel-2"){
   
   
 }

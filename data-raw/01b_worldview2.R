@@ -1,4 +1,4 @@
-library(raster)
+library(terra)
 library(tidyverse)
 
 worldview_2 = tribble(

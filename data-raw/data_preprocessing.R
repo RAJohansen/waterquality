@@ -1,6 +1,4 @@
-library(sf)
-library(gdalUtils)
-library(raster)
+library(terra)
 library(magrittr)
 
 ###Define Inputs----------------------------------------------------------------
@@ -10,28 +8,27 @@ Image_Directory = "C:/temp/S2A_MSIL1C_20180609T161901_N0206_R040_T16SGJ_20180609
 ### Extacts all raster files from Image Directory with extention .jp2
 Rasters = dir(Image_Directory, pattern = "*.jp2$", full.names = TRUE)
 #Import Shapefile of Area of Interest 
-AOI = st_read("C:/temp/S2/eastfork_lake.shp")
+AOI = terra::vect("C:/temp/S2/eastfork_lake.shp")
 
 #Reproject AOI if needed (Example - UTM Zone 16)
 Projection = "+proj=utm +zone=16 +datum=WGS84 +units=m +no_defs +ellps=WGS84 +towgs84=0,0,0"
-AOI = st_transform(AOI, Projection)
-AOI = as(AOI, "Spatial")
+AOI = terra:project(AOI, Projection)
 
 ### Create Template for Final Raster Stack--------------------------------------
 #For Sentinel-2 we want our final output to be in 20m so use Band 5
 raster_B5 = raster(Rasters[[5]])
-raster_template = raster(raster_B5)
+raster_template = terra::rast(raster_B5)
 
 ### Resample, Crop, & Stack All Images -----------------------------------------
 raster_stack = Rasters %>% 
-  lapply(raster) %>% 
-  lapply(resample, raster_template) %>%
-  lapply(crop, AOI) %>%
+  lapply(terra::rast) %>% 
+  lapply(terra::resample, raster_template) %>%
+  lapply(terra::crop, AOI) %>%
   stack()
 
 ### Mask cropped image---------------------------------------------------------- 
 #Further reducing size of stacked image
-raster_mask <- mask(raster_stack,AOI)
+raster_mask <- terra::mask(raster_stack,AOI)
 
 ### Band Subset-----------------------------------------------------------------
 S2_Harsha <- raster_mask[1:9] #Sentinel-2 Algorithms Only Use Bands 1-8A

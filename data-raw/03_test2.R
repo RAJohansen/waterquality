@@ -1,4 +1,4 @@
-library(raster)
+library(terra)
 library(tidyverse)
 
 sentinel_2 = tribble(
@@ -39,17 +39,17 @@ find_the_closest_wl = function(x, y){
   lapply(x, find_the_closest, y) %>% unlist()
 }
 
-water_quality = function(raster_stack, alg = "all", sat = "sentinel2"){
+water_quality = function(TerraRaster, alg = "all", sat = "sentinel2"){
   result = list()
   for (i in seq_len(nrow(wq_algorithms))){
     index = find_the_closest_wl(wq_algorithms$wavelenghts[[i]], sentinel_2$wavelenght)
-    result[[i]] = wq_algorithms$funs[[i]](raster_stack[[index]])
+    result[[i]] = wq_algorithms$funs[[i]](TerraRaster[[index]])
     names(result[[i]]) = wq_algorithms$name[[i]]
   }
-  stack(result)
+  terra:rast(result)
 }
 
-s2 = stack("inst/data/S2_Taylorsville.tif")
+s2 = terra:rast("inst/data/S2_Taylorsville.tif")
 s2
 t2 = water_quality(s2)
 
