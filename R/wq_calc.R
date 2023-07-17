@@ -29,7 +29,7 @@
 #' )}
 #' @export
 wq_calc = function(terraRast, alg = "all", sat, ...){
-  if (!is(terraRast, 'TerraRaster')) stop ("Input object needs to be of the Terra Raster class")
+  #if (!is(terraRast, 'rast')) stop ("Input object needs to be of the Terra Raster class")
   sats = c("worldview2", "sentinel2", "landsat8", "modis", "meris", "OLCI")
   if (!sat %in% sats) stop ("Unknown satellite or instrument.",
                             "Please provide one of: 'worldview2', ",
@@ -51,13 +51,13 @@ wq_calc = function(terraRast, alg = "all", sat, ...){
                                        "available for the selected satellite.\n",
                                        "Please provide appropriate algorithms' names")
   nr_of_bands = max(unlist(algorithms_sel$bands))
-  if (nr_of_bands > nlayers(terraRast)) stop ("Terra Raster Stack for ", sat,
-                                                 " needs to have at least ",
-                                                 nr_of_bands, " layers")
+  if (nr_of_bands > terra::nlyr(terraRast)) stop ("Terra Raster Stack for ", sat,
+                                                  " needs to have at least ",
+                                                  nr_of_bands, " layers")
   result = list()
   for (i in seq_len(nrow(algorithms_sel))){
     terraRast_sel = terraRast[[algorithms_sel$bands[[i]]]]
-    result[[i]] = overlay(terraRast_sel, fun = algorithms_sel$funs[[i]])
+    result[[i]] = terra::lapp(terraRast_sel, fun = algorithms_sel$funs[[i]])
     names(result[[i]]) = algorithms_sel$name[[i]]
     cat(algorithms_sel$name[[i]], "calculated!\n")
   }
