@@ -6,8 +6,7 @@ status](http://www.r-pkg.org/badges/version/waterquality)](https://cran.r-projec
 [![Build
 Status](https://travis-ci.org/RAJohansen/waterquality.png?branch=master)](https://travis-ci.org/RAJohansen/waterquality)
 [![codecov](https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg)](https://app.codecov.io/gh/RAJohansen/waterquality)
-[![Downloads](http://cranlogs.r-pkg.org/badges/waterquality?color=brightgreen)](https://www.r-pkg.org:443/pkg/waterquality)
-![](http://cranlogs.r-pkg.org/badges/grand-total/waterquality)
+![downloads](http://cranlogs.r-pkg.org/badges/grand-total/waterquality)
 
 # waterquality
 
@@ -68,16 +67,21 @@ The main function in this package is `wq_calc()`:
 
 ``` r
 library(waterquality)
-library(raster)
-s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
-s2_two_alg = wq_calc(s2, alg = c("MM12NDCI", "Al10SABI"), sat = "sentinel2")
+library(terra)
+s2 = terra::rast(system.file("raster/S2_Harsha.tif", package = "waterquality"))
+MM12NDCI = wq_calc(s2, alg = "MM12NDCI", sat = "sentinel2")
+samples = terra::vect(system.file("raster/Harsha_Simple_Points_CRS.gpkg", package = "waterquality"))
 ```
 
 ``` r
-plot(s2_two_alg)
+Map_WQ_raster(WQ_raster = MM12NDCI,
+              sample_points = samples,
+              map_title= "Water Quality Map",
+              raster_style = "quantile",
+              histogram = TRUE)
 ```
 
-![](man/figures/README-example_output-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-2-1.png)<!-- -->
 
 ## Package Contributions
 
