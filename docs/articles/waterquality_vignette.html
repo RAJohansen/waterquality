@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">waterquality</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -61,7 +57,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/RAJohansen/waterquality/">
+  <a href="https://github.com/RAJohansen/waterquality/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -76,39 +72,82 @@
 
       
 
-      </header><script src="waterquality_vignette_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to the waterquality package</h1>
-                        <h4 class="author">Richard Johansen, Jakub Nowosad, Molly Reif, and Erich Emery</h4>
+                        <h4 data-toc-skip class="author">Richard
+Johansen, Jakub Nowosad, Molly Reif, and Erich Emery</h4>
             
-            <h4 class="date">2022-02-09</h4>
+            <h4 data-toc-skip class="date">2023-07-17</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/RAJohansen/waterquality/blob/master/../vignettes/waterquality_vignette.Rmd"><code>../vignettes/waterquality_vignette.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/RAJohansen/waterquality/blob/HEAD/../vignettes/waterquality_vignette.Rmd" class="external-link"><code>../vignettes/waterquality_vignette.Rmd</code></a></small>
       <div class="hidden name"><code>waterquality_vignette.Rmd</code></div>
 
     </div>
 
     
     
-<p>The main purpose of <strong>waterquality</strong> is to quickly and easily convert satellite-based reflectance imagery into one or many well-known water quality indices designed for the detection of harmful algal blooms (HABs) using the following pigment proxies: chlorophyll-a, blue-green algae (phycocyanin), and turbidity. Currently, this package is able to process <a href="https://rajohansen.github.io/waterquality/reference/index.html">40 algorithms</a> for the following satellite-based imagers: WorldView-2 and -3, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI. In order to improve the aesthetics of the <code>wq_calc</code> output, a series of intuitive <code>Map_WQ</code> functions were developed to help reduce technical barriers due to coding and the myriad of map options.</p>
-<p>Additional functionality of the package includes a series of <code>extract_lm</code> functions which wrap the <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm">“Fitting Linear Models”</a> and the <a href="http://topepo.github.io/caret/index.html">“caret”</a> packages to quickly generate a suite of regression models with standardized outputs. These functions range from simple linear models for a single dependent and independent variable to robust linear regression using crossvalidation over multiple dependent and independent variables. These functions are extremely useful when conducting experimental testing on a large number of satellite algorithms across multiple water quality parameters. <strong>NOTE</strong> these functions require ground-truth data in order to develop the models.</p>
-<p>For an example of our entire research workflow, which includes data acquisition, image pre-processing, analyses, and results please see our publication entitled <a href="https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf">“Waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality”</a>.</p>
-<div id="algorithms" class="section level2">
-<h2 class="hasAnchor">
-<a href="#algorithms" class="anchor"></a>Algorithms</h2>
-<p>Currently, the package includes a total of <a href="https://rajohansen.github.io/waterquality/reference/index.html">40 algorithms</a> that can be applied for the detection of the three parameters. <strong>NOTE</strong> not all sensors are capable of using all algorithms due to their spectral configurations. Each of the algorithms are searchable within the package, where there is a reference to the original paper (Ex. <code>?Am092Bsub()</code>). Each algorithm is also linked to the original papers water quality parameters (chlorophyll-a, phycocyanin, turbidity) by type, which allows users to select all algorithms for that type. The final outputs are raster stacked images which represent relative index values and are not direct estimations of chlorophyll-a, phycocyanin, or turbidity values. However, relative index values can be converted to estimated concentration values using the <code>extract_lm</code> functions and ground truth measurements.</p>
+<p>The main purpose of <strong>waterquality</strong> is to quickly and
+easily convert satellite-based reflectance imagery into one or many
+well-known water quality indices designed for the detection of harmful
+algal blooms (HABs) using the following pigment proxies: chlorophyll-a,
+blue-green algae (phycocyanin), and turbidity. Currently, this package
+is able to process <a href="https://rajohansen.github.io/waterquality/reference/index.html" class="external-link">40
+algorithms</a> for the following satellite-based imagers: WorldView-2
+and -3, Sentinel-2, Landsat-8, MODIS, MERIS, and OLCI. In order to
+improve the aesthetics of the <code>wq_calc</code> output, a series of
+intuitive <code>Map_WQ</code> functions were developed to help reduce
+technical barriers due to coding and the myriad of map options.</p>
+<p>Additional functionality of the package includes a series of
+<code>extract_lm</code> functions which wrap the <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm" class="external-link">“Fitting
+Linear Models”</a> and the <a href="http://topepo.github.io/caret/index.html" class="external-link">“caret”</a> packages to
+quickly generate a suite of regression models with standardized outputs.
+These functions range from simple linear models for a single dependent
+and independent variable to robust linear regression using
+crossvalidation over multiple dependent and independent variables. These
+functions are extremely useful when conducting experimental testing on a
+large number of satellite algorithms across multiple water quality
+parameters. <strong>NOTE</strong> these functions require ground-truth
+data in order to develop the models.</p>
+<p>For an example of our entire research workflow, which includes data
+acquisition, image pre-processing, analyses, and results please see our
+publication entitled <a href="https://erdc-library.erdc.dren.mil/jspui/bitstream/11681/35053/3/ERDC-EL%20TR-19-20.pdf" class="external-link">“Waterquality:
+An Open-Source R Package for the Detection and Quantification of
+Cyanobacterial Harmful Algal Blooms and Water Quality”</a>.</p>
+<div class="section level2">
+<h2 id="algorithms">Algorithms<a class="anchor" aria-label="anchor" href="#algorithms"></a>
+</h2>
+<p>Currently, the package includes a total of <a href="https://rajohansen.github.io/waterquality/reference/index.html" class="external-link">40
+algorithms</a> that can be applied for the detection of the three
+parameters. <strong>NOTE</strong> not all sensors are capable of using
+all algorithms due to their spectral configurations. Each of the
+algorithms are searchable within the package, where there is a reference
+to the original paper (Ex. <code>?Am092Bsub()</code>). Each algorithm is
+also linked to the original papers water quality parameters
+(chlorophyll-a, phycocyanin, turbidity) by type, which allows users to
+select all algorithms for that type. The final outputs are raster
+stacked images which represent relative index values and are not direct
+estimations of chlorophyll-a, phycocyanin, or turbidity values. However,
+relative index values can be converted to estimated concentration values
+using the <code>extract_lm</code> functions and ground truth
+measurements.</p>
 </div>
-<div id="water-quality-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#water-quality-functions" class="anchor"></a>Water Quality Functions</h2>
-<div id="wq_calc" class="section level3">
-<h3 class="hasAnchor">
-<a href="#wq_calc" class="anchor"></a>wq_calc()</h3>
-<p>The main function of this package is called <code><a href="../reference/wq_calc.html">wq_calc()</a></code> which calculates water quality indices by using a reflectance raster stack as an input, user-defined algorithm(s) selection, and satellite configuration selection corresponding to the following three arguments: <code>raster_stack</code>, <code>alg</code>, and <code>sat</code>.</p>
+<div class="section level2">
+<h2 id="water-quality-functions">Water Quality Functions<a class="anchor" aria-label="anchor" href="#water-quality-functions"></a>
+</h2>
+<div class="section level3">
+<h3 id="wq_calc">wq_calc()<a class="anchor" aria-label="anchor" href="#wq_calc"></a>
+</h3>
+<p>The main function of this package is called <code><a href="../reference/wq_calc.html">wq_calc()</a></code>
+which calculates water quality indices by using a reflectance raster
+stack as an input, user-defined algorithm(s) selection, and satellite
+configuration selection corresponding to the following three arguments:
+<code>terraRast</code>, <code>alg</code>, and <code>sat</code>.</p>
 <ul>
 <li>
-<code>raster_stack</code> - The input reflectance image to be used in band algorithm calculation.</li>
+<code>terraRast</code> - The input reflectance image to be used in
+band algorithm calculation.</li>
 <li>
 <code>alg</code> - Determines the indices to be utilized:
 <ul>
@@ -119,7 +158,9 @@
 </ul>
 </li>
 <li>
-<code>sat</code> - Determines the appropriate spectral configuration and subsequently appropriate algorithms to be calculated from predefined list:
+<code>sat</code> - Determines the appropriate spectral configuration
+and subsequently appropriate algorithms to be calculated from predefined
+list:
 <ul>
 <li>WorldView-2</li>
 <li>Sentinel-2</li>
@@ -130,95 +171,143 @@
 </ul>
 </li>
 </ul>
-<div id="single-algorithm" class="section level4">
-<h4 class="hasAnchor">
-<a href="#single-algorithm" class="anchor"></a>Single Algorithm</h4>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">raster</span>)
-<span class="no">Harsha</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/stack.html">stack</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/S2_Harsha.tif"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))</pre></body></html></div>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">Harsha_Am092Bsub</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="kw">raster_stack</span> <span class="kw">=</span> <span class="no">Harsha</span>,
-                            <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"Am092Bsub"</span>,
-                            <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_Am092Bsub</span>)</pre></body></html></div>
+<div class="section level4">
+<h4 id="single-algorithm">Single Algorithm<a class="anchor" aria-label="anchor" href="#single-algorithm"></a>
+</h4>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/RAJohansen/waterquality" class="external-link">waterquality</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>
+<span><span class="va">Harsha</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"raster/S2_Harsha.tif"</span>, package <span class="op">=</span> <span class="st">"waterquality"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Harsha_Am092Bsub</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span><span class="op">(</span>terraRast <span class="op">=</span> <span class="va">Harsha</span>, </span>
+<span>                            alg <span class="op">=</span> <span class="st">"MM12NDCI"</span>, </span>
+<span>                            sat <span class="op">=</span> <span class="st">"sentinel2"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Harsha_Am092Bsub</span><span class="op">)</span></span></code></pre></div>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
 </div>
-<div id="multiple-algorithms" class="section level4">
-<h4 class="hasAnchor">
-<a href="#multiple-algorithms" class="anchor"></a>Multiple Algorithms</h4>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">Harsha_Multiple</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="kw">raster_stack</span> <span class="kw">=</span> <span class="no">Harsha</span>,
-                           <span class="kw">alg</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Am092Bsub"</span>, <span class="st">"MM12NDCI"</span>, <span class="st">"Da052BDA"</span>),
-                           <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_Multiple</span>)</pre></body></html></div>
+<div class="section level4">
+<h4 id="multiple-algorithms">Multiple Algorithms<a class="anchor" aria-label="anchor" href="#multiple-algorithms"></a>
+</h4>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Harsha_Multiple</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span><span class="op">(</span>terraRast <span class="op">=</span> <span class="va">Harsha</span>,</span>
+<span>                           alg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MM12NDCI"</span>, <span class="st">"Am092Bsub"</span>, <span class="st">"Da052BDA"</span><span class="op">)</span>, </span>
+<span>                           sat <span class="op">=</span> <span class="st">"sentinel2"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Harsha_Multiple</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-5-1.png" width="576"></p>
 </div>
-<div id="type-of-algorithm" class="section level4">
-<h4 class="hasAnchor">
-<a href="#type-of-algorithm" class="anchor"></a>Type of Algorithm</h4>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">Harsha_PC</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="no">Harsha</span>,
-                     <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"chlorophyll"</span>,
-                     <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_PC</span>)</pre></body></html></div>
+<div class="section level4">
+<h4 id="type-of-algorithm">Type of Algorithm<a class="anchor" aria-label="anchor" href="#type-of-algorithm"></a>
+</h4>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Harsha_PC</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span><span class="op">(</span><span class="va">Harsha</span>,</span>
+<span>                     alg <span class="op">=</span> <span class="st">"chlorophyll"</span>, </span>
+<span>                     sat <span class="op">=</span> <span class="st">"sentinel2"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Harsha_PC</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
 </div>
-<div id="all-algorithms" class="section level4">
-<h4 class="hasAnchor">
-<a href="#all-algorithms" class="anchor"></a>All Algorithms</h4>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">Harsha_All</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="no">Harsha</span>,
-                      <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"all"</span>,
-                      <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span>(<span class="no">Harsha_All</span>) <span class="co"># Only displays first 16 of 28</span></pre></body></html></div>
+<div class="section level4">
+<h4 id="all-algorithms">All Algorithms<a class="anchor" aria-label="anchor" href="#all-algorithms"></a>
+</h4>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Harsha_All</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span><span class="op">(</span><span class="va">Harsha</span>, </span>
+<span>                      alg <span class="op">=</span> <span class="st">"all"</span>,</span>
+<span>                      sat <span class="op">=</span> <span class="st">"sentinel2"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Harsha_All</span><span class="op">)</span> <span class="co"># Only displays first 16 of 28</span></span></code></pre></div>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
 </div>
 </div>
 </div>
-<div id="mapping-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#mapping-functions" class="anchor"></a>Mapping Functions</h2>
-<div id="map_wq_raster" class="section level3">
-<h3 class="hasAnchor">
-<a href="#map_wq_raster" class="anchor"></a>Map_WQ_raster</h3>
-<p>This function wraps the <a href="https://cran.r-project.org/package=tmap">“tmap”</a> package to help users to efficiently generate a map of a raster image which can be overlaid with optional geospatial objects and data histogram. In order to simplify this process and reduce the technical expertise required, the number of arguments were reduced to the following: - <code>WQ_raster</code> - Raster file generated from <code>wq_calc</code> or other GeoTiff file<br>
-- <code>sample_points</code> - geospatial file (.shp or .gpkg) containing sampling locations - <code>map_title</code> - text used to generate title of map - <code>raster_style</code> - method to process the color scale when col is a numeric variable. Please refer to the style argument in the <code>?tmap::tm_raster()</code> function for more details (Default is “quantile”). - <code>histogram</code> - Option to add or remove a histogram of the data values. (Default is TRUE)</p>
-<div id="raster-with-points" class="section level4">
-<h4 class="hasAnchor">
-<a href="#raster-with-points" class="anchor"></a>Raster with points</h4>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">raster</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tmap</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">sf</span>)
-<span class="no">s2</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/stack.html">stack</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/S2_Harsha.tif"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
-<span class="no">MM12NDCI</span> <span class="kw">=</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span>(<span class="no">s2</span>, <span class="kw">alg</span> <span class="kw">=</span> <span class="st">"MM12NDCI"</span>, <span class="kw">sat</span> <span class="kw">=</span> <span class="st">"sentinel2"</span>)
-<span class="no">samples</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sf/man/st_read.html">st_read</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/Harsha_Simple_Points_CRS.gpkg"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))
-<span class="no">lake_extent</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/sf/man/st_read.html">st_read</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/Harsha_Lake_CRS.gpkg"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))</pre></body></html></div>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/Map_WQ_raster.html">Map_WQ_raster</a></span>(<span class="kw">WQ_raster</span> <span class="kw">=</span> <span class="no">MM12NDCI</span>,
-              <span class="kw">sample_points</span> <span class="kw">=</span> <span class="no">samples</span>,
-              <span class="kw">map_title</span><span class="kw">=</span> <span class="st">"Water Quality Map"</span>,
-              <span class="kw">raster_style</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
-              <span class="kw">histogram</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<div class="section level2">
+<h2 id="mapping-functions">Mapping Functions<a class="anchor" aria-label="anchor" href="#mapping-functions"></a>
+</h2>
+<div class="section level3">
+<h3 id="map_wq_raster">Map_WQ_raster<a class="anchor" aria-label="anchor" href="#map_wq_raster"></a>
+</h3>
+<p>This function wraps the <a href="https://cran.r-project.org/package=tmap" class="external-link">“tmap”</a> package to
+help users to efficiently generate a map of a raster image which can be
+overlaid with optional geospatial objects and data histogram. In order
+to simplify this process and reduce the technical expertise required,
+the number of arguments were reduced to the following: -
+<code>WQ_raster</code> - Raster file generated from <code>wq_calc</code>
+or other GeoTiff file<br>
+- <code>sample_points</code> - geospatial file (.shp or .gpkg)
+containing sampling locations - <code>map_title</code> - text used to
+generate title of map - <code>raster_style</code> - method to process
+the color scale when col is a numeric variable. Please refer to the
+style argument in the <code>?tmap::tm_raster()</code> function for more
+details (Default is “quantile”). - <code>histogram</code> - Option to
+add or remove a histogram of the data values. (Default is TRUE)</p>
+<div class="section level4">
+<h4 id="raster-with-points">Raster with points<a class="anchor" aria-label="anchor" href="#raster-with-points"></a>
+</h4>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/RAJohansen/waterquality" class="external-link">waterquality</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap" class="external-link">tmap</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
+<span><span class="va">s2</span> <span class="op">=</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"raster/S2_Harsha.tif"</span>, package <span class="op">=</span> <span class="st">"waterquality"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">MM12NDCI</span> <span class="op">=</span> <span class="fu"><a href="../reference/wq_calc.html">wq_calc</a></span><span class="op">(</span><span class="va">s2</span>, alg <span class="op">=</span> <span class="st">"MM12NDCI"</span>, sat <span class="op">=</span> <span class="st">"sentinel2"</span><span class="op">)</span></span>
+<span><span class="va">samples</span> <span class="op">=</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"raster/Harsha_Simple_Points_CRS.gpkg"</span>, package <span class="op">=</span> <span class="st">"waterquality"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">lake_extent</span> <span class="op">=</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"raster/Harsha_Lake_CRS.gpkg"</span>, package <span class="op">=</span> <span class="st">"waterquality"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/Map_WQ_raster.html">Map_WQ_raster</a></span><span class="op">(</span>WQ_raster <span class="op">=</span> <span class="va">MM12NDCI</span>,</span>
+<span>              sample_points <span class="op">=</span> <span class="va">samples</span>,</span>
+<span>              map_title<span class="op">=</span> <span class="st">"Water Quality Map"</span>,</span>
+<span>              raster_style <span class="op">=</span> <span class="st">"quantile"</span>,</span>
+<span>              histogram <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="waterquality_vignette_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
 </div>
 </div>
-<div id="map_wq_basemap" class="section level3">
-<h3 class="hasAnchor">
-<a href="#map_wq_basemap" class="anchor"></a>Map_WQ_basemap</h3>
-<p>This function wraps the <a href="https://cran.r-project.org/package=tmap">“tmap”</a> &amp; <a href="https://cran.r-project.org/package=tmaptools">“tmaptools”</a> packages in order to generate a map using user-defined vectors (points and a polygon) overlaid on a Bing basemap. In order to simplify this process and reduce the technical expertise required, the number of arguments were reduced to the following: - <code>WQ_extent</code> - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps<br>
-- <code>WQ_parameter</code> - text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.) - <code>sample_points</code> - geospatial file (.shp or .gpkg) containing sampling locations - <code>map_title</code> - text used to generate title of map - <code>raster_style</code> - method to process the color scale when col is a numeric variable. Please refer to the style argument in the <code>?tmap::tm_raster()</code> function for more details (Default is “quantile”). - <code>histogram</code> - Option to add or remove a histogram of the data values. (Default = TRUE)</p>
-<div id="basemap-with-points" class="section level4">
-<h4 class="hasAnchor">
-<a href="#basemap-with-points" class="anchor"></a>Basemap with points</h4>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/Map_WQ_basemap.html">Map_WQ_basemap</a></span>(<span class="kw">WQ_extent</span> <span class="kw">=</span> <span class="no">lake_extent</span>,
-              <span class="kw">sample_points</span> <span class="kw">=</span> <span class="no">samples</span>,
-              <span class="kw">WQ_parameter</span> <span class="kw">=</span> <span class="st">"Chl_ugL"</span>,
-              <span class="kw">map_title</span><span class="kw">=</span> <span class="st">"Water Quality Map"</span>,
-              <span class="kw">points_style</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
-              <span class="kw">histogram</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<div class="section level3">
+<h3 id="map_wq_basemap">Map_WQ_basemap<a class="anchor" aria-label="anchor" href="#map_wq_basemap"></a>
+</h3>
+<p>This function wraps the <a href="https://cran.r-project.org/package=tmap" class="external-link">“tmap”</a> &amp; <a href="https://cran.r-project.org/package=tmaptools" class="external-link">“tmaptools”</a>
+packages in order to generate a map using user-defined vectors (points
+and a polygon) overlaid on a Bing basemap. In order to simplify this
+process and reduce the technical expertise required, the number of
+arguments were reduced to the following: - <code>WQ_extent</code> -
+geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing
+basemaps<br>
+- <code>WQ_parameter</code> - text referring to column heading of data
+being mapped (i.e. Chl-a, PC, etc.) - <code>sample_points</code> -
+geospatial file (.shp or .gpkg) containing sampling locations -
+<code>map_title</code> - text used to generate title of map -
+<code>raster_style</code> - method to process the color scale when col
+is a numeric variable. Please refer to the style argument in the
+<code>?tmap::tm_raster()</code> function for more details (Default is
+“quantile”). - <code>histogram</code> - Option to add or remove a
+histogram of the data values. (Default = TRUE)</p>
+<div class="section level4">
+<h4 id="basemap-with-points">Basemap with points<a class="anchor" aria-label="anchor" href="#basemap-with-points"></a>
+</h4>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/Map_WQ_basemap.html">Map_WQ_basemap</a></span><span class="op">(</span>WQ_extent <span class="op">=</span> <span class="va">lake_extent</span>,</span>
+<span>              sample_points <span class="op">=</span> <span class="va">samples</span>,</span>
+<span>              WQ_parameter <span class="op">=</span> <span class="st">"Chl_ugL"</span>,</span>
+<span>              map_title<span class="op">=</span> <span class="st">"Water Quality Map"</span>,</span>
+<span>              points_style <span class="op">=</span> <span class="st">"quantile"</span>,</span>
+<span>              histogram <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="modeling-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#modeling-functions" class="anchor"></a>Modeling Functions</h2>
-<p>Developing models is an essential step in water quality monitoring, and this requires sufficient coincident ground truth data. These functions have been developed to combine user-provided ground truth data and the results from the <code>wq_calc</code> function to generate a single or series of regression models. These functions have been developed to easily conduct linear models with standardized outputs, providing intuitive yet robust options. Most effectively, the functions will utilize a single comma delimited (.csv) file as the data frame source. Although these functions were designed for our water quality research, they can be used as standalone functions for any data to generate the same standardized outputs containing the following:<br><strong>Global Model</strong><br>
+<div class="section level2">
+<h2 id="modeling-functions">Modeling Functions<a class="anchor" aria-label="anchor" href="#modeling-functions"></a>
+</h2>
+<p>Developing models is an essential step in water quality monitoring,
+and this requires sufficient coincident ground truth data. These
+functions have been developed to combine user-provided ground truth data
+and the results from the <code>wq_calc</code> function to generate a
+single or series of regression models. These functions have been
+developed to easily conduct linear models with standardized outputs,
+providing intuitive yet robust options. Most effectively, the functions
+will utilize a single comma delimited (.csv) file as the data frame
+source. Although these functions were designed for our water quality
+research, they can be used as standalone functions for any data to
+generate the same standardized outputs containing the following:<br><strong>Global Model</strong><br>
 - r<sup>2</sup><br>
 - p-value<br>
 - slope<br>
@@ -227,160 +316,208 @@
 - average r<sup>2</sup><br>
 - average RMSE<br>
 - average MAE</p>
-<p>Additionally, we have provided code that might be useful to help users import and extract the data from a raster stack image (i.e. output from <code>wq_calc</code>), combine it with a geospatial object (i.e shapefiles of sample locations), and export the results to a .csv file to be used in the modeling functions.</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="co">#Input raster image</span>
-<span class="no">wq_raster</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/stack.html">stack</a></span>(<span class="st">"C:/temp/my_raster.tif"</span>)
-
-<span class="co">#Input shapefile</span>
-<span class="no">wq_samples</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/shapefile.html">shapefile</a></span>(<span class="st">'C:/temp/my_samples.shp'</span>)
-
-<span class="co">#Extract values from raster and combine with shapefile</span>
-<span class="no">waterquality_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="no">wq_samples</span>, <span class="fu"><a href="https://rdrr.io/pkg/raster/man/extract.html">extract</a></span>(<span class="no">wq_raster</span>, <span class="no">wq_samples</span>))
-
-<span class="co">#Export results as csv file</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/write.table.html">write.csv</a></span>(<span class="no">waterquality_data</span>, <span class="kw">file</span> <span class="kw">=</span> <span class="st">"C:/temp/waterquality_data.csv"</span>)</pre></body></html></div>
-<div id="extract_lm" class="section level3">
-<h3 class="hasAnchor">
-<a href="#extract_lm" class="anchor"></a>extract_lm</h3>
+<p>Additionally, we have provided code that might be useful to help
+users import and extract the data from a raster stack image (i.e. output
+from <code>wq_calc</code>), combine it with a geospatial object (i.e
+shapefiles of sample locations), and export the results to a .csv file
+to be used in the modeling functions.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Input raster image</span></span>
+<span><span class="va">wq_raster</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="st">"C:/temp/my_raster.tif"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Input shapefile</span></span>
+<span><span class="va">wq_samples</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="st">'C:/temp/my_samples.shp'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Extract values from raster and combine with shapefile</span></span>
+<span><span class="va">waterquality_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">wq_samples</span>, <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/extract.html" class="external-link">extract</a></span><span class="op">(</span><span class="va">wq_raster</span>, <span class="va">wq_samples</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Export results as csv file</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv</a></span><span class="op">(</span><span class="va">waterquality_data</span>, file <span class="op">=</span> <span class="st">"C:/temp/waterquality_data.csv"</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="extract_lm">extract_lm<a class="anchor" aria-label="anchor" href="#extract_lm"></a>
+</h3>
 <ul>
 <li>
-<code>parameter</code> A string specifying water quality parameter</li>
+<code>parameter</code> A string specifying water quality
+parameter</li>
 <li>
-<code>algorithm</code> A string specifying water quality algorithm</li>
+<code>algorithm</code> A string specifying water quality
+algorithm</li>
 <li>
-<code>df</code> data frame containing the values for parameter and algorithm arguments</li>
+<code>df</code> data frame containing the values for parameter and
+algorithm arguments</li>
 </ul>
-<div id="example" class="section level4">
-<h4 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h4>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">waterquality</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">caret</span>)
-<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"raster/waterquality_data.csv"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"waterquality"</span>))</pre></body></html></div>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="../reference/extract_lm.html">extract_lm</a></span>(<span class="kw">parameter</span> <span class="kw">=</span> <span class="st">"Chl_ugL"</span>, <span class="kw">algorithm</span> <span class="kw">=</span> <span class="st">"MM12NDCI"</span>, <span class="kw">df</span> <span class="kw">=</span> <span class="no">df</span>)
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   R_Squared Slope Intercept P_Value</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.162  26.2      4.69   0.153</span></pre></body></html></div>
+<div class="section level4">
+<h4 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h4>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/RAJohansen/waterquality" class="external-link">waterquality</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/" class="external-link">caret</a></span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"raster/waterquality_data.csv"</span>, package <span class="op">=</span> <span class="st">"waterquality"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/extract_lm.html">extract_lm</a></span><span class="op">(</span>parameter <span class="op">=</span> <span class="st">"Chl_ugL"</span>, algorithm <span class="op">=</span> <span class="st">"MM12NDCI"</span>, df <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   R_Squared Slope Intercept P_Value</span></span>
+<span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     0.162  26.2      4.69   0.153</span></span></code></pre></div>
 </div>
 </div>
-<div id="extract_lm_cv" class="section level3">
-<h3 class="hasAnchor">
-<a href="#extract_lm_cv" class="anchor"></a>extract_lm_cv</h3>
+<div class="section level3">
+<h3 id="extract_lm_cv">extract_lm_cv<a class="anchor" aria-label="anchor" href="#extract_lm_cv"></a>
+</h3>
 <ul>
 <li>
-<code>parameter</code> A string specifying water quality parameter</li>
+<code>parameter</code> A string specifying water quality
+parameter</li>
 <li>
-<code>algorithm</code> A string specifying water quality algorithm</li>
+<code>algorithm</code> A string specifying water quality
+algorithm</li>
 <li>
-<code>df</code> data frame containing the values for parameter and algorithm arguments</li>
+<code>df</code> data frame containing the values for parameter and
+algorithm arguments</li>
 <li>
-<code>train_method</code> A string specifying which classification or regression model to use (Default = “lm”). See ?caret::train for more details</li>
+<code>train_method</code> A string specifying which classification
+or regression model to use (Default = “lm”). See ?caret::train for more
+details</li>
 <li>
-<code>control_method</code> A string specifying the resampling method (Default = “repeatedcv”). See ?caret::trainControl for more details</li>
+<code>control_method</code> A string specifying the resampling
+method (Default = “repeatedcv”). See ?caret::trainControl for more
+details</li>
 <li>
-<code>folds</code> the number of folds to be used in the cross validation model (Default = 3)</li>
+<code>folds</code> the number of folds to be used in the cross
+validation model (Default = 3)</li>
 <li>
-<code>nrepeats</code> the number of iterations to be used in the cross validation model (Default = 5)</li>
+<code>nrepeats</code> the number of iterations to be used in the
+cross validation model (Default = 5)</li>
 </ul>
-<div id="example-1" class="section level4">
-<h4 class="hasAnchor">
-<a href="#example-1" class="anchor"></a>Example</h4>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="fu"><a href="../reference/extract_lm_cv.html">extract_lm_cv</a></span>(<span class="kw">parameter</span> <span class="kw">=</span> <span class="st">"Chl_ugL"</span>, <span class="kw">algorithm</span> <span class="kw">=</span> <span class="st">"MM12NDCI"</span>,
-                                       <span class="kw">df</span> <span class="kw">=</span> <span class="no">df</span>, <span class="kw">train_method</span> <span class="kw">=</span> <span class="st">"lm"</span>, <span class="kw">control_method</span> <span class="kw">=</span> <span class="st">"repeatedcv"</span>,
-                                       <span class="kw">folds</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">nrepeats</span> <span class="kw">=</span> <span class="fl">5</span>)
-<span class="co">#&gt; # A tibble: 1 x 7</span>
-<span class="co">#&gt;   R_Squared Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     0.162  26.2      4.69   0.153        0.506  1.63  1.22</span></pre></body></html></div>
+<div class="section level4">
+<h4 id="example-1">Example<a class="anchor" aria-label="anchor" href="#example-1"></a>
+</h4>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/extract_lm_cv.html">extract_lm_cv</a></span><span class="op">(</span>parameter <span class="op">=</span> <span class="st">"Chl_ugL"</span>, algorithm <span class="op">=</span> <span class="st">"MM12NDCI"</span>,</span>
+<span>                                       df <span class="op">=</span> <span class="va">df</span>, train_method <span class="op">=</span> <span class="st">"lm"</span>, control_method <span class="op">=</span> <span class="st">"repeatedcv"</span>,</span>
+<span>                                       folds <span class="op">=</span> <span class="fl">3</span>, nrepeats <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 7</span></span></span>
+<span><span class="co">#&gt;   R_Squared Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span></span>
+<span><span class="co">#&gt;       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     0.162  26.2      4.69   0.153        0.358  1.99  1.38</span></span></code></pre></div>
 </div>
 </div>
-<div id="extract_lm_cv_multi" class="section level3">
-<h3 class="hasAnchor">
-<a href="#extract_lm_cv_multi" class="anchor"></a>extract_lm_cv_multi</h3>
+<div class="section level3">
+<h3 id="extract_lm_cv_multi">extract_lm_cv_multi<a class="anchor" aria-label="anchor" href="#extract_lm_cv_multi"></a>
+</h3>
 <ul>
 <li>
 <code>parameters</code> list of water quality parameters</li>
 <li>
 <code>algorithms</code> list of water quality algorithms</li>
 <li>
-<code>df</code> data frame containing the values for parameter and algorithm arguments</li>
+<code>df</code> data frame containing the values for parameter and
+algorithm arguments</li>
 <li>
-<code>train_method</code> A string specifying which classification or regression model to use (Default = “lm”). See ?caret::train for more details</li>
+<code>train_method</code> A string specifying which classification
+or regression model to use (Default = “lm”). See ?caret::train for more
+details</li>
 <li>
-<code>control_method</code> A string specifying the resampling method (Default = “repeatedcv”). See ?caret::trainControl for more details</li>
+<code>control_method</code> A string specifying the resampling
+method (Default = “repeatedcv”). See ?caret::trainControl for more
+details</li>
 <li>
-<code>folds</code> the number of folds to be used in the cross validation model (Default = 3)</li>
+<code>folds</code> the number of folds to be used in the cross
+validation model (Default = 3)</li>
 <li>
-<code>nrepeats</code> the number of iterations to be used in the cross validation model (Default = 5)</li>
+<code>nrepeats</code> the number of iterations to be used in the
+cross validation model (Default = 5)</li>
 </ul>
-<div id="example-2" class="section level4">
-<h4 class="hasAnchor">
-<a href="#example-2" class="anchor"></a>Example</h4>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="co"># Create series of strings to be used for parameters and algorithms arguments</span>
-<span class="no">algorithms</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/raster/man/names.html">names</a></span>(<span class="no">df</span>[<span class="fl">6</span>:<span class="fl">10</span>]))
-<span class="no">parameters</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/raster/man/names.html">names</a></span>(<span class="no">df</span>[<span class="fl">3</span>:<span class="fl">5</span>]))
-<span class="no">extract_lm_cv_multi_results</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/extract_lm_cv_multi.html">extract_lm_cv_multi</a></span>(<span class="kw">parameters</span> <span class="kw">=</span> <span class="no">parameters</span>, <span class="kw">algorithms</span> <span class="kw">=</span> <span class="no">algorithms</span>,
-                                                   <span class="kw">df</span> <span class="kw">=</span> <span class="no">df</span>, <span class="kw">train_method</span> <span class="kw">=</span> <span class="st">"lm"</span>, <span class="kw">control_method</span> <span class="kw">=</span> <span class="st">"repeatedcv"</span>,
-                                                   <span class="kw">folds</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">nrepeats</span> <span class="kw">=</span> <span class="fl">5</span>)
-<span class="fu"><a href="https://rdrr.io/pkg/raster/man/headtail.html">head</a></span>(<span class="no">extract_lm_cv_multi_results</span>)
-<span class="co">#&gt; # A tibble: 6 x 8</span>
-<span class="co">#&gt;   Algorithms          R_Squared Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span>
-<span class="co">#&gt;   &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Turbid_NTU_Al10SABI     0.441 -30.5     -4.37 0.00954        0.485  2.68  1.70</span>
-<span class="co">#&gt; 2 Turbid_NTU_Go04MCI      0.441 -30.5     -4.37 0.00954        0.546  2.76  1.74</span>
-<span class="co">#&gt; 3 Turbid_NTU_Ku15Phy~     0.441 -30.5     -4.37 0.00954        0.418  2.71  1.76</span>
-<span class="co">#&gt; 4 Turbid_NTU_MM12NDCI     0.441 -30.5     -4.37 0.00954        0.533  2.74  1.79</span>
-<span class="co">#&gt; 5 Turbid_NTU_Wy08CI       0.441 -30.5     -4.37 0.00954        0.548  2.83  1.82</span>
-<span class="co">#&gt; 6 Chl_ugL_Al10SABI        0.534 -21.0      1.30 0.00299        0.691  1.33  1.06</span></pre></body></html></div>
+<div class="section level4">
+<h4 id="example-2">Example<a class="anchor" aria-label="anchor" href="#example-2"></a>
+</h4>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Create series of strings to be used for parameters and algorithms arguments</span></span>
+<span><span class="va">algorithms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">parameters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">df</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">extract_lm_cv_multi_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extract_lm_cv_multi.html">extract_lm_cv_multi</a></span><span class="op">(</span>parameters <span class="op">=</span> <span class="va">parameters</span>, algorithms <span class="op">=</span> <span class="va">algorithms</span>,</span>
+<span>                                                   df <span class="op">=</span> <span class="va">df</span>, train_method <span class="op">=</span> <span class="st">"lm"</span>, control_method <span class="op">=</span> <span class="st">"repeatedcv"</span>,</span>
+<span>                                                   folds <span class="op">=</span> <span class="fl">3</span>, nrepeats <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/headtail.html" class="external-link">head</a></span><span class="op">(</span><span class="va">extract_lm_cv_multi_results</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
+<span><span class="co">#&gt;   Algorithms       R_Squared    Slope Intercept P_Value CV_R_Squared  RMSE   MAE</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Turbid_NTU_Al10…     0.441 -<span style="color: #BB0000;">30.5</span>      -<span style="color: #BB0000;">4.37</span>   9.54<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span>        0.511  2.78  1.79</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Turbid_NTU_Go04…     0.763   0.043<span style="text-decoration: underline;">0</span>    0.311  4.46<span style="color: #949494;">e</span><span style="color: #BB0000;">-5</span>        0.435  2.23  1.46</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Turbid_NTU_Ku15…     0.432   0.081<span style="text-decoration: underline;">8</span>   -<span style="color: #BB0000;">0.068</span><span style="color: #BB0000; text-decoration: underline;">7</span> 1.06<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>        0.371  2.86  1.91</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Turbid_NTU_MM12…     0.166  42.3       0.370  1.48<span style="color: #949494;">e</span><span style="color: #BB0000;">-1</span>        0.428  2.64  1.71</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Turbid_NTU_Wy08…     0.432   0.081<span style="text-decoration: underline;">8</span>   -<span style="color: #BB0000;">0.068</span><span style="color: #BB0000; text-decoration: underline;">7</span> 1.06<span style="color: #949494;">e</span><span style="color: #BB0000;">-2</span>        0.573  3.01  1.96</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Chl_ugL_Al10SABI     0.534 -<span style="color: #BB0000;">21.0</span>       1.30   2.99<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span>        0.685  1.41  1.13</span></span></code></pre></div>
 </div>
 </div>
-<div id="extract_lm_cv_all" class="section level3">
-<h3 class="hasAnchor">
-<a href="#extract_lm_cv_all" class="anchor"></a>extract_lm_cv_all</h3>
+<div class="section level3">
+<h3 id="extract_lm_cv_all">extract_lm_cv_all<a class="anchor" aria-label="anchor" href="#extract_lm_cv_all"></a>
+</h3>
 <ul>
 <li>
 <code>parameters</code> list of water quality parameters</li>
 <li>
-<code>df</code> data frame containing the values for parameter and algorithm arguments</li>
+<code>df</code> data frame containing the values for parameter and
+algorithm arguments</li>
 <li>
-<code>train_method</code> A string specifying which classification or regression model to use (Default = “lm”). See ?caret::train for more details</li>
+<code>train_method</code> A string specifying which classification
+or regression model to use (Default = “lm”). See ?caret::train for more
+details</li>
 <li>
-<code>control_method</code> A string specifying the resampling method (Default = “repeatedcv”). See ?caret::trainControl for more details</li>
+<code>control_method</code> A string specifying the resampling
+method (Default = “repeatedcv”). See ?caret::trainControl for more
+details</li>
 <li>
-<code>folds</code> the number of folds to be used in the cross validation model (Default = 3)</li>
+<code>folds</code> the number of folds to be used in the cross
+validation model (Default = 3)</li>
 <li>
-<code>nrepeats</code> the number of iterations to be used in the cross validation model (Default = 5)</li>
+<code>nrepeats</code> the number of iterations to be used in the
+cross validation model (Default = 5)</li>
 </ul>
-<div id="example-3" class="section level4">
-<h4 class="hasAnchor">
-<a href="#example-3" class="anchor"></a>Example</h4>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="no">extract_lm_cv_all_results</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/extract_lm_cv_all.html">extract_lm_cv_all</a></span>(<span class="kw">parameters</span> <span class="kw">=</span> <span class="no">parameters</span>, <span class="kw">df</span> <span class="kw">=</span> <span class="no">df</span>,
-                                                 <span class="kw">train_method</span> <span class="kw">=</span> <span class="st">"lm"</span>, <span class="kw">control_method</span> <span class="kw">=</span> <span class="st">"repeatedcv"</span>,
-                                                 <span class="kw">folds</span> <span class="kw">=</span> <span class="fl">3</span>, <span class="kw">nrepeats</span> <span class="kw">=</span> <span class="fl">5</span>)
-<span class="fu"><a href="https://rdrr.io/pkg/raster/man/headtail.html">head</a></span>(<span class="no">extract_lm_cv_all_results</span>)
-<span class="co">#&gt; # A tibble: 6 x 8</span>
-<span class="co">#&gt;   Algorithms        R_Squared  Slope Intercept  P_Value CV_R_Squared  RMSE   MAE</span>
-<span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Turbid_NTU_pH         0.976 -14.1    125.    4.86e-11        0.551  1.44 0.796</span>
-<span class="co">#&gt; 2 Turbid_NTU_Al10S~     0.441 -30.5     -4.37  9.54e- 3        0.421  2.74 1.76 </span>
-<span class="co">#&gt; 3 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.390  2.69 1.79 </span>
-<span class="co">#&gt; 4 Turbid_NTU_Da052~     0.168  19.2    -18.7   1.45e- 1        0.403  2.81 1.84 </span>
-<span class="co">#&gt; 5 Turbid_NTU_MM12N~     0.166  42.3      0.370 1.48e- 1        0.283  2.51 1.60 </span>
-<span class="co">#&gt; 6 Turbid_NTU_TurbD~     0.136  -7.44     5.47  1.95e- 1        0.516  2.69 1.83</span></pre></body></html></div>
+<div class="section level4">
+<h4 id="example-3">Example<a class="anchor" aria-label="anchor" href="#example-3"></a>
+</h4>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">extract_lm_cv_all_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extract_lm_cv_all.html">extract_lm_cv_all</a></span><span class="op">(</span>parameters <span class="op">=</span> <span class="va">parameters</span>, df <span class="op">=</span> <span class="va">df</span>,</span>
+<span>                                                 train_method <span class="op">=</span> <span class="st">"lm"</span>, control_method <span class="op">=</span> <span class="st">"repeatedcv"</span>,</span>
+<span>                                                 folds <span class="op">=</span> <span class="fl">3</span>, nrepeats <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/headtail.html" class="external-link">head</a></span><span class="op">(</span><span class="va">extract_lm_cv_all_results</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
+<span><span class="co">#&gt;   Algorithms        R_Squared  Slope Intercept  P_Value CV_R_Squared  RMSE   MAE</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Turbid_NTU_pH         0.976 -<span style="color: #BB0000;">14.1</span>    125.    4.86<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span>        0.620  1.47 0.820</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Turbid_NTU_Al10S…     0.441 -<span style="color: #BB0000;">30.5</span>     -<span style="color: #BB0000;">4.37</span>  9.54<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span>        0.549  2.42 1.46 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Turbid_NTU_MM12N…     0.166  42.3      0.370 1.48<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.411  2.81 1.82 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Turbid_NTU_Da052…     0.168  19.2    -<span style="color: #BB0000;">18.7</span>   1.45<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.260  2.61 1.65 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Turbid_NTU_MM12N…     0.166  42.3      0.370 1.48<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.432  2.96 2.00 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Turbid_NTU_TurbD…     0.136  -<span style="color: #BB0000;">7.44</span>     5.47  1.95<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span>        0.380  2.82 1.93</span></span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="acknowledgements" class="section level2">
-<h2 class="hasAnchor">
-<a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
-<p>The waterquality package was developed with funding from the U.S. Army Corps of Engineers. The authors would also like to thank the University of Cincinnati Library’s Research &amp; Data Services and the University of Cincinnati’s Space Informatics Lab for their expertise and technical services.</p>
+<div class="section level2">
+<h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+</h2>
+<p>The waterquality package was developed with funding from the U.S.
+Army Corps of Engineers. The authors would also like to thank the
+University of Cincinnati Library’s Research &amp; Data Services and the
+University of Cincinnati’s Space Informatics Lab for their expertise and
+technical services.</p>
 </div>
-<div id="credit" class="section level2">
-<h2 class="hasAnchor">
-<a href="#credit" class="anchor"></a>Credit</h2>
+<div class="section level2">
+<h2 id="credit">Credit<a class="anchor" aria-label="anchor" href="#credit"></a>
+</h2>
 <p>To cite this library, please use the following entry:</p>
-<p>Johansen R., Reif M., Emery E., Nowosad J., Beck R., Xu M., Liu H., waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality. USACE ERDC/EL TR-19-20; DOI: 10.21079/11681/35053</p>
-<p><span class="citation">@Article</span>{, author = {Richard Johansen and Molly Reif and Erich Emery and Jakub Nowosad and Richard Beck and Min Xu and Hongxing Liu}, title = {waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality}, year = {2019}, doi = {10.21079/11681/35053}, journal = {USACE ERDC/EL TR-19-20}, }</p>
+<p>Johansen R., Reif M., Emery E., Nowosad J., Beck R., Xu M., Liu H.,
+waterquality: An Open-Source R Package for the Detection and
+Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality.
+USACE ERDC/EL TR-19-20; DOI: 10.21079/11681/35053</p>
+<p><span class="citation">@Article</span>{, author = {Richard Johansen
+and Molly Reif and Erich Emery and Jakub Nowosad and Richard Beck and
+Min Xu and Hongxing Liu}, title = {waterquality: An Open-Source R
+Package for the Detection and Quantification of Cyanobacterial Harmful
+Algal Blooms and Water Quality}, year = {2019}, doi =
+{10.21079/11681/35053}, journal = {USACE ERDC/EL TR-19-20}, }</p>
 </div>
   </div>
 
@@ -395,11 +532,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Richard Johansen, Jakub Nowosad, Molly Reif, Erich Emery, U.S. Army Corps of Engineers.</p>
+  <p></p>
+<p>Developed by Richard Johansen, Jakub Nowosad, Molly Reif, Erich Emery, U.S. Army Corps of Engineers.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -407,6 +546,8 @@
 
   
 
+
+  
 
   </body>
 </html>

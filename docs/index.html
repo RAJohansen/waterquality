@@ -102,12 +102,17 @@
 <p>The main function in this package is <code><a href="reference/wq_calc.html">wq_calc()</a></code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/RAJohansen/waterquality" class="external-link">waterquality</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster" class="external-link">raster</a></span><span class="op">)</span></span>
-<span><span class="va">s2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/stack.html" class="external-link">stack</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"raster/S2_Harsha.tif"</span>, package <span class="op">=</span> <span class="st">"waterquality"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">s2_two_alg</span> <span class="op">=</span> <span class="fu"><a href="reference/wq_calc.html">wq_calc</a></span><span class="op">(</span><span class="va">s2</span>, alg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MM12NDCI"</span>, <span class="st">"Al10SABI"</span><span class="op">)</span>, sat <span class="op">=</span> <span class="st">"sentinel2"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span>
+<span><span class="va">s2</span> <span class="op">=</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"raster/S2_Harsha.tif"</span>, package <span class="op">=</span> <span class="st">"waterquality"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">MM12NDCI</span> <span class="op">=</span> <span class="fu"><a href="reference/wq_calc.html">wq_calc</a></span><span class="op">(</span><span class="va">s2</span>, alg <span class="op">=</span> <span class="st">"MM12NDCI"</span>, sat <span class="op">=</span> <span class="st">"sentinel2"</span><span class="op">)</span></span>
+<span><span class="va">samples</span> <span class="op">=</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"raster/Harsha_Simple_Points_CRS.gpkg"</span>, package <span class="op">=</span> <span class="st">"waterquality"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">s2_two_alg</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-example_output-1.png"><!-- --></p>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/Map_WQ_raster.html">Map_WQ_raster</a></span><span class="op">(</span>WQ_raster <span class="op">=</span> <span class="va">MM12NDCI</span>,</span>
+<span>              sample_points <span class="op">=</span> <span class="va">samples</span>,</span>
+<span>              map_title<span class="op">=</span> <span class="st">"Water Quality Map"</span>,</span>
+<span>              raster_style <span class="op">=</span> <span class="st">"quantile"</span>,</span>
+<span>              histogram <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-2-1.png"><!-- --></p>
 </div>
 <div class="section level2">
 <h2 id="package-contributions">Package Contributions<a class="anchor" aria-label="anchor" href="#package-contributions"></a>
@@ -162,7 +167,6 @@
 <li><a href="https://cran.r-project.org/package=waterquality" class="external-link"><img src="http://www.r-pkg.org/badges/version/waterquality" alt="CRAN status"></a></li>
 <li><a href="https://travis-ci.org/RAJohansen/waterquality" class="external-link"><img src="https://travis-ci.org/RAJohansen/waterquality.png?branch=master" alt="Build Status"></a></li>
 <li><a href="https://app.codecov.io/gh/RAJohansen/waterquality" class="external-link"><img src="https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg" alt="codecov"></a></li>
-<li><a href="https://www.r-pkg.org:443/pkg/waterquality" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/waterquality?color=brightgreen" alt="Downloads"></a></li>
 </ul>
 </div>
 

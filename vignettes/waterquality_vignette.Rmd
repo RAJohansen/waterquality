@@ -128,26 +128,6 @@ Map_WQ_raster(WQ_raster = MM12NDCI,
 
 ```
   
-### Map_WQ_basemap
-This function wraps the ["tmap"](https://cran.r-project.org/package=tmap) & ["tmaptools"](https://cran.r-project.org/package=tmaptools) packages in order to generate a map using user-defined vectors (points and a polygon) overlaid on a Bing basemap. In order to simplify this process and reduce the technical expertise required, the number of arguments were reduced to the following: 
-- `WQ_extent` - geospatial file (.shp or .gpkg) used to extract aerial imagery from Bing basemaps	
-- `WQ_parameter` - text referring to column heading of data being mapped (i.e. Chl-a, PC, etc.)
-- `sample_points` - geospatial file (.shp or .gpkg) containing sampling locations
-- `map_title` - text used to generate title of map
-- `raster_style` - method to process the color scale when col is a numeric variable. Please refer to the style argument in the                    `?tmap::tm_raster()` function for more details (Default is "quantile").
-- `histogram` - Option to add or remove a histogram of the data values. (Default = TRUE)  
-
-#### Basemap with points  
-```{r,fig.height = 5, fig.width = 6, eval=FALSE}
-Map_WQ_basemap(WQ_extent = lake_extent,
-              sample_points = samples,
-              WQ_parameter = "Chl_ugL",
-              map_title= "Water Quality Map",
-              points_style = "quantile",
-              histogram = TRUE)
-
-```
-  
 ## Modeling Functions
 Developing models is an essential step in water quality monitoring, and this requires sufficient coincident ground truth data. These functions have been developed to combine user-provided ground truth data and the results from the `wq_calc` function to generate a single or series of regression models. These functions have been developed to easily conduct linear models with standardized outputs, providing intuitive yet robust options. Most effectively, the functions will utilize a single comma delimited (.csv) file as the data frame source. Although these functions were designed for our water quality research, they can be used as standalone functions for any data to generate the same standardized outputs containing the following:   
 **Global Model**  
