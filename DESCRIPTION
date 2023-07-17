@@ -22,7 +22,7 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 Imports:
     methods,
-    raster,
+    terra,
     purrr,
     caret,
     magrittr,
