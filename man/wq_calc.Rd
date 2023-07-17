@@ -4,16 +4,16 @@
 \alias{wq_calc}
 \title{Water quality calculation}
 \usage{
-wq_calc(raster_stack, alg = "all", sat, ...)
+wq_calc(terraRast, alg = "all", sat, ...)
 }
 \arguments{
-\item{raster_stack}{RasterStack containing a satellite data}
+\item{terraRast}{Terra Raster Stack containing a satellite data}
 
 \item{alg}{Name (e.g. \code{\link[=Am09KBBI]{Am09KBBI()}}) or type of the algorithm ("chlorophyll", "phycocyanin", "turbidity") or "all"}
 
 \item{sat}{Name of the satellite or instrument ("worldview2", "sentinel2", "landsat8", "modis", "meris", or "OLCI")}
 
-\item{...}{Other arguments passed on to \code{\link[=stack]{stack()}}}
+\item{...}{Other arguments passed on to \code{\link[terra:rast]{terra::rast()}}}
 }
 \value{
 RasterLayer
@@ -22,10 +22,10 @@ RasterLayer
 Calculates a set of water quality indices
 }
 \examples{
-library(raster)
+library(terra)
 
 # sentinel2 example
-s2 = stack(system.file("raster/S2_Harsha.tif", package = "waterquality"))
+s2 = terra::rast(system.file("raster/S2_Harsha.tif", package = "waterquality"))
 s2_Al10SABI = wq_calc(s2, alg = "Al10SABI", sat = "sentinel2")
 s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Am092Bsub"), sat = "sentinel2")
 
@@ -33,7 +33,7 @@ s2_two_alg = wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Am092Bsub"), sat = "
 s2_wq = wq_calc(s2, alg = "all", sat = "sentinel2")
 
 # landsat8 example
-l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "waterquality"))
+l8 = terra::rast(system.file("raster/L8_Taylorsville.tif", package = "waterquality"))
 l8_wq = wq_calc(s2, alg = "all", sat = "landsat8")
 )}
 }
