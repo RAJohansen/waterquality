@@ -12,7 +12,7 @@ Be16NDTIviolet(w658, w444)
 \item{w444}{numeric. Value at wavelength of 444 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Be16NDTIviolet algorithm

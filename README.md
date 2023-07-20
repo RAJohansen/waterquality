@@ -3,8 +3,6 @@
 
 [![CRAN
 status](http://www.r-pkg.org/badges/version/waterquality)](https://cran.r-project.org/package=waterquality)
-[![Build
-Status](https://travis-ci.org/RAJohansen/waterquality.png?branch=master)](https://travis-ci.org/RAJohansen/waterquality)
 [![codecov](https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg)](https://app.codecov.io/gh/RAJohansen/waterquality)
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/waterquality)
 
@@ -77,6 +75,14 @@ Map_WQ_raster(WQ_raster = MM12NDCI,
               map_title= "Water Quality Map",
               raster_style = "quantile",
               histogram = TRUE)
+#> The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,
+#> which was just loaded, will retire in October 2023.
+#> Please refer to R-spatial evolution reports for details, especially
+#> https://r-spatial.org/r/2023/05/15/evolution4.html.
+#> It may be desirable to make the sf package available;
+#> package maintainers should consider adding sf to Suggests:.
+#> The sp package is now running under evolution status 2
+#>      (status 2 uses the sf package in place of rgdal)
 ```
 
 ![](man/figures/README-unnamed-chunk-2-1.png)<!-- -->

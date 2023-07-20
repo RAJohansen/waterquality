@@ -2,15 +2,14 @@
 #'
 #' Calculates a set of water quality indices
 #'
-#' @param terraRast Terra Raster Stack containing a satellite data
+#' @param terraRast Terra SpatRaster containing a satellite data
 #' @param alg Name (e.g. [Am09KBBI()]) or type of the algorithm ("chlorophyll", "phycocyanin", "turbidity") or "all"
 #' @param sat Name of the satellite or instrument ("worldview2", "sentinel2", "landsat8", "modis", "meris", or "OLCI")
 #' @param ... Other arguments passed on to [terra::rast()]
 #' 
-#' @importFrom raster overlay stack nlayers
 #' @importFrom methods is
 #'
-#' @return RasterLayer
+#' @return SpatRaster
 #' 
 #' @examples 
 #' library(terra)

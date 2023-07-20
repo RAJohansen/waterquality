@@ -14,7 +14,7 @@ Be16FLHGreenRedNIR_LS8(w658, w857, w558)
 \item{w558}{numeric. Value at wavelength of 558 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Be16FLHGreenRedNIR_LS8 algorithm

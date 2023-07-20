@@ -12,7 +12,7 @@ Be162B700sub601(w700, w601)
 \item{w601}{numeric. Value at wavelength of 601 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Be162B700sub601     algorithm

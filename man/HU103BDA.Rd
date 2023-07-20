@@ -14,7 +14,7 @@ HU103BDA(w615, w600, w725)
 \item{w725}{numeric. Value at wavelength of 725 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the HU103BDA algorithm

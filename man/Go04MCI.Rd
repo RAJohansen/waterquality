@@ -14,7 +14,7 @@ Go04MCI(w709, w681, w753)
 \item{w753}{numeric. Value at wavelength of 753 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Go04MCI algorithm

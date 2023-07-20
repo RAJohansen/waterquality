@@ -7,7 +7,7 @@
 wq_calc(terraRast, alg = "all", sat, ...)
 }
 \arguments{
-\item{terraRast}{Terra Raster Stack containing a satellite data}
+\item{terraRast}{Terra SpatRaster containing a satellite data}
 
 \item{alg}{Name (e.g. \code{\link[=Am09KBBI]{Am09KBBI()}}) or type of the algorithm ("chlorophyll", "phycocyanin", "turbidity") or "all"}
 
@@ -16,7 +16,7 @@ wq_calc(terraRast, alg = "all", sat, ...)
 \item{...}{Other arguments passed on to \code{\link[terra:rast]{terra::rast()}}}
 }
 \value{
-RasterLayer
+SpatRaster
 }
 \description{
 Calculates a set of water quality indices

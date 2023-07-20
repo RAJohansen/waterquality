@@ -12,7 +12,7 @@ SY002BDA(w650, w625)
 \item{w625}{numeric. Value at wavelength of 625 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the SY002BDA algorithm

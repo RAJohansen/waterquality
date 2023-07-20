@@ -12,7 +12,7 @@ TurbBow06RedOverGreen(w658, w558)
 \item{w558}{numeric. Value at wavelength of 558 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the TurbBow06RedOverGreen     algorithm

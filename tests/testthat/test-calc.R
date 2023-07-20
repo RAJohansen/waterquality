@@ -3,8 +3,8 @@ test_that("wq_calc works correctly", {
   s2 = rast(system.file("raster/S2_Harsha.tif", package = "waterquality"))
   
   # test number of output layers
-  expect_equal(nlayers(wq_calc(s2, alg = c("Am092Bsub"), sat = "sentinel2")), 1)
-  expect_equal(nlayers(wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Am092Bsub"), sat = "sentinel2")), 2)
+  expect_equal(nlyr(wq_calc(s2, alg = c("Am092Bsub"), sat = "sentinel2")), 1)
+  expect_equal(nlyr(wq_calc(s2, alg = c("TurbChip09NIROverGreen", "Am092Bsub"), sat = "sentinel2")), 2)
 
   # warnings
   expect_warning(wq_calc(s2, alg = c("Al10SABI", "Am092Bsub", "my_alg"), sat = "sentinel2"))
@@ -17,7 +17,7 @@ test_that("wq_calc works correctly", {
   expect_error(wq_calc(s2, alg = "many", sat = "sentinel2"))
   
   # wrong alg error
-  l8 = stack(system.file("raster/L8_Taylorsville.tif", package = "waterquality"))
+  l8 = rast(system.file("raster/L8_Taylorsville.tif", package = "waterquality"))
   expect_error(wq_calc(raster_stack = l8, alg = "MM12NDCI", sat = "landsat8"))
   
 })

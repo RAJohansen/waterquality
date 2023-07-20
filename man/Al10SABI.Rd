@@ -16,7 +16,7 @@ Al10SABI(w857, w644, w458, w529)
 \item{w529}{numeric. Value at wavelength of 529 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Al10SABI algorithm

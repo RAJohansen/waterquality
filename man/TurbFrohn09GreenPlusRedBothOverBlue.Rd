@@ -14,7 +14,7 @@ TurbFrohn09GreenPlusRedBothOverBlue(w558, w658, w458)
 \item{w458}{numeric. Value at wavelength of 458 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the TurbFrohn09GreenPlusRedBothOverBlue     algorithm

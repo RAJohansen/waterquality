@@ -14,7 +14,7 @@ Wy08CI(w681, w665, w709)
 \item{w709}{numeric. Value at wavelength of 709 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Wy08CI  algorithm

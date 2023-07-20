@@ -5,7 +5,6 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 [![CRAN status](http://www.r-pkg.org/badges/version/waterquality)](https://cran.r-project.org/package=waterquality)
-[![Build Status](https://travis-ci.org/RAJohansen/waterquality.png?branch=master)](https://travis-ci.org/RAJohansen/waterquality)
 [![codecov](https://codecov.io/gh/RAJohansen/waterquality/branch/master/graph/badge.svg)](https://app.codecov.io/gh/RAJohansen/waterquality)
 ![downloads](http://cranlogs.r-pkg.org/badges/grand-total/waterquality)
 

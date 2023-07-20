@@ -14,7 +14,7 @@ Be16FLHBlueRedNIR_S2(w658, w857, w458)
 \item{w458}{numeric. Value at wavelength of 458 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Be16FLHBlueRedNIR_S2 algorithm

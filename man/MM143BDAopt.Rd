@@ -14,7 +14,7 @@ MM143BDAopt(w629, w659, w724)
 \item{w724}{numeric. Value at wavelength of 724 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the MM143BDAopt algorithm

@@ -14,7 +14,7 @@ Kn07KIVU(w458, w644, w529)
 \item{w529}{numeric. Value at wavelength of 529 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Kn07KIVU algorithm

@@ -12,7 +12,7 @@ Be16NDPhyI(w700, w622)
 \item{w622}{numeric. Value at wavelength of 622 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Be16NDPhyI algorithm

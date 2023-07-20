@@ -12,7 +12,7 @@ Be162BsubPhy(w715, w615)
 \item{w615}{numeric. Value at wavelength of 615 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Be162BsubPhy     algorithm

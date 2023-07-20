@@ -10,7 +10,7 @@ TurbHarr92NIR(w857)
 \item{w857}{numeric. Value at wavelength of 857 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the TurbHarr92NIR     algorithm

@@ -12,7 +12,7 @@ MM092BDA(w724, w600)
 \item{w600}{numeric. Value at wavelength of 600 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the MM092BDA algorithm

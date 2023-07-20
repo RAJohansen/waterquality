@@ -14,7 +14,7 @@ Gi033BDA(w672, w715, w757)
 \item{w757}{numeric. Value at wavelength of 757 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Gi033BDA algorithm

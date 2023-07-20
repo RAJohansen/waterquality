@@ -12,7 +12,7 @@ MM12NDCIalt(w700, w658)
 \item{w658}{numeric. Value at wavelength of 658 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the MM12NDCIalt     algorithm

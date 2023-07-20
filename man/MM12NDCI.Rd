@@ -12,7 +12,7 @@ MM12NDCI(w715, w686)
 \item{w686}{numeric. Value at wavelength of 686 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the MM12NDCI algorithm

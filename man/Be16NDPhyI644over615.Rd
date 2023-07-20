@@ -12,7 +12,7 @@ Be16NDPhyI644over615(w644, w615)
 \item{w615}{numeric. Value at wavelength of 615 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Be16NDPhyI644over615     algorithm

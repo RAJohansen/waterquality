@@ -12,7 +12,7 @@ TurbChip09NIROverGreen(w857, w558)
 \item{w558}{numeric. Value at wavelength of 558 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the TurbChip09NIROverGreen     algorithm

@@ -12,7 +12,7 @@ Am092Bsub(w681, w665)
 \item{w665}{numeric. Value at wavelength of 665 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Am092Bsub algorithm

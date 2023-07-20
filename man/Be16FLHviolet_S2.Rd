@@ -14,7 +14,7 @@ Be16FLHviolet_S2(w529, w644, w458)
 \item{w458}{numeric. Value at wavelength of 429 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Be16FLHviolet_S2 algorithm

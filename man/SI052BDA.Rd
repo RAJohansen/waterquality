@@ -12,7 +12,7 @@ SI052BDA(w709, w620)
 \item{w620}{numeric. Value at wavelength of 620 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the SI052BDA algorithm

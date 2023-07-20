@@ -12,7 +12,7 @@ Da052BDA(w714, w672)
 \item{w672}{numeric. Value at wavelength of 672 nm}
 }
 \value{
-RasterLayer or numeric
+SpatRaster or numeric
 }
 \description{
 Applies the Da052BDA   algorithm
