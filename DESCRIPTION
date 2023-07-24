@@ -36,7 +36,6 @@ Suggests:
     covr,
     tmap,
     tmaptools,
-    OpenStreetMap,
     sf
 URL: https://github.com/RAJohansen/waterquality
 BugReports: https://github.com/RAJohansen/waterquality/issues
