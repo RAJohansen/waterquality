@@ -87,6 +87,15 @@ Map_WQ_raster(WQ_raster = MM12NDCI,
 
 ![](man/figures/README-unnamed-chunk-2-1.png)<!-- -->
 
+## Citation
+
+To cite waterquality in publications, please use:
+
+Johansen R, Nowosad J, Reif M, Emery E (2023). waterquality: Satellite
+Derived Water Quality Detection Algorithms. U.S Army Engineer Research
+and Development Center, Vicksburg, MS, USA. R package version 1.0.0,
+<https://github.com/RAJohansen/waterquality/>.
+
 ## Package Contributions
 
 We encourage users to submit issues and enhancement requests so we may
