@@ -1,16 +1,13 @@
-citHeader("To cite waterquality in publications, please use:")
-
-citEntry(entry = "article",
-  author = c(person("Richard", "Johansen"),
-             person("Molly", "Reif"),
-             person("Erich", "Emery"),
-             person("Jakub", "Nowosad"),
-             person("Richard", "Beck"),
-             person("Min", "Xu"),
-             person("Hongxing", "Liu")),
-  title = "waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality",
-  year = "2019",
-  doi = "10.21079/11681/35053",
-  journal = "USACE ERDC/EL TR-19-20", 
-  textVersion = "Johansen R., Reif M., Emery E., Nowosad J., Beck R., Xu M., Liu H., waterquality: An Open-Source R Package for the Detection and Quantification of Cyanobacterial Harmful Algal Blooms and Water Quality. USACE ERDC/EL TR-19-20; DOI: 10.21079/11681/35053"
-)
+bibentry(
+  header = "To cite waterquality in publications, please use:",
+   bibtype = "Manual",
+   title = "waterquality: Satellite Derived Water Quality Detection Algorithms",
+   author = c(person("Richard", "Johansen",email = "richard.a.johansen@erdc.dren.mil"),
+              person("Jakub", "Nowosad"), 
+              person("Molly", "Reif"),
+              person("Erich", "Emery")),
+   organization = "U.S Army Engineer Research and Development Center",
+   address = "Vicksburg, MS, USA",
+   year = 2023,
+   note = "R package version 1.0.0",
+   url = "https://https://github.com/RAJohansen/waterquality/")
