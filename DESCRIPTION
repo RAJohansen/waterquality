@@ -37,6 +37,6 @@ Suggests:
     tmap,
     tmaptools,
     sf
-URL: https://github.com/RAJohansen/waterquality
+URL: https://github.com/RAJohansen/waterquality, https://rajohansen.github.io/waterquality/
 BugReports: https://github.com/RAJohansen/waterquality/issues
 VignetteBuilder: knitr
